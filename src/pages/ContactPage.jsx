@@ -1,70 +1,67 @@
 import React, { useState } from 'react';
 import { PageHeader } from '../components/layout/PageHeader';
+import { SectionHeading } from '../components/common/SectionHeading';
 import { Button } from '../components/common/Button';
 import {
   Mail,
   PhoneCall,
   Clock,
   CheckCircle2,
-  Sparkles,
   ShieldCheck,
   Building2,
-  Users,
+  Zap,
+  Sparkles,
 } from 'lucide-react';
 
 export const ContactPage = ({ onOpenDemo }) => {
-  const [formSubmitted, setFormSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    phone: '',
     company: '',
-    teamSize: '10-25',
+    teamSize: '6-25',
     useCase: 'inside-sales',
     message: '',
   });
 
+  const [formSubmitted, setFormSubmitted] = useState(false);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (formData.name && formData.email) {
-      setFormSubmitted(true);
-    }
+    setFormSubmitted(true);
   };
 
   return (
     <div style={{ paddingTop: '20px', paddingBottom: '100px' }}>
       
       <PageHeader
-        badge="Connect with Solutions Engineering"
+        badge="Scope Your Workspace"
         badgeIcon="PhoneCall"
-        title="Transform your sales floor with"
-        highlight="oda7."
-        description="Share your team structure and the workflows you want to connect. We’ll use that context to shape an ODA7 walkthrough."
+        title="Speak directly with an"
+        highlight="oda7 implementation architect."
+        description="Whether you are consolidating 10+ tools, migrating an active call center, or exploring multi-tenant agency resale, we are ready to discuss your specific requirements."
       />
 
       <div className="container">
         
-        <div className="contact-grid" style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '48px', alignItems: 'start', maxWidth: '1100px', margin: '0 auto' }}>
+        <div className="contact-layout-grid" style={{ display: 'grid', gridTemplateColumns: 'minmax(320px, 1.2fr) minmax(280px, 1fr)', gap: '40px', alignItems: 'start' }}>
           
-          {/* Left: Contact & Booking Form */}
+          {/* Left: Contact / Walkthrough Form */}
           <div
+            className="feature-showcase-panel contact-form-panel"
             style={{
-              background: 'linear-gradient(135deg, rgba(14, 23, 42, 0.9) 0%, rgba(7, 10, 18, 0.95) 100%)',
-              border: '1px solid rgba(59, 130, 246, 0.35)',
               borderRadius: '20px',
               padding: '40px',
-              boxShadow: '0 20px 40px rgba(0,0,0,0.6)',
             }}
           >
             {formSubmitted ? (
               <div style={{ textAlign: 'center', padding: '40px 20px' }} className="animate-fadeIn">
-                <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: 'rgba(16, 185, 129, 0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px auto', color: '#34d399' }}>
+                <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: 'rgba(16, 185, 129, 0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px auto', color: '#10b981' }}>
                   <CheckCircle2 size={36} />
                 </div>
-                <h3 style={{ fontSize: '1.75rem', fontWeight: '800', color: '#fff', marginBottom: '10px' }}>
+                <h3 style={{ fontSize: '1.75rem', fontWeight: '800', color: 'var(--oda-text-primary)', marginBottom: '10px' }}>
                   Thank you, {formData.name.split(' ')[0]}!
                 </h3>
-                <p style={{ color: '#cbd5e1', fontSize: '1rem', lineHeight: '1.6', marginBottom: '24px' }}>
+                <p style={{ color: 'var(--oda-text-secondary)', fontSize: '1rem', lineHeight: '1.6', marginBottom: '24px' }}>
                   This frontend preview has prepared your request details, but it does not send data to a backend. Contact the ODA7 team directly to continue.
                 </p>
                 <div style={{ display: 'flex', justifyContent: 'center', gap: '12px' }}>
@@ -75,16 +72,16 @@ export const ContactPage = ({ onOpenDemo }) => {
               </div>
             ) : (
               <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
-                <h3 style={{ fontSize: '1.4rem', fontWeight: '800', color: '#fff', marginBottom: '4px' }}>
+                <h3 style={{ fontSize: '1.4rem', fontWeight: '800', color: 'var(--oda-text-primary)', marginBottom: '4px' }}>
                   Request Live Platform Walkthrough
                 </h3>
-                <p style={{ color: '#94a3b8', fontSize: '0.85rem', marginBottom: '10px' }}>
+                <p style={{ color: 'var(--oda-text-secondary)', fontSize: '0.85rem', marginBottom: '10px' }}>
                   Fill in your details to preview the request flow. No information leaves this frontend demo.
                 </p>
 
                 <div className="form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.75rem', color: '#cbd5e1', marginBottom: '6px', fontWeight: '600' }}>
+                    <label style={{ display: 'block', fontSize: '0.75rem', color: 'var(--oda-text-secondary)', marginBottom: '6px', fontWeight: '600' }}>
                       Full Name *
                     </label>
                     <input
@@ -98,7 +95,7 @@ export const ContactPage = ({ onOpenDemo }) => {
                   </div>
 
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.75rem', color: '#cbd5e1', marginBottom: '6px', fontWeight: '600' }}>
+                    <label style={{ display: 'block', fontSize: '0.75rem', color: 'var(--oda-text-secondary)', marginBottom: '6px', fontWeight: '600' }}>
                       Work Email *
                     </label>
                     <input
@@ -114,7 +111,7 @@ export const ContactPage = ({ onOpenDemo }) => {
 
                 <div className="form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.75rem', color: '#cbd5e1', marginBottom: '6px', fontWeight: '600' }}>
+                    <label style={{ display: 'block', fontSize: '0.75rem', color: 'var(--oda-text-secondary)', marginBottom: '6px', fontWeight: '600' }}>
                       Company Name *
                     </label>
                     <input
@@ -128,14 +125,13 @@ export const ContactPage = ({ onOpenDemo }) => {
                   </div>
 
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.75rem', color: '#cbd5e1', marginBottom: '6px', fontWeight: '600' }}>
+                    <label style={{ display: 'block', fontSize: '0.75rem', color: 'var(--oda-text-secondary)', marginBottom: '6px', fontWeight: '600' }}>
                       Sales Team Size
                     </label>
                     <select
                       value={formData.teamSize}
                       onChange={(e) => setFormData({ ...formData, teamSize: e.target.value })}
                       className="input-control"
-                      style={{ background: '#0e131f' }}
                     >
                       <option value="1-5">1 - 5 Sales Reps</option>
                       <option value="6-25">6 - 25 Sales Reps</option>
@@ -146,14 +142,13 @@ export const ContactPage = ({ onOpenDemo }) => {
                 </div>
 
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.75rem', color: '#cbd5e1', marginBottom: '6px', fontWeight: '600' }}>
+                  <label style={{ display: 'block', fontSize: '0.75rem', color: 'var(--oda-text-secondary)', marginBottom: '6px', fontWeight: '600' }}>
                     Primary Use Case
                   </label>
                   <select
                     value={formData.useCase}
                     onChange={(e) => setFormData({ ...formData, useCase: e.target.value })}
                     className="input-control"
-                    style={{ background: '#0e131f' }}
                   >
                     <option value="inside-sales">High-Volume Inside Sales</option>
                     <option value="call-center">Call Center & BPO Floor Supervision</option>
@@ -163,7 +158,7 @@ export const ContactPage = ({ onOpenDemo }) => {
                 </div>
 
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.75rem', color: '#cbd5e1', marginBottom: '6px', fontWeight: '600' }}>
+                  <label style={{ display: 'block', fontSize: '0.75rem', color: 'var(--oda-text-secondary)', marginBottom: '6px', fontWeight: '600' }}>
                     What challenges are you looking to solve? (Optional)
                   </label>
                   <textarea
@@ -179,7 +174,7 @@ export const ContactPage = ({ onOpenDemo }) => {
                   Preview demo request
                 </Button>
 
-                <div style={{ color: '#64748b', fontSize: '0.75rem', textAlign: 'center' }}>
+                <div style={{ color: 'var(--oda-text-muted)', fontSize: '0.75rem', textAlign: 'center' }}>
                   Demo-only form. No data is transmitted or stored.
                 </div>
               </form>
@@ -195,11 +190,11 @@ export const ContactPage = ({ onOpenDemo }) => {
                   <Clock size={18} />
                 </div>
                 <div>
-                  <div style={{ fontWeight: '700', color: '#fff', fontSize: '0.95rem' }}>Bring your workflow</div>
-                  <div style={{ color: '#34d399', fontSize: '0.75rem' }}>Sales, people, operations or platform</div>
+                  <div style={{ fontWeight: '700', color: 'var(--oda-text-primary)', fontSize: '0.95rem' }}>Bring your workflow</div>
+                  <div style={{ color: '#10b981', fontSize: '0.75rem' }}>Sales, people, operations or platform</div>
                 </div>
               </div>
-              <p style={{ color: '#94a3b8', fontSize: '0.8125rem', lineHeight: '1.5' }}>
+              <p style={{ color: 'var(--oda-text-secondary)', fontSize: '0.8125rem', lineHeight: '1.5' }}>
                 Use the walkthrough to focus on the roles, modules and operating handoffs that matter to your team.
               </p>
             </div>
@@ -210,11 +205,11 @@ export const ContactPage = ({ onOpenDemo }) => {
                   <Mail size={18} />
                 </div>
                 <div>
-                  <div style={{ fontWeight: '700', color: '#fff', fontSize: '0.95rem' }}>Direct Inquiries</div>
-                  <div style={{ color: '#38bdf8', fontSize: '0.75rem' }}>enterprise@oda7.com</div>
+                  <div style={{ fontWeight: '700', color: 'var(--oda-text-primary)', fontSize: '0.95rem' }}>Direct Inquiries</div>
+                  <div style={{ color: 'var(--oda-primary)', fontSize: '0.75rem' }}>enterprise@oda7.com</div>
                 </div>
               </div>
-              <p style={{ color: '#94a3b8', fontSize: '0.8125rem', lineHeight: '1.5' }}>
+              <p style={{ color: 'var(--oda-text-secondary)', fontSize: '0.8125rem', lineHeight: '1.5' }}>
                 For custom SIP trunking, RFP security questionnaires, or custom SLA inquiries.
               </p>
             </div>
@@ -225,11 +220,11 @@ export const ContactPage = ({ onOpenDemo }) => {
                   <ShieldCheck size={18} />
                 </div>
                 <div>
-                  <div style={{ fontWeight: '700', color: '#fff', fontSize: '0.95rem' }}>Implementation planning</div>
+                  <div style={{ fontWeight: '700', color: 'var(--oda-text-primary)', fontSize: '0.95rem' }}>Implementation planning</div>
                   <div style={{ color: '#fbbf24', fontSize: '0.75rem' }}>Scope before promises</div>
                 </div>
               </div>
-              <p style={{ color: '#94a3b8', fontSize: '0.8125rem', lineHeight: '1.5' }}>
+              <p style={{ color: 'var(--oda-text-secondary)', fontSize: '0.8125rem', lineHeight: '1.5' }}>
                 Confirm data migration, telephony, security and rollout requirements directly with the ODA7 team.
               </p>
             </div>

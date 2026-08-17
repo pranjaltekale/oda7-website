@@ -3,8 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-    <meta name="theme-color" content="#07090E" />
+    <meta name="theme-color" content="#070a12" />
     
+    <!-- Inline anti-theme-flash script -->
+    <script>
+      (function() {
+        try {
+          var saved = localStorage.getItem('oda7-theme');
+          var theme = saved || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+          document.documentElement.setAttribute('data-theme', theme);
+          document.documentElement.classList.add(theme === 'light' ? 'theme-light' : 'theme-dark');
+        } catch (e) {}
+      })();
+    </script>
+
     <!-- Primary Meta Tags -->
     <title>ODA7 — One workspace for sales, people and performance</title>
     <meta name="title" content="ODA7 — One workspace for sales, people and performance" />
@@ -15,14 +27,14 @@
     <meta property="og:url" content="https://oda7.com/" />
     <meta property="og:title" content="ODA7 — One workspace for sales, people and performance" />
     <meta property="og:description" content="Connect sales execution, people operations, compensation and business intelligence in one role-aware workspace." />
-    <meta property="og:image" content="/oda7-team-story.png" />
+    <meta property="og:image" content="/oda7-team-story.jpg" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://oda7.com/" />
     <meta property="twitter:title" content="ODA7 — One workspace for sales, people and performance" />
     <meta property="twitter:description" content="Sales, people, operations and intelligence in one connected workspace." />
-    <meta property="twitter:image" content="/oda7-team-story.png" />
+    <meta property="twitter:image" content="/oda7-team-story.jpg" />
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

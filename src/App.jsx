@@ -14,6 +14,11 @@ import { PricingPage } from './pages/PricingPage';
 import { AboutPage } from './pages/AboutPage';
 import { ContactPage } from './pages/ContactPage';
 import { SignInPage } from './pages/SignInPage';
+import { ProductPage } from './pages/ProductPage';
+import { ProductDetailPage } from './pages/ProductDetailPage';
+import { SolutionDetailPage } from './pages/SolutionDetailPage';
+import { PlatformPage } from './pages/PlatformPage';
+import { ResourcesPage } from './pages/ResourcesPage';
 
 // Interactive App Workspace Page
 import { AppWorkspacePage } from './pages/AppWorkspacePage';
@@ -78,16 +83,25 @@ export const App = () => {
       <Navbar onOpenDemo={handleOpenDemo} />
 
       {/* Main Content Viewport */}
-      <main style={{ flex: 1, position: 'relative', zIndex: 10 }}>
+      <main key={location.pathname} className="page-transition-shell" style={{ flex: 1, position: 'relative', zIndex: 10 }}>
         <Routes>
           <Route path="/" element={<HomePage onOpenDemo={handleOpenDemo} />} />
           <Route path="/features" element={<FeaturesPage onOpenDemo={handleOpenDemo} />} />
+          <Route path="/product" element={<ProductPage onOpenDemo={handleOpenDemo} />} />
+          <Route path="/product/:slug" element={<ProductDetailPage onOpenDemo={handleOpenDemo} />} />
           <Route path="/solutions" element={<SolutionsPage onOpenDemo={handleOpenDemo} />} />
+          <Route path="/solutions/:slug" element={<SolutionDetailPage onOpenDemo={handleOpenDemo} />} />
+          <Route path="/platform" element={<PlatformPage onOpenDemo={handleOpenDemo} />} />
+          <Route path="/resources" element={<ResourcesPage onOpenDemo={handleOpenDemo} />} />
           <Route path="/pricing" element={<PricingPage onOpenDemo={handleOpenDemo} />} />
           <Route path="/about" element={<AboutPage onOpenDemo={handleOpenDemo} />} />
           <Route path="/contact" element={<ContactPage onOpenDemo={handleOpenDemo} />} />
           <Route path="/get-started" element={<ContactPage onOpenDemo={handleOpenDemo} />} />
           <Route path="/sign-in" element={<SignInPage onOpenDemo={handleOpenDemo} />} />
+          <Route path="/how-it-works" element={<Navigate to="/#how-it-works" replace />} />
+          <Route path="/scenarios" element={<Navigate to="/#scenarios" replace />} />
+          <Route path="/get-the-app" element={<Navigate to="/get-started" replace />} />
+          <Route path="/faq" element={<Navigate to="/#faq" replace />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>

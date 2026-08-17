@@ -234,14 +234,15 @@ export const InteractiveFeatureTabs = () => {
                   gap: '8px',
                   padding: '8px 16px',
                   borderRadius: 'var(--radius-full)',
-                  background: isSelected ? 'rgba(37, 99, 235, 0.25)' : 'rgba(14, 19, 32, 0.7)',
-                  border: isSelected ? '1px solid rgba(59, 130, 246, 0.5)' : '1px solid rgba(255, 255, 255, 0.07)',
-                  color: isSelected ? '#38bdf8' : '#94a3b8',
+                  background: isSelected ? 'var(--oda-primary)' : 'var(--oda-surface)',
+                  border: isSelected ? '1px solid var(--oda-primary-light)' : '1px solid var(--oda-border)',
+                  color: isSelected ? '#ffffff' : 'var(--oda-text-secondary)',
                   fontSize: '0.8125rem',
                   fontWeight: '600',
                   whiteSpace: 'nowrap',
                   cursor: 'pointer',
                   transition: 'all 0.15s ease',
+                  boxShadow: isSelected ? '0 0 16px rgba(37, 99, 235, 0.35)' : 'none',
                 }}
               >
                 <IconComp size={14} />
@@ -253,37 +254,34 @@ export const InteractiveFeatureTabs = () => {
 
         {/* Dynamic Interactive Preview Card */}
         <div
+          className="feature-showcase-panel animate-fadeIn"
           style={{
             maxWidth: '1080px',
             margin: '0 auto',
-            background: 'linear-gradient(135deg, rgba(14, 23, 42, 0.95) 0%, rgba(7, 10, 18, 0.98) 100%)',
-            border: '1px solid rgba(59, 130, 246, 0.35)',
             borderRadius: '20px',
             padding: '40px',
-            boxShadow: '0 25px 50px rgba(0,0,0,0.6)',
           }}
           key={`${activeHub}-${activeSubTab}`}
-          className="animate-fadeIn"
         >
-          <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '36px', alignItems: 'center' }}>
+          <div className="responsive-story-grid" style={{ display: 'grid', gridTemplateColumns: 'minmax(300px, 1.2fr) minmax(280px, 1fr)', gap: '36px', alignItems: 'center' }}>
             <div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
                 <span className="badge badge-cyan">{currentHub.title}</span>
                 <span className="badge badge-emerald">{currentSubTab.metric}</span>
               </div>
 
-              <h3 style={{ fontSize: '1.75rem', fontWeight: '800', color: '#fff', marginBottom: '14px', lineHeight: '1.2' }}>
+              <h3 style={{ fontSize: '1.75rem', fontWeight: '800', color: 'var(--oda-text-primary)', marginBottom: '14px', lineHeight: '1.2' }}>
                 {currentSubTab.headline}
               </h3>
 
-              <p style={{ color: '#94a3b8', fontSize: '0.95rem', lineHeight: '1.6', marginBottom: '24px' }}>
+              <p style={{ color: 'var(--oda-text-secondary)', fontSize: '0.95rem', lineHeight: '1.6', marginBottom: '24px' }}>
                 {currentSubTab.description}
               </p>
 
               {/* Capability Checklist */}
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
                 {currentSubTab.features.map((feat, fIdx) => (
-                  <div key={fIdx} style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#cbd5e1', fontSize: '0.85rem' }}>
+                  <div key={fIdx} style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--oda-text-secondary)', fontSize: '0.85rem' }}>
                     <CheckCircle2 size={15} color="#10b981" style={{ flexShrink: 0 }} />
                     <span>{feat}</span>
                   </div>
@@ -292,17 +290,17 @@ export const InteractiveFeatureTabs = () => {
             </div>
 
             {/* Visual Action Mockup Card */}
-            <div style={{ background: 'rgba(7, 10, 18, 0.85)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '14px', padding: '24px', textAlign: 'center' }}>
-              <div style={{ display: 'inline-flex', padding: '12px', borderRadius: '12px', background: 'rgba(37, 99, 235, 0.2)', color: '#38bdf8', marginBottom: '14px' }}>
+            <div style={{ background: 'var(--oda-surface)', border: '1px solid var(--oda-border)', borderRadius: '14px', padding: '24px', textAlign: 'center', boxShadow: '0 4px 20px rgba(0,0,0,0.06)' }}>
+              <div style={{ display: 'inline-flex', padding: '12px', borderRadius: '12px', background: 'var(--oda-primary-soft)', color: 'var(--oda-primary)', marginBottom: '14px' }}>
                 <currentSubTab.icon size={28} />
               </div>
-              <div style={{ fontWeight: '800', color: '#fff', fontSize: '1.2rem', marginBottom: '6px' }}>
+              <div style={{ fontWeight: '800', color: 'var(--oda-text-primary)', fontSize: '1.2rem', marginBottom: '6px' }}>
                 {currentSubTab.label}
               </div>
-              <div style={{ color: '#94a3b8', fontSize: '0.8rem', marginBottom: '16px' }}>
+              <div style={{ color: 'var(--oda-text-muted)', fontSize: '0.8rem', marginBottom: '16px' }}>
                 Synchronized with BIZZFLY oda7 Engine
               </div>
-              <div style={{ background: 'rgba(255,255,255,0.03)', padding: '12px', borderRadius: '8px', color: '#34d399', fontSize: '0.8rem', fontFamily: 'var(--font-mono)' }}>
+              <div style={{ background: 'var(--oda-bg-alt)', padding: '12px', borderRadius: '8px', color: 'var(--oda-success)', fontSize: '0.8rem', fontFamily: 'var(--font-mono)', fontWeight: '700' }}>
                 ✓ Native Telemetry Stream Active
               </div>
             </div>

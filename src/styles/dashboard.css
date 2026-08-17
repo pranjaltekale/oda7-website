@@ -1,16 +1,16 @@
-/* Interactive App Workspace & Sidebar Styling */
+/* Interactive App Workspace & Sidebar Styling — ODA7 Design System */
 
 .workspace-layout {
   display: flex;
   min-height: 100vh;
-  background-color: #05070c;
-  color: #f8fafc;
+  background-color: var(--oda-bg-dark);
+  color: var(--oda-text-primary);
 }
 
 .workspace-sidebar {
   width: 260px;
-  background: #080c16;
-  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--oda-bg);
+  border-right: 1px solid var(--oda-border);
   display: flex;
   flex-direction: column;
   transition: width var(--transition-normal);
@@ -31,7 +31,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #64748b;
+  color: var(--oda-text-muted);
   padding: 12px 16px 6px 16px;
 }
 
@@ -40,7 +40,7 @@
   align-items: center;
   gap: 12px;
   padding: 10px 16px;
-  color: #94a3b8;
+  color: var(--oda-text-secondary);
   font-size: 0.8125rem;
   font-weight: 500;
   border-radius: 8px;
@@ -50,14 +50,14 @@
 }
 
 .workspace-nav-item:hover {
-  background: rgba(255, 255, 255, 0.04);
-  color: #ffffff;
+  background: var(--oda-surface);
+  color: var(--oda-text-primary);
 }
 
 .workspace-nav-item.active {
-  background: rgba(37, 99, 235, 0.18);
-  color: #38bdf8;
-  border: 1px solid rgba(59, 130, 246, 0.35);
+  background: var(--oda-primary-soft);
+  color: var(--oda-accent);
+  border: 1px solid var(--oda-border-blue);
   font-weight: 600;
 }
 
@@ -71,10 +71,10 @@
 
 .workspace-top-bar {
   height: 64px;
-  background: rgba(8, 12, 22, 0.9);
+  background: var(--oda-glass-strong);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid var(--oda-border);
   display: flex;
   align-items: center;
   justify-content: space-between;

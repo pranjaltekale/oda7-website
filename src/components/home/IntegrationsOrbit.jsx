@@ -32,7 +32,7 @@ export const IntegrationsOrbit = () => {
     : integrations.filter((item) => item.cat === activeFilter);
 
   return (
-    <section className="section-wrapper" style={{ background: '#05070c' }}>
+    <section className="section-wrapper" id="integrations">
       <div className="container">
         
         <SectionHeading
@@ -75,9 +75,8 @@ export const IntegrationsOrbit = () => {
 
         {/* Visual Central Orbit Display */}
         <div
+          className="feature-showcase-panel"
           style={{
-            background: 'linear-gradient(135deg, rgba(14, 23, 42, 0.7) 0%, rgba(7, 10, 18, 0.9) 100%)',
-            border: '1px solid rgba(59, 130, 246, 0.3)',
             borderRadius: '20px',
             padding: '40px 24px',
             maxWidth: '1000px',
@@ -93,63 +92,77 @@ export const IntegrationsOrbit = () => {
                 width: '72px',
                 height: '72px',
                 borderRadius: '20px',
-                background: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)',
-                border: '2px solid #38bdf8',
+                background: 'var(--oda-surface)',
+                border: '2px solid var(--oda-accent)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                boxShadow: '0 0 40px rgba(56, 189, 248, 0.4)',
-                marginBottom: '10px',
+                boxShadow: '0 0 30px rgba(37, 99, 235, 0.3)',
+                color: 'var(--oda-accent)',
+                fontFamily: 'var(--font-heading)',
+                fontSize: '1.75rem',
+                fontWeight: '900',
+                marginBottom: '12px',
               }}
-              className="animate-pulse-glow"
             >
-              <span style={{ fontFamily: 'var(--font-heading)', fontWeight: '900', fontSize: '2rem', color: '#38bdf8' }}>
-                o7
-              </span>
+              o7
             </div>
-            <div style={{ fontWeight: '800', fontSize: '1.2rem', color: '#fff' }}>
+            <div style={{ fontWeight: '800', color: 'var(--oda-text-primary)', fontSize: '1.25rem' }}>
               oda7 Core Sales OS
             </div>
-            <div style={{ color: '#94a3b8', fontSize: '0.8rem' }}>
+            <div style={{ color: 'var(--oda-text-muted)', fontSize: '0.8125rem' }}>
               Sub-second synchronous data mesh
             </div>
           </div>
 
-          {/* Connected Integrations Grid */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))', gap: '16px' }}>
-            {filtered.map((item, idx) => {
+          {/* Grid of Integrated Tools */}
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+              gap: '16px',
+            }}
+          >
+            {filtered.map((item) => {
               const IconComp = item.icon;
               return (
                 <div
-                  key={idx}
+                  key={item.name}
                   style={{
-                    background: 'rgba(14, 19, 31, 0.8)',
-                    border: '1px solid rgba(255, 255, 255, 0.08)',
+                    background: 'var(--oda-surface)',
+                    border: '1px solid var(--oda-border)',
                     borderRadius: '12px',
-                    padding: '18px',
+                    padding: '16px',
                     display: 'flex',
                     alignItems: 'center',
                     gap: '12px',
                     textAlign: 'left',
                     transition: 'all var(--transition-fast)',
+                    boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
                   }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = 'rgba(56, 189, 248, 0.4)';
-                    e.currentTarget.style.transform = 'translateY(-2px)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.08)';
-                    e.currentTarget.style.transform = 'translateY(0)';
-                  }}
+                  className="integration-card animate-fadeIn"
                 >
-                  <div style={{ width: '36px', height: '36px', borderRadius: '8px', background: 'rgba(255, 255, 255, 0.05)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#38bdf8', flexShrink: 0 }}>
+                  <div
+                    style={{
+                      width: '36px',
+                      height: '36px',
+                      borderRadius: '8px',
+                      background: 'var(--oda-primary-soft)',
+                      border: '1px solid var(--oda-border-blue)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: 'var(--oda-accent)',
+                      flexShrink: 0,
+                    }}
+                  >
                     <IconComp size={18} />
                   </div>
                   <div>
-                    <div style={{ fontWeight: '700', color: '#fff', fontSize: '0.875rem' }}>
+                    <div style={{ fontWeight: '700', color: 'var(--oda-text-primary)', fontSize: '0.85rem' }}>
                       {item.name}
                     </div>
-                    <div style={{ color: '#34d399', fontSize: '0.7rem', fontWeight: '500' }}>
+                    <div style={{ color: 'var(--oda-text-muted)', fontSize: '0.72rem' }}>
                       {item.status}
                     </div>
                   </div>
@@ -157,7 +170,6 @@ export const IntegrationsOrbit = () => {
               );
             })}
           </div>
-
         </div>
 
       </div>

@@ -115,7 +115,7 @@ export const AppWorkspacePage = ({ onOpenDemo }) => {
                 display: 'none',
                 background: 'transparent',
                 border: 'none',
-                color: '#fff',
+                color: 'var(--oda-text-primary)',
               }}
               className="mobile-toggle-btn"
             >
@@ -127,12 +127,12 @@ export const AppWorkspacePage = ({ onOpenDemo }) => {
                 <span className="badge badge-primary" style={{ fontSize: '0.65rem', padding: '2px 8px' }}>
                   {routeInfo.category}
                 </span>
-                <span style={{ color: '#64748b', fontSize: '0.75rem' }}>//</span>
-                <span style={{ color: '#94a3b8', fontSize: '0.75rem', fontWeight: '500' }}>
+                <span style={{ color: 'var(--oda-text-muted)', fontSize: '0.75rem' }}>//</span>
+                <span style={{ color: 'var(--oda-text-secondary)', fontSize: '0.75rem', fontWeight: '500' }}>
                   {routeInfo.role}
                 </span>
               </div>
-              <h1 style={{ fontSize: '1.15rem', fontWeight: '800', color: '#fff', margin: '2px 0 0 0' }}>
+              <h1 style={{ fontSize: '1.15rem', fontWeight: '800', color: 'var(--oda-text-primary)', margin: '2px 0 0 0' }}>
                 {routeInfo.title}
               </h1>
             </div>
@@ -142,7 +142,7 @@ export const AppWorkspacePage = ({ onOpenDemo }) => {
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
             {/* Search Input */}
             <div style={{ position: 'relative', width: '220px' }} className="desktop-hide-sm">
-              <Search size={14} style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', color: '#64748b' }} />
+              <Search size={14} style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', color: 'var(--oda-text-muted)' }} />
               <input
                 type="text"
                 placeholder="Search leads, calls, reps..."
@@ -150,11 +150,11 @@ export const AppWorkspacePage = ({ onOpenDemo }) => {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 style={{
                   width: '100%',
-                  background: 'rgba(255, 255, 255, 0.05)',
-                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                  background: 'var(--oda-surface)',
+                  border: '1px solid var(--oda-border)',
                   borderRadius: '6px',
                   padding: '6px 12px 6px 30px',
-                  color: '#fff',
+                  color: 'var(--oda-text-primary)',
                   fontSize: '0.75rem',
                 }}
               />
@@ -168,10 +168,12 @@ export const AppWorkspacePage = ({ onOpenDemo }) => {
                 gap: '6px',
                 padding: '6px 14px',
                 borderRadius: '6px',
-                background: 'var(--grad-primary)',
+                background: 'var(--oda-primary)',
                 color: '#fff',
                 fontWeight: '700',
                 fontSize: '0.75rem',
+                border: 'none',
+                cursor: 'pointer',
                 boxShadow: '0 0 15px rgba(37, 99, 235, 0.4)',
               }}
             >
@@ -185,17 +187,17 @@ export const AppWorkspacePage = ({ onOpenDemo }) => {
         <div className="workspace-view-container">
           
           {/* Context Banner */}
-          <div style={{ background: 'rgba(14, 19, 32, 0.6)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '12px', padding: '16px 20px', marginBottom: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
+          <div style={{ background: 'var(--oda-surface)', border: '1px solid var(--oda-border)', borderRadius: '12px', padding: '16px 20px', marginBottom: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
             <div>
-              <div style={{ fontWeight: '700', color: '#fff', fontSize: '0.95rem' }}>
+              <div style={{ fontWeight: '700', color: 'var(--oda-text-primary)', fontSize: '0.95rem' }}>
                 {routeInfo.title}
               </div>
-              <div style={{ color: '#94a3b8', fontSize: '0.8125rem', marginTop: '2px' }}>
+              <div style={{ color: 'var(--oda-text-secondary)', fontSize: '0.8125rem', marginTop: '2px' }}>
                 {routeInfo.desc}
               </div>
             </div>
             <div style={{ display: 'flex', gap: '8px' }}>
-              <Link to="/contact" style={{ padding: '6px 12px', borderRadius: '6px', background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)', color: '#fff', fontSize: '0.75rem', fontWeight: '600', textDecoration: 'none' }}>
+              <Link to="/contact" style={{ padding: '6px 12px', borderRadius: '6px', background: 'var(--oda-primary-soft)', border: '1px solid var(--oda-border-blue)', color: 'var(--oda-primary)', fontSize: '0.75rem', fontWeight: '600', textDecoration: 'none' }}>
                 Book Live Team Demo
               </Link>
             </div>
@@ -209,7 +211,7 @@ export const AppWorkspacePage = ({ onOpenDemo }) => {
           ) : isManagerRoute ? (
             <ManagerDashboardMockup />
           ) : (
-            <SalesDashboardMockup interactive={true} />
+            <SalesDashboardMockup />
           )}
 
         </div>

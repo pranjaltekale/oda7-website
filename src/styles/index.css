@@ -1,76 +1,126 @@
 @import './reset.css';
 @import './components.css';
 @import './animations.css';
+@import './navigation.css';
+@import './marketing.css';
 
 :root {
-  /* ODA7 brand tokens */
-  --oda-primary: #2563eb;
-  --oda-primary-soft: rgba(37, 99, 235, 0.14);
-  --oda-accent: #38bdf8;
-  --oda-bg: #07090e;
-  --oda-surface: #0e1320;
-  --oda-surface-soft: #131b2e;
-  --oda-border: rgba(255, 255, 255, 0.1);
-  --oda-text: #f8fafc;
-  --oda-text-muted: #94a3b8;
-  --oda-success: #10b981;
-  --oda-warning: #f59e0b;
-  --oda-danger: #f43f5e;
+  /* ==========================================================================
+     ODA7 OFFICIAL DESIGN SYSTEM TOKENS — DARK THEME (DEFAULT)
+     Source of Truth: ODA7 Dashboard & Sign-In UI (https://oda7.com/)
+     ========================================================================== */
 
-  /* Colors - Base Palette */
-  --bg-black: #040609;
-  --bg-main: #07090e;
-  --bg-section-alt: #0a0d16;
-  --bg-section-dark: #05070c;
-  --bg-surface: #0e1320;
-  --bg-surface-elevated: #131b2e;
-  --bg-surface-hover: #19233c;
-  --bg-card: rgba(14, 19, 32, 0.75);
-  --bg-card-hover: rgba(25, 35, 60, 0.85);
-  --bg-glass: rgba(11, 15, 23, 0.82);
-  --bg-glass-strong: rgba(7, 9, 14, 0.92);
-  
-  /* Borders */
-  --border-subtle: rgba(255, 255, 255, 0.07);
-  --border-default: rgba(255, 255, 255, 0.12);
-  --border-active: rgba(59, 130, 246, 0.45);
-  --border-glow: rgba(56, 189, 248, 0.35);
-  
-  /* Text */
-  --text-main: #f8fafc;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
-  --text-dim: #475569;
-  
-  /* Brand Accent: Precision Blue & Cyan & Emerald for success */
-  --accent-primary: #2563eb;
-  --accent-primary-light: #3b82f6;
-  --accent-primary-hover: #1d4ed8;
-  --accent-cyan: #06b6d4;
-  --accent-sky: #38bdf8;
-  --accent-teal: #0d9488;
-  --accent-emerald: #10b981;
-  --accent-amber: #f59e0b;
-  --accent-rose: #f43f5e;
-  --accent-purple: #8b5cf6;
-  
-  /* Gradients */
-  --grad-primary: linear-gradient(135deg, #2563eb 0%, #0284c7 50%, #06b6d4 100%);
-  --grad-primary-hover: linear-gradient(135deg, #1d4ed8 0%, #0369a1 50%, #0891b2 100%);
+  /* 1. ODA7 Primary Brand Blue Colors */
+  --oda-primary: #2563eb;
+  --oda-primary-light: #3b82f6;
+  --oda-primary-hover: #1d4ed8;
+  --oda-primary-active: #1e40af;
+  --oda-primary-soft: rgba(37, 99, 235, 0.12);
+  --oda-primary-glow: rgba(37, 99, 235, 0.32);
+
+  /* 2. ODA7 Accents & Highlights */
+  --oda-accent: #38bdf8;
+  --oda-accent-soft: rgba(56, 189, 248, 0.12);
+  --oda-accent-glow: rgba(56, 189, 248, 0.24);
+  --oda-cyan: #06b6d4;
+  --oda-sky: #38bdf8;
+  --oda-blue-gray: #64748b;
+
+  /* 3. ODA7 Layered Backgrounds (Deep Dark Navy / Slate Base) */
+  --oda-bg: #070a12;
+  --oda-bg-alt: #0a0e1a;
+  --oda-bg-dark: #05070c;
+  --oda-bg-elevated: #0d1222;
+
+  /* 4. ODA7 Surfaces & Panels */
+  --oda-surface: #0e1424;
+  --oda-surface-elevated: #131b2e;
+  --oda-surface-hover: #182238;
+  --oda-surface-active: #1c2844;
+  --oda-surface-soft: #0a0f1d;
+  --oda-card: rgba(14, 20, 36, 0.85);
+  --oda-card-hover: rgba(20, 29, 52, 0.95);
+  --oda-glass: rgba(11, 16, 28, 0.85);
+  --oda-glass-strong: rgba(7, 10, 18, 0.96);
+
+  /* 5. ODA7 Text Hierarchy */
+  --oda-text-primary: #f8fafc;
+  --oda-text-secondary: #94a3b8;
+  --oda-text-muted: #64748b;
+  --oda-text-disabled: #475569;
+  --oda-text-dim: #334155;
+  --oda-text: #f8fafc;
+
+  /* 6. ODA7 Subtle Borders */
+  --oda-border: rgba(255, 255, 255, 0.08);
+  --oda-border-subtle: rgba(255, 255, 255, 0.05);
+  --oda-border-strong: rgba(255, 255, 255, 0.15);
+  --oda-border-blue: rgba(59, 130, 246, 0.22);
+  --oda-border-active: rgba(59, 130, 246, 0.5);
+  --oda-border-glow: rgba(56, 189, 248, 0.35);
+
+  /* 7. ODA7 Restrained Semantic Status Colors */
+  --oda-success: #10b981;
+  --oda-success-soft: rgba(16, 185, 129, 0.12);
+  --oda-success-border: rgba(16, 185, 129, 0.3);
+  --oda-warning: #f59e0b;
+  --oda-warning-soft: rgba(245, 158, 11, 0.12);
+  --oda-warning-border: rgba(245, 158, 11, 0.3);
+  --oda-danger: #ef4444;
+  --oda-danger-soft: rgba(239, 68, 68, 0.12);
+  --oda-danger-border: rgba(239, 68, 68, 0.3);
+  --oda-info: #2563eb;
+  --oda-info-soft: rgba(37, 99, 235, 0.12);
+
+  /* Aliased System Colors */
+  --bg-black: #05070c;
+  --bg-main: var(--oda-bg);
+  --bg-section-alt: var(--oda-bg-alt);
+  --bg-section-dark: var(--oda-bg-dark);
+  --bg-surface: var(--oda-surface);
+  --bg-surface-elevated: var(--oda-surface-elevated);
+  --bg-surface-hover: var(--oda-surface-hover);
+  --bg-card: var(--oda-card);
+  --bg-card-hover: var(--oda-card-hover);
+  --bg-glass: var(--oda-glass);
+  --bg-glass-strong: var(--oda-glass-strong);
+
+  --border-subtle: var(--oda-border-subtle);
+  --border-default: var(--oda-border);
+  --border-active: var(--oda-border-active);
+  --border-glow: var(--oda-border-glow);
+
+  --text-main: var(--oda-text-primary);
+  --text-secondary: var(--oda-text-secondary);
+  --text-muted: var(--oda-text-muted);
+  --text-dim: var(--oda-text-dim);
+
+  --accent-primary: var(--oda-primary);
+  --accent-primary-light: var(--oda-primary-light);
+  --accent-primary-hover: var(--oda-primary-hover);
+  --accent-cyan: var(--oda-cyan);
+  --accent-sky: var(--oda-sky);
+  --accent-emerald: var(--oda-success);
+  --accent-amber: var(--oda-warning);
+  --accent-rose: var(--oda-danger);
+
+  /* ODA7 Restrained Gradients (No neon / rainbow gradients) */
+  --grad-primary: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  --grad-primary-hover: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
   --grad-text: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
-  --grad-heading: linear-gradient(135deg, #ffffff 20%, #94a3b8 100%);
-  --grad-accent-text: linear-gradient(135deg, #60a5fa 0%, #38bdf8 50%, #34d399 100%);
-  --grad-surface: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
-  --grad-card: linear-gradient(180deg, rgba(19, 27, 46, 0.6) 0%, rgba(14, 19, 31, 0.4) 100%);
-  --grad-glow: radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.15), transparent 70%);
+  --grad-heading: linear-gradient(135deg, #ffffff 30%, #94a3b8 100%);
+  --grad-accent-text: linear-gradient(135deg, #60a5fa 0%, #38bdf8 100%);
+  --grad-surface: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.005) 100%);
+  --grad-card: linear-gradient(180deg, rgba(19, 27, 46, 0.7) 0%, rgba(14, 20, 36, 0.5) 100%);
+  --grad-glow: radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.12), transparent 70%);
 
   /* Shadows */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
   --shadow-md: 0 4px 12px -1px rgba(0, 0, 0, 0.5), 0 2px 6px -1px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 10px 25px -3px rgba(0, 0, 0, 0.6), 0 4px 10px -2px rgba(0, 0, 0, 0.4);
   --shadow-xl: 0 20px 40px -4px rgba(0, 0, 0, 0.7), 0 8px 16px -4px rgba(0, 0, 0, 0.5);
-  --shadow-glow-blue: 0 0 40px -5px rgba(37, 99, 235, 0.35);
-  --shadow-glow-cyan: 0 0 40px -5px rgba(6, 182, 212, 0.3);
+  --shadow-glow-blue: 0 0 30px -4px rgba(37, 99, 235, 0.28);
+  --shadow-glow-cyan: 0 0 30px -4px rgba(56, 189, 248, 0.22);
 
   /* Fonts */
   --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -98,27 +148,105 @@
   --transition-spring: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* Background Ambient Lighting with Section Alternation */
+/* ==========================================================================
+   ODA7 OFFICIAL DESIGN SYSTEM TOKENS — LIGHT THEME OVERRIDES
+   ========================================================================== */
+[data-theme="light"],
+.theme-light {
+  --oda-bg: #f8fafc;
+  --oda-bg-alt: #f1f5f9;
+  --oda-bg-dark: #e2e8f0;
+  --oda-bg-elevated: #ffffff;
+
+  --oda-surface: #ffffff;
+  --oda-surface-elevated: #ffffff;
+  --oda-surface-hover: #f1f5f9;
+  --oda-surface-active: #e2e8f0;
+  --oda-surface-soft: #f8fafc;
+  --oda-card: rgba(255, 255, 255, 0.94);
+  --oda-card-hover: rgba(255, 255, 255, 1);
+  --oda-glass: rgba(255, 255, 255, 0.9);
+  --oda-glass-strong: rgba(255, 255, 255, 0.98);
+
+  --oda-text-primary: #0f172a;
+  --oda-text-secondary: #475569;
+  --oda-text-muted: #64748b;
+  --oda-text-disabled: #94a3b8;
+  --oda-text-dim: #cbd5e1;
+  --oda-text: #0f172a;
+
+  --oda-border: rgba(0, 0, 0, 0.09);
+  --oda-border-subtle: rgba(0, 0, 0, 0.05);
+  --oda-border-strong: rgba(0, 0, 0, 0.16);
+  --oda-border-blue: rgba(37, 99, 235, 0.25);
+  --oda-border-active: rgba(37, 99, 235, 0.6);
+
+  --bg-black: #e2e8f0;
+  --bg-main: var(--oda-bg);
+  --bg-section-alt: var(--oda-bg-alt);
+  --bg-section-dark: var(--oda-bg-dark);
+  --bg-surface: var(--oda-surface);
+  --bg-surface-elevated: var(--oda-surface-elevated);
+  --bg-surface-hover: var(--oda-surface-hover);
+  --bg-card: var(--oda-card);
+  --bg-card-hover: var(--oda-card-hover);
+  --bg-glass: var(--oda-glass);
+  --bg-glass-strong: var(--oda-glass-strong);
+
+  --border-subtle: var(--oda-border-subtle);
+  --border-default: var(--oda-border);
+  --border-active: var(--oda-border-active);
+
+  --text-main: var(--oda-text-primary);
+  --text-secondary: var(--oda-text-secondary);
+  --text-muted: var(--oda-text-muted);
+
+  --grad-text: linear-gradient(180deg, #0f172a 0%, #334155 100%);
+  --grad-heading: linear-gradient(135deg, #0f172a 30%, #475569 100%);
+  --grad-accent-text: linear-gradient(135deg, #2563eb 0%, #0284c7 100%);
+  --grad-surface: linear-gradient(180deg, rgba(0, 0, 0, 0.02) 0%, rgba(0, 0, 0, 0.005) 100%);
+  --grad-card: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.92) 100%);
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 12px -1px rgba(0, 0, 0, 0.08), 0 2px 6px -1px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 10px 25px -3px rgba(0, 0, 0, 0.1), 0 4px 10px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 40px -4px rgba(0, 0, 0, 0.12), 0 8px 16px -4px rgba(0, 0, 0, 0.06);
+}
+
+/* Background Ambient Lighting with ODA7 Restrained Navy Tones */
 .ambient-bg {
   position: relative;
-  background-color: var(--bg-main);
+  background-color: var(--oda-bg);
   background-image: 
-    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(37, 99, 235, 0.14), transparent 70%),
-    radial-gradient(ellipse 60% 40% at 85% 55%, rgba(6, 182, 212, 0.05), transparent 60%),
-    radial-gradient(ellipse 50% 30% at 15% 45%, rgba(139, 92, 246, 0.04), transparent 50%);
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(37, 99, 235, 0.12), transparent 70%),
+    radial-gradient(ellipse 60% 40% at 85% 55%, rgba(56, 189, 248, 0.04), transparent 60%);
   background-attachment: fixed;
+  transition: background-color 0.3s ease;
+}
+
+[data-theme="light"] .ambient-bg {
+  background-color: var(--oda-bg);
+  background-image: 
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(37, 99, 235, 0.08), transparent 70%),
+    radial-gradient(ellipse 60% 40% at 85% 55%, rgba(56, 189, 248, 0.03), transparent 60%);
 }
 
 .grid-overlay {
   position: absolute;
   inset: 0;
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
   background-size: 48px 48px;
   pointer-events: none;
   mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, black 30%, transparent 85%);
   -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, black 30%, transparent 85%);
+}
+
+[data-theme="light"] .grid-overlay {
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
 }
 
 /* Container */
@@ -149,34 +277,61 @@
   padding-right: 24px;
 }
 
-/* Section Wrapper & Atmosphere Shifts */
+/* Section Wrappers */
 .section-wrapper {
   position: relative;
   padding-top: 100px;
   padding-bottom: 100px;
-  transition: background-color var(--transition-slow);
-}
-
-.section-dark {
-  background-color: var(--bg-section-dark);
+  overflow: hidden;
+  transition: background-color 0.3s ease;
 }
 
 .section-alt {
-  background-color: var(--bg-section-alt);
+  background-color: var(--oda-bg-alt);
+  border-top: 1px solid var(--oda-border-subtle);
+  border-bottom: 1px solid var(--oda-border-subtle);
 }
 
-@media (max-width: 768px) {
-  .section-wrapper {
-    padding-top: 64px;
-    padding-bottom: 64px;
-  }
-  .container, .container-wide, .container-narrow {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
+.section-dark {
+  background-color: var(--oda-bg-dark);
 }
 
-/* Typography Utilities */
+.section-hero {
+  padding-top: calc(var(--nav-height) + 40px);
+  padding-bottom: 100px;
+  min-height: calc(100vh - var(--nav-height));
+  display: flex;
+  align-items: center;
+}
+
+/* Section Headings */
+.section-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 64px auto;
+}
+
+.section-header.text-left {
+  text-align: left;
+  margin-left: 0;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: var(--oda-text-primary);
+  margin-bottom: 16px;
+}
+
+.section-subtitle {
+  font-size: clamp(1rem, 1.8vw, 1.1875rem);
+  line-height: 1.6;
+  color: var(--oda-text-secondary);
+}
+
+/* Gradients text */
 .text-gradient {
   background: var(--grad-text);
   -webkit-background-clip: text;
@@ -189,132 +344,36 @@
   -webkit-text-fill-color: transparent;
 }
 
-.text-gradient-primary {
-  background: var(--grad-primary);
+.text-gradient-blue {
+  background: linear-gradient(135deg, #60a5fa 0%, #38bdf8 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.mono {
-  font-family: var(--font-mono);
-}
-
-/* Glass Surface Styles */
-.glass-panel {
-  background: var(--bg-card);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
-  transition: border-color var(--transition-normal), box-shadow var(--transition-normal), transform var(--transition-fast);
-}
-
-.glass-panel:hover {
-  border-color: var(--border-default);
-  box-shadow: var(--shadow-lg);
-}
-
-.glass-panel-elevated {
-  background: var(--bg-surface-elevated);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--border-default);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
-}
-
-.scroll-reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 620ms cubic-bezier(0.16, 1, 0.3, 1), transform 620ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.scroll-reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.editorial-role-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
-  gap: 32px;
-  align-items: stretch;
-  margin: 0 auto 44px;
-  max-width: 1180px;
-}
-
-.editorial-role-image {
-  position: relative;
-  min-height: 360px;
-  overflow: hidden;
-  border: 1px solid var(--border-default);
-  border-radius: var(--radius-lg);
-  background: #0a0e17;
-}
-
-.editorial-role-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-.editorial-role-image::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, rgba(5, 7, 12, 0.36), transparent 52%), linear-gradient(0deg, rgba(5, 7, 12, 0.72), transparent 45%);
-  pointer-events: none;
-}
-
-.editorial-role-copy {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: clamp(24px, 4vw, 52px);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
-  background: rgba(14, 19, 32, 0.66);
-}
-
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--bg-main);
-}
-
-::-webkit-scrollbar-thumb {
-  background: #1e293b;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #334155;
-}
-
+/* Responsive adjustments */
 @media (max-width: 768px) {
-  .editorial-role-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
+  .section-wrapper {
+    padding-top: 64px;
+    padding-bottom: 64px;
   }
-
-  .editorial-role-image {
-    min-height: 280px;
+  
+  .section-header {
+    margin-bottom: 40px;
   }
-
-  .contact-grid,
-  .form-grid {
-    grid-template-columns: 1fr !important;
+  
+  .container, .container-wide, .container-narrow {
+    padding-left: 16px;
+    padding-right: 16px;
   }
 }
 
-@media (max-width: 480px) {
-  .editorial-role-image {
-    min-height: 230px;
+@media (max-width: 360px) {
+  .container, .container-wide, .container-narrow {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .section-title {
+    font-size: clamp(1.75rem, 9vw, 2rem);
   }
 }

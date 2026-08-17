@@ -18,11 +18,11 @@ export const featuresByModule = {
       {
         name: 'My Queue',
         desc: 'Dynamic prioritized lead queue with intelligent algorithmic ranking based on deal score and timezone.',
-        highlight: 'Zero idle time',
+        highlight: 'Visible queue ownership',
       },
       {
         name: 'Smart Predictive Dialer',
-        desc: 'High-volume integrated dialer with sub-second call setup, local presence dialing, and zero dropped connections.',
+        desc: 'Integrated calling workspace with lead context, call controls and visible next actions.',
         highlight: '<1s call connection',
       },
       {
@@ -98,8 +98,8 @@ export const featuresByModule = {
       },
       {
         name: 'AI Post-Call Summarization',
-        desc: 'Automatically extracts action items, sentiment score, prospect pain points, and updates CRM fields in under 3 seconds.',
-        highlight: 'Zero manual data entry',
+        desc: 'Surfaces action items, sentiment context and prospect themes for review inside the workflow.',
+        highlight: 'AI-assisted review',
       },
       {
         name: 'AI Sales Recommendations',
@@ -161,7 +161,7 @@ export const featuresByModule = {
   },
   compensation: {
     title: 'Compensation, Payroll & Incentives',
-    subtitle: 'Automate complex commission structures, track earnings live, and generate accurate payslips with zero disputes.',
+    subtitle: 'Connect commission structures, earnings context and payslip workflows to visible performance activity.',
     items: [
       {
         name: 'Real-time Commission Engine',
@@ -171,7 +171,7 @@ export const featuresByModule = {
       {
         name: 'Automated Payroll Calculation',
         desc: 'Calculate base salary, overtime, commissions, clawbacks, and bonuses with one-click payroll exports.',
-        highlight: 'Zero payroll errors',
+        highlight: 'Reviewable payroll context',
       },
       {
         name: 'Digital Payslip Distribution',
@@ -365,8 +365,8 @@ export const featuresByModule = {
       },
       {
         name: 'Web Callbacks & Inbound IVR',
-        desc: 'Instant lead-to-call bridge connects website demo requests to an active agent in under 15 seconds.',
-        highlight: '<15s speed to lead',
+        desc: 'Lead-to-call workflow connects website requests to an owned agent queue.',
+        highlight: 'Connected lead routing',
       },
     ],
   },

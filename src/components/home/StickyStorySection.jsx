@@ -1,102 +1,106 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { SectionHeading } from '../common/SectionHeading';
 import {
-  UserCheck,
+  Users,
   PhoneCall,
   Sparkles,
-  Users,
-  BarChart3,
+  Inbox,
+  FileText,
   DollarSign,
+  TrendingUp,
   ShieldCheck,
+  Zap,
   CheckCircle2,
   ArrowRight,
+  Layers,
 } from 'lucide-react';
 
 export const StickyStorySection = ({ onOpenDemo }) => {
   const [activeStep, setActiveStep] = useState(0);
+  const stepRefs = useRef([]);
 
   const steps = [
     {
       id: 'leads',
-      title: 'Step 1: Intelligent Ingestion & Dynamic Queue',
-      icon: UserCheck,
-      headline: 'Never let high-intent inbound prospects cool off.',
-      description: 'oda7 enriches every lead in real-time, verifying phone carrier validity, calculating timezone windows, and algorithmically prioritizing the lead at the top of your top rep’s queue in under 800ms.',
-      metric: '<15s Inbound Speed-to-Lead',
+      title: 'Step 1: Automated Intake & My Queue Prioritization',
+      icon: Users,
+      headline: 'Prospects arrive enriched, scored, and routed without human delay.',
+      description: 'Incoming prospects from webhooks, ads, and cold outreach land directly into an intelligent My Queue. Algorithmic scoring eliminates rep cherry-picking and guarantees sub-15s speed-to-lead SLAs.',
+      metric: '<15s Speed to Lead SLA',
       preview: {
-        title: 'Priority Lead Card Ingested',
-        badge: 'Tier 1 Priority (96/100 Intent)',
-        content: 'Sarah Jenkins • VP Operations, Logix Ent. • Austin, TX',
-        detail: 'Enriched firmographics, decision-maker status verified, CRM duplicate checks passed.',
+        title: 'Priority Queue Telemetry',
+        badge: 'Live Ingestion Mesh',
+        content: '303 Inbound Leads Synchronized',
+        detail: 'Dynamic deal probability score calculated in 42ms.',
       },
     },
     {
       id: 'dialer',
-      title: 'Step 2: Sub-Second Predictive Dialer & Local Presence',
+      title: 'Step 2: 0.8s Local Presence WebRTC Dialing',
       icon: PhoneCall,
-      headline: 'Connect in 0.8s with matched local area codes.',
-      description: 'No clunky softphone extensions. Our native WebRTC dialer spins up crystal clear audio, auto-matches local area caller IDs to increase pickup rates by 34%, and provides interactive branching call scripts.',
-      metric: 'Lead and call context together',
+      headline: 'Connect in seconds with localized numbers and crystal-clear audio.',
+      description: 'Agents make high-velocity calls directly in the browser with automated area-code matching that lifts pickup rates by +34%. Calls feature 1-click voicemail drop and live dual-channel speech recording.',
+      metric: '+34.8% Pickup Ratio Lift',
       preview: {
-        title: 'Active HD WebRTC Call Session',
-        badge: 'Local Presence 512 Match (Connected)',
-        content: 'Dynamic Script: Enterprise B2B Qualification v3',
-        detail: 'Crystal audio with sub-second connection time and automated 1-click voicemail drop.',
+        title: 'WebRTC Telephony Core',
+        badge: '0.8s Carrier Handshake',
+        content: 'Direct SIP Trunk Connected',
+        detail: 'Caller ID automatically matches lead geographic area code.',
       },
     },
     {
-      id: 'ai',
-      title: 'Step 3: Live AI Speech Analytics & Objection Buster',
+      id: 'scripts',
+      title: 'Step 3: Dynamic Branching Talk Tracks & Real-time AI',
       icon: Sparkles,
-      headline: 'A superhuman sales copilot listening in real-time.',
-      description: 'As your prospect speaks, oda7 analyzes sentiment in real-time. When a competitor or pricing objection is voiced, battle-tested counter strategies flash onto the screen with winning talk tracks.',
-      metric: 'Real-time Live Battlecards',
+      headline: 'Live battlecards pop up the moment customer objections are surfaced.',
+      description: 'Adaptive qualification scripts guide SDRs through complex disclosures. If a prospect brings up pricing or a competitor, speech sentiment AI delivers winning rebuttals right inside the call console.',
+      metric: 'Real-time Objection Buster',
       preview: {
-        title: 'AI Objection Detected',
-        badge: 'Competitor Mention: RingCentral Contract',
-        content: 'Suggested next step: clarify the objection and schedule the right follow-up.',
-        detail: 'Sentiment shifts immediately from skeptical to positive (+78 rating).',
+        title: 'Adaptive Scripting Engine',
+        badge: 'Live Speech Sentiment AI',
+        content: 'Pricing Objection Battlecard Active',
+        detail: 'Recommended talk track: Highlight 60% lower TCO and unified mesh.',
       },
     },
     {
-      id: 'team',
-      title: 'Step 4: Live Floor Queue Command & Whisper Coaching',
-      icon: Users,
-      headline: 'Supervisors have total visibility over every conversation.',
-      description: 'Managers monitor active queues, agent statuses, and conversion benchmarks live. Supervisors can drop into any call with 1-click silent listening or direct rep headset whispering.',
-      metric: 'Zero Floor Idle Time',
+      id: 'messaging',
+      title: 'Step 4: Official 2-Way WhatsApp & Omni-Inbox Follow-up',
+      icon: Inbox,
+      headline: 'Every customer touchpoint preserved in one central timeline.',
+      description: 'No more fragmented WhatsApp chats on personal phones. Official WhatsApp Business API, SMS, and email threads exist in a shared customer timeline accessible to both reps and managers.',
+      metric: 'Zero Lost Conversation History',
       preview: {
-        title: 'Manager Floor Console',
-        badge: 'Whisper Coaching Active',
-        content: 'Floor Load: 18 Active Calls • 0 Waiting in Queue',
-        detail: 'Supervisor whisper coaches rep to secure annual commitment with setup fee waiver.',
+        title: 'Omnichannel Customer Inbox',
+        badge: 'Official WhatsApp API',
+        content: '2-Way Verified Business Thread',
+        detail: 'Automated follow-up template sent with 1-click delivery receipt.',
       },
     },
     {
-      id: 'analytics',
-      title: 'Step 5: Telephony Heatmaps & Root Cause BI',
-      icon: BarChart3,
-      headline: 'Turn conversational telemetry into strategic revenue.',
-      description: 'Visualize hour-by-hour pickup heatmaps, carrier connection health, and rep conversion pacing. Use natural language AI to instantly query your revenue data with Explain My Numbers.',
-      metric: 'Natural Language SQL BI',
+      id: 'floor',
+      title: 'Step 5: Live Floor Command & 1-Click Whisper Coaching',
+      icon: TrendingUp,
+      headline: 'Supervisors rescue pivotal negotiations live without disrupting the call.',
+      description: 'Managers monitor active floor queues and listen silently with 1-click. When a junior rep fumbles an enterprise objection, the supervisor whispers direct guidance into their headset without the client hearing.',
+      metric: '24ms Headset Whisper Stream',
       preview: {
-        title: 'Explain My Numbers Synthesis',
-        badge: 'Peak Pickup Window: 10 AM - 12 PM CST',
-        content: 'Query: "Why did conversions spike in Mid-Market?"',
-        detail: 'Root Cause: Automated WhatsApp demo follow-ups increased meeting attendance by 48%.',
+        title: 'Supervisor Live Cockpit',
+        badge: 'Silent Listen & Whisper',
+        content: '18 Active Calls Across Floor',
+        detail: 'Supervisor whisper streaming directly into Rep Alex headset.',
       },
     },
     {
-      id: 'compensation',
-      title: 'Step 6: Automated Commissions & Itemized Payroll',
+      id: 'payroll',
+      title: 'Step 6: Instant Closed-Won Commission Wallet & Payslips',
       icon: DollarSign,
-      headline: 'Real-time earnings transparency fuels unstoppable momentum.',
-      description: 'The instant a deal closes, rep commissions calculate automatically based on custom tiered accelerators and SPIFF rules. Generate itemized digital payslips with zero disputes.',
-      metric: 'Zero Commission Disputes',
+      headline: 'Eliminate spreadsheet reconciliation battles permanently.',
+      description: 'The instant an opportunity flips to Closed-Won, ODA7 calculates tier accelerators, credits the rep’s digital wallet, and prepares itemized PDF payslips ready for batch payroll dispatch.',
+      metric: 'Zero End-of-Month Payroll Lag',
       preview: {
-        title: 'Commission Engine',
-        badge: 'Compensation workflow updated',
-        content: '120% Quota Accelerator Bonus Triggered',
+        title: 'Automated Commission Engine',
+        badge: 'Closed-Won Deal Event',
+        content: '+$1,420 Commission Tier Credited',
         detail: 'Itemized payslip automatically updated and floor celebratory banner broadcasted.',
       },
     },
@@ -118,8 +122,21 @@ export const StickyStorySection = ({ onOpenDemo }) => {
 
   const current = steps[activeStep];
 
+  useEffect(() => {
+    if (window.matchMedia('(max-width: 767px), (prefers-reduced-motion: reduce)').matches) return undefined;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) setActiveStep(Number(entry.target.dataset.storyIndex));
+      });
+    }, { rootMargin: '-36% 0px -44% 0px', threshold: 0.01 });
+
+    stepRefs.current.forEach((node) => node && observer.observe(node));
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="section-wrapper" style={{ background: '#07090e' }}>
+    <section className="section-wrapper section-alt" id="lifecycle-steps">
       <div className="container-wide">
         
         <SectionHeading
@@ -140,17 +157,24 @@ export const StickyStorySection = ({ onOpenDemo }) => {
               const isActive = activeStep === idx;
 
               return (
-                <div
+                <button
                   key={step.id}
+                  ref={(node) => { stepRefs.current[idx] = node; }}
+                  data-story-index={idx}
+                  type="button"
                   onClick={() => setActiveStep(idx)}
+                  className="sticky-story-step"
                   style={{
+                    width: '100%',
+                    textAlign: 'left',
+                    minHeight: isActive ? '240px' : '116px',
                     padding: '20px',
                     borderRadius: '12px',
-                    background: isActive ? 'rgba(37, 99, 235, 0.15)' : 'rgba(14, 19, 31, 0.4)',
-                    border: isActive ? '1px solid rgba(59, 130, 246, 0.5)' : '1px solid rgba(255, 255, 255, 0.05)',
+                    background: isActive ? 'var(--oda-primary-soft)' : 'var(--oda-surface)',
+                    border: isActive ? '1px solid var(--oda-border-blue)' : '1px solid var(--oda-border)',
                     cursor: 'pointer',
                     transition: 'all var(--transition-normal)',
-                    boxShadow: isActive ? '0 10px 25px rgba(0,0,0,0.5)' : 'none',
+                    boxShadow: isActive ? '0 10px 25px rgba(37, 99, 235, 0.12)' : 'none',
                   }}
                 >
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
@@ -159,30 +183,30 @@ export const StickyStorySection = ({ onOpenDemo }) => {
                         width: '32px',
                         height: '32px',
                         borderRadius: '8px',
-                        background: isActive ? 'var(--accent-primary)' : 'rgba(255,255,255,0.06)',
+                        background: isActive ? 'var(--oda-primary)' : 'var(--oda-surface-soft)',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        color: '#fff',
+                        color: isActive ? '#fff' : 'var(--oda-text-muted)',
                       }}>
                         <IconComp size={16} />
                       </div>
-                      <span style={{ fontWeight: '700', color: isActive ? '#fff' : '#cbd5e1', fontSize: '0.95rem' }}>
+                      <span style={{ fontWeight: '700', color: isActive ? 'var(--oda-primary)' : 'var(--oda-text-primary)', fontSize: '0.95rem' }}>
                         {step.title}
                       </span>
                     </div>
 
-                    <span style={{ fontSize: '0.75rem', fontFamily: 'var(--font-mono)', color: isActive ? '#38bdf8' : '#64748b' }}>
+                    <span style={{ fontSize: '0.75rem', fontFamily: 'var(--font-mono)', color: isActive ? 'var(--oda-primary)' : 'var(--oda-text-muted)' }}>
                       0{idx + 1}
                     </span>
                   </div>
 
                   {isActive && (
-                    <div className="animate-fadeIn" style={{ marginTop: '12px', paddingTop: '12px', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
-                      <div style={{ fontWeight: '600', color: '#38bdf8', fontSize: '0.875rem', marginBottom: '6px' }}>
+                    <div className="animate-fadeIn" style={{ marginTop: '12px', paddingTop: '12px', borderTop: '1px solid var(--oda-border-subtle)' }}>
+                      <div style={{ fontWeight: '600', color: 'var(--oda-primary)', fontSize: '0.875rem', marginBottom: '6px' }}>
                         {step.headline}
                       </div>
-                      <p style={{ color: '#94a3b8', fontSize: '0.8125rem', lineHeight: '1.6', marginBottom: '10px' }}>
+                      <p style={{ color: 'var(--oda-text-secondary)', fontSize: '0.8125rem', lineHeight: '1.6', marginBottom: '10px' }}>
                         {step.description}
                       </p>
                       <span className="badge badge-emerald" style={{ fontSize: '0.7rem' }}>
@@ -190,7 +214,7 @@ export const StickyStorySection = ({ onOpenDemo }) => {
                       </span>
                     </div>
                   )}
-                </div>
+                </button>
               );
             })}
           </div>
@@ -198,19 +222,16 @@ export const StickyStorySection = ({ onOpenDemo }) => {
           {/* Right Column: Sticky Product Interface Preview */}
           <div style={{ position: 'sticky', top: '100px' }}>
             <div
+              className="feature-showcase-panel animate-fadeIn"
               style={{
-                background: 'linear-gradient(135deg, rgba(14, 23, 42, 0.95) 0%, rgba(7, 10, 18, 0.98) 100%)',
-                border: '1px solid rgba(59, 130, 246, 0.35)',
                 borderRadius: '16px',
                 padding: '32px',
-                boxShadow: '0 25px 60px rgba(0,0,0,0.8), 0 0 50px -10px rgba(37, 99, 235, 0.2)',
                 minHeight: '440px',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
               }}
               key={current.id}
-              className="animate-fadeIn"
             >
               {/* Top Banner */}
               <div>
@@ -219,27 +240,27 @@ export const StickyStorySection = ({ onOpenDemo }) => {
                   <span className="badge badge-emerald">{current.metric}</span>
                 </div>
 
-                <h3 style={{ fontSize: '1.6rem', fontWeight: '800', color: '#fff', marginBottom: '8px' }}>
+                <h3 style={{ fontSize: '1.6rem', fontWeight: '800', color: 'var(--oda-text-primary)', marginBottom: '8px' }}>
                   {current.preview.title}
                 </h3>
-                <div style={{ color: '#38bdf8', fontWeight: '600', fontSize: '0.95rem', marginBottom: '16px' }}>
+                <div style={{ color: 'var(--oda-primary)', fontWeight: '600', fontSize: '0.95rem', marginBottom: '16px' }}>
                   {current.preview.badge}
                 </div>
 
                 {/* Core Live Card Preview */}
-                <div style={{ background: 'rgba(7, 10, 18, 0.9)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px', padding: '20px', marginBottom: '16px' }}>
-                  <div style={{ color: '#ffffff', fontWeight: '700', fontSize: '1.05rem', marginBottom: '8px' }}>
+                <div style={{ background: 'var(--oda-surface)', border: '1px solid var(--oda-border)', borderRadius: '12px', padding: '20px', marginBottom: '16px', boxShadow: '0 4px 16px rgba(0,0,0,0.04)' }}>
+                  <div style={{ color: 'var(--oda-text-primary)', fontWeight: '700', fontSize: '1.05rem', marginBottom: '8px' }}>
                     {current.preview.content}
                   </div>
-                  <div style={{ color: '#94a3b8', fontSize: '0.875rem', lineHeight: '1.5' }}>
+                  <div style={{ color: 'var(--oda-text-secondary)', fontSize: '0.875rem', lineHeight: '1.5' }}>
                     {current.preview.detail}
                   </div>
                 </div>
               </div>
 
               {/* Action Trigger Footer */}
-              <div style={{ paddingTop: '20px', borderTop: '1px solid rgba(255,255,255,0.08)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <div style={{ color: '#64748b', fontSize: '0.8rem' }}>
+              <div style={{ paddingTop: '20px', borderTop: '1px solid var(--oda-border-subtle)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div style={{ color: 'var(--oda-text-muted)', fontSize: '0.8rem' }}>
                   Step {activeStep + 1} of {steps.length} in operating sequence
                 </div>
 
@@ -251,17 +272,18 @@ export const StickyStorySection = ({ onOpenDemo }) => {
                     gap: '6px',
                     padding: '8px 16px',
                     borderRadius: '8px',
-                    background: 'var(--grad-primary)',
+                    background: 'var(--oda-primary)',
                     color: '#fff',
                     fontWeight: '600',
                     fontSize: '0.85rem',
+                    border: 'none',
+                    cursor: 'pointer',
                   }}
                 >
                   <span>Experience in Interactive Tour</span>
                   <ArrowRight size={14} />
                 </button>
               </div>
-
             </div>
           </div>
 

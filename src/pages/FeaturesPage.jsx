@@ -72,7 +72,7 @@ export const FeaturesPage = ({ onOpenDemo }) => {
           
           {/* Search Input */}
           <div style={{ position: 'relative', marginBottom: '20px' }}>
-            <Search size={18} style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: '#64748b' }} />
+            <Search size={18} style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: 'var(--oda-text-muted)' }} />
             <input
               type="text"
               placeholder="Search features (e.g. dialer, objection, payroll, multi-tenant, whatsapp)..."
@@ -90,13 +90,14 @@ export const FeaturesPage = ({ onOpenDemo }) => {
               style={{
                 padding: '8px 16px',
                 borderRadius: 'var(--radius-full)',
-                background: selectedModule === 'all' ? 'var(--accent-primary)' : 'rgba(255,255,255,0.05)',
-                border: selectedModule === 'all' ? '1px solid rgba(255,255,255,0.2)' : '1px solid rgba(255,255,255,0.08)',
-                color: selectedModule === 'all' ? '#fff' : '#cbd5e1',
+                background: selectedModule === 'all' ? 'var(--oda-primary)' : 'var(--oda-surface)',
+                border: selectedModule === 'all' ? '1px solid var(--oda-primary-light)' : '1px solid var(--oda-border)',
+                color: selectedModule === 'all' ? '#ffffff' : 'var(--oda-text-secondary)',
                 fontSize: '0.8125rem',
                 fontWeight: '600',
                 whiteSpace: 'nowrap',
                 cursor: 'pointer',
+                transition: 'all var(--transition-fast)',
               }}
             >
               All Modules ({allFeatures.length})
@@ -109,13 +110,14 @@ export const FeaturesPage = ({ onOpenDemo }) => {
                 style={{
                   padding: '8px 16px',
                   borderRadius: 'var(--radius-full)',
-                  background: selectedModule === cat.id ? 'var(--accent-primary)' : 'rgba(255,255,255,0.05)',
-                  border: selectedModule === cat.id ? '1px solid rgba(255,255,255,0.2)' : '1px solid rgba(255,255,255,0.08)',
-                  color: selectedModule === cat.id ? '#fff' : '#cbd5e1',
+                  background: selectedModule === cat.id ? 'var(--oda-primary)' : 'var(--oda-surface)',
+                  border: selectedModule === cat.id ? '1px solid var(--oda-primary-light)' : '1px solid var(--oda-border)',
+                  color: selectedModule === cat.id ? '#ffffff' : 'var(--oda-text-secondary)',
                   fontSize: '0.8125rem',
                   fontWeight: '600',
                   whiteSpace: 'nowrap',
                   cursor: 'pointer',
+                  transition: 'all var(--transition-fast)',
                 }}
               >
                 {cat.label} ({cat.count})
@@ -126,34 +128,21 @@ export const FeaturesPage = ({ onOpenDemo }) => {
         </div>
 
         {/* Feature Grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '20px', marginBottom: '60px' }}>
+        <div className="responsive-card-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '20px', marginBottom: '60px' }}>
           {filteredFeatures.map((feat, idx) => (
             <div
               key={idx}
+              className="card-saas"
               style={{
-                background: 'rgba(14, 19, 31, 0.7)',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
-                borderRadius: '14px',
                 padding: '24px',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
-                transition: 'all var(--transition-fast)',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = 'rgba(59, 130, 246, 0.4)';
-                e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.boxShadow = '0 12px 30px rgba(0,0,0,0.6)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.08)';
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = 'none';
               }}
             >
               <div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-                  <span style={{ fontSize: '0.7rem', color: '#38bdf8', fontFamily: 'var(--font-mono)', textTransform: 'uppercase' }}>
+                  <span style={{ fontSize: '0.7rem', color: 'var(--oda-primary)', fontFamily: 'var(--font-mono)', textTransform: 'uppercase', fontWeight: '700' }}>
                     {feat.moduleTitle}
                   </span>
                   <span className="badge badge-emerald" style={{ fontSize: '0.65rem' }}>
@@ -161,32 +150,32 @@ export const FeaturesPage = ({ onOpenDemo }) => {
                   </span>
                 </div>
 
-                <h3 style={{ fontSize: '1.15rem', fontWeight: '700', color: '#ffffff', marginBottom: '10px' }}>
+                <h3 style={{ fontSize: '1.15rem', fontWeight: '700', color: 'var(--oda-text-primary)', marginBottom: '10px' }}>
                   {feat.name}
                 </h3>
 
-                <p style={{ color: '#94a3b8', fontSize: '0.85rem', lineHeight: '1.6', marginBottom: '16px' }}>
+                <p style={{ color: 'var(--oda-text-secondary)', fontSize: '0.85rem', lineHeight: '1.6', marginBottom: '16px' }}>
                   {feat.desc}
                 </p>
               </div>
 
-              <div style={{ paddingTop: '12px', borderTop: '1px solid rgba(255, 255, 255, 0.06)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', color: '#64748b', fontSize: '0.75rem' }}>
+              <div style={{ paddingTop: '12px', borderTop: '1px solid var(--oda-border-subtle)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', color: 'var(--oda-text-muted)', fontSize: '0.75rem' }}>
                 <span>Native Synchronous Feature</span>
-                <CheckCircle2 size={15} color="#10b981" />
+                <CheckCircle2 size={15} color="var(--oda-success)" />
               </div>
             </div>
           ))}
         </div>
 
         {/* Bottom CTA */}
-        <div style={{ textAlign: 'center', background: 'rgba(14, 19, 31, 0.8)', border: '1px solid rgba(59, 130, 246, 0.3)', borderRadius: '16px', padding: '40px' }}>
-          <h3 style={{ fontSize: '1.75rem', fontWeight: '800', color: '#fff', marginBottom: '12px' }}>
+        <div className="feature-showcase-panel" style={{ textAlign: 'center', borderRadius: '16px', padding: '40px' }}>
+          <h3 style={{ fontSize: '1.75rem', fontWeight: '800', color: 'var(--oda-text-primary)', marginBottom: '12px' }}>
             Want to see these features in action?
           </h3>
-          <p style={{ color: '#94a3b8', fontSize: '1rem', maxWidth: '600px', margin: '0 auto 24px auto' }}>
+          <p style={{ color: 'var(--oda-text-secondary)', fontSize: '1rem', maxWidth: '600px', margin: '0 auto 24px auto' }}>
             Experience the guided interactive product tour or contact ODA7 to scope your workspace.
           </p>
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '14px' }}>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '14px', flexWrap: 'wrap' }}>
             <Button onClick={onOpenDemo} variant="primary" iconLeft="Sparkles">
               Launch Interactive Tour
             </Button>

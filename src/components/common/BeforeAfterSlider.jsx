@@ -34,7 +34,7 @@ export const BeforeAfterSlider = () => {
     <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
       
       {/* Quick Mode Toggle buttons */}
-      <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', marginBottom: '24px' }}>
+      <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', marginBottom: '24px', flexWrap: 'wrap' }}>
         <button
           onClick={() => setSliderPos(15)}
           style={{
@@ -96,6 +96,18 @@ export const BeforeAfterSlider = () => {
       </div>
 
       {/* Interactive Split Comparison Box */}
+      <label style={{ display: 'block', maxWidth: '520px', margin: '0 auto 16px', color: '#94a3b8', fontSize: '0.75rem', textAlign: 'center' }}>
+        Comparison position
+        <input
+          type="range"
+          min="10"
+          max="90"
+          value={sliderPos}
+          onChange={(event) => setSliderPos(Number(event.target.value))}
+          aria-label="Adjust the before and after ODA7 comparison"
+          style={{ width: '100%', marginTop: '8px', accentColor: '#2563eb' }}
+        />
+      </label>
       <div
         onMouseMove={(e) => {
           if (isDragging) handleSliderMove(e);

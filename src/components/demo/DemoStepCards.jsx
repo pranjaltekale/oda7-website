@@ -1,294 +1,481 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
-  UserCheck,
-  Sparkles,
-  Layers,
   PhoneCall,
-  PhoneOff,
-  Zap,
-  Eye,
-  CheckCircle2,
-  TrendingUp,
-  Clock,
-  Mic,
-  Volume2,
-  ShieldAlert,
   Headphones,
-  Award,
   Users,
-  LayoutDashboard,
   ShieldCheck,
+  Sparkles,
+  CheckCircle2,
+  Volume2,
+  Send,
+  Activity,
+  DollarSign,
+  TrendingUp,
+  Building2,
+  FileText,
+  Clock,
+  Zap,
   ArrowRight,
-  RotateCcw,
 } from 'lucide-react';
 
-export const DemoStepCards = ({
-  step,
-  selectedRole,
-  onSelectRole,
-  onNextStep,
-}) => {
-  // Step 1: Choose Role
-  if (step === 1) {
-    const roles = [
+export const demoRoleData = {
+  sales: {
+    roleName: 'Sales Rep',
+    roleLabel: 'Inside Sales SDR',
+    icon: PhoneCall,
+    color: '#38bdf8',
+    steps: [
       {
-        id: 'sales',
-        title: 'Sales User / SDR',
-        icon: PhoneCall,
-        desc: 'Experience My Queue, 0.8s local presence dialer, dynamic script prompts, and real-time AI live objection handling.',
-        badge: 'Rep Velocity',
-      },
-      {
-        id: 'manager',
-        title: 'Floor Supervisor / Manager',
-        icon: LayoutDashboard,
-        desc: 'Monitor real-time floor queues, active agent statuses, pickup ratio telemetry, and execute live whisper coaching.',
-        badge: 'Live Operations',
-      },
-      {
-        id: 'admin',
-        title: 'Agency Admin & Ops',
-        icon: Users,
-        desc: 'Automate commission payouts, track shift attendance, run live sales battles, and export itemized payslips.',
-        badge: 'Operations & Payroll',
-      },
-    ];
-
-    return (
-      <div className="animate-fadeIn">
-        <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-          <span className="badge badge-primary" style={{ marginBottom: '8px' }}>
-            Step 1 • Select Experience Perspective
-          </span>
-          <h3 style={{ fontSize: '1.4rem', fontWeight: '800', color: '#fff' }}>
-            Choose how you want to experience oda7
-          </h3>
-          <p style={{ color: '#94a3b8', fontSize: '0.875rem' }}>
-            Select a role to tailor the interactive dashboard simulation to your workflow.
-          </p>
-        </div>
-
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '16px' }}>
-          {roles.map((r) => {
-            const IconComp = r.icon;
-            const isSelected = selectedRole === r.id;
-
-            return (
-              <div
-                key={r.id}
-                onClick={() => onSelectRole(r.id)}
-                style={{
-                  background: isSelected ? 'rgba(37, 99, 235, 0.2)' : 'rgba(14, 19, 32, 0.7)',
-                  border: isSelected ? '2px solid #3b82f6' : '1px solid rgba(255, 255, 255, 0.08)',
-                  borderRadius: '14px',
-                  padding: '24px',
-                  cursor: 'pointer',
-                  transition: 'all var(--transition-fast)',
-                  boxShadow: isSelected ? '0 10px 30px rgba(37, 99, 235, 0.3)' : 'none',
-                }}
-              >
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '14px' }}>
-                  <div style={{
-                    width: '40px',
-                    height: '40px',
-                    borderRadius: '10px',
-                    background: isSelected ? 'var(--accent-primary)' : 'rgba(255,255,255,0.06)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    color: '#fff',
-                  }}>
-                    <IconComp size={20} />
-                  </div>
-                  <span className="badge badge-cyan" style={{ fontSize: '0.65rem' }}>
-                    {r.badge}
-                  </span>
-                </div>
-
-                <h4 style={{ fontSize: '1.1rem', fontWeight: '700', color: '#fff', marginBottom: '8px' }}>
-                  {r.title}
-                </h4>
-                <p style={{ color: '#94a3b8', fontSize: '0.8rem', lineHeight: '1.5' }}>
-                  {r.desc}
-                </p>
+        eyebrow: 'Step 1 • Lead Arrival',
+        title: 'Priority Lead Ingestion',
+        desc: 'New high-intent prospect arrives from website and scores 96 AI.',
+        highlight: 'My Queue SLA: <15s',
+        component: (
+          <div className="demo-ui-box">
+            <div className="demo-ui-header">
+              <span>My Queue • Live Inbound</span>
+              <span className="badge badge-emerald">Intent: 96/100</span>
+            </div>
+            <div className="demo-lead-row">
+              <div className="demo-avatar-circle">SJ</div>
+              <div>
+                <strong>Sarah Jenkins</strong>
+                <small>VP Operations • Logix Enterprises</small>
               </div>
-            );
-          })}
-        </div>
-      </div>
-    );
-  }
-
-  // Step 2: Simulated Role Dashboard
-  if (step === 2) {
-    return (
-      <div className="animate-fadeIn">
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-          <span className="badge badge-emerald">
-            Step 2 • Simulated {selectedRole === 'sales' ? 'Sales Workspace' : selectedRole === 'manager' ? 'Floor Command' : 'Agency Ops'}
-          </span>
-          <span style={{ fontSize: '0.75rem', color: '#38bdf8', fontFamily: 'var(--font-mono)' }}>
-            BIZZFLY // Live State
-          </span>
-        </div>
-
-        {/* 3 Metric Cards */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px', marginBottom: '16px' }}>
-          <div style={{ background: 'rgba(7, 10, 18, 0.8)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '8px', padding: '12px' }}>
-            <div style={{ color: '#94a3b8', fontSize: '0.7rem', textTransform: 'uppercase' }}>
-              {selectedRole === 'sales' ? 'Priority Queue' : selectedRole === 'manager' ? 'Floor Active Calls' : 'Monthly Commissions'}
+              <span className="badge badge-primary">Austin (512)</span>
             </div>
-            <div style={{ fontSize: '1.3rem', fontWeight: '800', color: '#fff', marginTop: '2px' }}>
-              {selectedRole === 'sales' ? '14 High-Intent' : selectedRole === 'manager' ? '18 Calls Active' : '$42,850.00'}
+            <div className="demo-ui-meta">
+              <span>Source: Website Form (2m ago)</span>
+              <span style={{ color: 'var(--oda-success)' }}>● Next to Call</span>
             </div>
           </div>
-
-          <div style={{ background: 'rgba(7, 10, 18, 0.8)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '8px', padding: '12px' }}>
-            <div style={{ color: '#94a3b8', fontSize: '0.7rem', textTransform: 'uppercase' }}>
-              {selectedRole === 'sales' ? 'Win Probability' : selectedRole === 'manager' ? 'Pickup Ratio' : 'Attendance Rate'}
+        ),
+      },
+      {
+        eyebrow: 'Step 2 • Predictive Call',
+        title: '0.8s Local Presence Dialing',
+        desc: 'Browser WebRTC softphone connects with localized caller ID.',
+        highlight: 'Connect Rate Lift: +34.8%',
+        component: (
+          <div className="demo-ui-box">
+            <div className="demo-ui-header">
+              <span>Active Call • Local 512 Match</span>
+              <div className="audio-wave-live">
+                <span /><span /><span /><span />
+              </div>
             </div>
-            <div style={{ fontSize: '1.3rem', fontWeight: '800', color: '#34d399', marginTop: '2px' }}>
-              {selectedRole === 'sales' ? '84.2%' : selectedRole === 'manager' ? '78.4%' : '98.4%'}
+            <div style={{ padding: '14px', textAlign: 'center' }}>
+              <div style={{ fontSize: '1.2rem', fontWeight: '800', color: 'var(--oda-text-primary)' }}>
+                Sarah Jenkins <span style={{ fontSize: '0.8rem', color: 'var(--oda-text-muted)' }}>+1 (512) 840-9211</span>
+              </div>
+              <div style={{ color: 'var(--oda-success)', fontWeight: '700', fontSize: '0.8rem', marginTop: '4px' }}>
+                Connected 02:45 • HD Audio Dual-Stream
+              </div>
+            </div>
+            <div className="demo-ui-meta">
+              <span>Win Probability: 84%</span>
+              <span>Deal Size: $48,000 / yr</span>
             </div>
           </div>
-
-          <div style={{ background: 'rgba(7, 10, 18, 0.8)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '8px', padding: '12px' }}>
-            <div style={{ color: '#94a3b8', fontSize: '0.7rem', textTransform: 'uppercase' }}>
-              {selectedRole === 'sales' ? 'Next Lead Target' : selectedRole === 'manager' ? 'Floor Queue Load' : 'Active Contests'}
+        ),
+      },
+      {
+        eyebrow: 'Step 3 • Live Speech AI',
+        title: 'Real-Time Objection Buster',
+        desc: 'AI detects competitor contract objection and pops winning talk track.',
+        highlight: 'Neural Latency: 42ms',
+        component: (
+          <div className="demo-ui-box">
+            <div className="demo-ui-header">
+              <span>Speech Copilot • Real-Time Battlecard</span>
+              <span className="badge badge-cyan">Objection Detected</span>
             </div>
-            <div style={{ fontSize: '1.3rem', fontWeight: '800', color: '#38bdf8', marginTop: '2px' }}>
-              {selectedRole === 'sales' ? 'Sarah Jenkins' : selectedRole === 'manager' ? '0 Waiting' : '3 Live Battles'}
+            <div style={{ padding: '12px 14px', background: 'var(--oda-bg-alt)', borderRadius: '8px', margin: '8px 0', border: '1px solid var(--oda-border)' }}>
+              <small style={{ color: 'var(--oda-text-muted)', textTransform: 'uppercase', fontWeight: '700' }}>Detected Prospect Concern:</small>
+              <div style={{ color: 'var(--oda-text-primary)', fontSize: '0.85rem', marginTop: '2px' }}>
+                "We are locked in with a legacy dialer for 6 more months."
+              </div>
+            </div>
+            <div style={{ padding: '10px 14px', background: 'var(--oda-primary-soft)', borderRadius: '8px', borderLeft: '3px solid var(--oda-primary)' }}>
+              <small style={{ color: 'var(--oda-primary)', fontWeight: '700' }}>Suggested Rebuttal:</small>
+              <div style={{ color: 'var(--oda-text-primary)', fontSize: '0.85rem', fontWeight: '600' }}>
+                "Offer our 6-month contract buyout credit with zero-downtime migration."
+              </div>
             </div>
           </div>
-        </div>
-
-        {/* Interactive Ingestion Box */}
-        <div style={{ background: 'linear-gradient(135deg, rgba(37, 99, 235, 0.15) 0%, rgba(6, 182, 212, 0.1) 100%)', border: '1px solid rgba(59, 130, 246, 0.35)', borderRadius: '10px', padding: '18px' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-            <div style={{ fontWeight: '700', color: '#fff', fontSize: '1rem' }}>
-              Inbound Enterprise Demo Request Captured
+        ),
+      },
+      {
+        eyebrow: 'Step 4 • Omnichannel Follow-Up',
+        title: 'WhatsApp Deck & Qualified Stage',
+        desc: 'Send WhatsApp summary in 1 click and automatically advance the deal.',
+        highlight: 'Zero-Touch CRM Sync',
+        component: (
+          <div className="demo-ui-box">
+            <div className="demo-ui-header">
+              <span>Official WhatsApp API • Thread</span>
+              <span className="badge badge-emerald">Delivered</span>
             </div>
-            <span className="badge badge-emerald">Enriched in 680ms</span>
+            <div style={{ padding: '14px', background: 'var(--oda-bg-alt)', borderRadius: '8px', margin: '8px 0', border: '1px solid var(--oda-border)' }}>
+              <div style={{ fontSize: '0.85rem', color: 'var(--oda-text-primary)' }}>
+                "Hi Sarah, here is the enterprise buyout deck we discussed on our call."
+              </div>
+              <small style={{ color: 'var(--oda-success)', display: 'block', marginTop: '4px' }}>✓✓ Read by Sarah (Just now)</small>
+            </div>
+            <div className="demo-ui-meta">
+              <span style={{ color: 'var(--oda-success)', fontWeight: '700' }}>Stage: Qualified Demo Scheduled</span>
+              <span>Commission: +$840</span>
+            </div>
           </div>
-          <div style={{ color: '#cbd5e1', fontSize: '0.85rem', lineHeight: '1.5' }}>
-            <strong>Prospect:</strong> Sarah Jenkins (VP Operations, Logix Enterprise)<br />
-            <strong>Intent Score:</strong> 96/100 (Tier 1 Priority) • Matched Area Code: Austin (512)
+        ),
+      },
+    ],
+  },
+
+  manager: {
+    roleName: 'Manager',
+    roleLabel: 'Floor Supervisor',
+    icon: Headphones,
+    color: '#10b981',
+    steps: [
+      {
+        eyebrow: 'Step 1 • Team Roster',
+        title: 'Live Agent Availability Grid',
+        desc: 'See all 24 reps on the floor and their live calling states.',
+        highlight: 'Real-Time Floor Sync',
+        component: (
+          <div className="demo-ui-box">
+            <div className="demo-ui-header">
+              <span>Sales Floor • Inside Pod Alpha</span>
+              <span className="badge badge-emerald">24 Clocked In</span>
+            </div>
+            <div className="demo-agent-row">
+              <div><span className="status-dot green" /> <strong>Alex Rivera</strong></div>
+              <span style={{ color: 'var(--oda-success)', fontWeight: '600', fontSize: '0.8rem' }}>On Call (02:45)</span>
+              <small style={{ color: 'var(--oda-text-muted)' }}>68 Dials</small>
+            </div>
+            <div className="demo-agent-row">
+              <div><span className="status-dot cyan" /> <strong>Elena Vance</strong></div>
+              <span style={{ color: 'var(--oda-primary)', fontWeight: '600', fontSize: '0.8rem' }}>Available</span>
+              <small style={{ color: 'var(--oda-text-muted)' }}>61 Dials</small>
+            </div>
           </div>
-        </div>
-      </div>
-    );
-  }
+        ),
+      },
+      {
+        eyebrow: 'Step 2 • Live Activity',
+        title: 'Concurrent Queue Volume',
+        desc: 'Sub-second queue monitoring prevents abandoned prospect calls.',
+        highlight: 'Queue Delay: 0s',
+        component: (
+          <div className="demo-ui-box">
+            <div className="demo-ui-header">
+              <span>Floor Queue Telemetry</span>
+              <span className="badge badge-cyan">0 Waiting</span>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px', padding: '14px 0' }}>
+              <div style={{ textAlign: 'center', background: 'var(--oda-bg-alt)', padding: '10px', borderRadius: '8px' }}>
+                <small style={{ color: 'var(--oda-text-muted)' }}>Active Calls</small>
+                <div style={{ fontSize: '1.25rem', fontWeight: '800', color: 'var(--oda-primary)' }}>18</div>
+              </div>
+              <div style={{ textAlign: 'center', background: 'var(--oda-bg-alt)', padding: '10px', borderRadius: '8px' }}>
+                <small style={{ color: 'var(--oda-text-muted)' }}>Answer Speed</small>
+                <div style={{ fontSize: '1.25rem', fontWeight: '800', color: 'var(--oda-success)' }}>9.4s</div>
+              </div>
+              <div style={{ textAlign: 'center', background: 'var(--oda-bg-alt)', padding: '10px', borderRadius: '8px' }}>
+                <small style={{ color: 'var(--oda-text-muted)' }}>Pickup Ratio</small>
+                <div style={{ fontSize: '1.25rem', fontWeight: '800', color: '#fbbf24' }}>78.4%</div>
+              </div>
+            </div>
+          </div>
+        ),
+      },
+      {
+        eyebrow: 'Step 3 • Floor Performance',
+        title: 'Live Quota & Pickup Heatmap',
+        desc: 'Monitor hourly connection benchmarks and daily closed ARR pacing.',
+        highlight: '112% Quota Pacing',
+        component: (
+          <div className="demo-ui-box">
+            <div className="demo-ui-header">
+              <span>Today Closed ARR Pacing</span>
+              <span className="badge badge-emerald">+$94,200</span>
+            </div>
+            <div style={{ padding: '14px', background: 'var(--oda-bg-alt)', borderRadius: '8px', margin: '8px 0' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
+                <span style={{ fontSize: '0.8rem', color: 'var(--oda-text-secondary)' }}>Daily Target ($84,000)</span>
+                <span style={{ fontSize: '0.8rem', fontWeight: '700', color: 'var(--oda-success)' }}>112.1% Achieved</span>
+              </div>
+              <div style={{ width: '100%', height: '8px', background: 'var(--oda-surface)', borderRadius: '4px', overflow: 'hidden' }}>
+                <div style={{ width: '100%', height: '100%', background: 'linear-gradient(90deg, #2563eb, #10b981)' }} />
+              </div>
+            </div>
+          </div>
+        ),
+      },
+      {
+        eyebrow: 'Step 4 • Supervisor Action',
+        title: '1-Click Headset Whisper Coaching',
+        desc: 'Stream live winning guidance into rep headset without customer hearing.',
+        highlight: '24ms WebRTC Stream',
+        component: (
+          <div className="demo-ui-box">
+            <div className="demo-ui-header">
+              <span>Silent Listen & Whisper Active</span>
+              <span className="badge badge-emerald">Live to Alex Rivera</span>
+            </div>
+            <div style={{ padding: '14px', background: 'var(--oda-primary-soft)', borderRadius: '8px', borderLeft: '3px solid var(--oda-primary)', margin: '8px 0' }}>
+              <small style={{ color: 'var(--oda-primary)', fontWeight: '700' }}>Whispering into SDR Headset:</small>
+              <div style={{ color: 'var(--oda-text-primary)', fontSize: '0.85rem', fontWeight: '600' }}>
+                "Ask for the 2-year upfront commitment to waive setup fees."
+              </div>
+            </div>
+            <div className="demo-ui-meta">
+              <span style={{ color: 'var(--oda-success)' }}>✓ Audio Delivered (24ms latency)</span>
+              <span>Client Audio Untouched</span>
+            </div>
+          </div>
+        ),
+      },
+    ],
+  },
 
-  // Step 3: Interactive Live Call & AI Rebuttal Workflow
-  if (step === 3) {
-    return (
-      <div className="animate-fadeIn">
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-          <span className="badge badge-amber">Step 3 • Live Call & Speech AI Objection Handling</span>
-          <span style={{ fontSize: '0.75rem', color: '#34d399' }}>Connected (00:48)</span>
-        </div>
+  admin: {
+    roleName: 'Admin',
+    roleLabel: 'Ops & Payroll Admin',
+    icon: Users,
+    color: '#fbbf24',
+    steps: [
+      {
+        eyebrow: 'Step 1 • People Roster',
+        title: 'Team & Shift Configuration',
+        desc: 'Manage agent profiles, squads, and calling skill rules.',
+        highlight: 'Unified Directory',
+        component: (
+          <div className="demo-ui-box">
+            <div className="demo-ui-header">
+              <span>People Directory • 24 Active Reps</span>
+              <span className="badge badge-primary">3 Squads</span>
+            </div>
+            <div className="demo-agent-row">
+              <strong>Alex Rivera</strong>
+              <span>Inside SDR • Tier 1</span>
+              <small style={{ color: 'var(--oda-success)' }}>Active</small>
+            </div>
+            <div className="demo-agent-row">
+              <strong>Marcus Chen</strong>
+              <span>Enterprise AE • Tier 2</span>
+              <small style={{ color: 'var(--oda-success)' }}>Active</small>
+            </div>
+          </div>
+        ),
+      },
+      {
+        eyebrow: 'Step 2 • Attendance',
+        title: 'Verified Geolocation Shift Punches',
+        desc: 'Automated shift attendance eliminates time-tracking disputes.',
+        highlight: '98.4% On-Time Rate',
+        component: (
+          <div className="demo-ui-box">
+            <div className="demo-ui-header">
+              <span>Shift Attendance Telemetry</span>
+              <span className="badge badge-emerald">Audit Verified</span>
+            </div>
+            <div style={{ padding: '14px', background: 'var(--oda-bg-alt)', borderRadius: '8px', margin: '8px 0' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.8rem' }}>
+                <span>Shift Start: 9:00 AM CST</span>
+                <span style={{ color: 'var(--oda-success)', fontWeight: '700' }}>24 / 24 Clocked In</span>
+              </div>
+              <small style={{ color: 'var(--oda-text-muted)', display: 'block', marginTop: '4px' }}>Geolocation & IP verified at browser login</small>
+            </div>
+          </div>
+        ),
+      },
+      {
+        eyebrow: 'Step 3 • Automated Payroll',
+        title: 'Closed-Won Commission Calculation',
+        desc: 'Tier accelerators credit the digital wallet on deal close.',
+        highlight: 'Zero Spreadsheet Math',
+        component: (
+          <div className="demo-ui-box">
+            <div className="demo-ui-header">
+              <span>Commission Engine • This Month</span>
+              <span className="badge badge-emerald">$42,850.00 Total</span>
+            </div>
+            <div style={{ padding: '12px 14px', background: 'var(--oda-bg-alt)', borderRadius: '8px', margin: '8px 0' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem' }}>
+                <span>Alex Rivera (Closed 14 deals)</span>
+                <strong style={{ color: 'var(--oda-success)' }}>+$3,420.00</strong>
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem', marginTop: '6px' }}>
+                <span>Marcus Chen (Closed 6 enterprise)</span>
+                <strong style={{ color: 'var(--oda-success)' }}>+$4,800.00</strong>
+              </div>
+            </div>
+          </div>
+        ),
+      },
+      {
+        eyebrow: 'Step 4 • Payslip Reports',
+        title: '1-Click Itemized PDF Dispatch',
+        desc: 'Generate transparent, itemized PDF payslips for the entire floor.',
+        highlight: '100% Audit Ready',
+        component: (
+          <div className="demo-ui-box">
+            <div className="demo-ui-header">
+              <span>Itemized Rep Payslip Dispatch</span>
+              <span className="badge badge-primary">Ready to Send</span>
+            </div>
+            <div style={{ padding: '14px', background: 'var(--oda-bg-alt)', borderRadius: '8px', margin: '8px 0', border: '1px solid var(--oda-border)' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <strong>Alex Rivera — Monthly Payslip</strong>
+                <span style={{ color: 'var(--oda-primary)', fontWeight: '700' }}>$7,420.00 Total</span>
+              </div>
+              <small style={{ color: 'var(--oda-text-muted)', display: 'block', marginTop: '4px' }}>Base Salary: $4,000 • Verified Commissions: $3,420</small>
+            </div>
+          </div>
+        ),
+      },
+    ],
+  },
 
-        <div style={{ background: 'rgba(7, 10, 18, 0.9)', border: '1px solid rgba(16, 185, 129, 0.3)', borderRadius: '10px', padding: '16px', marginBottom: '14px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+  superadmin: {
+    roleName: 'Super Admin',
+    roleLabel: 'Platform Executive',
+    icon: ShieldCheck,
+    color: '#a855f7',
+    steps: [
+      {
+        eyebrow: 'Step 1 • Organizations',
+        title: 'Multi-Tenant Client Provisioning',
+        desc: 'Manage multiple client organizations with complete data isolation.',
+        highlight: 'Multi-Tenant Isolation',
+        component: (
+          <div className="demo-ui-box">
+            <div className="demo-ui-header">
+              <span>Tenant Organizations</span>
+              <span className="badge badge-emerald">48 Live Tenants</span>
+            </div>
+            <div className="demo-agent-row">
+              <strong>BIZZFLY Global</strong>
+              <span>24 Seats • Enterprise Tier</span>
+              <small style={{ color: 'var(--oda-success)' }}>Healthy</small>
+            </div>
+            <div className="demo-agent-row">
+              <strong>Apex Cloud Logistics</strong>
+              <span>18 Seats • Pro Tier</span>
+              <small style={{ color: 'var(--oda-success)' }}>Healthy</small>
+            </div>
+          </div>
+        ),
+      },
+      {
+        eyebrow: 'Step 2 • Plans & Licenses',
+        title: 'Seat Allocation & Entitlements',
+        desc: 'Provision custom telephony trunks, recording storage, and seats.',
+        highlight: 'Custom Entitlements',
+        component: (
+          <div className="demo-ui-box">
+            <div className="demo-ui-header">
+              <span>Plan & Entitlement Controls</span>
+              <span className="badge badge-primary">Enterprise Custom</span>
+            </div>
+            <div style={{ padding: '14px', background: 'var(--oda-bg-alt)', borderRadius: '8px', margin: '8px 0' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem' }}>
+                <span>Dedicated Carrier SIP Trunk:</span>
+                <strong style={{ color: 'var(--oda-success)' }}>Active (Twilio + Bandwidth)</strong>
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem', marginTop: '6px' }}>
+                <span>Dual-Channel Audio Retention:</span>
+                <strong>365 Days Encrypted</strong>
+              </div>
+            </div>
+          </div>
+        ),
+      },
+      {
+        eyebrow: 'Step 3 • Platform Revenue',
+        title: 'Consolidated MRR & ARR Telemetry',
+        desc: 'Monitor platform-wide subscription velocity and usage metrics.',
+        highlight: '$184.2k Platform MRR',
+        component: (
+          <div className="demo-ui-box">
+            <div className="demo-ui-header">
+              <span>Master Platform ARR Velocity</span>
+              <span className="badge badge-emerald">+28.4% YoY</span>
+            </div>
+            <div style={{ padding: '14px', background: 'var(--oda-bg-alt)', borderRadius: '8px', margin: '8px 0', textAlign: 'center' }}>
+              <div style={{ fontSize: '1.6rem', fontWeight: '850', color: 'var(--oda-text-primary)' }}>$2.21M ARR</div>
+              <small style={{ color: 'var(--oda-success)' }}>48 Organizations • 99.99% Uptime SLA</small>
+            </div>
+          </div>
+        ),
+      },
+      {
+        eyebrow: 'Step 4 • Governance & Security',
+        title: 'Global IP Whitelisting & Custom CNAME',
+        desc: 'Enforce SOC2 Type II compliance and corporate SSO domains.',
+        highlight: 'SOC2 & GDPR Certified',
+        component: (
+          <div className="demo-ui-box">
+            <div className="demo-ui-header">
+              <span>Enterprise Security Shield</span>
+              <span className="badge badge-cyan">Enforced</span>
+            </div>
+            <div style={{ padding: '14px', background: 'var(--oda-bg-alt)', borderRadius: '8px', margin: '8px 0', border: '1px solid var(--oda-border)' }}>
+              <div style={{ fontSize: '0.85rem', color: 'var(--oda-text-primary)' }}>
+                ✓ Custom CNAME: <code>sales.bizzfly.com</code><br/>
+                ✓ Corporate SAML / Okta SSO Active<br/>
+                ✓ Strict IP Whitelist: 24/24 Pods Enforced
+              </div>
+            </div>
+          </div>
+        ),
+      },
+    ],
+  },
+};
+
+export const DemoStepCards = ({ role = 'sales', step = 1 }) => {
+  const currentRole = demoRoleData[role] || demoRoleData.sales;
+  const currentStep = currentRole.steps[step - 1] || currentRole.steps[0];
+  const IconComp = currentRole.icon;
+
+  return (
+    <div className="demo-workflow-step animate-fadeIn" key={`${role}-${step}`}>
+      {/* Left: Step Description */}
+      <div className="demo-step-summary">
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
+          <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: `${currentRole.color}25`, color: currentRole.color, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <IconComp size={18} />
+          </div>
           <div>
-            <div style={{ color: '#34d399', fontSize: '0.75rem', fontWeight: '600' }}>HD WebRTC Telephony • Local Presence (512 Match)</div>
-            <div style={{ fontSize: '1.15rem', fontWeight: '700', color: '#fff', marginTop: '2px' }}>Sarah Jenkins • Logix Enterprise</div>
-            <div style={{ color: '#94a3b8', fontSize: '0.8rem', marginTop: '2px' }}>Contract Deal Size: $48,000 / year</div>
-          </div>
-          <div style={{ display: 'flex', gap: '8px' }}>
-            <button style={{ width: '36px', height: '36px', borderRadius: '50%', background: 'rgba(255,255,255,0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff' }}>
-              <Mic size={15} />
-            </button>
-            <button style={{ width: '36px', height: '36px', borderRadius: '50%', background: 'rgba(255,255,255,0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff' }}>
-              <Volume2 size={15} />
-            </button>
+            <small style={{ color: currentRole.color, fontWeight: '700', textTransform: 'uppercase' }}>
+              {currentStep.eyebrow}
+            </small>
+            <div style={{ fontSize: '0.75rem', color: 'var(--oda-text-muted)' }}>
+              {currentRole.roleLabel}
+            </div>
           </div>
         </div>
 
-        {/* AI Live Objection Alert */}
-        <div style={{ background: 'rgba(245, 158, 11, 0.08)', border: '1px solid rgba(245, 158, 11, 0.35)', borderRadius: '10px', padding: '16px', marginBottom: '12px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#fbbf24', fontWeight: '700', fontSize: '0.8rem', marginBottom: '6px' }}>
-            <ShieldAlert size={15} />
-            <span>AI Detected Competitor Objection: "Under Contract for 6 Months"</span>
-          </div>
-          <div style={{ background: 'rgba(0,0,0,0.4)', padding: '10px', borderRadius: '6px', color: '#93c5fd', fontSize: '0.85rem', lineHeight: '1.5' }}>
-            <strong>Suggested response:</strong> "Clarify the rollout concern and schedule an implementation follow-up."
-          </div>
-        </div>
-
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.8rem', color: '#94a3b8' }}>
-          <span>Manager Whisper: "Lock annual upfront to waive setup fee."</span>
-          <span style={{ color: '#34d399', fontWeight: '600' }}>✓ Proposal Accepted</span>
-        </div>
-      </div>
-    );
-  }
-
-  // Step 4: Closed-Won & Payout Result
-  if (step === 4) {
-    return (
-      <div className="animate-fadeIn">
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-          <span className="badge badge-emerald">Step 4 • Deal Closed-Won & Instant Commission</span>
-          <span style={{ fontSize: '0.75rem', color: '#34d399' }}>Live Payout Executed</span>
-        </div>
-
-        <div style={{ background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(37, 99, 235, 0.15) 100%)', border: '1px solid rgba(16, 185, 129, 0.4)', borderRadius: '14px', padding: '24px', textAlign: 'center', marginBottom: '16px' }}>
-          <div style={{ display: 'inline-flex', padding: '12px', borderRadius: '50%', background: 'rgba(16, 185, 129, 0.2)', marginBottom: '10px' }}>
-            <Award size={32} color="#34d399" />
-          </div>
-          <div style={{ fontSize: '1.6rem', fontWeight: '800', color: '#fff' }}>
-            $48,000 / year (Closed-Won)
-          </div>
-          <div style={{ color: '#34d399', fontSize: '1.2rem', fontWeight: '700', marginTop: '4px' }}>
-            Commission Credited: +$4,800.00
-          </div>
-          <div style={{ color: '#cbd5e1', fontSize: '0.85rem', marginTop: '6px' }}>
-            Alex Rivera is now #1 on the Daily Floor Leaderboard
-          </div>
-        </div>
-
-        <div style={{ fontSize: '0.8rem', color: '#94a3b8', textAlign: 'center' }}>
-          ✓ Automated onboarding sequence fired • Payslip updated • Zero manual admin lag
-        </div>
-      </div>
-    );
-  }
-
-  // Step 5: Final Result Screen
-  if (step === 5) {
-    return (
-      <div className="animate-fadeIn" style={{ textAlign: 'center', padding: '20px 0' }}>
-        <div style={{ width: '56px', height: '56px', borderRadius: '50%', background: 'rgba(16, 185, 129, 0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px auto', color: '#34d399' }}>
-          <CheckCircle2 size={32} />
-        </div>
-
-        <h3 style={{ fontSize: '1.6rem', fontWeight: '800', color: '#fff', marginBottom: '10px' }}>
-          Your team just moved one lead closer to revenue.
+        <h3 style={{ fontSize: '1.35rem', fontWeight: '850', color: 'var(--oda-text-primary)', marginBottom: '8px', lineHeight: '1.25' }}>
+          {currentStep.title}
         </h3>
 
-        <p style={{ color: '#94a3b8', fontSize: '0.95rem', maxWidth: '600px', margin: '0 auto 24px auto', lineHeight: '1.6' }}>
-          This entire synchronous workflow—from lead capture and AI speech coaching to live manager supervision and automated payroll—happens in one unified workspace with oda7.
+        <p style={{ color: 'var(--oda-text-secondary)', fontSize: '0.9rem', lineHeight: '1.6', marginBottom: '16px' }}>
+          {currentStep.desc}
         </p>
 
-        <div style={{ display: 'inline-flex', gap: '16px', padding: '12px 24px', background: 'rgba(255,255,255,0.04)', borderRadius: '10px', border: '1px solid rgba(255,255,255,0.08)', marginBottom: '8px' }}>
-          <div style={{ textAlign: 'center' }}>
-            <div style={{ fontSize: '1.2rem', fontWeight: '800', color: '#34d399' }}>&lt;15s</div>
-            <div style={{ fontSize: '0.7rem', color: '#94a3b8' }}>Speed to Lead</div>
-          </div>
-          <div style={{ width: '1px', background: 'rgba(255,255,255,0.1)' }} />
-          <div style={{ textAlign: 'center' }}>
-            <div style={{ fontSize: '1.2rem', fontWeight: '800', color: '#38bdf8' }}>+34%</div>
-            <div style={{ fontSize: '0.7rem', color: '#94a3b8' }}>Pickup Lift</div>
-          </div>
-          <div style={{ width: '1px', background: 'rgba(255,255,255,0.1)' }} />
-          <div style={{ textAlign: 'center' }}>
-            <div style={{ fontSize: '1.2rem', fontWeight: '800', color: '#fbbf24' }}>0</div>
-            <div style={{ fontSize: '0.7rem', color: '#94a3b8' }}>Manual Notes</div>
-          </div>
+        <div style={{ display: 'inline-flex', padding: '6px 12px', borderRadius: '8px', background: 'var(--oda-primary-soft)', border: '1px solid var(--oda-border-blue)', color: 'var(--oda-primary)', fontSize: '0.75rem', fontWeight: '700' }}>
+          {currentStep.highlight}
         </div>
       </div>
-    );
-  }
 
-  return null;
+      {/* Right: Interactive UI Demonstration Widget */}
+      <div className="demo-step-interface card-interactive-lift">
+        {currentStep.component}
+      </div>
+    </div>
+  );
 };

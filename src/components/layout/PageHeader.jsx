@@ -32,7 +32,7 @@ export const PageHeader = ({
           style={{
             fontSize: 'clamp(2.25rem, 5vw, 3.75rem)',
             fontWeight: '800',
-            color: '#ffffff',
+            color: 'var(--oda-text-primary)',
             lineHeight: 1.1,
             marginBottom: '20px',
             maxWidth: '900px',
@@ -50,7 +50,7 @@ export const PageHeader = ({
           <p
             style={{
               fontSize: 'clamp(1rem, 2vw, 1.25rem)',
-              color: '#94a3b8',
+              color: 'var(--oda-text-secondary)',
               lineHeight: 1.6,
               maxWidth: '720px',
               marginLeft: 'auto',
@@ -62,7 +62,11 @@ export const PageHeader = ({
           </p>
         )}
 
-        {children}
+        {children && (
+          <div style={{ marginTop: '24px' }}>
+            {children}
+          </div>
+        )}
       </div>
     </section>
   );

@@ -2,71 +2,73 @@ import React from 'react';
 import { SectionHeading } from '../common/SectionHeading';
 import { ManagerDashboardMockup } from '../mockups/ManagerDashboardMockup';
 import {
-  LayoutDashboard,
+  Radio,
   Headphones,
-  Activity,
-  Users,
   Eye,
+  TrendingUp,
+  Activity,
+  ShieldCheck,
   CheckCircle2,
 } from 'lucide-react';
 
 export const ManagerFloorSection = () => {
   return (
-    <section id="manager-section" className="section-wrapper" style={{ background: '#05070c' }}>
+    <section className="section-wrapper section-alt" id="manager-section">
       <div className="container-wide">
         
         <SectionHeading
-          eyebrow="Manager Command Center"
-          eyebrowIcon="LayoutDashboard"
-          title="Run the entire sales floor with"
-          highlightText="real-time precision."
-          description="Supervisors get complete live visibility into active concurrent calls, floor queue loads, rep statuses, and team pickup ratios. Whisper coach reps during high-stakes calls without the client ever knowing."
+          eyebrow="Real-Time Floor Visibility"
+          eyebrowIcon="Radio"
+          title="See the floor. Coach the team."
+          highlightText="Move faster."
+          description="Give your sales supervisors real-time telemetry across concurrent call queues, rep availability states, and live objection fumbles with 1-click silent listening and headset whisper coaching."
         />
 
-        {/* Manager Console Mockup */}
-        <div style={{ maxWidth: '1100px', margin: '0 auto 48px auto' }}>
-          <ManagerDashboardMockup />
+        {/* Manager Real-World Story Strip */}
+        <div
+          style={{
+            maxWidth: '1180px',
+            margin: '0 auto 32px auto',
+            display: 'grid',
+            gridTemplateColumns: 'minmax(280px, 340px) 1fr',
+            gap: '32px',
+            alignItems: 'center',
+            borderRadius: '20px',
+            padding: '28px',
+          }}
+          className="feature-showcase-panel mockup-grid-2col"
+        >
+          {/* Manager Photography with Floating Whisper Badge */}
+          <div style={{ position: 'relative', borderRadius: '14px', overflow: 'hidden', border: '1px solid rgba(255, 255, 255, 0.1)' }}>
+            <img
+              src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=600&auto=format&fit=crop&q=80"
+              alt="Floor Operations Manager Coaching"
+              style={{ width: '100%', height: '220px', objectFit: 'cover', display: 'block' }}
+            />
+            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent 30%, rgba(7, 9, 14, 0.85) 100%)' }} />
+            <div style={{ position: 'absolute', bottom: '12px', left: '12px', right: '12px', background: 'rgba(11, 15, 23, 0.92)', backdropFilter: 'blur(10px)', padding: '8px 12px', borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.1)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <span style={{ color: '#cbd5e1', fontSize: '0.72rem', fontWeight: '600' }}>Live Supervision Console</span>
+              <span className="badge badge-emerald" style={{ fontSize: '0.6rem', padding: '1px 6px' }}>Whisper Active</span>
+            </div>
+          </div>
+
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+              <span className="badge badge-primary">Supervisor Command</span>
+              <span className="badge badge-emerald">24ms WebRTC Stream</span>
+            </div>
+            <h3 style={{ fontSize: '1.45rem', fontWeight: '800', color: 'var(--oda-text-primary)', marginBottom: '10px' }}>
+              Sub-Second Live Headset Coaching
+            </h3>
+            <p style={{ color: 'var(--oda-text-secondary)', fontSize: '0.885rem', lineHeight: '1.6', margin: 0 }}>
+              Supervisors can monitor active floor queues and whisper direct winning talk tracks into a rep’s headset during high-stakes enterprise negotiations without the client hearing a sound.
+            </p>
+          </div>
         </div>
 
-        {/* 3 Pillars of Floor Management */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px', maxWidth: '1100px', margin: '0 auto' }}>
-          
-          <div className="card-saas">
-            <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'rgba(56, 189, 248, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#38bdf8', marginBottom: '16px' }}>
-              <Headphones size={20} />
-            </div>
-            <h3 style={{ fontSize: '1.2rem', fontWeight: '700', color: '#fff', marginBottom: '8px' }}>
-              Live Whisper Coaching & Barging
-            </h3>
-            <p style={{ color: '#94a3b8', fontSize: '0.875rem', lineHeight: '1.6' }}>
-              Listen in silently, whisper direct coaching cues into an agent’s headset, or barge in to turn a pivotal conversation around. Zero software installs required.
-            </p>
-          </div>
-
-          <div className="card-saas">
-            <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'rgba(16, 185, 129, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#10b981', marginBottom: '16px' }}>
-              <Activity size={20} />
-            </div>
-            <h3 style={{ fontSize: '1.2rem', fontWeight: '700', color: '#fff', marginBottom: '8px' }}>
-              Real-Time Pickup Telemetry
-            </h3>
-            <p style={{ color: '#94a3b8', fontSize: '0.875rem', lineHeight: '1.6' }}>
-              Track answer rates across carrier routes, area code pools, and rep squads. Instantly detect carrier dips and re-route traffic to protect floor throughput.
-            </p>
-          </div>
-
-          <div className="card-saas">
-            <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'rgba(245, 158, 11, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fbbf24', marginBottom: '16px' }}>
-              <Users size={20} />
-            </div>
-            <h3 style={{ fontSize: '1.2rem', fontWeight: '700', color: '#fff', marginBottom: '8px' }}>
-              Dynamic Squad & Queue Balancing
-            </h3>
-            <p style={{ color: '#94a3b8', fontSize: '0.875rem', lineHeight: '1.6' }}>
-              Reallocate inbound and outbound call loads across SDR pods based on rep availability, shift schedules, and historical closing efficiency.
-            </p>
-          </div>
-
+        {/* Manager Live Dashboard Frame */}
+        <div style={{ maxWidth: '1180px', margin: '0 auto' }}>
+          <ManagerDashboardMockup />
         </div>
 
       </div>

@@ -11,7 +11,7 @@ export const FaqAccordion = () => {
   };
 
   return (
-    <section className="section-wrapper">
+    <section className="section-wrapper" id="faq">
       <div className="container-narrow">
         
         <SectionHeading
@@ -29,12 +29,14 @@ export const FaqAccordion = () => {
             return (
               <div
                 key={idx}
+                className="faq-item-card"
                 style={{
-                  background: 'rgba(14, 19, 31, 0.6)',
-                  border: isOpen ? '1px solid rgba(59, 130, 246, 0.4)' : '1px solid rgba(255, 255, 255, 0.07)',
+                  background: 'var(--oda-surface)',
+                  border: isOpen ? '1px solid var(--oda-border-active)' : '1px solid var(--oda-border)',
                   borderRadius: '12px',
                   overflow: 'hidden',
                   transition: 'all var(--transition-fast)',
+                  boxShadow: isOpen ? '0 4px 18px rgba(37, 99, 235, 0.12)' : 'none',
                 }}
               >
                 <button
@@ -47,10 +49,13 @@ export const FaqAccordion = () => {
                     alignItems: 'center',
                     gap: '16px',
                     textAlign: 'left',
-                    color: '#ffffff',
+                    color: 'var(--oda-text-primary)',
                     fontWeight: '700',
                     fontSize: '1rem',
                     fontFamily: 'var(--font-heading)',
+                    background: 'transparent',
+                    border: 'none',
+                    cursor: 'pointer',
                   }}
                   aria-expanded={isOpen}
                 >
@@ -61,24 +66,18 @@ export const FaqAccordion = () => {
                       transform: isOpen ? 'rotate(180deg)' : 'none',
                       transition: 'transform 0.2s ease',
                       flexShrink: 0,
-                      color: isOpen ? '#38bdf8' : '#94a3b8',
+                      color: isOpen ? 'var(--oda-primary)' : 'var(--oda-text-muted)',
                     }}
                   />
                 </button>
 
-                {isOpen && (
-                  <div
-                    style={{
-                      padding: '0 24px 20px 24px',
-                      color: '#94a3b8',
-                      fontSize: '0.9rem',
-                      lineHeight: '1.6',
-                    }}
-                    className="animate-fadeIn"
-                  >
-                    {faq.answer}
+                <div className={`faq-answer-grid ${isOpen ? 'is-open' : ''}`} aria-hidden={!isOpen}>
+                  <div>
+                    <div style={{ padding: '0 24px 20px 24px', color: 'var(--oda-text-secondary)', fontSize: '0.9rem', lineHeight: '1.6' }}>
+                      {faq.answer}
+                    </div>
                   </div>
-                )}
+                </div>
               </div>
             );
           })}

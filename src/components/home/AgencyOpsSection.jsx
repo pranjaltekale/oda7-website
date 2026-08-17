@@ -1,167 +1,133 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { SectionHeading } from '../common/SectionHeading';
 import {
   Users,
-  DollarSign,
-  Trophy,
+  Award,
   Calendar,
-  Clock,
+  DollarSign,
+  FileSpreadsheet,
+  TrendingUp,
   ShieldCheck,
   CheckCircle2,
-  FileSpreadsheet,
-  Award,
 } from 'lucide-react';
 
 export const AgencyOpsSection = () => {
-  const [activeStory, setActiveStory] = useState('run-floor');
-
-  const stories = [
-    {
-      id: 'run-floor',
-      title: 'Run the Floor',
-      icon: Users,
-      headline: 'Orchestrate agents, squads, and floor queues in real-time.',
-      items: [
-        'Organize sales reps into regional pods, territory squads, and product divisions.',
-        'Live agent status telemetry: On Call, Available, In Wrap-up, or On Break.',
-        'Dynamic lead queue redistribution when reps step away or clock out.',
-      ],
-      tag: 'Floor Operations',
-    },
-    {
-      id: 'manage-people',
-      title: 'Manage the People',
-      icon: Calendar,
-      headline: 'Attendance, leave management, and automated onboarding.',
-      items: [
-        'Geo-verified shift attendance and biometric/browser time tracking.',
-        'Self-serve vacation and sick leave requests with automated queue re-routing.',
-        'Standardized rep onboarding paths with interactive script certification.',
-      ],
-      tag: 'People Ops',
-    },
-    {
-      id: 'measure-perf',
-      title: 'Measure Performance',
-      icon: Trophy,
-      headline: 'Live TV leaderboards, achievements, and sales contests.',
-      items: [
-        'TV-mode broadcast screens for live deal celebrations with sound cues & confetti.',
-        'Run rep vs. rep duels and squad tournaments with custom prize pools.',
-        'Milestone badges for meaningful team achievements and activity goals.',
-      ],
-      tag: 'Gamification',
-    },
-    {
-      id: 'automate-ops',
-      title: 'Automate Operations',
-      icon: DollarSign,
-      headline: 'Automated commission calculation and itemized payslip dispatch.',
-      items: [
-        'Real-time commission engine calculates payouts on Closed-Won immediately.',
-        'Support for tiered quota accelerators, flat rate bonuses, and weekend SPIFFs.',
-        'Generate itemized PDF payslips with base salary, taxes, and earned bonuses.',
-      ],
-      tag: 'Payroll & Compensation',
-    },
-    {
-      id: 'control-platform',
-      title: 'Control the Platform',
-      icon: ShieldCheck,
-      headline: 'Granular enterprise permissions, audit trails, and webhooks.',
-      items: [
-        'Role-based access controls (RBAC) with field-level permissions and queue limits.',
-        'Tamper-proof immutable audit logs for all logins, exports, and call recordings.',
-        'Trigger external REST webhooks on any sales, attendance, or payroll event.',
-      ],
-      tag: 'Governance & Security',
-    },
-  ];
-
-  const current = stories.find((s) => s.id === activeStory) || stories[0];
-
   return (
-    <section id="agency-admin" className="section-wrapper">
+    <section id="agency-ops" className="section-wrapper">
       <div className="container-wide">
         
         <SectionHeading
-          eyebrow="Agency & People Operations"
+          eyebrow="People, Payroll & Operations"
           eyebrowIcon="Users"
-          title="From daily floor rosters to"
-          highlightText="automated payroll."
-          description="Everything required to govern, motivate, and compensate high-velocity sales organizations without messy spreadsheets or disjointed HR tools."
+          title="Keep the entire"
+          highlightText="operation connected."
+          description="Automate verified commission calculations, track shift attendance with geolocation, launch floor revenue battles, and generate itemized PDF payslips with zero spreadsheet lag."
         />
 
-        {/* Story Selector Navigation */}
-        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '36px', flexWrap: 'wrap', gap: '8px' }}>
-          <div className="tab-group">
-            {stories.map((story) => {
-              const IconComp = story.icon;
-              return (
-                <button
-                  key={story.id}
-                  className={`tab-btn ${activeStory === story.id ? 'active' : ''}`}
-                  onClick={() => setActiveStory(story.id)}
-                >
-                  <IconComp size={16} />
-                  <span>{story.title}</span>
-                </button>
-              );
-            })}
+        {/* Agency Operations Real-World Story Strip */}
+        <div
+          style={{
+            maxWidth: '1180px',
+            margin: '0 auto 32px auto',
+            display: 'grid',
+            gridTemplateColumns: 'minmax(280px, 340px) 1fr',
+            gap: '32px',
+            alignItems: 'center',
+            background: 'linear-gradient(135deg, rgba(14, 23, 42, 0.95) 0%, rgba(7, 10, 18, 0.98) 100%)',
+            border: '1px solid rgba(59, 130, 246, 0.3)',
+            borderRadius: '20px',
+            padding: '28px',
+          }}
+          className="mockup-grid-2col"
+        >
+          {/* Operations Leader Photo */}
+          <div style={{ position: 'relative', borderRadius: '14px', overflow: 'hidden', border: '1px solid rgba(255, 255, 255, 0.1)' }}>
+            <img
+              src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&auto=format&fit=crop&q=80"
+              alt="Operations and HR Leader"
+              style={{ width: '100%', height: '220px', objectFit: 'cover', display: 'block' }}
+            />
+            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent 30%, rgba(7, 9, 14, 0.85) 100%)' }} />
+            <div style={{ position: 'absolute', bottom: '12px', left: '12px', right: '12px', background: 'rgba(11, 15, 23, 0.92)', backdropFilter: 'blur(10px)', padding: '8px 12px', borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.1)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <span style={{ color: '#cbd5e1', fontSize: '0.72rem', fontWeight: '600' }}>Automated Payroll Engine</span>
+              <span className="badge badge-emerald" style={{ fontSize: '0.6rem', padding: '1px 6px' }}>100% Reconciled</span>
+            </div>
+          </div>
+
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+              <span className="badge badge-amber">Automated Operations</span>
+              <span className="badge badge-emerald">Zero Payroll Disputes</span>
+            </div>
+            <h3 style={{ fontSize: '1.45rem', fontWeight: '800', color: '#fff', marginBottom: '10px' }}>
+              Instant Commission Calculations & Shift Governance
+            </h3>
+            <p style={{ color: '#94a3b8', fontSize: '0.885rem', lineHeight: '1.6', margin: 0 }}>
+              When a sales representative marks a deal Closed-Won, ODA7 instantly calculates the correct tier accelerator, credits the rep's digital commission wallet, and updates the monthly payroll batch without manual intervention.
+            </p>
           </div>
         </div>
 
-        {/* Active Story Card Frame */}
-        <div
-          style={{
-            maxWidth: '1080px',
-            margin: '0 auto',
-            background: 'linear-gradient(135deg, rgba(14, 23, 42, 0.9) 0%, rgba(7, 10, 18, 0.95) 100%)',
-            border: '1px solid rgba(59, 130, 246, 0.35)',
-            borderRadius: '16px',
-            padding: '36px',
-            boxShadow: '0 20px 40px rgba(0,0,0,0.6)',
-          }}
-          key={activeStory}
-          className="animate-fadeIn"
-        >
-          <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '36px', alignItems: 'center' }}>
-            <div>
-              <span className="badge badge-emerald" style={{ marginBottom: '12px' }}>
-                {current.tag}
+        {/* Agency Operations Mockup */}
+        <div style={{ maxWidth: '1180px', margin: '0 auto' }}>
+          <div className="dashboard-mockup-frame">
+            <div className="mockup-header-bar">
+              <div className="mockup-dots">
+                <div className="mockup-dot red" />
+                <div className="mockup-dot yellow" />
+                <div className="mockup-dot green" />
+              </div>
+              <div className="mockup-title-bar">
+                <Users size={13} color="#38bdf8" />
+                <span>oda7 // BIZZFLY Agency Operations — Payroll & Floor Engagement</span>
+              </div>
+              <span className="badge badge-emerald" style={{ fontSize: '0.6875rem' }}>
+                Monthly Payroll Ready
               </span>
-              <h3 style={{ fontSize: '1.75rem', fontWeight: '800', color: '#fff', marginBottom: '14px' }}>
-                {current.headline}
-              </h3>
-              
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginTop: '20px' }}>
-                {current.items.map((item, idx) => (
-                  <div key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
-                    <CheckCircle2 size={16} color="#10b981" style={{ flexShrink: 0, marginTop: '3px' }} />
-                    <span style={{ color: '#cbd5e1', fontSize: '0.9rem', lineHeight: '1.5' }}>
-                      {item}
-                    </span>
-                  </div>
-                ))}
-              </div>
             </div>
-
-            {/* Visual Callout Box */}
-            <div style={{ background: 'rgba(7, 10, 18, 0.8)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '12px', padding: '24px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
-                <div style={{ width: '36px', height: '36px', borderRadius: '8px', background: 'rgba(37, 99, 235, 0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#38bdf8' }}>
-                  <current.icon size={18} />
+            <div style={{ padding: '24px', background: '#070a12', fontSize: '0.8125rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', marginBottom: '20px' }}>
+                <div style={{ background: 'rgba(14, 19, 32, 0.85)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '8px', padding: '16px' }}>
+                  <div style={{ color: '#94a3b8', fontSize: '0.7rem', textTransform: 'uppercase', marginBottom: '4px' }}>Earned Commissions (This Month)</div>
+                  <div style={{ fontSize: '1.5rem', fontWeight: '800', color: '#10b981' }}>$42,850.00</div>
+                  <div style={{ color: '#34d399', fontSize: '0.75rem', marginTop: '2px' }}>100% verified across 412 closed deals</div>
                 </div>
-                <div>
-                  <div style={{ fontWeight: '700', color: '#fff', fontSize: '1rem' }}>{current.title}</div>
-                  <div style={{ color: '#94a3b8', fontSize: '0.75rem' }}>Synchronized with oda7 Core</div>
+                <div style={{ background: 'rgba(14, 19, 32, 0.85)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '8px', padding: '16px' }}>
+                  <div style={{ color: '#94a3b8', fontSize: '0.7rem', textTransform: 'uppercase', marginBottom: '4px' }}>Active Floor Contests</div>
+                  <div style={{ fontSize: '1.5rem', fontWeight: '800', color: '#38bdf8' }}>3 Live Battles</div>
+                  <div style={{ color: '#cbd5e1', fontSize: '0.75rem', marginTop: '2px' }}>Weekend Sprint: $2,500 Prize Pool</div>
+                </div>
+                <div style={{ background: 'rgba(14, 19, 32, 0.85)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '8px', padding: '16px' }}>
+                  <div style={{ color: '#94a3b8', fontSize: '0.7rem', textTransform: 'uppercase', marginBottom: '4px' }}>Shift Attendance Rate</div>
+                  <div style={{ fontSize: '1.5rem', fontWeight: '800', color: '#fbbf24' }}>98.4%</div>
+                  <div style={{ color: '#34d399', fontSize: '0.75rem', marginTop: '2px' }}>24 Reps clocked in on time</div>
                 </div>
               </div>
-
-              <div style={{ background: 'rgba(255,255,255,0.03)', padding: '14px', borderRadius: '8px', color: '#93c5fd', fontSize: '0.8125rem', lineHeight: '1.5' }}>
-                ✓ Zero double-entry of sales records.<br />
-                ✓ Rep hours, closed deals, and commissions sync continuously.<br />
-                ✓ Export itemized payroll in 1 click for bank direct deposit.
+              <div style={{ background: 'rgba(14, 19, 31, 0.6)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '10px', padding: '16px' }}>
+                <div style={{ fontWeight: '700', color: '#fff', marginBottom: '10px' }}>Itemized Rep Payroll & Payslip Dispatch</div>
+                <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr 1fr 1fr 120px', padding: '8px 12px', background: 'rgba(255,255,255,0.03)', borderRadius: '6px', color: '#94a3b8', fontSize: '0.75rem', fontWeight: '600' }}>
+                  <span>Rep Name</span>
+                  <span>Base Salary</span>
+                  <span>Commissions</span>
+                  <span>Total Payout</span>
+                  <span style={{ textAlign: 'right' }}>Payslip</span>
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', marginTop: '6px' }}>
+                  <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr 1fr 1fr 120px', padding: '8px 12px', borderRadius: '6px', background: 'rgba(255,255,255,0.01)', color: '#fff', alignItems: 'center' }}>
+                    <span>Alex Rivera (Tier 1 SDR)</span>
+                    <span>$4,000.00</span>
+                    <span style={{ color: '#34d399', fontWeight: '700' }}>+$3,420.00</span>
+                    <span style={{ fontWeight: '700' }}>$7,420.00</span>
+                    <span style={{ textAlign: 'right', color: '#38bdf8', cursor: 'pointer' }}>Download PDF</span>
+                  </div>
+                  <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr 1fr 1fr 120px', padding: '8px 12px', borderRadius: '6px', background: 'rgba(255,255,255,0.01)', color: '#fff', alignItems: 'center' }}>
+                    <span>Marcus Chen (Enterprise AE)</span>
+                    <span>$5,500.00</span>
+                    <span style={{ color: '#34d399', fontWeight: '700' }}>+$4,800.00</span>
+                    <span style={{ fontWeight: '700' }}>$10,300.00</span>
+                    <span style={{ textAlign: 'right', color: '#38bdf8', cursor: 'pointer' }}>Download PDF</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

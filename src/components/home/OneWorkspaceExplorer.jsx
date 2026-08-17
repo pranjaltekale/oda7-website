@@ -29,8 +29,8 @@ export const OneWorkspaceExplorer = ({ onOpenDemo }) => {
       category: 'Sales Execution',
       icon: Users,
       headline: 'Automated Ingestion & Intelligent My Queue',
-      desc: 'Inbound prospects are enriched in under 800ms, phone numbers verified, and placed in rep My Queue by intent score.',
-      metrics: '<15s Inbound Speed • 96/100 Intent',
+      desc: 'Inbound prospects enter a visible qualification and assignment workflow before reaching the agent queue.',
+      metrics: 'Visible intake • Owned queue',
       bullets: ['Auto-enrichment from web forms & APIs', 'Algorithmic lead scoring to prevent cherry-picking', 'Duplicate detection & CRM sync'],
     },
     {
@@ -41,7 +41,7 @@ export const OneWorkspaceExplorer = ({ onOpenDemo }) => {
       headline: '0.8s WebRTC Softphone with Local Presence',
       desc: 'Match prospect local area codes automatically to lift answer rates by 34%. Includes 1-click voicemail drop and HD dual-channel recording.',
       metrics: 'Lead context • Calling workflow',
-      bullets: ['Auto local area code match (512, 415, 212)', '1-Click voicemail drop & call dispositioning', 'In-browser WebRTC softphone with zero hardware'],
+      bullets: ['Lead context beside the call', 'Call outcome and disposition workflow', 'Focused in-browser calling view'],
     },
     {
       id: 'inbox',
@@ -69,7 +69,7 @@ export const OneWorkspaceExplorer = ({ onOpenDemo }) => {
       category: 'Marketing',
       icon: Zap,
       headline: 'Multi-Touch Growth & Speed-to-Lead Cadences',
-      desc: 'Launch targeted outbound campaigns and connect web visitors to active agents in under 15 seconds.',
+      desc: 'Launch outbound campaigns and connect incoming interest to a clearly owned sales workflow.',
       metrics: '303 Leads Managed • 18.4% Conv Rate',
       bullets: ['Multi-channel cadences across WhatsApp & SMS', 'Instant web-to-call phone routing bridge', 'Multi-touch UTM ROI attribution'],
     },
@@ -98,39 +98,19 @@ export const OneWorkspaceExplorer = ({ onOpenDemo }) => {
       label: 'Branching Scripts',
       category: 'Sales Execution',
       icon: FileText,
-      headline: 'Dynamic Talk Tracks & Live Objection Battlecards',
-      desc: 'Interactive qualification scripts adapt in real-time as prospects answer questions, empowering reps with instant battlecards.',
-      metrics: 'Reusable scripts • Shared coaching context',
-      bullets: ['Branching decision trees for discovery calls', 'Real-time competitor objection rebuttals', 'Standardized pitch compliance tracking'],
+      headline: 'Interactive Dynamic Sales Scripts & Objection Handling',
+      desc: 'Guide junior reps through complex sales conversations with dynamic script logic and live objection battlecards.',
+      metrics: 'Real-Time Objection Buster',
+      bullets: ['Branching decision trees based on responses', 'In-line objection rebuttals', 'Compliance-required disclosures'],
     },
     {
-      id: 'sequences',
-      label: 'Sequences',
-      category: 'Sales Execution',
-      icon: Inbox,
-      headline: 'Automated Multi-Touch Follow-Up Cadences',
-      desc: 'Never let a qualified lead go cold. Trigger automated cadences blending WhatsApp messages, SMS, and tracked emails.',
-      metrics: '2.4x Deal Velocity • 0 Missed Follow-ups',
-      bullets: ['Conditional branching on email open / reply', 'Pre-approved WhatsApp template messages', 'Automatic sequence pause on call answer'],
-    },
-    {
-      id: 'quotes',
-      label: 'Quotes & Proposals',
-      category: 'Sales Execution',
-      icon: FileText,
-      headline: '1-Click Digital Proposals with Mobile Signatures',
-      desc: 'Generate branded CPQ proposals from active call data, track prospect view time, and close deals instantly.',
-      metrics: '1-Click Proposals • Instant Closed-Won',
-      bullets: ['Mobile-optimized electronic signatures', 'Real-time client view notifications', 'Auto-progression to Closed-Won on sign'],
-    },
-    {
-      id: 'agents',
-      label: 'Agent Floor Roster',
+      id: 'agent-status',
+      label: 'Agent Status Roster',
       category: 'People Ops',
       icon: Users,
       headline: 'Live Agent Status Telemetry & State Balancing',
       desc: 'Real-time floor visibility into rep states: On Call, Available, In Wrap-up, or On Break with automatic queue re-routing.',
-      metrics: '24 Reps Active • Zero Idle Floor Lag',
+      metrics: 'Agent status • Shared floor context',
       bullets: ['Live color-coded status badges', 'Automatic queue re-distribution on break', 'Shift schedule compliance tracking'],
     },
     {
@@ -192,8 +172,8 @@ export const OneWorkspaceExplorer = ({ onOpenDemo }) => {
           {/* Left Column: Categorized Module Selector */}
           <div
             style={{
-              background: 'rgba(11, 15, 23, 0.85)',
-              border: '1px solid rgba(255, 255, 255, 0.08)',
+              background: 'var(--oda-surface)',
+              border: '1px solid var(--oda-border)',
               borderRadius: '16px',
               padding: '16px',
               display: 'flex',
@@ -201,9 +181,10 @@ export const OneWorkspaceExplorer = ({ onOpenDemo }) => {
               gap: '6px',
               maxHeight: '620px',
               overflowY: 'auto',
+              boxShadow: '0 4px 20px rgba(0,0,0,0.04)',
             }}
           >
-            <div style={{ fontSize: '0.7rem', color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.08em', padding: '6px 12px', fontWeight: '700', fontFamily: 'var(--font-mono)' }}>
+            <div style={{ fontSize: '0.7rem', color: 'var(--oda-text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em', padding: '6px 12px', fontWeight: '700', fontFamily: 'var(--font-mono)' }}>
               Select ODA7 Capability (14 Modules)
             </div>
 
@@ -221,9 +202,9 @@ export const OneWorkspaceExplorer = ({ onOpenDemo }) => {
                     justifyContent: 'space-between',
                     padding: '10px 14px',
                     borderRadius: '8px',
-                    background: isSelected ? 'rgba(37, 99, 235, 0.22)' : 'rgba(255,255,255,0.02)',
-                    border: isSelected ? '1px solid rgba(59, 130, 246, 0.45)' : '1px solid transparent',
-                    color: isSelected ? '#38bdf8' : '#94a3b8',
+                    background: isSelected ? 'var(--oda-primary)' : 'transparent',
+                    border: isSelected ? '1px solid var(--oda-primary-light)' : '1px solid transparent',
+                    color: isSelected ? '#ffffff' : 'var(--oda-text-secondary)',
                     cursor: 'pointer',
                     transition: 'all 0.15s ease',
                     textAlign: 'left',
@@ -234,26 +215,26 @@ export const OneWorkspaceExplorer = ({ onOpenDemo }) => {
                       width: '28px',
                       height: '28px',
                       borderRadius: '6px',
-                      background: isSelected ? 'var(--accent-primary)' : 'rgba(255,255,255,0.06)',
+                      background: isSelected ? 'rgba(0,0,0,0.25)' : 'var(--oda-primary-soft)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      color: '#fff',
+                      color: isSelected ? '#ffffff' : 'var(--oda-accent)',
                     }}>
                       <IconComp size={14} />
                     </div>
                     <div>
-                      <div style={{ fontWeight: isSelected ? '700' : '600', color: isSelected ? '#fff' : '#cbd5e1', fontSize: '0.85rem' }}>
+                      <div style={{ fontWeight: isSelected ? '700' : '600', color: isSelected ? '#ffffff' : 'var(--oda-text-primary)', fontSize: '0.85rem' }}>
                         {cap.label}
                       </div>
-                      <div style={{ fontSize: '0.6875rem', color: '#64748b' }}>
+                      <div style={{ fontSize: '0.6875rem', color: isSelected ? 'rgba(255,255,255,0.8)' : 'var(--oda-text-muted)' }}>
                         {cap.category}
                       </div>
                     </div>
                   </div>
 
                   {isSelected && (
-                    <ArrowRight size={14} color="#38bdf8" />
+                    <ArrowRight size={14} color="#ffffff" />
                   )}
                 </button>
               );
@@ -262,18 +243,15 @@ export const OneWorkspaceExplorer = ({ onOpenDemo }) => {
 
           {/* Right Column: Large Animated Dashboard & Detail Preview */}
           <div
+            className="feature-showcase-panel animate-fadeIn"
             style={{
-              background: 'linear-gradient(135deg, rgba(14, 23, 42, 0.95) 0%, rgba(7, 10, 18, 0.98) 100%)',
-              border: '1px solid rgba(59, 130, 246, 0.35)',
               borderRadius: '16px',
               padding: '36px',
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'space-between',
-              boxShadow: '0 20px 50px rgba(0,0,0,0.6)',
             }}
             key={activeItem}
-            className="animate-fadeIn"
           >
             <div>
               {/* Header tags */}
@@ -287,19 +265,19 @@ export const OneWorkspaceExplorer = ({ onOpenDemo }) => {
               </div>
 
               {/* Title & Description */}
-              <h3 style={{ fontSize: '1.75rem', fontWeight: '800', color: '#ffffff', marginBottom: '12px', lineHeight: '1.2' }}>
+              <h3 style={{ fontSize: '1.75rem', fontWeight: '800', color: 'var(--oda-text-primary)', marginBottom: '12px', lineHeight: '1.2' }}>
                 {currentCap.headline}
               </h3>
 
-              <p style={{ color: '#94a3b8', fontSize: '0.95rem', lineHeight: '1.6', marginBottom: '24px' }}>
+              <p style={{ color: 'var(--oda-text-secondary)', fontSize: '0.95rem', lineHeight: '1.6', marginBottom: '24px' }}>
                 {currentCap.desc}
               </p>
 
               {/* Capability Checklist */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '32px' }}>
                 {currentCap.bullets.map((bullet, bIdx) => (
-                  <div key={bIdx} style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#cbd5e1', fontSize: '0.875rem' }}>
-                    <CheckCircle2 size={16} color="#10b981" style={{ flexShrink: 0 }} />
+                  <div key={bIdx} style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--oda-text-secondary)', fontSize: '0.875rem' }}>
+                    <CheckCircle2 size={16} color="var(--oda-success)" style={{ flexShrink: 0 }} />
                     <span>{bullet}</span>
                   </div>
                 ))}
@@ -307,16 +285,16 @@ export const OneWorkspaceExplorer = ({ onOpenDemo }) => {
             </div>
 
             {/* Visual Simulated Action Box */}
-            <div style={{ background: 'rgba(7, 10, 18, 0.9)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px', padding: '20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px' }}>
+            <div style={{ background: 'var(--oda-surface)', border: '1px solid var(--oda-border)', borderRadius: '12px', padding: '20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'rgba(56, 189, 248, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#38bdf8' }}>
+                <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'var(--oda-primary-soft)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--oda-accent)' }}>
                   <currentCap.icon size={20} />
                 </div>
                 <div>
-                  <div style={{ fontWeight: '700', color: '#fff', fontSize: '0.95rem' }}>
+                  <div style={{ fontWeight: '700', color: 'var(--oda-text-primary)', fontSize: '0.95rem' }}>
                     Native {currentCap.label} Telemetry
                   </div>
-                  <div style={{ color: '#64748b', fontSize: '0.75rem' }}>
+                  <div style={{ color: 'var(--oda-text-muted)', fontSize: '0.75rem' }}>
                     Synchronized with BIZZFLY oda7 Mesh
                   </div>
                 </div>
@@ -327,7 +305,7 @@ export const OneWorkspaceExplorer = ({ onOpenDemo }) => {
                 style={{
                   padding: '8px 16px',
                   borderRadius: '6px',
-                  background: 'var(--grad-primary)',
+                  background: 'var(--oda-primary)',
                   color: '#fff',
                   fontSize: '0.8125rem',
                   fontWeight: '700',
@@ -335,6 +313,7 @@ export const OneWorkspaceExplorer = ({ onOpenDemo }) => {
                   alignItems: 'center',
                   gap: '6px',
                   cursor: 'pointer',
+                  border: 'none',
                 }}
               >
                 <span>Simulate {currentCap.label}</span>
