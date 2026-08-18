@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import {
   PhoneCall,
@@ -24,7 +26,7 @@ export const SalesDashboardMockup = ({ interactive = true }) => {
   const [selectedScriptBranch, setSelectedScriptBranch] = useState(0);
 
   const scriptBranches = [
-    { title: 'Value Prop (BIZZFLY)', text: 'We replace your disconnected CRM, dialer, and WhatsApp tools with one synchronous operating system, reducing tool costs by 60%.' },
+    { title: 'Connected workspace', text: 'Bring lead context, calling, follow-up and commercial actions into one continuous workflow.' },
     { title: 'Calling Context', text: 'Connect website enquiries, lead ownership and the calling workflow in one operating view.' },
     { title: 'Coaching & AI', text: 'Give managers conversation context while AI-assisted actions remain visible to the agent.' },
   ];
@@ -40,7 +42,7 @@ export const SalesDashboardMockup = ({ interactive = true }) => {
         </div>
         <div className="mockup-title-bar">
           <span className="pulse-dot" />
-          <span>oda7 // BIZZFLY Workspace — Alex Rivera (Tier 1 Sales SDR)</span>
+          <span>ODA7 // Sales Workspace — Illustrative SDR View</span>
         </div>
         <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
           {/* Live Waveform */}
@@ -51,7 +53,7 @@ export const SalesDashboardMockup = ({ interactive = true }) => {
             <div className="audio-wave-bar" style={{ animationDelay: '0.1s' }} />
           </div>
           <span className="badge badge-emerald" style={{ fontSize: '0.6875rem' }}>
-            Live Call Connected
+            Illustrative call state
           </span>
         </div>
       </div>
@@ -101,49 +103,49 @@ export const SalesDashboardMockup = ({ interactive = true }) => {
           {/* Queue Item 1 (Active) */}
           <div style={{ background: 'var(--oda-primary-soft)', border: '1px solid var(--oda-border-blue)', borderRadius: '8px', padding: '10px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
-              <span style={{ fontWeight: '700', color: 'var(--oda-text-primary)' }}>Sarah Jenkins</span>
-              <span style={{ color: 'var(--oda-success)', fontWeight: '700', fontSize: '0.75rem' }}>96 AI</span>
+              <span style={{ fontWeight: '700', color: 'var(--oda-text-primary)' }}>Customer record A</span>
+              <span style={{ color: 'var(--oda-success)', fontWeight: '700', fontSize: '0.75rem' }}>Priority context</span>
             </div>
-            <div style={{ color: 'var(--oda-text-secondary)', fontSize: '0.75rem' }}>VP Operations • Logix Ent.</div>
+            <div style={{ color: 'var(--oda-text-secondary)', fontSize: '0.75rem' }}>Operations lead • Example account</div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginTop: '6px', color: 'var(--oda-primary)', fontSize: '0.7rem' }}>
-              <Clock size={11} /> Connected 02:45 • Local 512
+              <Clock size={11} /> Connected • Record open
             </div>
           </div>
 
           {/* Queue Item 2 */}
           <div style={{ background: 'var(--oda-surface)', border: '1px solid var(--oda-border)', borderRadius: '8px', padding: '10px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
-              <span style={{ fontWeight: '600', color: 'var(--oda-text-primary)' }}>Liam Vance</span>
-              <span style={{ color: 'var(--oda-primary)', fontWeight: '700', fontSize: '0.75rem' }}>88 AI</span>
+              <span style={{ fontWeight: '600', color: 'var(--oda-text-primary)' }}>Customer record B</span>
+              <span style={{ color: 'var(--oda-primary)', fontWeight: '700', fontSize: '0.75rem' }}>Review next</span>
             </div>
-            <div style={{ color: 'var(--oda-text-muted)', fontSize: '0.75rem' }}>Sales Director • OmniCorp</div>
-            <div style={{ color: 'var(--oda-text-muted)', fontSize: '0.7rem', marginTop: '4px' }}>Inbound Form • 12m ago</div>
+            <div style={{ color: 'var(--oda-text-muted)', fontSize: '0.75rem' }}>Sales lead • Example account</div>
+            <div style={{ color: 'var(--oda-text-muted)', fontSize: '0.7rem', marginTop: '4px' }}>Inbound form • Recent</div>
           </div>
 
           {/* Queue Item 3 */}
           <div style={{ background: 'var(--oda-surface)', border: '1px solid var(--oda-border)', borderRadius: '8px', padding: '10px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
-              <span style={{ fontWeight: '600', color: 'var(--oda-text-primary)' }}>Maya Lin</span>
-              <span style={{ color: '#fbbf24', fontWeight: '700', fontSize: '0.75rem' }}>74 AI</span>
+              <span style={{ fontWeight: '600', color: 'var(--oda-text-primary)' }}>Customer record C</span>
+              <span style={{ color: '#fbbf24', fontWeight: '700', fontSize: '0.75rem' }}>Follow-up</span>
             </div>
-            <div style={{ color: 'var(--oda-text-muted)', fontSize: '0.75rem' }}>Ops Lead • Nexa Health</div>
-            <div style={{ color: 'var(--oda-text-muted)', fontSize: '0.7rem', marginTop: '4px' }}>Sequence Day 2 (WhatsApp)</div>
+            <div style={{ color: 'var(--oda-text-muted)', fontSize: '0.75rem' }}>People lead • Example account</div>
+            <div style={{ color: 'var(--oda-text-muted)', fontSize: '0.7rem', marginTop: '4px' }}>Sequence step • Messaging</div>
           </div>
 
           {/* Personal Performance Scorecard */}
           <div style={{ marginTop: 'auto', background: 'var(--oda-surface)', border: '1px solid var(--oda-border)', borderRadius: '8px', padding: '12px' }}>
-            <div style={{ fontSize: '0.7rem', color: 'var(--oda-text-muted)', textTransform: 'uppercase', marginBottom: '6px', fontWeight: '600' }}>Today's Personal Velocity</div>
+            <div style={{ fontSize: '0.7rem', color: 'var(--oda-text-muted)', textTransform: 'uppercase', marginBottom: '6px', fontWeight: '600' }}>Personal workflow context</div>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
               <span style={{ color: 'var(--oda-text-muted)' }}>Calls Completed</span>
-              <span style={{ color: 'var(--oda-text-primary)', fontWeight: '700' }}>68 / 80</span>
+              <span style={{ color: 'var(--oda-text-primary)', fontWeight: '700' }}>Visible</span>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
               <span style={{ color: 'var(--oda-text-muted)' }}>Pickup Ratio</span>
-              <span style={{ color: 'var(--oda-success)', fontWeight: '700' }}>41.2% (+6.4%)</span>
+              <span style={{ color: 'var(--oda-success)', fontWeight: '700' }}>Reviewable</span>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
               <span style={{ color: 'var(--oda-text-muted)' }}>Commission Wallet</span>
-              <span style={{ color: 'var(--oda-primary)', fontWeight: '700' }}>+$840.00</span>
+              <span style={{ color: 'var(--oda-primary)', fontWeight: '700' }}>Rule context</span>
             </div>
           </div>
         </div>
@@ -155,17 +157,17 @@ export const SalesDashboardMockup = ({ interactive = true }) => {
           <div style={{ background: 'var(--oda-bg-alt)', border: '1px solid var(--oda-border)', borderRadius: '10px', padding: '16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             <div>
               <div style={{ fontSize: '0.7rem', color: 'var(--oda-primary)', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                Active Telephony • Local Presence (512 Austin Match)
+                Active conversation • Customer context attached
               </div>
               <div style={{ fontSize: '1.15rem', fontWeight: '700', color: 'var(--oda-text-primary)', marginTop: '2px' }}>
-                Sarah Jenkins <span style={{ fontSize: '0.85rem', color: 'var(--oda-text-muted)', fontWeight: '400' }}>+1 (512) 840-9211</span>
+                Customer record A <span style={{ fontSize: '0.85rem', color: 'var(--oda-text-muted)', fontWeight: '400' }}>Illustrative contact</span>
               </div>
               <div style={{ display: 'flex', gap: '12px', marginTop: '6px', color: 'var(--oda-text-secondary)', fontSize: '0.75rem' }}>
                 <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                  <TrendingUp size={13} color="#10b981" /> Win Prob: 84%
+                  <TrendingUp size={13} color="#10b981" /> Priority: Review
                 </span>
                 <span>•</span>
-                <span>Deal Size: $48,000 / yr</span>
+                <span>Opportunity context: Available</span>
               </div>
             </div>
 
@@ -229,7 +231,7 @@ export const SalesDashboardMockup = ({ interactive = true }) => {
                 Send WhatsApp Deck
               </button>
               <button style={{ flex: '1', padding: '8px 12px', borderRadius: '6px', background: 'var(--oda-surface)', border: '1px solid var(--oda-border)', color: 'var(--oda-text-primary)', fontSize: '0.75rem', cursor: 'pointer' }}>
-                1-Click CPQ Quote
+                Prepare Quote
               </button>
             </div>
           </div>
@@ -248,8 +250,8 @@ export const SalesDashboardMockup = ({ interactive = true }) => {
           {/* Sentiment Gauge */}
           <div style={{ background: 'var(--oda-surface)', border: '1px solid var(--oda-border)', borderRadius: '8px', padding: '12px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px', fontSize: '0.7rem', color: 'var(--oda-text-muted)' }}>
-              <span>Prospect Sentiment</span>
-              <span style={{ color: 'var(--oda-success)', fontWeight: '700' }}>+78 (High Interest)</span>
+              <span>Conversation signal</span>
+              <span style={{ color: 'var(--oda-success)', fontWeight: '700' }}>Review suggested</span>
             </div>
             <div style={{ width: '100%', height: '6px', background: 'var(--oda-bg-alt)', borderRadius: '3px', overflow: 'hidden' }}>
               <div style={{ width: '78%', height: '100%', background: 'linear-gradient(90deg, #3b82f6, #10b981)' }} />
@@ -272,11 +274,11 @@ export const SalesDashboardMockup = ({ interactive = true }) => {
 
           {/* Auto-CRM Extraction Preview */}
           <div style={{ marginTop: 'auto', background: 'var(--oda-surface)', border: '1px solid var(--oda-border)', borderRadius: '8px', padding: '12px' }}>
-            <div style={{ fontSize: '0.7rem', color: 'var(--oda-text-muted)', textTransform: 'uppercase', marginBottom: '6px', fontWeight: '600' }}>Zero-Touch Auto CRM Sync</div>
+            <div style={{ fontSize: '0.7rem', color: 'var(--oda-text-muted)', textTransform: 'uppercase', marginBottom: '6px', fontWeight: '600' }}>Connected record update</div>
             <div style={{ fontSize: '0.75rem', color: 'var(--oda-text-secondary)', lineHeight: '1.4' }}>
-              ✓ Next step: Demo scheduled Thu 2 PM<br/>
-              ✓ Pain point: Tool fragmentation (5 apps)<br/>
-              ✓ Quota commission credited on close
+              ✓ Next step: Follow-up scheduled<br/>
+              ✓ Concern: Workflow fragmentation<br/>
+              ✓ Compensation rule attached for review
             </div>
           </div>
         </div>

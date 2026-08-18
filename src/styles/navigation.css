@@ -115,6 +115,24 @@
   transform: rotate(20deg);
 }
 
+.theme-show-light {
+  display: none !important;
+}
+
+.theme-show-dark {
+  display: block !important;
+}
+
+[data-theme="light"] .theme-show-dark,
+.theme-light .theme-show-dark {
+  display: none !important;
+}
+
+[data-theme="light"] .theme-show-light,
+.theme-light .theme-show-light {
+  display: block !important;
+}
+
 .navbar-mobile-toggle {
   width: 40px; height: 40px; display: none; place-items: center; border-radius: 9px;
   color: var(--oda-text-primary); background: var(--oda-surface); border: 1px solid var(--oda-border);

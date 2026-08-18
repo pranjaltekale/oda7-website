@@ -6,14 +6,14 @@ export const featureCategories = [
   { id: 'engagement', label: 'Engagement & Contests', icon: 'Trophy', count: 4 },
   { id: 'insights', label: 'Insights & Heatmaps', icon: 'BarChart3', count: 4 },
   { id: 'admin', label: 'Administration & Roles', icon: 'Settings', count: 8 },
-  { id: 'super-admin', label: 'Super Admin Multi-Tenant', icon: 'ShieldCheck', count: 15 },
+  { id: 'super-admin', label: 'Super Admin Multi-Tenant', icon: 'ShieldCheck', count: 8 },
   { id: 'communication', label: 'Omnichannel & Inbox', icon: 'Inbox', count: 6 },
 ];
 
 export const featuresByModule = {
   sales: {
     title: 'Sales Operations & Rep Velocity',
-    subtitle: 'From inbound lead capture to instant predictive dialing and automated follow-ups.',
+    subtitle: 'From inbound lead capture to calling context and coordinated follow-up.',
     items: [
       {
         name: 'My Queue',
@@ -23,7 +23,7 @@ export const featuresByModule = {
       {
         name: 'Smart Predictive Dialer',
         desc: 'Integrated calling workspace with lead context, call controls and visible next actions.',
-        highlight: '<1s call connection',
+        highlight: 'In-workflow calling',
       },
       {
         name: 'Dynamic Sales Scripts',
@@ -41,9 +41,9 @@ export const featuresByModule = {
         highlight: 'Centralized comms',
       },
       {
-        name: 'Instant Quotes & Proposals',
-        desc: 'Generate, send, and track CPQ quotes with live client signature notifications and CRM sync.',
-        highlight: '1-click CPQ',
+        name: 'Quotes & Proposals',
+        desc: 'Prepare, send, and track product quotes with signature status and customer context.',
+        highlight: 'Connected quoting',
       },
       {
         name: 'Lead Management & Tagging',
@@ -52,8 +52,8 @@ export const featuresByModule = {
       },
       {
         name: 'Call History & Recordings',
-        desc: 'Dual-channel crystal audio recording, automatic speech-to-text transcription, and searchable transcripts.',
-        highlight: 'Dual-channel audio',
+        desc: 'Keep call history, available recordings, and transcript context attached to the customer record.',
+        highlight: 'Conversation history',
       },
       {
         name: 'Product Catalog',
@@ -67,8 +67,8 @@ export const featuresByModule = {
       },
       {
         name: 'Calendar & Meeting Scheduler',
-        desc: 'Frictionless meeting booking links synced with Google Calendar and Outlook with auto-reminders.',
-        highlight: '2-way calendar sync',
+        desc: 'Coordinate booking links, calendar availability, and meeting reminders around the customer record.',
+        highlight: 'Meeting context',
       },
       {
         name: 'Sales Dashboard',
@@ -83,18 +83,18 @@ export const featuresByModule = {
     items: [
       {
         name: 'Explain My Numbers',
-        desc: 'Natural language sales intelligence. Ask complex questions like "Why did conversions dip in EMEA?" and get instant data synthesis.',
-        highlight: 'Natural language SQL',
+        desc: 'Ask plain-language questions about available sales data and review the supporting operational context.',
+        highlight: 'Explainable context',
       },
       {
         name: 'Real-time Objection Buster',
-        desc: 'Live speech analysis that listens during calls and flashes instant battlecards when price or competitor objections arise.',
+        desc: 'Surface relevant guidance during a conversation when a pricing or competitor topic appears.',
         highlight: 'Live speech coaching',
       },
       {
         name: 'Predictive Lead Scoring',
-        desc: 'Machine learning models scoring inbound prospects 1-100 based on firmographics, behavior, and intent signals.',
-        highlight: 'ML scoring model',
+        desc: 'Organize lead-priority signals from the customer and activity context available to the workflow.',
+        highlight: 'Priority signals',
       },
       {
         name: 'AI Post-Call Summarization',
@@ -103,29 +103,29 @@ export const featuresByModule = {
       },
       {
         name: 'AI Sales Recommendations',
-        desc: 'Prescriptive next-best-actions suggesting optimal call times, pitch strategies, and sequence steps per prospect.',
+        desc: 'Present relevant next-action suggestions for review within the customer workflow.',
         highlight: 'Actionable guidance',
       },
       {
         name: 'Automated Insight Alerts',
-        desc: 'Proactive anomaly detection flagging rep burnout risks, deal velocity slowdowns, and surging objection topics.',
-        highlight: 'Anomaly detection',
+        desc: 'Bring changing activity patterns and conversation themes to a manager’s attention.',
+        highlight: 'Pattern alerts',
       },
       {
         name: 'AI Sales Assistant Copilot',
-        desc: 'Personal AI agent capable of drafting contextual replies, composing follow-up emails, and prepping rep call briefings.',
+        desc: 'Draft contextual replies, follow-up notes, and call briefings for a person to review.',
         highlight: 'Contextual briefing',
       },
     ],
   },
   people: {
     title: 'People Operations & Floor Management',
-    subtitle: 'Run the entire sales floor with real-time visibility, agent management, and workforce governance.',
+    subtitle: 'Connect floor visibility, team structure, availability, and manager workflows.',
     items: [
       {
         name: 'Real-time Floor Queue Monitor',
         desc: 'Live oversight of queue load, waiting leads, active concurrent calls, and floor availability.',
-        highlight: 'Real-time telemetry',
+        highlight: 'Floor context',
       },
       {
         name: 'Agent Status Grid & Whispering',
@@ -139,18 +139,18 @@ export const featuresByModule = {
       },
       {
         name: 'Automated Onboarding Workflows',
-        desc: 'Standardized onboarding paths with script certifications, mock call scoring, and automated access provisioning.',
-        highlight: 'Fast ramp time',
+        desc: 'Organize onboarding paths, practice activities, and access preparation in one place.',
+        highlight: 'Guided onboarding',
       },
       {
         name: 'Attendance & Clock-in/out',
-        desc: 'Geo-verified biometric or browser time-tracking integrated directly with agent shift availability.',
+        desc: 'Connect configured time and attendance records with agent shift availability.',
         highlight: 'Shift tracking',
       },
       {
         name: 'Leave & PTO Management',
-        desc: 'Self-serve vacation and sick leave requests with approval chains and automatic queue load re-routing.',
-        highlight: 'Auto queue re-route',
+        desc: 'Coordinate leave requests, approval status, and queue ownership around team availability.',
+        highlight: 'Availability context',
       },
       {
         name: 'Manager Live Scorecard',
@@ -165,12 +165,12 @@ export const featuresByModule = {
     items: [
       {
         name: 'Real-time Commission Engine',
-        desc: 'Reps see their commission balance update the instant a deal moves to Closed-Won. Tiered, flat, and accelerator rules.',
-        highlight: 'Instant gratification',
+        desc: 'Connect eligible closed work with configured commission rules and a reviewable earnings record.',
+        highlight: 'Earnings context',
       },
       {
         name: 'Automated Payroll Calculation',
-        desc: 'Calculate base salary, overtime, commissions, clawbacks, and bonuses with one-click payroll exports.',
+        desc: 'Prepare base pay, overtime, commissions, adjustments, and bonuses for payroll review and export.',
         highlight: 'Reviewable payroll context',
       },
       {
@@ -185,7 +185,7 @@ export const featuresByModule = {
       },
       {
         name: 'Quota Pacing & Accelerator Rules',
-        desc: 'Automatic tier stepping (e.g. 100% quota = 10% commission; 120% quota = 18% accelerator bonus).',
+        desc: 'Configure tiered quota and accelerator rules for use in compensation review.',
         highlight: 'Tier accelerators',
       },
     ],
@@ -206,13 +206,13 @@ export const featuresByModule = {
       },
       {
         name: 'Achievement Badges & Milestones',
-        desc: 'Unlock collectible performance badges for first $100k month, 1,000 cold calls, or 50% pickup ratio.',
+        desc: 'Recognize meaningful team milestones with configurable achievement badges.',
         highlight: 'Milestone rewards',
       },
       {
         name: 'Company Announcements & Kudos',
         desc: 'Broadcast executive shout-outs, win banners, and policy updates directly to every agent workspace.',
-        highlight: 'Instant broadcasting',
+        highlight: 'Shared updates',
       },
     ],
   },
@@ -253,8 +253,8 @@ export const featuresByModule = {
       },
       {
         name: 'Immutable Audit Logs',
-        desc: 'Comprehensive tamper-proof security log recording every login, record export, call download, and permission change.',
-        highlight: 'Compliance ready',
+        desc: 'Review recorded login, export, download, and permission-change activity in one administrative history.',
+        highlight: 'Activity history',
       },
       {
         name: 'Email & WhatsApp Template Studio',
@@ -273,8 +273,8 @@ export const featuresByModule = {
       },
       {
         name: 'Scheduled Data Reports',
-        desc: 'Set recurring background ETL jobs to sync oda7 data to Snowflake, BigQuery, or Amazon S3.',
-        highlight: 'Data warehouse sync',
+        desc: 'Configure recurring data delivery for supported reporting and storage destinations.',
+        highlight: 'Scheduled delivery',
       },
       {
         name: 'Subscription & Invoicing Center',
@@ -294,7 +294,7 @@ export const featuresByModule = {
     items: [
       {
         name: 'Multi-Tenant Organization Management',
-        desc: 'Provision, suspend, scale, and manage hundreds of independent tenant organizations from a master console.',
+        desc: 'Provision, suspend, and manage independent organizations from a separate platform console.',
         highlight: 'Tenant isolation',
       },
       {
@@ -314,8 +314,8 @@ export const featuresByModule = {
       },
       {
         name: 'Data Platform Connectors',
-        desc: 'Manage global data streams, multi-region database clusters, vector embeddings, and telephony gateways.',
-        highlight: 'Multi-region mesh',
+        desc: 'Review configured data services and communication gateways from the platform layer.',
+        highlight: 'Service connectors',
       },
       {
         name: 'Coupons & Discount Engine',
@@ -329,7 +329,7 @@ export const featuresByModule = {
       },
       {
         name: 'Platform-Wide Broadcasts',
-        desc: 'Send urgent maintenance notices, release notes, and banners to all or selected tenant organizations instantly.',
+        desc: 'Send maintenance notices, release notes, and banners to selected organizations.',
         highlight: 'Global alerts',
       },
     ],
@@ -339,18 +339,18 @@ export const featuresByModule = {
     subtitle: 'Connect with prospects across voice, WhatsApp, SMS, email, and scheduled video meetings from one pane.',
     items: [
       {
-        name: 'Official WhatsApp Business API',
-        desc: 'Send verified broadcast campaigns, automated reminders, and interactive message buttons directly from the lead record.',
-        highlight: 'Verified WhatsApp API',
+        name: 'WhatsApp Business Messaging',
+        desc: 'Coordinate supported message templates, reminders, and responses from the lead record.',
+        highlight: 'Messaging context',
       },
       {
         name: '2-Way SMS Messaging',
-        desc: 'Dedicated local business phone numbers with instant bidirectional SMS chat, keyword triggers, and media support.',
+        desc: 'Keep supported business SMS conversations and response history attached to the lead record.',
         highlight: 'Local 2-way SMS',
       },
       {
         name: 'Voice Telephony & Local Presence',
-        desc: 'High-definition WebRTC in-browser softphone with auto-matched local area codes to increase answer rates.',
+        desc: 'Use an in-browser calling workspace with configured caller context and lead information.',
         highlight: 'Calling context',
       },
       {
@@ -359,9 +359,9 @@ export const featuresByModule = {
         highlight: 'Read receipts',
       },
       {
-        name: 'Voicemail Drop (1-Click)',
-        desc: 'When an answering machine is reached, drop a pre-recorded personalized voicemail with one click and move to the next call.',
-        highlight: '1-click drop',
+        name: 'Voicemail Drop',
+        desc: 'Use an approved pre-recorded voicemail where the configured calling workflow supports it.',
+        highlight: 'Reusable voicemail',
       },
       {
         name: 'Web Callbacks & Inbound IVR',

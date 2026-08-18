@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { SectionHeading } from '../common/SectionHeading';
 import {
@@ -156,7 +158,7 @@ export const OneWorkspaceExplorer = ({ onOpenDemo }) => {
           eyebrowIcon="Layers"
           title="Everything your sales team needs."
           highlightText="One workspace."
-          description="Explore all 14 core ODA7 capabilities. Click any module on the left to see how it operates within the synchronized BIZZFLY operating system."
+          description="Explore the core ODA7 capabilities and see how each module contributes to the same operating context."
         />
 
         {/* 2-Column Interactive Product Explorer */}
@@ -295,7 +297,7 @@ export const OneWorkspaceExplorer = ({ onOpenDemo }) => {
                     Native {currentCap.label} Telemetry
                   </div>
                   <div style={{ color: 'var(--oda-text-muted)', fontSize: '0.75rem' }}>
-                    Synchronized with BIZZFLY oda7 Mesh
+                    Connected through the ODA7 workspace
                   </div>
                 </div>
               </div>

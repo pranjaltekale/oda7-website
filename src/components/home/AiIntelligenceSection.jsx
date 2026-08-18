@@ -1,6 +1,11 @@
+'use client';
+
 import React, { useState } from 'react';
 import { SectionHeading } from '../common/SectionHeading';
 import { AiCopilotMockup } from '../mockups/AiCopilotMockup';
+import { LightTabIndicator } from '../common/LightTabIndicator';
+import { ProductStateTransition } from '../common/ProductStateTransition';
+import { InteractiveTiltCard } from '../common/InteractiveTiltCard';
 import {
   Sparkles,
   ShieldAlert,
@@ -20,43 +25,48 @@ export const AiIntelligenceSection = () => {
   const [actionFeedback, setActionFeedback] = useState(null);
 
   const handleDeployTalkTrack = () => {
-    setActionFeedback('✓ Talk track deployed to SDR headset & live HUD!');
+    setActionFeedback('✓ Approved guidance added to the active call view.');
     setTimeout(() => setActionFeedback(null), 2500);
   };
 
   const objectionFlowSteps = [
     {
       step: 1,
-      speaker: 'Prospect (Liam Vance, VP Ops)',
-      text: '"We like your solution, but we are locked into a 6-month contract with our legacy dialer provider."',
-      badge: 'Customer Audio Ingested',
+      speaker: 'Customer',
+      text: '"The workflow looks useful, but we still have an active agreement with our current provider."',
+      badge: 'Customer concern noted',
       badgeColor: 'amber',
       status: 'Detecting objection type...',
     },
     {
       step: 2,
-      speaker: 'ODA7 Neural Engine (42ms)',
-      text: 'Competitor Lock-in Objection Identified. Confidence: 98.4%. Probability of loss if unaddressed: 64%.',
-      badge: 'Objection Detected',
+      speaker: 'ODA7 assistance',
+      text: 'The current-provider concern is matched to the approved contract-transition guidance.',
+      badge: 'Relevant context found',
       badgeColor: 'red',
-      status: 'Fetching winning battlecard...',
+      status: 'Reviewing approved guidance...',
     },
     {
       step: 3,
-      speaker: 'Live AI Battlecard Recommendation',
-      text: 'Winning Talk Track: "Offer our 6-Month Contract Buyout Credit with zero-downtime dual-trunk migration."',
-      badge: 'Prescriptive Talk Track',
+      speaker: 'Suggested response',
+      text: 'Acknowledge the existing commitment, clarify the transition path and agree on the next practical step.',
+      badge: 'Guidance ready',
       badgeColor: 'cyan',
-      status: 'Displayed on rep HUD in real time',
+      status: 'Available in the rep workspace',
     },
     {
       step: 4,
-      speaker: 'Rep Response & CRM Outcome',
-      text: 'Deal state updated to "Qualified Demo (Buyout Credit)". Calendar invite sent. WhatsApp executive deck dispatched.',
-      badge: 'Zero-Touch CRM Sync',
+      speaker: 'Rep outcome',
+      text: 'The concern, response and agreed follow-up are added to the customer timeline.',
+      badge: 'Context preserved',
       badgeColor: 'emerald',
       status: 'Next step scheduled automatically',
     },
+  ];
+
+  const aiTabs = [
+    { id: 'in-call', label: 'Live conversation assistance', icon: Sparkles },
+    { id: 'bi-query', label: 'Ask about operating data', icon: Cpu },
   ];
 
   return (
@@ -64,31 +74,22 @@ export const AiIntelligenceSection = () => {
       <div className="container-wide">
         
         <SectionHeading
-          eyebrow="Pervasive Intelligence"
+          eyebrow="In-workflow intelligence"
           eyebrowIcon="Sparkles"
-          title="AI that works inside the"
-          highlightText="telephony workflow."
-          description="ODA7 AI does not sit in a disconnected chat window. It listens to live customer speech, pops winning objection battlecards in real time, and writes zero-touch CRM notes automatically."
+          title="Assistance that stays inside"
+          highlightText="the customer conversation."
+          description="ODA7 brings relevant guidance, conversation context and follow-up capture into the workspace where the rep is already working."
         />
 
-        {/* Top Switcher: Live In-Call Objection Buster vs Executive BI Query */}
-        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '32px' }}>
-          <div className="tab-group">
-            <button
-              className={`tab-btn ${activeTab === 'in-call' ? 'active' : ''}`}
-              onClick={() => setActiveTab('in-call')}
-            >
-              <Sparkles size={16} />
-              <span>Live In-Call Objection AI</span>
-            </button>
-            <button
-              className={`tab-btn ${activeTab === 'bi-query' ? 'active' : ''}`}
-              onClick={() => setActiveTab('bi-query')}
-            >
-              <Cpu size={16} />
-              <span>"Explain My Numbers" Natural Language BI</span>
-            </button>
-          </div>
+        {/* Top Switcher with LightTabIndicator */}
+        <div className="tabs-scroll-wrapper">
+          <LightTabIndicator
+            tabs={aiTabs}
+            activeTab={activeTab}
+            onChange={setActiveTab}
+            variant="pill"
+            className="ai-mode-tabs"
+          />
         </div>
 
         {activeTab === 'in-call' ? (
@@ -101,22 +102,27 @@ export const AiIntelligenceSection = () => {
               padding: 'clamp(24px, 4vw, 40px)',
             }}
           >
-            <div className="responsive-story-grid" style={{ display: 'grid', gridTemplateColumns: 'minmax(300px, 1.1fr) minmax(300px, 1.1fr)', gap: 'clamp(24px, 4vw, 48px)', alignItems: 'center' }}>
+            <div className="responsive-story-grid" style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.1fr) minmax(0, 1.1fr)', gap: 'clamp(24px, 4vw, 48px)', alignItems: 'center' }}>
               
               {/* Left Column: Live Call Scenario */}
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px' }}>
-                  <span className="badge badge-emerald">Live Telephony Stream Active</span>
-                  <span style={{ fontSize: '0.75rem', color: 'var(--oda-text-muted)' }}>0.8s WebRTC Connection</span>
+                  <span className="badge badge-emerald">Conversation context active</span>
+                  <span style={{ fontSize: '0.75rem', color: 'var(--oda-text-muted)' }}>Illustrative workflow</span>
                 </div>
 
                 <h3 style={{ fontSize: 'clamp(1.5rem, 2.5vw, 2rem)', fontWeight: '850', color: 'var(--oda-text-primary)', lineHeight: '1.2', marginBottom: '16px' }}>
-                  Real-time speech AI that turns lost deals into closed contracts.
+                  Give the rep context without taking attention away from the customer.
                 </h3>
 
                 <p style={{ color: 'var(--oda-text-secondary)', fontSize: '0.95rem', lineHeight: '1.6', marginBottom: '24px' }}>
-                  When prospects mention competitor lock-ins, pricing friction, or security questions, ODA7 analyzes the audio waveform instantly and gives the agent the exact proven rebuttal to protect the deal.
+                  When a familiar concern appears, ODA7 can surface approved guidance and preserve the resulting note for the next person in the workflow.
                 </p>
+
+                <div className="ai-context-image">
+                  <img src="/oda7-ai-assist.png" alt="Sales professional using an assisted call workspace" loading="lazy" />
+                  <span>Human conversation, supported by relevant context</span>
+                </div>
 
                 {/* 4 Step Selector Buttons */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
@@ -151,7 +157,9 @@ export const AiIntelligenceSection = () => {
               </div>
 
               {/* Right Column: Live In-Call HUD Mockup */}
-              <div
+              <InteractiveTiltCard
+                maxTilt={3}
+                scale={1.015}
                 style={{
                   background: 'var(--oda-surface)',
                   border: '1px solid var(--oda-border-blue)',
@@ -159,98 +167,99 @@ export const AiIntelligenceSection = () => {
                   padding: '24px',
                   boxShadow: '0 20px 50px rgba(0, 0, 0, 0.25)',
                 }}
-                className="animate-fadeIn ai-call-hud"
-                key={objectionStep}
+                className="ai-call-hud"
               >
-                {/* HUD Header */}
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '16px', borderBottom: '1px solid var(--oda-border-subtle)', marginBottom: '16px' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <div className="audio-wave-live">
-                      <span />
-                      <span />
-                      <span />
-                      <span />
+                <ProductStateTransition activeKey={objectionStep}>
+                  {/* HUD Header */}
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '14px', borderBottom: '1px solid var(--oda-border-subtle)', marginBottom: '16px', flexWrap: 'wrap', gap: '8px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <div className="audio-wave-live">
+                        <span />
+                        <span />
+                        <span />
+                        <span />
+                      </div>
+                      <span style={{ fontWeight: '750', color: 'var(--oda-text-primary)', fontSize: '0.875rem' }}>
+                        Active conversation • Customer record
+                      </span>
                     </div>
-                    <span style={{ fontWeight: '750', color: 'var(--oda-text-primary)', fontSize: '0.9rem' }}>
-                      Active Call HUD • Liam Vance (OmniCorp)
-                    </span>
+                    <span className="badge badge-cyan" style={{ fontSize: '0.65rem' }}>Assistance available</span>
                   </div>
-                  <span className="badge badge-cyan" style={{ fontSize: '0.65rem' }}>AI Neural Core: 42ms</span>
-                </div>
 
-                {/* Speaker Dialogue Card */}
-                <div style={{ background: 'var(--oda-bg-alt)', border: '1px solid var(--oda-border)', borderRadius: '10px', padding: '16px', marginBottom: '16px' }}>
-                  <div style={{ fontSize: '0.72rem', color: 'var(--oda-text-muted)', fontWeight: '700', textTransform: 'uppercase', marginBottom: '6px' }}>
-                    {objectionFlowSteps[objectionStep].speaker}
-                  </div>
-                  <div style={{ color: 'var(--oda-text-primary)', fontSize: '0.95rem', lineHeight: '1.6', fontWeight: '500' }}>
-                    {objectionFlowSteps[objectionStep].text}
-                  </div>
-                </div>
-
-                {/* AI Status / Prescriptive Telemetry */}
-                <div style={{ background: 'var(--oda-primary-soft)', border: '1px solid var(--oda-border-blue)', borderRadius: '10px', padding: '14px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '10px' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                    <Sparkles size={18} color="var(--oda-primary)" />
-                    <div>
-                      <div style={{ fontSize: '0.7rem', color: 'var(--oda-primary)', fontWeight: '700', textTransform: 'uppercase' }}>
-                        Neural Synthesis Status
-                      </div>
-                      <div style={{ fontSize: '0.85rem', color: 'var(--oda-text-primary)', fontWeight: '600' }}>
-                        {objectionFlowSteps[objectionStep].status}
-                      </div>
+                  {/* Speaker Dialogue Card */}
+                  <div style={{ background: 'var(--oda-bg-alt)', border: '1px solid var(--oda-border)', borderRadius: '10px', padding: '14px', marginBottom: '14px' }}>
+                    <div style={{ fontSize: '0.72rem', color: 'var(--oda-text-muted)', fontWeight: '700', textTransform: 'uppercase', marginBottom: '6px' }}>
+                      {objectionFlowSteps[objectionStep].speaker}
+                    </div>
+                    <div style={{ color: 'var(--oda-text-primary)', fontSize: '0.9rem', lineHeight: '1.55', fontWeight: '500' }}>
+                      {objectionFlowSteps[objectionStep].text}
                     </div>
                   </div>
 
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    {objectionStep === 2 && (
+                  {/* AI Status / Prescriptive Telemetry */}
+                  <div style={{ background: 'var(--oda-primary-soft)', border: '1px solid var(--oda-border-blue)', borderRadius: '10px', padding: '12px 14px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '10px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                      <Sparkles size={18} color="var(--oda-primary)" />
+                      <div>
+                        <div style={{ fontSize: '0.7rem', color: 'var(--oda-primary)', fontWeight: '700', textTransform: 'uppercase' }}>
+                          Assistance status
+                        </div>
+                        <div style={{ fontSize: '0.85rem', color: 'var(--oda-text-primary)', fontWeight: '600' }}>
+                          {objectionFlowSteps[objectionStep].status}
+                        </div>
+                      </div>
+                    </div>
+
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+                      {objectionStep === 2 && (
+                        <button
+                          onClick={handleDeployTalkTrack}
+                          className="btn-tactile"
+                          style={{
+                            padding: '7px 14px',
+                            borderRadius: '6px',
+                            background: 'var(--oda-success)',
+                            color: '#fff',
+                            fontSize: '0.75rem',
+                            fontWeight: '700',
+                            border: 'none',
+                            cursor: 'pointer',
+                          }}
+                        >
+                          Deploy Talk Track
+                        </button>
+                      )}
+
                       <button
-                        onClick={handleDeployTalkTrack}
-                        className="btn-tactile"
+                        onClick={() => setObjectionStep((prev) => (prev + 1) % 4)}
+                        className="btn-tactile magnetic-arrow-wrap"
                         style={{
                           padding: '7px 14px',
                           borderRadius: '6px',
-                          background: 'var(--oda-success)',
+                          background: 'var(--oda-primary)',
                           color: '#fff',
                           fontSize: '0.75rem',
                           fontWeight: '700',
                           border: 'none',
                           cursor: 'pointer',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '4px',
                         }}
                       >
-                        Deploy Talk Track
+                        <span>{objectionStep === 3 ? 'Restart Flow' : 'Next Stage'}</span>
+                        <ArrowRight size={13} className="arrow-slide" />
                       </button>
-                    )}
-
-                    <button
-                      onClick={() => setObjectionStep((prev) => (prev + 1) % 4)}
-                      className="btn-tactile"
-                      style={{
-                        padding: '7px 14px',
-                        borderRadius: '6px',
-                        background: 'var(--oda-primary)',
-                        color: '#fff',
-                        fontSize: '0.75rem',
-                        fontWeight: '700',
-                        border: 'none',
-                        cursor: 'pointer',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '4px',
-                      }}
-                    >
-                      <span>{objectionStep === 3 ? 'Restart Flow' : 'Next Stage'}</span>
-                      <ArrowRight size={13} className="arrow-slide" />
-                    </button>
+                    </div>
                   </div>
-                </div>
 
-                {actionFeedback && (
-                  <div className="animate-fadeIn" style={{ marginTop: '10px', fontSize: '0.75rem', color: 'var(--oda-success)', fontWeight: '700', textAlign: 'center' }}>
-                    {actionFeedback}
-                  </div>
-                )}
-              </div>
+                  {actionFeedback && (
+                    <div className="animate-fadeIn" style={{ marginTop: '10px', fontSize: '0.75rem', color: 'var(--oda-success)', fontWeight: '700', textAlign: 'center' }}>
+                      {actionFeedback}
+                    </div>
+                  )}
+                </ProductStateTransition>
+              </InteractiveTiltCard>
 
             </div>
           </div>

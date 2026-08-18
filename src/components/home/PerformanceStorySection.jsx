@@ -39,17 +39,10 @@ export const PerformanceStorySection = () => {
           {/* Left Column: Business Leader Reviewing Performance with 100% Visible Face */}
           <div style={{ position: 'relative' }}>
             <div
-              style={{
-                position: 'relative',
-                borderRadius: '24px',
-                overflow: 'hidden',
-                border: '1px solid rgba(59, 130, 246, 0.35)',
-                boxShadow: '0 25px 60px rgba(0, 0, 0, 0.5)',
-                height: '500px',
-              }}
+              className="story-image-card-responsive"
             >
               <img
-                src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&auto=format&fit=crop&q=80"
+                src="/oda7-module-insights.jpg"
                 alt="Executive Reviewing Performance Telemetry"
                 style={{
                   width: '100%',
@@ -69,23 +62,7 @@ export const PerformanceStorySection = () => {
               />
 
               {/* Floating Bottom Card */}
-              <div
-                style={{
-                  position: 'absolute',
-                  bottom: '20px',
-                  left: '20px',
-                  right: '20px',
-                  background: 'rgba(11, 15, 23, 0.94)',
-                  backdropFilter: 'blur(14px)',
-                  WebkitBackdropFilter: 'blur(14px)',
-                  padding: '14px 18px',
-                  borderRadius: '14px',
-                  border: '1px solid rgba(255, 255, 255, 0.12)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                }}
-              >
+              <div className="story-telemetry-badge-bottom">
                 <div>
                   <div style={{ color: '#fff', fontSize: '0.85rem', fontWeight: '750' }}>
                     Executive Revenue Pace

@@ -1,6 +1,11 @@
+'use client';
+
 import React, { useState } from 'react';
 import { SectionHeading } from '../common/SectionHeading';
 import { Button } from '../common/Button';
+import { LightTabIndicator } from '../common/LightTabIndicator';
+import { ProductStateTransition } from '../common/ProductStateTransition';
+import { InteractiveTiltCard } from '../common/InteractiveTiltCard';
 import {
   PhoneCall,
   Building2,
@@ -19,58 +24,58 @@ export const IndustryScenariosSection = () => {
   const scenarios = [
     {
       id: 'high-velocity-sdr',
-      label: 'High-Velocity SDR Floor',
+      label: 'Inside-sales team',
       icon: PhoneCall,
-      title: 'High-Volume Inside Sales & Outbound SDR Pods',
+      title: 'Keep a busy inside-sales team focused on the next action.',
       badge: 'Inside Sales',
-      desc: 'Sales development reps eliminate idle time with 0.8s local presence dialing, live branching talk tracks, and AI objection battlecards.',
-      image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&auto=format&fit=crop&q=80',
+      desc: 'Give reps a clear queue, customer context, conversation guidance and a shared follow-up timeline.',
+      image: '/oda7-scenario-insidesales.jpg',
       formulas: [
-        { left: 'Inbound Webhook Lead', right: '<15s Speed-to-Lead SLA' },
-        { left: '0.8s Local Presence Dialing', right: '+34.8% Pickup Ratio' },
-        { left: 'Closed-Won Opportunity', right: 'Instant Commission Wallet Credit' },
+        { left: 'New enquiry', right: 'Visible owner and next action' },
+        { left: 'Customer conversation', right: 'Outcome added to the timeline' },
+        { left: 'Approved deal outcome', right: 'Compensation review context' },
       ],
     },
     {
       id: 'call-center',
-      label: '100+ Seat Call Center',
+      label: 'Managed sales floor',
       icon: Headphones,
-      title: 'Call Center & BPO Floor Supervision',
+      title: 'Help managers see the floor and coach the moment.',
       badge: 'Call Center & BPO',
-      desc: 'Floor supervisors monitor concurrent queue volumes live, balance agent availability states, and whisper coaching cues into rep headsets.',
-      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&auto=format&fit=crop&q=80',
+      desc: 'Bring queue context, representative availability and coaching actions into one manager view.',
+      image: '/oda7-scenario-callcenter.jpg',
       formulas: [
-        { left: 'Sub-Second Queue Telemetry', right: 'Zero Abandoned Calls' },
-        { left: '1-Click Silent Listening', right: 'Rescue Enterprise Deals Live' },
-        { left: 'Hourly Pickup Heatmaps', right: 'Optimized Shift Staffing' },
+        { left: 'Queue activity', right: 'Shared floor visibility' },
+        { left: 'Conversation review', right: 'Contextual coaching' },
+        { left: 'Operating patterns', right: 'More informed staffing review' },
       ],
     },
     {
       id: 'revenue-agency',
       label: 'Revenue Agency',
       icon: Building2,
-      title: 'Multi-Client BPO & Lead Gen Agency',
+      title: 'Separate client work without losing platform oversight.',
       badge: 'Revenue Agency',
-      desc: 'Agencies manage multiple client sales pods under one master login with isolated carrier trunks, distinct talk tracks, and segmented client billing.',
-      image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&auto=format&fit=crop&q=80',
+      desc: 'Organize client workspaces, team structures, conversation guidance and administrative context from one platform layer.',
+      image: '/oda7-scenario-agency.jpg',
       formulas: [
-        { left: 'Multi-Client Pod Isolation', right: 'Strict Data Partitioning' },
-        { left: 'Dedicated Client Trunks', right: 'Itemized Carrier Minute Billing' },
-        { left: 'Automated Commission Pay', right: 'Zero Spreadsheet Disputes' },
+        { left: 'Client workspace', right: 'Clear organizational boundary' },
+        { left: 'Team-specific workflow', right: 'Relevant operating context' },
+        { left: 'Platform administration', right: 'Shared oversight' },
       ],
     },
     {
       id: 'saas-reseller',
-      label: 'SaaS Platform Reseller',
+      label: 'Platform operator',
       icon: Zap,
-      title: 'White-Label & Enterprise Multi-Tenancy',
+      title: 'Operate multiple organizations from one platform layer.',
       badge: 'Platform SaaS',
-      desc: 'Operate ODA7 as an isolated multi-tenant SaaS platform under BIZZFLY with custom CNAME domains, subscription billing, and global IP security.',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&auto=format&fit=crop&q=80',
+      desc: 'Operate multiple organization workspaces with custom domains, subscription controls and a shared platform administration layer.',
+      image: '/oda7-scenario-saasplatform.jpg',
       formulas: [
-        { left: '1-Click Tenant Provisioning', right: 'Instant Client Workspace Ready' },
-        { left: 'Automated Stripe Tiers', right: 'Hands-Free Subscription Billing' },
-        { left: 'Global IP Defense Engine', right: 'Enterprise SLA & Threat Blocker' },
+        { left: 'Organization setup', right: 'Configured workspace' },
+        { left: 'Subscription controls', right: 'Visible plan context' },
+        { left: 'Administrative activity', right: 'Auditable platform record' },
       ],
     },
   ];
@@ -82,160 +87,132 @@ export const IndustryScenariosSection = () => {
       <div className="container-wide">
         
         <SectionHeading
-          eyebrow="Industry Solutions"
+          eyebrow="Operating scenarios"
           eyebrowIcon="Building2"
-          title="Built for the way"
-          highlightText="your business works."
-          description="Whether you run a high-velocity SDR floor, a revenue agency, a 100-seat call center, or a multi-tenant SaaS platform, ODA7 adapts to your operational architecture."
+          title="Different operating models."
+          highlightText="A connected foundation."
+          description="Choose a scenario to see how ownership, workflow and platform context change without changing the underlying operating model."
         />
 
-        {/* Tab Strip */}
-        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '36px', flexWrap: 'wrap', gap: '8px' }}>
-          <div className="tab-group">
-            {scenarios.map((s, idx) => {
-              const IconComp = s.icon;
-              return (
-                <button
-                  key={s.id}
-                  className={`tab-btn ${activeScenario === idx ? 'active' : ''}`}
-                  onClick={() => setActiveScenario(idx)}
-                >
-                  <IconComp size={16} />
-                  <span>{s.label}</span>
-                </button>
-              );
-            })}
-          </div>
+        {/* Tab Strip with LightTabIndicator */}
+        <div className="tabs-scroll-wrapper">
+          <LightTabIndicator
+            tabs={scenarios.map((s, idx) => ({ id: idx, label: s.label, icon: s.icon }))}
+            activeTab={activeScenario}
+            onChange={(idx) => setActiveScenario(idx)}
+            variant="pill"
+            className="scenario-selector-tabs"
+          />
         </div>
 
-        {/* Active Scenario Visual Box */}
-        <div
-          className="feature-showcase-panel animate-fadeIn"
-          style={{
-            maxWidth: '1240px',
-            margin: '0 auto',
-            borderRadius: '28px',
-            padding: 'clamp(28px, 4.5vw, 52px)',
-          }}
-          key={activeScenario}
-        >
+        {/* Active Scenario Visual Box with ProductStateTransition */}
+        <ProductStateTransition activeKey={activeScenario}>
           <div
+            className="feature-showcase-panel"
             style={{
-              display: 'grid',
-              gridTemplateColumns: 'minmax(320px, 1.25fr) minmax(320px, 1fr)',
-              gap: 'clamp(32px, 5vw, 56px)',
-              alignItems: 'center',
+              maxWidth: '1240px',
+              margin: '0 auto',
+              borderRadius: '28px',
+              padding: 'clamp(24px, 4.5vw, 52px)',
             }}
-            className="mockup-grid-2col"
           >
-            {/* Scenario Details + Formulas */}
-            <div>
-              <span className="badge badge-primary" style={{ marginBottom: '14px' }}>
-                {current.badge}
-              </span>
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'minmax(0, 1.25fr) minmax(0, 1fr)',
+                gap: 'clamp(32px, 5vw, 56px)',
+                alignItems: 'center',
+              }}
+              className="mockup-grid-2col"
+            >
+              {/* Scenario Details + Formulas */}
+              <div>
+                <span className="badge badge-primary" style={{ marginBottom: '14px' }}>
+                  {current.badge}
+                </span>
 
-              <h3 style={{ fontSize: 'clamp(1.8rem, 3.2vw, 2.4rem)', fontWeight: '850', color: 'var(--oda-text-primary)', lineHeight: '1.18', marginBottom: '16px' }}>
-                {current.title}
-              </h3>
+                <h3 style={{ fontSize: 'clamp(1.8rem, 3.2vw, 2.4rem)', fontWeight: '850', color: 'var(--oda-text-primary)', lineHeight: '1.18', marginBottom: '16px' }}>
+                  {current.title}
+                </h3>
 
-              <p style={{ color: 'var(--oda-text-secondary)', fontSize: '0.975rem', lineHeight: '1.7', marginBottom: '26px' }}>
-                {current.desc}
-              </p>
+                <p style={{ color: 'var(--oda-text-secondary)', fontSize: '0.975rem', lineHeight: '1.7', marginBottom: '26px' }}>
+                  {current.desc}
+                </p>
 
-              {/* 3 Formula Pills */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '28px' }}>
-                {current.formulas.map((f, i) => (
-                  <div
-                    key={i}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '12px',
-                      background: 'var(--oda-surface)',
-                      border: '1px solid var(--oda-border)',
-                      borderRadius: '12px',
-                      padding: '12px 16px',
-                      boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
-                    }}
-                  >
-                    <div style={{ flex: 1, color: 'var(--oda-text-primary)', fontSize: '0.85rem', fontWeight: '600', lineHeight: '1.35' }}>
-                      {f.left}
+                {/* 3 Formula Pills */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '28px' }}>
+                  {current.formulas.map((f, i) => (
+                    <div
+                      key={i}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '12px',
+                        background: 'var(--oda-surface)',
+                        border: '1px solid var(--oda-border)',
+                        borderRadius: '12px',
+                        padding: '12px 16px',
+                        boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
+                        flexWrap: 'wrap',
+                      }}
+                    >
+                      <div style={{ flex: '1 1 120px', minWidth: 0, color: 'var(--oda-text-primary)', fontSize: '0.85rem', fontWeight: '600', lineHeight: '1.35' }}>
+                        {f.left}
+                      </div>
+
+                      <div style={{ width: '26px', height: '26px', borderRadius: '50%', background: 'var(--oda-primary-soft)', border: '1px solid var(--oda-border-blue)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--oda-primary)', fontWeight: '850', fontSize: '0.95rem', flexShrink: 0 }}>
+                        =
+                      </div>
+
+                      <div style={{ flex: '1 1 120px', minWidth: 0, color: 'var(--oda-success)', fontSize: '0.85rem', fontWeight: '750', lineHeight: '1.35' }}>
+                        {f.right}
+                      </div>
                     </div>
+                  ))}
+                </div>
 
-                    <div style={{ width: '26px', height: '26px', borderRadius: '50%', background: 'var(--oda-primary-soft)', border: '1px solid var(--oda-border-blue)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--oda-primary)', fontWeight: '850', fontSize: '0.95rem', flexShrink: 0 }}>
-                      =
-                    </div>
-
-                    <div style={{ flex: 1, color: 'var(--oda-success)', fontSize: '0.85rem', fontWeight: '750', lineHeight: '1.35' }}>
-                      {f.right}
-                    </div>
-                  </div>
-                ))}
+                <Button className="scenario-mobile-cta" to="/contact" variant="primary" size="md" iconRight="ArrowRight">
+                  Discuss this workflow
+                </Button>
               </div>
 
-              <Button className="scenario-mobile-cta" to="/contact" variant="primary" size="md" iconRight="ArrowRight">
-                Explore {current.label} Solution
-              </Button>
-            </div>
-
-            {/* Large Real-World Photography with Visible Face */}
-            <div style={{ position: 'relative', display: 'flex', justifyContent: 'center' }}>
-              <div
-                className="story-image-frame"
-                style={{
-                  position: 'relative',
-                  width: '100%',
-                  height: '480px',
-                  borderRadius: '24px',
-                  overflow: 'hidden',
-                  border: '1px solid rgba(255, 255, 255, 0.15)',
-                  boxShadow: '0 20px 50px rgba(0, 0, 0, 0.8)',
-                }}
-              >
-                <img
-                  src={current.image}
-                  alt={current.label}
-                  loading="lazy"
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                    objectPosition: 'center 15%',
-                    display: 'block',
-                    filter: 'contrast(1.05) brightness(0.96)',
-                  }}
-                />
-                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent 45%, rgba(7, 10, 18, 0.9) 100%)' }} />
-                
-                <div
-                  className="story-telemetry-overlay"
-                  style={{
-                    position: 'absolute',
-                    bottom: '20px',
-                    left: '20px',
-                    right: '20px',
-                    background: 'rgba(11, 15, 23, 0.94)',
-                    backdropFilter: 'blur(14px)',
-                    padding: '14px 18px',
-                    borderRadius: '12px',
-                    border: '1px solid rgba(255, 255, 255, 0.12)',
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                  }}
+              {/* Large Real-World Photography in InteractiveTiltCard */}
+              <div style={{ position: 'relative', display: 'flex', justifyContent: 'center' }}>
+                <InteractiveTiltCard
+                  maxTilt={3}
+                  scale={1.015}
+                  className="story-image-card-responsive"
                 >
-                  <div>
-                    <div style={{ color: '#fff', fontSize: '0.85rem', fontWeight: '750' }}>{current.label} Pod</div>
-                    <div style={{ color: '#38bdf8', fontSize: '0.72rem' }}>Illustrative ODA7 workflow</div>
+                  <img
+                    className="tilt-parallax-img"
+                    src={current.image}
+                    alt={current.label}
+                    loading="lazy"
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      objectPosition: 'center 15%',
+                      display: 'block',
+                      filter: 'contrast(1.05) brightness(0.96)',
+                    }}
+                  />
+                  <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent 45%, rgba(7, 10, 18, 0.9) 100%)', pointerEvents: 'none' }} />
+                  
+                  <div className="story-telemetry-badge-bottom">
+                    <div>
+                      <div style={{ color: '#fff', fontSize: '0.85rem', fontWeight: '750' }}>{current.label} Pod</div>
+                      <div style={{ color: '#38bdf8', fontSize: '0.72rem' }}>Illustrative ODA7 workflow</div>
+                    </div>
+                    <span className="badge badge-emerald" style={{ fontSize: '0.6875rem' }}>
+                      Scenario active
+                    </span>
                   </div>
-                  <span className="badge badge-emerald" style={{ fontSize: '0.6875rem' }}>
-                    Scenario active
-                  </span>
-                </div>
+                </InteractiveTiltCard>
               </div>
             </div>
           </div>
-        </div>
+        </ProductStateTransition>
 
       </div>
     </section>

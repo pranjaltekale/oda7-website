@@ -2,10 +2,7 @@ import React from 'react';
 import { Button } from '../common/Button';
 import {
   ShieldCheck,
-  Zap,
-  ArrowRight,
   PlayCircle,
-  Clock,
   Sparkles,
   CheckCircle2,
 } from 'lucide-react';
@@ -50,13 +47,14 @@ export const FinalCtaSection = ({ onOpenDemo }) => {
           {/* Real Team Background Photo with Dark Gradient Overlay */}
           <div style={{ position: 'absolute', inset: 0, zIndex: 1 }}>
             <img
-              src="/oda7-team-story.jpg"
-              alt="ODA7 Revenue Team"
+              src="/oda7-final-cta-team.jpg"
+              alt="ODA7 Leadership & Revenue Team"
               style={{
                 width: '100%',
                 height: '100%',
                 objectFit: 'cover',
-                filter: 'brightness(0.35) contrast(1.1)',
+                objectPosition: 'center 20%',
+                filter: 'brightness(0.38) contrast(1.12)',
               }}
             />
             <div
@@ -84,7 +82,7 @@ export const FinalCtaSection = ({ onOpenDemo }) => {
             <div style={{ display: 'inline-flex', marginBottom: '20px' }}>
               <span className="badge badge-primary" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
                 <Sparkles size={14} color="#38bdf8" />
-                <span>THE SALES OPERATING SYSTEM FOR MODERN TEAMS</span>
+                <span>ODA7 CONNECTED OPERATING WORKSPACE</span>
               </span>
             </div>
 
@@ -115,7 +113,7 @@ export const FinalCtaSection = ({ onOpenDemo }) => {
                 marginRight: 'auto',
               }}
             >
-              Experience the power of zero tool lag. Replace 10+ disjointed subscriptions and connect your leads, calling, agents, commissions, and analytics into one intelligent operating system.
+              See how ODA7 can connect customer activity, team operations, and performance context around the work your organization already does.
             </p>
 
             {/* CTA Buttons */}
@@ -135,11 +133,11 @@ export const FinalCtaSection = ({ onOpenDemo }) => {
                 size="lg"
                 iconRight="ArrowRight"
               >
-                Start free
+                Plan your workspace
               </Button>
 
               <Button
-                onClick={onOpenDemo}
+                demo
                 variant="secondary"
                 size="lg"
                 iconLeft="PlayCircle"
@@ -148,7 +146,7 @@ export const FinalCtaSection = ({ onOpenDemo }) => {
               </Button>
             </div>
 
-            {/* Compliance & Trust Guarantees */}
+            {/* Product experience notes */}
             <div
               style={{
                 display: 'flex',
@@ -162,15 +160,15 @@ export const FinalCtaSection = ({ onOpenDemo }) => {
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                 <ShieldCheck size={16} color="#10b981" />
-                <span>SOC2 Type II Certified</span>
+                <span>Role-aware workspace</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <Zap size={16} color="#38bdf8" />
-                <span>Instant 24-Hour Migration</span>
+                <CheckCircle2 size={16} color="#38bdf8" />
+                <span>Connected workflow review</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <Clock size={16} color="#fbbf24" />
-                <span>Full 14-Day Free Access</span>
+                <PlayCircle size={16} color="#fbbf24" />
+                <span>Illustrative product preview</span>
               </div>
             </div>
           </div>

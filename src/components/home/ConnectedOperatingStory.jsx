@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect, useRef, useState } from 'react';
 import { BarChart3, DollarSign, PhoneCall, Users, UserRoundCheck } from 'lucide-react';
 import { ProductUIFrame } from '../marketing/ProductUIFrame';

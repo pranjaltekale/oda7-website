@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { Modal } from '../common/Modal';
 import { DemoStepCards, demoRoleData } from './DemoStepCards';

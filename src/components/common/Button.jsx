@@ -1,5 +1,8 @@
+'use client';
+
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from '../../lib/navigation';
+import { useDemo } from '../../context/DemoContext';
 import clsx from 'clsx';
 import {
   ArrowRight,
@@ -32,11 +35,13 @@ export const Button = ({
   to,
   href,
   onClick,
+  demo = false,
   className,
   disabled = false,
   type = 'button',
   ...props
 }) => {
+  const openDemo = useDemo();
   const IconRightComponent = iconRight ? iconMap[iconRight] || ArrowRight : null;
   const IconLeftComponent = iconLeft ? iconMap[iconLeft] || Sparkles : null;
 
@@ -73,7 +78,7 @@ export const Button = ({
   }
 
   return (
-    <button type={type} className={btnClasses} onClick={onClick} disabled={disabled} {...props}>
+    <button type={type} className={btnClasses} onClick={demo ? openDemo : onClick} disabled={disabled} {...props}>
       {content}
     </button>
   );

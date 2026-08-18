@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useMemo, useState } from 'react';
 import { Activity, ArrowRight, Layers3, Users } from 'lucide-react';
 import { SectionHeading } from '../common/SectionHeading';

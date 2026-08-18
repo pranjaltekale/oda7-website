@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import {
   TrendingUp,
@@ -14,13 +16,13 @@ import {
 } from 'lucide-react';
 
 export const MarketingDashboardMockup = () => {
-  const [selectedCampaign, setSelectedCampaign] = useState('Q3 Inbound Scale');
+  const [selectedCampaign, setSelectedCampaign] = useState('Inbound enquiry flow');
 
   const campaigns = [
-    { name: 'Q3 Inbound Scale', leads: 303, conv: '18.4%', channel: 'Website Demo Bridge', status: 'Active (Running)' },
-    { name: 'WhatsApp Enterprise Blast', leads: 184, conv: '24.2%', channel: 'Official WhatsApp API', status: 'Active (Running)' },
-    { name: 'SaaS Founder Webinar', leads: 92, conv: '31.0%', channel: 'LinkedIn + Email', status: 'Completed' },
-    { name: 'Outbound Cold Reactivation', leads: 142, conv: '12.8%', channel: '2-Way SMS Local', status: 'Active (Running)' },
+    { name: 'Inbound enquiry flow', leads: 'Visible', conv: 'Review', channel: 'Website form', status: 'Active' },
+    { name: 'Customer reminder flow', leads: 'Visible', conv: 'Review', channel: 'Business messaging', status: 'Active' },
+    { name: 'Event follow-up', leads: 'Visible', conv: 'Review', channel: 'Email sequence', status: 'Complete' },
+    { name: 'Re-engagement workflow', leads: 'Visible', conv: 'Review', channel: 'SMS sequence', status: 'Active' },
   ];
 
   return (
@@ -34,11 +36,11 @@ export const MarketingDashboardMockup = () => {
         </div>
         <div className="mockup-title-bar">
           <Sparkles size={13} color="var(--oda-primary)" />
-          <span>oda7 // BIZZFLY Marketing & Growth Hub — Campaigns & Conversion Velocity</span>
+          <span>ODA7 // Marketing Workspace — Campaigns & Lead Movement</span>
         </div>
         <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
           <span className="badge badge-cyan" style={{ fontSize: '0.6875rem' }}>
-            Attribution Engine: Live
+            Illustrative campaign data
           </span>
         </div>
       </div>
@@ -51,38 +53,38 @@ export const MarketingDashboardMockup = () => {
           
           <div style={{ background: 'var(--oda-bg-alt)', border: '1px solid var(--oda-border)', borderRadius: '8px', padding: '12px' }}>
             <div style={{ color: 'var(--oda-text-muted)', fontSize: '0.7rem', textTransform: 'uppercase', marginBottom: '4px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              <span>Total Inbound Leads</span>
+              <span>Inbound Context</span>
               <Users size={13} color="var(--oda-primary)" />
             </div>
-            <div style={{ fontSize: '1.4rem', fontWeight: '800', color: 'var(--oda-text-primary)' }}>303 Leads</div>
-            <div style={{ color: 'var(--oda-success)', fontSize: '0.7rem', marginTop: '2px' }}>+48 leads vs last week</div>
+            <div style={{ fontSize: '1.4rem', fontWeight: '800', color: 'var(--oda-text-primary)' }}>Visible</div>
+            <div style={{ color: 'var(--oda-success)', fontSize: '0.7rem', marginTop: '2px' }}>Source and ownership attached</div>
           </div>
 
           <div style={{ background: 'var(--oda-bg-alt)', border: '1px solid var(--oda-border)', borderRadius: '8px', padding: '12px' }}>
             <div style={{ color: 'var(--oda-text-muted)', fontSize: '0.7rem', textTransform: 'uppercase', marginBottom: '4px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              <span>Avg Conversion Rate</span>
+              <span>Progression Context</span>
               <TrendingUp size={13} color="var(--oda-success)" />
             </div>
-            <div style={{ fontSize: '1.4rem', fontWeight: '800', color: 'var(--oda-success)' }}>18.4%</div>
-            <div style={{ color: 'var(--oda-success)', fontSize: '0.7rem', marginTop: '2px' }}>+3.2% attribution lift</div>
+            <div style={{ fontSize: '1.4rem', fontWeight: '800', color: 'var(--oda-success)' }}>Reviewable</div>
+            <div style={{ color: 'var(--oda-success)', fontSize: '0.7rem', marginTop: '2px' }}>Compare campaign stages</div>
           </div>
 
           <div style={{ background: 'var(--oda-bg-alt)', border: '1px solid var(--oda-border)', borderRadius: '8px', padding: '12px' }}>
             <div style={{ color: 'var(--oda-text-muted)', fontSize: '0.7rem', textTransform: 'uppercase', marginBottom: '4px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              <span>WhatsApp Broadcasts</span>
+              <span>Message Activity</span>
               <MessageSquare size={13} color="#fbbf24" />
             </div>
-            <div style={{ fontSize: '1.4rem', fontWeight: '800', color: '#fbbf24' }}>98.2% Deliv</div>
-            <div style={{ color: 'var(--oda-primary)', fontSize: '0.7rem', marginTop: '2px' }}>4,250 Messages delivered</div>
+            <div style={{ fontSize: '1.4rem', fontWeight: '800', color: '#fbbf24' }}>Connected</div>
+            <div style={{ color: 'var(--oda-primary)', fontSize: '0.7rem', marginTop: '2px' }}>Conversation status attached</div>
           </div>
 
           <div style={{ background: 'var(--oda-bg-alt)', border: '1px solid var(--oda-border)', borderRadius: '8px', padding: '12px' }}>
             <div style={{ color: 'var(--oda-text-muted)', fontSize: '0.7rem', textTransform: 'uppercase', marginBottom: '4px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              <span>Customer Acq Cost (CAC)</span>
+              <span>Campaign Context</span>
               <Zap size={13} color="var(--oda-success)" />
             </div>
-            <div style={{ fontSize: '1.4rem', fontWeight: '800', color: 'var(--oda-success)' }}>$42 / Lead</div>
-            <div style={{ color: 'var(--oda-primary)', fontSize: '0.7rem', marginTop: '2px' }}>-35% with native dialer bridge</div>
+            <div style={{ fontSize: '1.4rem', fontWeight: '800', color: 'var(--oda-success)' }}>One View</div>
+            <div style={{ color: 'var(--oda-primary)', fontSize: '0.7rem', marginTop: '2px' }}>Source through follow-up</div>
           </div>
 
         </div>
@@ -125,13 +127,13 @@ export const MarketingDashboardMockup = () => {
                   </div>
 
                   <div>
-                    <div style={{ color: 'var(--oda-text-primary)', fontSize: '0.75rem' }}>{camp.leads} Inbound Leads</div>
-                    <div style={{ color: 'var(--oda-text-muted)', fontSize: '0.7rem' }}>Speed: &lt;15s bridge</div>
+                    <div style={{ color: 'var(--oda-text-primary)', fontSize: '0.75rem' }}>Lead context: {camp.leads}</div>
+                    <div style={{ color: 'var(--oda-text-muted)', fontSize: '0.7rem' }}>Routing state attached</div>
                   </div>
 
                   <div>
                     <div style={{ color: 'var(--oda-success)', fontWeight: '700', fontSize: '0.85rem' }}>{camp.conv}</div>
-                    <div style={{ color: 'var(--oda-text-muted)', fontSize: '0.7rem' }}>Qualified Rate</div>
+                    <div style={{ color: 'var(--oda-text-muted)', fontSize: '0.7rem' }}>Progression state</div>
                   </div>
 
                   <div style={{ textAlign: 'right' }}>
@@ -149,16 +151,16 @@ export const MarketingDashboardMockup = () => {
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <div style={{ fontWeight: '700', color: 'var(--oda-text-primary)', display: 'flex', alignItems: 'center', gap: '6px' }}>
                 <Globe size={14} color="var(--oda-primary)" />
-                <span>Speed-to-Lead Bridge</span>
+                <span>Lead Routing Context</span>
               </div>
-              <span className="badge badge-cyan" style={{ fontSize: '0.65rem' }}>&lt;15s SLA</span>
+              <span className="badge badge-cyan" style={{ fontSize: '0.65rem' }}>Workflow view</span>
             </div>
 
             {/* Inbound Telemetry Visual */}
             <div style={{ background: 'var(--oda-surface)', border: '1px solid var(--oda-border)', borderRadius: '8px', padding: '12px' }}>
               <div style={{ fontSize: '0.7rem', color: 'var(--oda-text-muted)' }}>Live Campaign Target:</div>
               <div style={{ fontSize: '1rem', fontWeight: '700', color: 'var(--oda-text-primary)', marginTop: '2px' }}>{selectedCampaign}</div>
-              <div style={{ fontSize: '0.75rem', color: 'var(--oda-success)', marginTop: '4px' }}>✓ Direct sync to SDR Alex Rivera's Queue</div>
+              <div style={{ fontSize: '0.75rem', color: 'var(--oda-success)', marginTop: '4px' }}>✓ Assigned sales queue attached</div>
             </div>
 
             {/* Channel Attribution breakdown */}
@@ -169,11 +171,11 @@ export const MarketingDashboardMockup = () => {
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--oda-text-secondary)', fontSize: '0.75rem' }}>
                 <CheckCircle2 size={13} color="var(--oda-success)" />
-                <span>Instant Inbound Web-to-Call Phone Routing</span>
+                <span>Inbound routing connected to the customer record</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--oda-text-secondary)', fontSize: '0.75rem' }}>
                 <CheckCircle2 size={13} color="var(--oda-success)" />
-                <span>Full UTM & Multi-Touch ROI Tracking</span>
+                <span>Source and touchpoint context available for review</span>
               </div>
             </div>
 

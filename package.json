@@ -4,10 +4,10 @@
   "description": "",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "next dev",
     "lint": "node scripts/lint.mjs",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "next build",
+    "start": "next start"
   },
   "bugs": {
     "url": "https://github.com/pranjaltekale/oda7-website/issues"
@@ -16,12 +16,8 @@
   "dependencies": {
     "clsx": "^2.1.1",
     "lucide-react": "^1.31.0",
+    "next": "^16.3.1",
     "react": "^19.2.8",
-    "react-dom": "^19.2.8",
-    "react-router-dom": "^7.18.2"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-react": "^6.0.5",
-    "vite": "^8.2.1"
+    "react-dom": "^19.2.8"
   }
 }

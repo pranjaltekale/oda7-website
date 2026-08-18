@@ -1,5 +1,7 @@
+'use client';
+
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from '../../lib/navigation';
 import { ArrowRight, ArrowUpRight, BarChart3, BookOpen, Building2, CalendarDays, ChartNoAxesCombined, Circle, CircleHelp, FileText, GitBranch, Headphones, Inbox, Info, LayoutDashboard, LifeBuoy, Mail, Megaphone, Package, PanelsTopLeft, PhoneCall, ReceiptText, Settings2, ShieldCheck, Sparkles, UserRoundCheck, Users } from 'lucide-react';
 
 const iconMap = { BarChart3, BookOpen, Building2, CalendarDays, ChartNoAxesCombined, CircleHelp, FileText, GitBranch, Headphones, Inbox, Info, LayoutDashboard, LifeBuoy, Mail, Megaphone, Package, PanelsTopLeft, PhoneCall, ReceiptText, Settings2, ShieldCheck, Sparkles, UserRoundCheck, Users };

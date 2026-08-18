@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import {
   ShieldCheck,
@@ -21,10 +23,10 @@ export const SuperAdminMockup = () => {
   const [activeAdminTab, setActiveAdminTab] = useState('organizations'); // 'organizations' | 'billing' | 'security'
 
   const tenants = [
-    { name: 'Northstar Workspace', org: 'northstar.example', plan: 'Platform', agents: 64, mrr: 'Demo', callsMonth: 'Sample', status: 'Active' },
-    { name: 'Harbor Workspace', org: 'harbor.example', plan: 'Custom', agents: 180, mrr: 'Demo', callsMonth: 'Sample', status: 'Active' },
-    { name: 'Summit Workspace', org: 'summit.example', plan: 'Business', agents: 22, mrr: 'Demo', callsMonth: 'Sample', status: 'Active' },
-    { name: 'Cedar Workspace', org: 'cedar.example', plan: 'Sales', agents: 45, mrr: 'Demo', callsMonth: 'Sample', status: 'Active' },
+    { name: 'Northstar Workspace', org: 'northstar.example', plan: 'Platform', agents: 'Configured', mrr: 'Demo', callsMonth: 'Sample', status: 'Active' },
+    { name: 'Harbor Workspace', org: 'harbor.example', plan: 'Custom', agents: 'Configured', mrr: 'Demo', callsMonth: 'Sample', status: 'Active' },
+    { name: 'Summit Workspace', org: 'summit.example', plan: 'Business', agents: 'Configured', mrr: 'Demo', callsMonth: 'Sample', status: 'Active' },
+    { name: 'Cedar Workspace', org: 'cedar.example', plan: 'Sales', agents: 'Configured', mrr: 'Demo', callsMonth: 'Sample', status: 'Active' },
   ];
 
   return (
@@ -38,11 +40,11 @@ export const SuperAdminMockup = () => {
         </div>
         <div className="mockup-title-bar">
           <ShieldCheck size={13} color="var(--oda-success)" />
-          <span>oda7 // BIZZFLY SaaS Master Console — Platform & Multi-Tenant Layer</span>
+          <span>ODA7 // Platform Console — Organizations & Multi-Tenant Layer</span>
         </div>
         <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
           <span className="badge badge-emerald" style={{ fontSize: '0.6875rem' }}>
-            Multi-Tenant Isolation: 100% Active
+            Illustrative platform data
           </span>
         </div>
       </div>
@@ -55,11 +57,11 @@ export const SuperAdminMockup = () => {
           
           <div style={{ background: 'var(--oda-bg-alt)', border: '1px solid var(--oda-border)', borderRadius: '8px', padding: '12px' }}>
             <div style={{ color: 'var(--oda-text-muted)', fontSize: '0.7rem', textTransform: 'uppercase', marginBottom: '4px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              <span>Platform MRR (Live)</span>
+              <span>Subscription Context</span>
               <DollarSign size={13} color="var(--oda-success)" />
             </div>
-            <div style={{ fontSize: '1.4rem', fontWeight: '800', color: 'var(--oda-success)' }}>$184,200</div>
-            <div style={{ color: 'var(--oda-success)', fontSize: '0.7rem', marginTop: '2px' }}>24 Tenants • 23 Subscriptions</div>
+            <div style={{ fontSize: '1.4rem', fontWeight: '800', color: 'var(--oda-success)' }}>Available</div>
+            <div style={{ color: 'var(--oda-success)', fontSize: '0.7rem', marginTop: '2px' }}>Plans and status in one view</div>
           </div>
 
           <div style={{ background: 'var(--oda-bg-alt)', border: '1px solid var(--oda-border)', borderRadius: '8px', padding: '12px' }}>
@@ -67,8 +69,8 @@ export const SuperAdminMockup = () => {
               <span>Active Organizations</span>
               <Building2 size={13} color="var(--oda-primary)" />
             </div>
-            <div style={{ fontSize: '1.4rem', fontWeight: '800', color: 'var(--oda-primary)' }}>48 Tenants</div>
-            <div style={{ color: 'var(--oda-text-secondary)', fontSize: '0.7rem', marginTop: '2px' }}>1,420 Active sales reps</div>
+            <div style={{ fontSize: '1.4rem', fontWeight: '800', color: 'var(--oda-primary)' }}>Workspace List</div>
+            <div style={{ color: 'var(--oda-text-secondary)', fontSize: '0.7rem', marginTop: '2px' }}>Organization context attached</div>
           </div>
 
           <div style={{ background: 'var(--oda-bg-alt)', border: '1px solid var(--oda-border)', borderRadius: '8px', padding: '12px' }}>
@@ -76,17 +78,17 @@ export const SuperAdminMockup = () => {
               <span>Telephony Volume</span>
               <Server size={13} color="#fbbf24" />
             </div>
-            <div style={{ fontSize: '1.4rem', fontWeight: '800', color: '#fbbf24' }}>4.82M Mins</div>
+            <div style={{ fontSize: '1.4rem', fontWeight: '800', color: '#fbbf24' }}>Reviewable</div>
             <div style={{ color: 'var(--oda-success)', fontSize: '0.7rem', marginTop: '2px' }}>Illustrative platform data</div>
           </div>
 
           <div style={{ background: 'var(--oda-bg-alt)', border: '1px solid var(--oda-border)', borderRadius: '8px', padding: '12px' }}>
             <div style={{ color: 'var(--oda-text-muted)', fontSize: '0.7rem', textTransform: 'uppercase', marginBottom: '4px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              <span>IP Threat Defense</span>
+              <span>Access Activity</span>
               <Lock size={13} color="var(--oda-success)" />
             </div>
-            <div style={{ fontSize: '1.4rem', fontWeight: '800', color: 'var(--oda-success)' }}>Audit Ready</div>
-            <div style={{ color: 'var(--oda-primary)', fontSize: '0.7rem', marginTop: '2px' }}>242 malicious IPs blocked</div>
+            <div style={{ fontSize: '1.4rem', fontWeight: '800', color: 'var(--oda-success)' }}>Visible</div>
+            <div style={{ color: 'var(--oda-primary)', fontSize: '0.7rem', marginTop: '2px' }}>Administrative history</div>
           </div>
 
         </div>
@@ -155,17 +157,17 @@ export const SuperAdminMockup = () => {
                 <Globe size={14} color="var(--oda-primary)" />
                 <span>Multi-Tenant Architecture</span>
               </div>
-              <span className="badge badge-cyan" style={{ fontSize: '0.65rem' }}>BIZZFLY SaaS Core</span>
+              <span className="badge badge-cyan" style={{ fontSize: '0.65rem' }}>ODA7 Platform Core</span>
             </div>
 
             {/* Visual Hierarchy Diagram */}
             <div style={{ background: 'var(--oda-surface)', border: '1px solid var(--oda-border)', borderRadius: '8px', padding: '12px', textAlign: 'center' }}>
               <div style={{ padding: '6px 12px', background: 'var(--oda-primary-soft)', border: '1px solid var(--oda-border-blue)', borderRadius: '6px', color: 'var(--oda-primary)', fontWeight: '700', fontSize: '0.75rem', display: 'inline-block' }}>
-                BIZZFLY // oda7 Platform Root
+                ODA7 // Platform Root
               </div>
               
               <div style={{ margin: '8px 0', color: 'var(--oda-text-muted)', fontSize: '0.7rem' }}>
-                ↓ Multi-Tenant Telephony & Database Mesh ↓
+                ↓ Organization and service context ↓
               </div>
 
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '6px' }}>
@@ -185,16 +187,16 @@ export const SuperAdminMockup = () => {
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', fontSize: '0.75rem' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', color: 'var(--oda-text-secondary)' }}>
-                  <span>Data Isolation</span>
-                  <span style={{ color: 'var(--oda-success)' }}>Row-Level Security</span>
+                  <span>Access scope</span>
+                  <span style={{ color: 'var(--oda-success)' }}>Configured by organization</span>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', color: 'var(--oda-text-secondary)' }}>
-                  <span>CNAME White-label</span>
-                  <span style={{ color: 'var(--oda-primary)' }}>Active (SSL Auto)</span>
+                  <span>Workspace domain</span>
+                  <span style={{ color: 'var(--oda-primary)' }}>Configuration visible</span>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', color: 'var(--oda-text-secondary)' }}>
-                  <span>Carrier Trunk</span>
-                  <span style={{ color: '#fbbf24' }}>Isolated SIP Route</span>
+                  <span>Communication route</span>
+                  <span style={{ color: '#fbbf24' }}>Service context attached</span>
                 </div>
               </div>
             </div>

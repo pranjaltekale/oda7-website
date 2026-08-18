@@ -1,5 +1,7 @@
+'use client';
+
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation } from '../../lib/navigation';
 import {
   LayoutDashboard,
   PhoneCall,
@@ -100,7 +102,7 @@ export const AppSidebar = ({ isMobileOpen, onCloseMobile }) => {
           </div>
           <div>
             <div style={{ color: '#fff', fontWeight: '800', fontSize: '1rem', letterSpacing: '-0.02em', lineHeight: 1 }}>oda7</div>
-            <div style={{ color: '#64748b', fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>BIZZFLY OS</div>
+            <div style={{ color: '#64748b', fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>ODA7 WORKSPACE</div>
           </div>
         </Link>
 
@@ -150,7 +152,7 @@ export const AppSidebar = ({ isMobileOpen, onCloseMobile }) => {
           </div>
           <div>
             <div style={{ color: '#fff', fontSize: '0.75rem', fontWeight: '600' }}>Alex Rivera</div>
-            <div style={{ color: '#64748b', fontSize: '0.65rem' }}>Tier 1 SDR • BIZZFLY</div>
+            <div style={{ color: '#64748b', fontSize: '0.65rem' }}>Illustrative SDR workspace</div>
           </div>
         </div>
       </div>

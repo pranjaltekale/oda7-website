@@ -33,19 +33,11 @@ export const HumanProblemStorySection = () => {
             
             {/* Real Workplace Photo Container with Subtle Glow */}
             <div
-              className="story-image-frame story-image-problem"
-              style={{
-                position: 'relative',
-                borderRadius: '24px',
-                overflow: 'hidden',
-                border: '1px solid var(--oda-border-blue)',
-                boxShadow: '0 20px 50px rgba(0, 0, 0, 0.4)',
-                height: '460px',
-              }}
+              className="story-image-frame story-image-problem story-image-card-responsive"
             >
               <img
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&auto=format&fit=crop&q=80"
-                alt="Sales Team Collaboration in Fast-Paced Office"
+                src="/oda7-operational-friction.png"
+                alt="Operations professional reconciling work across a laptop, phone and paper notes"
                 loading="lazy"
                 style={{
                   width: '100%',
@@ -68,24 +60,7 @@ export const HumanProblemStorySection = () => {
               />
 
               {/* In-Image Floating Badge Bottom */}
-              <div
-                style={{
-                  position: 'absolute',
-                  bottom: '20px',
-                  left: '20px',
-                  right: '20px',
-                  background: 'rgba(11, 15, 23, 0.94)',
-                  backdropFilter: 'blur(14px)',
-                  WebkitBackdropFilter: 'blur(14px)',
-                  border: '1px solid rgba(255, 255, 255, 0.12)',
-                  borderRadius: '14px',
-                  padding: '14px 18px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  gap: '12px',
-                }}
-              >
+              <div className="story-telemetry-badge-bottom">
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                   <div style={{ width: '36px', height: '36px', borderRadius: '8px', background: 'rgba(16, 185, 129, 0.18)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#10b981' }}>
                     <Activity size={18} />
@@ -95,7 +70,7 @@ export const HumanProblemStorySection = () => {
                       Three operating views, no shared context
                     </div>
                     <div style={{ color: '#94a3b8', fontSize: '0.75rem' }}>
-                      Inside Sales Pod Alpha • BIZZFLY
+                      Illustrative inside-sales pod
                     </div>
                   </div>
                 </div>
@@ -126,7 +101,7 @@ export const HumanProblemStorySection = () => {
           {/* Right Column: Narrative Storytelling */}
           <div>
             <span className="badge badge-primary" style={{ marginBottom: '14px' }}>
-              The Operational Reality
+              The operational problem
             </span>
 
             <h2
@@ -139,8 +114,8 @@ export const HumanProblemStorySection = () => {
                 marginBottom: '20px',
               }}
             >
-              Your team is working.{' '}
-              <span className="text-gradient-accent">Your data shouldn't work against them.</span>
+              The work moves quickly.{' '}
+              <span className="text-gradient-accent">The context does not.</span>
             </h2>
 
             <p
@@ -151,7 +126,7 @@ export const HumanProblemStorySection = () => {
                 marginBottom: '28px',
               }}
             >
-              High-growth revenue teams don't fail from a lack of effort—they slow down because critical work is trapped across disjointed silos. When CRM leads, telephony calling, shift attendance, payroll commissions, and conversation analytics live in different browser tabs, execution stalls.
+              Leads, conversations, team availability and compensation often live in separate systems. People spend time rebuilding the story instead of moving the work forward.
             </p>
 
             {/* 3 Real-World Friction Pillars */}
@@ -162,10 +137,10 @@ export const HumanProblemStorySection = () => {
                 </div>
                 <div>
                   <div style={{ fontWeight: '750', color: 'var(--oda-text-primary)', fontSize: '0.95rem' }}>
-                    Tool Fragmentation Friction
+                    Repeated context switching
                   </div>
                   <div style={{ color: 'var(--oda-text-secondary)', fontSize: '0.85rem', lineHeight: '1.5', marginTop: '2px' }}>
-                    Sales reps lose valuable time manually copying numbers, switching tabs, and logging call dispositions.
+                    Reps copy details between tools while the customer waits for the next action.
                   </div>
                 </div>
               </div>
@@ -176,10 +151,10 @@ export const HumanProblemStorySection = () => {
                 </div>
                 <div>
                   <div style={{ fontWeight: '750', color: 'var(--oda-text-primary)', fontSize: '0.95rem' }}>
-                    Blind Floor Management
+                    Delayed manager visibility
                   </div>
                   <div style={{ color: 'var(--oda-text-secondary)', fontSize: '0.85rem', lineHeight: '1.5', marginTop: '2px' }}>
-                    Managers discover dropped connection rates and fumbled enterprise objections days later in delayed spreadsheet reports.
+                    Managers see the outcome after the moment for useful coaching has already passed.
                   </div>
                 </div>
               </div>
@@ -190,10 +165,10 @@ export const HumanProblemStorySection = () => {
                 </div>
                 <div>
                   <div style={{ fontWeight: '750', color: 'var(--oda-text-primary)', fontSize: '0.95rem' }}>
-                    The ODA7 Connected Solution
+                    One operating picture
                   </div>
                   <div style={{ color: 'var(--oda-text-secondary)', fontSize: '0.85rem', lineHeight: '1.5', marginTop: '2px' }}>
-                    ODA7 unifies calling, CRM, floor queue command, and automated compensation into one continuous synchronous data mesh.
+                    ODA7 keeps customer, team and performance context connected as responsibility changes.
                   </div>
                 </div>
               </div>

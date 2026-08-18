@@ -1,5 +1,8 @@
+'use client';
+
 import React, { useEffect, useRef, useState } from 'react';
 import { SectionHeading } from '../common/SectionHeading';
+import { InteractiveTiltCard } from '../common/InteractiveTiltCard';
 import {
   XCircle,
   CheckCircle2,
@@ -14,19 +17,17 @@ export const BeforeAfterSection = () => {
   const sectionRef = useRef(null);
   const [isUnified, setIsUnified] = useState(false);
   const beforePoints = [
-    'Conversations and leads are scattered across different devices and spreadsheets',
-    'High-intent leads go cold due to inconsistent manual follow-up delays',
-    'WhatsApp and calling outreach is manual, unrecorded, and disconnected from CRM',
-    'Sales, support, and operations teams lack live floor visibility and coordination',
-    'Juggling between 5+ separate tools to manage dialer, leads, attendance, and commissions',
+    'Customer conversations and lead records live in separate places',
+    'Follow-up ownership depends on manual reminders and handoffs',
+    'Managers reconstruct the floor picture from delayed reports',
+    'Operations rebuilds activity context during compensation review',
   ];
 
   const afterPoints = [
-    'Conversations and leads are centralized into one synchronous workspace for total team collaboration',
-    'Smart ML queue prioritizes high-intent leads and keeps follow-up cadences on autopilot',
-    'Integrated 0.8s local presence dialer and official WhatsApp API answer prospects in seconds',
-    'Floor managers get real-time queue visibility with 1-click silent listening and headset whisper coaching',
-    'CRM, Dialer, WhatsApp, Attendance, and Commission Payroll come together in one unified operating system',
+    'Customer context remains attached from intake through follow-up',
+    'Ownership and the next action are visible to the wider team',
+    'Managers review activity in the same operating context',
+    'People and compensation workflows can reference verified outcomes',
   ];
 
   const disconnectedTools = ['CRM', 'Dialer', 'Sheets', 'HR', 'Payroll', 'Inbox', 'Analytics'];
@@ -50,9 +51,9 @@ export const BeforeAfterSection = () => {
         <SectionHeading
           eyebrow="Transformation"
           eyebrowIcon="Sparkles"
-          title="From scattered chaos to"
+          title="From fragmented handoffs to"
           highlightText="one operating picture."
-          description="See the stark operational difference between managing disconnected tools and running your entire revenue floor on ODA7."
+          description="Compare the operating experience before and after customer, team and performance context is connected."
         />
 
         <div className="transformation-convergence" aria-label="Disconnected tools converge into ODA7">
@@ -116,7 +117,9 @@ export const BeforeAfterSection = () => {
             </div>
 
             {/* Visual Human & Metric Card */}
-            <div
+            <InteractiveTiltCard
+              maxTilt={2.5}
+              scale={1.01}
               className="comparison-metric-card"
               style={{
                 background: 'var(--oda-surface)',
@@ -134,8 +137,9 @@ export const BeforeAfterSection = () => {
               {/* Left Side: Stressed Rep/Leader Photo + Negative Metric */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                 <img
-                  src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=300&auto=format&fit=crop&q=80"
-                  alt="Frustrated Rep with Disjointed Tools"
+                  className="tilt-parallax-img"
+                  src="/oda7-operational-friction.png"
+                  alt="Fragmented workflow context"
                   style={{
                     width: '72px',
                     height: '80px',
@@ -145,23 +149,23 @@ export const BeforeAfterSection = () => {
                   }}
                 />
                 <div>
-                  <div style={{ fontSize: '0.72rem', color: 'var(--oda-text-muted)', fontWeight: '600', textTransform: 'uppercase' }}>Statistics</div>
-                  <div style={{ fontSize: '0.85rem', fontWeight: '750', color: 'var(--oda-text-primary)' }}>Total Leads</div>
-                  <div style={{ fontSize: '1.4rem', fontWeight: '850', color: 'var(--oda-text-primary)', lineHeight: '1.1' }}>20k</div>
+                  <div style={{ fontSize: '0.72rem', color: 'var(--oda-text-muted)', fontWeight: '600', textTransform: 'uppercase' }}>Workflow state</div>
+                  <div style={{ fontSize: '0.85rem', fontWeight: '750', color: 'var(--oda-text-primary)' }}>Customer context</div>
+                  <div style={{ fontSize: '1.4rem', fontWeight: '850', color: 'var(--oda-text-primary)', lineHeight: '1.1' }}>Scattered</div>
                   <div style={{ fontSize: '0.75rem', color: '#ef4444', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '2px' }}>
-                    <TrendingDown size={13} /> -18.34%
+                    <TrendingDown size={13} /> Manual handoffs
                   </div>
                 </div>
               </div>
 
               {/* Right Side: Red Sales Gauge Card */}
               <div style={{ background: 'var(--oda-bg-alt)', border: '1px solid var(--oda-border-subtle)', borderRadius: '12px', padding: '10px 14px', textAlign: 'center' }}>
-                <div style={{ fontSize: '0.7rem', color: 'var(--oda-text-muted)', fontWeight: '600' }}>Total Sales</div>
+                <div style={{ fontSize: '0.7rem', color: 'var(--oda-text-muted)', fontWeight: '600' }}>Review state</div>
                 <div style={{ width: '48px', height: '24px', margin: '4px auto', borderTop: '4px solid #ef4444', borderLeft: '4px solid #ef4444', borderRight: '4px solid #ef4444', borderRadius: '24px 24px 0 0' }} />
-                <div style={{ fontSize: '1.15rem', fontWeight: '850', color: 'var(--oda-text-primary)' }}>575</div>
-                <div style={{ fontSize: '0.62rem', color: 'var(--oda-text-muted)' }}>High Tool Drop-off</div>
+                <div style={{ fontSize: '1.15rem', fontWeight: '850', color: 'var(--oda-text-primary)' }}>Delayed</div>
+                <div style={{ fontSize: '0.62rem', color: 'var(--oda-text-muted)' }}>Multiple sources</div>
               </div>
-            </div>
+            </InteractiveTiltCard>
           </div>
 
           {/* COLUMN 2: AFTER ODA7 */}
@@ -200,7 +204,9 @@ export const BeforeAfterSection = () => {
             </div>
 
             {/* Visual Human & Metric Card */}
-            <div
+            <InteractiveTiltCard
+              maxTilt={2.5}
+              scale={1.01}
               className="comparison-metric-card"
               style={{
                 background: 'var(--oda-surface)',
@@ -218,8 +224,9 @@ export const BeforeAfterSection = () => {
               {/* Left Side: Victorious Celebrating Professional Photo + Positive Metric */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                 <img
-                  src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&auto=format&fit=crop&q=80"
-                  alt="Celebrating Victorious Sales Executive"
+                  className="tilt-parallax-img"
+                  src="/oda7-module-engagement.jpg"
+                  alt="Team reviewing shared operating context"
                   style={{
                     width: '72px',
                     height: '80px',
@@ -229,23 +236,23 @@ export const BeforeAfterSection = () => {
                   }}
                 />
                 <div>
-                  <div style={{ fontSize: '0.72rem', color: 'var(--oda-text-muted)', fontWeight: '600', textTransform: 'uppercase' }}>Statistics</div>
-                  <div style={{ fontSize: '0.85rem', fontWeight: '750', color: 'var(--oda-text-primary)' }}>Total Leads</div>
-                  <div style={{ fontSize: '1.4rem', fontWeight: '850', color: 'var(--oda-text-primary)', lineHeight: '1.1' }}>325k</div>
+                  <div style={{ fontSize: '0.72rem', color: 'var(--oda-text-muted)', fontWeight: '600', textTransform: 'uppercase' }}>Workflow state</div>
+                  <div style={{ fontSize: '0.85rem', fontWeight: '750', color: 'var(--oda-text-primary)' }}>Customer context</div>
+                  <div style={{ fontSize: '1.4rem', fontWeight: '850', color: 'var(--oda-text-primary)', lineHeight: '1.1' }}>Connected</div>
                   <div style={{ fontSize: '0.75rem', color: '#10b981', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '2px' }}>
-                    <TrendingUp size={13} /> +34.8%
+                    <TrendingUp size={13} /> One timeline
                   </div>
                 </div>
               </div>
 
               {/* Right Side: Green Sales Gauge Card */}
               <div style={{ background: 'var(--oda-bg-alt)', border: '1px solid var(--oda-border-subtle)', borderRadius: '12px', padding: '10px 14px', textAlign: 'center' }}>
-                <div style={{ fontSize: '0.7rem', color: 'var(--oda-text-muted)', fontWeight: '600' }}>Total Sales</div>
+                <div style={{ fontSize: '0.7rem', color: 'var(--oda-text-muted)', fontWeight: '600' }}>Review state</div>
                 <div style={{ width: '48px', height: '24px', margin: '4px auto', borderTop: '4px solid #10b981', borderLeft: '4px solid #10b981', borderRight: '4px solid #10b981', borderRadius: '24px 24px 0 0' }} />
-                <div style={{ fontSize: '1.15rem', fontWeight: '850', color: 'var(--oda-text-primary)' }}>5,575</div>
-                <div style={{ fontSize: '0.62rem', color: '#10b981', fontWeight: '700' }}>+34% Connection Lift</div>
+                <div style={{ fontSize: '1.15rem', fontWeight: '850', color: 'var(--oda-text-primary)' }}>Visible</div>
+                <div style={{ fontSize: '0.62rem', color: '#10b981', fontWeight: '700' }}>Responsible owner</div>
               </div>
-            </div>
+            </InteractiveTiltCard>
           </div>
         </div>
 

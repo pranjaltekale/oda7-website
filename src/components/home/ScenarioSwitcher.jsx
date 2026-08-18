@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { ArrowRight, Building2, CheckCircle2 } from 'lucide-react';
 import { industryScenarios } from '../../data/marketingPages';

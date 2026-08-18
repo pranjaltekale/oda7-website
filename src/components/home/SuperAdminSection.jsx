@@ -13,7 +13,7 @@ export const SuperAdminSection = () => {
           eyebrowIcon="ShieldCheck"
           title="Operate every organization"
           highlightText="from one platform."
-          description="Provision client organizations with 100% data isolation, configure recurring subscription tiers, monitor consolidated ARR telemetry, and enforce global IP threat defense under the BIZZFLY master console."
+          description="Provision organizations, configure subscription tiers, review consolidated platform activity and manage security controls from the ODA7 platform console."
         />
 
         {/* Super Admin Executive Story Strip */}
@@ -33,13 +33,13 @@ export const SuperAdminSection = () => {
           {/* Executive Leadership Photo */}
           <div style={{ position: 'relative', borderRadius: '14px', overflow: 'hidden', border: '1px solid rgba(255, 255, 255, 0.1)' }}>
             <img
-              src="/oda7-leadership-analytics.jpg"
+              src="/oda7-scenario-saasplatform.jpg"
               alt="Platform Executive Leadership"
-              style={{ width: '100%', height: '220px', objectFit: 'cover', display: 'block' }}
+              style={{ width: '100%', height: 'clamp(180px, 42vw, 240px)', objectFit: 'cover', display: 'block' }}
             />
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent 30%, rgba(7, 9, 14, 0.85) 100%)' }} />
-            <div style={{ position: 'absolute', bottom: '12px', left: '12px', right: '12px', background: 'rgba(11, 15, 23, 0.92)', backdropFilter: 'blur(10px)', padding: '8px 12px', borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.1)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span style={{ color: '#cbd5e1', fontSize: '0.72rem', fontWeight: '600' }}>BIZZFLY SaaS Platform Root</span>
+            <div style={{ position: 'absolute', bottom: '10px', left: '10px', right: '10px', background: 'rgba(11, 15, 23, 0.92)', backdropFilter: 'blur(10px)', padding: '7px 10px', borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.1)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '4px' }}>
+              <span style={{ color: '#cbd5e1', fontSize: '0.72rem', fontWeight: '600' }}>ODA7 Platform Root</span>
               <span className="badge badge-emerald" style={{ fontSize: '0.6rem', padding: '1px 6px' }}>48 Active Tenants</span>
             </div>
           </div>
@@ -47,7 +47,7 @@ export const SuperAdminSection = () => {
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
               <span className="badge badge-emerald">Platform Multi-Tenancy</span>
-              <span className="badge badge-cyan">SOC2 Type II & GDPR</span>
+              <span className="badge badge-cyan">Role-aware administration</span>
             </div>
             <h3 style={{ fontSize: '1.45rem', fontWeight: '800', color: 'var(--oda-text-primary)', marginBottom: '10px' }}>
               Enterprise Data Isolation & White-Label Provisioning

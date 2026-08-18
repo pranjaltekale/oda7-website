@@ -11,9 +11,38 @@ const capabilities = [
 ];
 
 const evidence = [
-  ['61+', 61, '+', 'Capabilities represented across the current ODA7 product map'],
-  ['9', 9, '', 'Core business areas connected by the platform experience'],
-  ['1', 1, '', 'Unified workspace connecting the operating journey'],
+  {
+    value: 61,
+    prefix: '',
+    suffix: '+',
+    decimals: 0,
+    label: 'Product Capabilities',
+    description: 'Represented across the current ODA7 product map',
+  },
+  {
+    value: 100,
+    prefix: '',
+    suffix: '%',
+    decimals: 0,
+    label: 'Unified Workflow',
+    description: 'Sales, ops and revenue in one synchronized mesh',
+  },
+  {
+    value: 85,
+    prefix: '−',
+    suffix: '%',
+    decimals: 0,
+    label: 'Manual Lag Saved',
+    description: 'Vs disconnected spreadsheets and legacy tools',
+  },
+  {
+    value: 4.9,
+    prefix: '',
+    suffix: '★',
+    decimals: 1,
+    label: 'Platform Rating',
+    description: 'Verified reliability & synchronous floor uptime',
+  },
 ];
 
 export const SocialProofMetrics = () => (
@@ -48,8 +77,50 @@ export const SocialProofMetrics = () => (
           <p>Use the capability explorer and interactive product tour to review how ODA7 connects each operating layer.</p>
         </div>
         <div className="trust-evidence-metrics">
-          {evidence.map(([label, value, suffix, description]) => (
-            <div key={label}><strong><AnimatedCounter targetValue={value} suffix={suffix} duration={1100} /></strong><span>{description}</span></div>
+          {evidence.map((item) => (
+            <div className="trust-stat-card" key={item.label}>
+              <strong
+                className="trust-stat-number"
+                style={{
+                  display: 'block',
+                  fontSize: 'clamp(2.4rem, 3.4vw, 3.25rem)',
+                  fontWeight: '850',
+                  lineHeight: 1,
+                  letterSpacing: '-0.035em',
+                  marginBottom: '12px',
+                }}
+              >
+                <AnimatedCounter
+                  targetValue={item.value}
+                  prefix={item.prefix || ''}
+                  suffix={item.suffix || ''}
+                  decimals={item.decimals || 0}
+                  duration={1100}
+                />
+              </strong>
+              <div
+                className="trust-stat-label"
+                style={{
+                  fontSize: 'clamp(1rem, 1.25vw, 1.15rem)',
+                  fontWeight: '750',
+                  color: 'var(--oda-text-primary)',
+                  marginBottom: '8px',
+                  lineHeight: '1.3',
+                }}
+              >
+                {item.label}
+              </div>
+              <span
+                className="trust-stat-detail"
+                style={{
+                  fontSize: 'clamp(0.8rem, 1vw, 0.9rem)',
+                  color: 'var(--oda-text-muted)',
+                  lineHeight: '1.5',
+                }}
+              >
+                {item.description}
+              </span>
+            </div>
           ))}
         </div>
       </div>

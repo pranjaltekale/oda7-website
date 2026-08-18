@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import {
   XCircle,
@@ -133,46 +135,42 @@ export const BeforeAfterSlider = () => {
             position: 'absolute',
             inset: 0,
             background: 'linear-gradient(135deg, rgba(14, 23, 42, 0.95) 0%, rgba(7, 10, 18, 0.98) 100%)',
-            padding: '36px',
+            padding: 'clamp(16px, 3.5vw, 36px)',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
           }}
         >
-          <div style={{ maxWidth: '460px', marginLeft: 'auto', textAlign: 'left' }}>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '4px 12px', borderRadius: 'var(--radius-full)', background: 'rgba(16, 185, 129, 0.15)', border: '1px solid rgba(16, 185, 129, 0.35)', color: '#34d399', fontSize: '0.75rem', fontWeight: '700', textTransform: 'uppercase', marginBottom: '14px' }}>
+          <div style={{ maxWidth: '460px', width: '100%', marginLeft: 'auto', textAlign: 'left' }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '4px 12px', borderRadius: 'var(--radius-full)', background: 'rgba(16, 185, 129, 0.15)', border: '1px solid rgba(16, 185, 129, 0.35)', color: '#34d399', fontSize: '0.75rem', fontWeight: '700', textTransform: 'uppercase', marginBottom: '12px' }}>
               <CheckCircle2 size={14} />
               <span>With ODA7 Unified System</span>
             </div>
 
-            <h3 style={{ fontSize: '1.6rem', fontWeight: '800', color: '#fff', marginBottom: '12px' }}>
+            <h3 style={{ fontSize: 'clamp(1.2rem, 3vw, 1.6rem)', fontWeight: '800', color: '#fff', marginBottom: '10px' }}>
               One Synchronous Operating Mesh
             </h3>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '0.875rem' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: 'clamp(0.785rem, 1.8vw, 0.875rem)' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#cbd5e1' }}>
-                <CheckCircle2 size={15} color="#10b981" />
-                <span><strong>Centralized Workflow:</strong> Dialer, CRM, WhatsApp, and quotes in 1 tab.</span>
+                <CheckCircle2 size={15} color="#10b981" style={{ flexShrink: 0 }} />
+                <span><strong>Centralized Workflow:</strong> Dialer, CRM, WhatsApp in 1 tab.</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#cbd5e1' }}>
-                <CheckCircle2 size={15} color="#10b981" />
-                <span><strong>Real-Time Visibility:</strong> Live floor queues with 1-click whisper coaching.</span>
+                <CheckCircle2 size={15} color="#10b981" style={{ flexShrink: 0 }} />
+                <span><strong>Real-Time Visibility:</strong> Live floor queues &amp; whisper coaching.</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#cbd5e1' }}>
-                <CheckCircle2 size={15} color="#10b981" />
-                <span><strong>Role-Based Workspaces:</strong> Custom screens for Sales, Mgr, Admin, Super Admin.</span>
+                <CheckCircle2 size={15} color="#10b981" style={{ flexShrink: 0 }} />
+                <span><strong>Role Workspaces:</strong> Custom views for Sales, Mgr &amp; Admin.</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#cbd5e1' }}>
-                <CheckCircle2 size={15} color="#10b981" />
-                <span><strong>Automated Processes:</strong> Instant commissions, auto notes, and sequences.</span>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#cbd5e1' }}>
-                <CheckCircle2 size={15} color="#10b981" />
-                <span><strong>Actionable Insights:</strong> "Explain My Numbers" natural language BI.</span>
+                <CheckCircle2 size={15} color="#10b981" style={{ flexShrink: 0 }} />
+                <span><strong>Automated Processes:</strong> Instant commissions &amp; sequences.</span>
               </div>
             </div>
 
-            <div style={{ marginTop: '20px', display: 'flex', gap: '10px' }}>
+            <div style={{ marginTop: '16px', display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
               <span className="badge badge-emerald">Connected workflow</span>
               <span className="badge badge-cyan">&lt;15s Speed-to-Lead</span>
             </div>
@@ -187,14 +185,14 @@ export const BeforeAfterSlider = () => {
             width: `${sliderPos}%`,
             background: 'linear-gradient(135deg, rgba(26, 12, 16, 0.98) 0%, rgba(15, 8, 12, 0.98) 100%)',
             borderRight: '2px solid #38bdf8',
-            padding: '36px',
+            padding: 'clamp(16px, 3.5vw, 36px)',
             overflow: 'hidden',
             boxShadow: '10px 0 30px rgba(0,0,0,0.8)',
             zIndex: 5,
           }}
         >
-          <div style={{ width: '460px', textAlign: 'left' }}>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '4px 12px', borderRadius: 'var(--radius-full)', background: 'rgba(239, 68, 68, 0.15)', border: '1px solid rgba(239, 68, 68, 0.35)', color: '#fca5a5', fontSize: '0.75rem', fontWeight: '700', textTransform: 'uppercase', marginBottom: '14px' }}>
+          <div style={{ maxWidth: '460px', width: 'min(460px, calc(100vw - 80px))', textAlign: 'left' }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '4px 12px', borderRadius: 'var(--radius-full)', background: 'rgba(239, 68, 68, 0.15)', border: '1px solid rgba(239, 68, 68, 0.35)', color: '#fca5a5', fontSize: '0.75rem', fontWeight: '700', textTransform: 'uppercase', marginBottom: '12px' }}>
               <XCircle size={14} color="#ef4444" />
               <span>Without ODA7 (Fragmented Silos)</span>
             </div>

@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect, useState } from 'react';
 import { Activity, BarChart3, CalendarDays, Check, FileText, GitBranch, Headphones, Inbox, LayoutDashboard, Megaphone, Package, PhoneCall, Plus, ReceiptText, Users } from 'lucide-react';
 

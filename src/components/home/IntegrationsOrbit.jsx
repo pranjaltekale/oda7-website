@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { SectionHeading } from '../common/SectionHeading';
 import {
@@ -44,7 +46,7 @@ export const IntegrationsOrbit = () => {
         />
 
         {/* Category Filters */}
-        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '32px', flexWrap: 'wrap', gap: '6px' }}>
+        <div className="tabs-scroll-wrapper">
           <div className="tab-group">
             <button
               className={`tab-btn ${activeFilter === 'all' ? 'active' : ''}`}

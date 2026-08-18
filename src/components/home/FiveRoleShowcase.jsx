@@ -1,6 +1,11 @@
+'use client';
+
 import React, { useState } from 'react';
 import { SectionHeading } from '../common/SectionHeading';
 import { Button } from '../common/Button';
+import { LightTabIndicator } from '../common/LightTabIndicator';
+import { ProductStateTransition } from '../common/ProductStateTransition';
+import { InteractiveTiltCard } from '../common/InteractiveTiltCard';
 import {
   Users,
   TrendingUp,
@@ -26,7 +31,7 @@ export const FiveRoleShowcase = () => {
       rolePersona: 'Alex Rivera, Senior Inside SDR',
       tagline: 'High-Volume Velocity & Zero Rep Idle Time',
       badge: 'Zero Context Switching',
-      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&auto=format&fit=crop&q=80',
+      image: '/oda7-module-sales.jpg',
       heading: 'Speed up outbound prospecting with zero friction.',
       subheading: 'Stop toggling between 5 tabs. Dial, take notes, handle objections, and send WhatsApp follow-ups in one view.',
       ctaText: 'Explore Sales SDR Experience',
@@ -48,7 +53,7 @@ export const FiveRoleShowcase = () => {
       rolePersona: 'Marcus Vance, VP Inside Sales',
       tagline: 'Real-Time Floor Command & Live Whisper',
       badge: 'Floor Visibility',
-      image: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&auto=format&fit=crop&q=80',
+      image: '/oda7-scenario-callcenter.jpg',
       heading: 'Coach your reps live and protect enterprise revenue.',
       subheading: 'Monitor concurrent queues in real-time, inspect rep availability states, and whisper talk tracks into headsets during calls.',
       ctaText: 'Explore Manager Floor Console',
@@ -66,57 +71,57 @@ export const FiveRoleShowcase = () => {
     {
       id: 'marketer',
       label: 'Growth Lead',
-      roleTitle: 'Marketing & Demand Gen',
-      rolePersona: 'Elena Rostova, Head of Growth',
-      tagline: 'Speed-to-Lead Bridges & WhatsApp Cadence',
-      badge: 'Omnichannel Ingestion',
-      image: 'https://images.unsplash.com/photo-1580894732414-0675276e053a?w=800&auto=format&fit=crop&q=80',
-      heading: 'Turn ad spend into instant live conversations.',
-      subheading: 'Capture webhooks from Facebook, Google Ads, and landing pages with instant lead routing and automated WhatsApp broadcasts.',
-      ctaText: 'Explore Growth Campaign Suite',
+      roleTitle: 'Demand Gen & Campaigns Director',
+      rolePersona: 'Elena Rostova, Growth Director',
+      tagline: 'Precision Webhook Lead Routing & Meta Sync',
+      badge: 'Immediate Conversion',
+      image: '/oda7-module-engagement.jpg',
+      heading: 'Convert inbound demand within 15 seconds.',
+      subheading: 'Ingest webhook leads sub-second, verify numbers, and instantly pop them into the next available rep queue.',
+      ctaText: 'Explore Growth Routing Console',
       formulas: [
-        { left: 'Paid Ad Inbound Webhook', right: '<10s Automatic Dial Bridge' },
-        { left: 'Official WhatsApp API', right: '94% Message Open Rate' },
-        { left: 'Full-Funnel Attribution', right: 'True Telephony ROI Tracking' },
+        { left: 'Meta WhatsApp Lead Ads', right: 'Instant 2-Way CRM Thread' },
+        { left: 'Automated Multi-Touch Cadences', right: '94% Message Open Rate' },
+        { left: 'Lead Source Attribution', right: 'Real CAC Optimization' },
       ],
-      quote: 'Our lead-to-call response time dropped from 35 minutes to 9 seconds. Our CAC payback period cut in half almost immediately.',
+      quote: 'Reducing our lead response time from 18 minutes to 12 seconds with ODA7 increased our booked meetings by 48% in the first quarter.',
       quoteAuthor: 'Elena Rostova',
-      quoteRole: 'Head of Demand Gen, CloudFlow',
-      floatingBadge: '<9s Inbound Lead-to-Call Bridge',
+      quoteRole: 'Demand Gen, FinTech Scale',
+      floatingBadge: 'Sub-Second Ingestion Active',
       badgeColor: 'emerald',
     },
     {
       id: 'admin',
-      label: 'Ops & Payroll',
-      roleTitle: 'Operations & HR Administrator',
-      rolePersona: 'Sarah Jenkins, Director of Revenue Ops',
-      tagline: 'Automated Commission Pay & Shift Telemetry',
-      badge: 'Automated Compensation',
-      image: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&auto=format&fit=crop&q=80',
-      heading: 'Eliminate spreadsheet payroll disputes permanently.',
-      subheading: 'Automate tier accelerators, verify geolocation shift punches, and dispatch itemized PDF payslips with 1-click.',
-      ctaText: 'Explore Automated Payroll Ops',
+      label: 'HR & Ops Admin',
+      roleTitle: 'People & Revenue Operations Lead',
+      rolePersona: 'Samantha Chen, Head of RevOps',
+      tagline: 'Automated Payroll & Geolocation Shifts',
+      badge: 'Zero Dispute Operations',
+      image: '/oda7-module-compensation.jpg',
+      heading: 'Automate compensation rules and shift governance.',
+      subheading: 'Calculate complex multi-tier commissions instantly on Closed-Won, generate payslips, and manage geo-verified attendance.',
+      ctaText: 'Explore Operations & Payroll',
       formulas: [
-        { left: 'Verified Shift Attendance', right: '100% Audit-Ready Hours' },
-        { left: 'Tiered Quota Accelerators', right: 'Automated Commission Math' },
-        { left: 'End-of-Month Payroll Run', right: '1-Click Itemized Payslips' },
+        { left: 'Closed-Won Opportunity', right: 'Instant Accelerator Calc' },
+        { left: 'Geo-Verified Clock-In', right: '100% Shift Audit Compliance' },
+        { left: 'Automated PDF Payslips', right: 'Zero Rep Payroll Inquiries' },
       ],
-      quote: 'End-of-month used to mean 3 days of spreadsheet hell and rep commission arguments. Now, payroll runs in under 4 minutes with 100% accuracy.',
-      quoteAuthor: 'Sarah Jenkins',
-      quoteRole: 'Director of RevOps, FinScale',
-      floatingBadge: '1-Click Verified Payslip Dispatch',
-      badgeColor: 'amber',
+      quote: 'Commission payout day used to take 3 full days of spreadsheet reconciliation. Now it happens automatically with zero disputes.',
+      quoteAuthor: 'Samantha Chen',
+      quoteRole: 'Head of Operations, RevGroup',
+      floatingBadge: 'Automated Commission Engine Active',
+      badgeColor: 'cyan',
     },
     {
-      id: 'executive',
-      label: 'Platform Executive',
-      roleTitle: 'Super Admin & Multi-Tenant SaaS',
-      rolePersona: 'David Sterling, Managing Director',
-      tagline: 'Multi-Tenant Isolation & Consolidated ARR',
-      badge: 'Multi-Tenant Master',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&auto=format&fit=crop&q=80',
+      id: 'super-admin',
+      label: 'Platform SaaS',
+      roleTitle: 'Multi-Tenant Platform Operator',
+      rolePersona: 'David Sterling, SaaS Operator',
+      tagline: 'Multi-Tenant SaaS Governance & Global Telemetry',
+      badge: 'Global SaaS Multi-Tenancy',
+      image: '/oda7-scenario-saasplatform.jpg',
       heading: 'Govern multiple client organizations from one console.',
-      subheading: 'Provision isolated tenant workspaces, manage subscription billing tiers, and enforce global IP threat defense under BIZZFLY.',
+      subheading: 'Provision isolated tenant workspaces, manage subscription tiers, and review platform-wide access controls.',
       ctaText: 'Explore Super Admin SaaS Console',
       formulas: [
         { left: '1-Click Tenant Provisioning', right: 'Instant Workspace Isolation' },
@@ -125,7 +130,7 @@ export const FiveRoleShowcase = () => {
       ],
       quote: 'Operating 48 distinct client organizations under one master platform while guaranteeing complete data isolation and unified billing is extraordinary.',
       quoteAuthor: 'David Sterling',
-      quoteRole: 'Managing Director, BIZZFLY SaaS Platform',
+      quoteRole: 'Platform operator',
       floatingBadge: '100% Tenant Isolation Active',
       badgeColor: 'emerald',
     },
@@ -145,52 +150,30 @@ export const FiveRoleShowcase = () => {
           description="Experience how ODA7 transforms daily execution for sales representatives, floor supervisors, growth marketers, operations admins, and platform executives."
         />
 
-        {/* 5-Role Tab Switcher */}
-        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '36px', flexWrap: 'wrap', gap: '8px' }}>
-          <div className="tab-group">
-            {roles.map((role) => {
-              const isActive = activeRole === role.id;
-              return (
-                <button
-                  key={role.id}
-                  className={`tab-btn ${isActive ? 'active' : ''}`}
-                  onClick={() => setActiveRole(role.id)}
-                >
-                  <span>{role.label}</span>
-                </button>
-              );
-            })}
-          </div>
+        {/* 5-Role Tab Switcher with LightTabIndicator */}
+        <div className="tabs-scroll-wrapper">
+          <LightTabIndicator
+            tabs={roles.map((r) => ({ id: r.id, label: r.label }))}
+            activeTab={activeRole}
+            onChange={(id) => setActiveRole(id)}
+            variant="pill"
+            className="role-selector-light-tabs"
+          />
         </div>
 
-        {/* Main Role Storytelling Box */}
-        <div
-          className="feature-showcase-panel animate-fadeIn"
-          style={{
-            maxWidth: '1240px',
-            margin: '0 auto',
-            borderRadius: '28px',
-            padding: 'clamp(28px, 4.5vw, 52px)',
-            position: 'relative',
-            overflow: 'hidden',
-          }}
-          key={activeRole}
-        >
+        {/* Main Role Storytelling Box with ProductStateTransition */}
+        <ProductStateTransition activeKey={activeRole}>
           <div
+            className="feature-showcase-panel"
             style={{
-              display: 'grid',
-              gridTemplateColumns: 'minmax(320px, 1.25fr) minmax(320px, 1fr)',
-              gap: 'clamp(32px, 5vw, 56px)',
-              alignItems: 'center',
+              maxWidth: '1240px',
+              margin: '0 auto',
+              borderRadius: '28px',
+              padding: 'clamp(24px, 4.5vw, 52px)',
+              position: 'relative',
+              overflow: 'hidden',
             }}
-            className="mockup-grid-2col"
           >
-            {/* Left Column: Role Headline, CTA, Formulas & Testimonial Quote */}
-            <div>
-              {/* Heading */}
-              <h2
-                style={{
-                  fontSize: 'clamp(2.2rem, 4vw, 3.2rem)',
                   fontWeight: '850',
                   color: 'var(--oda-text-primary)',
                   lineHeight: 1.1,
@@ -288,22 +271,15 @@ export const FiveRoleShowcase = () => {
               </div>
             </div>
 
-            {/* Right Column: Large, Crystal-Clear Unconstrained Professional Portrait */}
+            {/* Right Column: Large, Crystal-Clear Unconstrained Professional Portrait in InteractiveTiltCard */}
             <div style={{ position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-              
-              {/* Image Frame with Full Visibility */}
-              <div
-                style={{
-                  position: 'relative',
-                  width: '100%',
-                  height: '540px',
-                  borderRadius: '24px',
-                  overflow: 'hidden',
-                  border: '1px solid rgba(255, 255, 255, 0.15)',
-                  boxShadow: '0 25px 60px rgba(0, 0, 0, 0.5)',
-                }}
+              <InteractiveTiltCard
+                maxTilt={3}
+                scale={1.015}
+                className="story-image-card-responsive"
               >
                 <img
+                  className="tilt-parallax-img"
                   src={current.image}
                   alt={current.rolePersona}
                   style={{
@@ -320,27 +296,12 @@ export const FiveRoleShowcase = () => {
                     position: 'absolute',
                     inset: 0,
                     background: 'linear-gradient(180deg, transparent 45%, rgba(7, 9, 14, 0.92) 100%)',
+                    pointerEvents: 'none',
                   }}
                 />
 
                 {/* Floating Bottom Telemetry Badge inside Image */}
-                <div
-                  style={{
-                    position: 'absolute',
-                    bottom: '20px',
-                    left: '20px',
-                    right: '20px',
-                    background: 'rgba(11, 15, 23, 0.94)',
-                    backdropFilter: 'blur(14px)',
-                    WebkitBackdropFilter: 'blur(14px)',
-                    border: '1px solid rgba(255, 255, 255, 0.12)',
-                    borderRadius: '14px',
-                    padding: '14px 18px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                  }}
-                >
+                <div className="story-telemetry-badge-bottom">
                   <div>
                     <div style={{ color: '#fff', fontSize: '0.85rem', fontWeight: '750' }}>{current.rolePersona}</div>
                     <div style={{ color: '#38bdf8', fontSize: '0.72rem' }}>{current.roleTitle}</div>
@@ -349,10 +310,11 @@ export const FiveRoleShowcase = () => {
                     {current.floatingBadge}
                   </span>
                 </div>
-              </div>
+              </InteractiveTiltCard>
             </div>
           </div>
         </div>
+      </ProductStateTransition>
 
       </div>
     </section>

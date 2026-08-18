@@ -38,15 +38,17 @@ export const ConnectedFloorVisualSection = () => {
           }}
         >
           {/* Main Sales Floor Background Photo */}
-          <div style={{ position: 'relative', height: '560px' }}>
+          <div className="connected-floor-visual-container" style={{ position: 'relative' }}>
             <img
-              src="/oda7-team-story.jpg"
+              src="/oda7-scenario-insidesales.jpg"
               alt="Connected Revenue Floor in Action"
               style={{
+                position: 'absolute',
+                inset: 0,
                 width: '100%',
                 height: '100%',
                 objectFit: 'cover',
-                objectPosition: 'center 30%',
+                objectPosition: 'center 25%',
                 display: 'block',
                 filter: 'brightness(0.7) contrast(1.1)',
               }}
@@ -63,18 +65,14 @@ export const ConnectedFloorVisualSection = () => {
 
             {/* Overlaid Central ODA7 Dashboard Window */}
             <div
+              className="connected-floor-dashboard-window"
               style={{
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-                width: 'min(900px, calc(100% - 36px))',
                 background: 'rgba(11, 15, 23, 0.95)',
                 backdropFilter: 'blur(16px)',
                 WebkitBackdropFilter: 'blur(16px)',
                 border: '1px solid rgba(59, 130, 246, 0.4)',
                 borderRadius: '20px',
-                padding: 'clamp(20px, 3vw, 32px)',
+                padding: 'clamp(16px, 3vw, 32px)',
                 boxShadow: '0 25px 60px rgba(0, 0, 0, 0.9), 0 0 35px rgba(37, 99, 235, 0.2)',
                 zIndex: 10,
               }}
@@ -87,7 +85,7 @@ export const ConnectedFloorVisualSection = () => {
                   </div>
                   <div>
                     <div style={{ fontWeight: '800', color: '#fff', fontSize: '0.95rem' }}>ODA7 Enterprise Telemetry Mesh</div>
-                    <div style={{ color: '#94a3b8', fontSize: '0.75rem' }}>Synchronized Real-Time Operations • BIZZFLY OS</div>
+                    <div style={{ color: '#94a3b8', fontSize: '0.75rem' }}>Shared operating context • ODA7 workspace</div>
                   </div>
                 </div>
 

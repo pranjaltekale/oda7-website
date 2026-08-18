@@ -152,6 +152,290 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .page-transition-shell { animation: none; }
+/* ===================================================
+   LIGHT-FOLLOWING TAB INDICATOR SYSTEM
+   =================================================== */
+.tabs-scroll-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 32px;
+  padding: 4px 10px 10px 10px;
 }
+
+.light-tab-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--oda-surface);
+  border: 1px solid var(--oda-border);
+  padding: 6px;
+  border-radius: var(--radius-full, 9999px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(56, 189, 248, 0.45) transparent;
+}
+
+.light-tab-container::-webkit-scrollbar {
+  display: block;
+  height: 4px;
+}
+
+.light-tab-container::-webkit-scrollbar-button {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.light-tab-container::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 999px;
+  margin: 0 16px;
+}
+
+.light-tab-container::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, var(--oda-primary), #38bdf8);
+  border-radius: 999px;
+}
+
+.light-tab-indicator {
+  border-radius: var(--radius-full, 9999px);
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.95) 0%, rgba(2, 132, 199, 0.95) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.light-tab-glow {
+  box-shadow: 0 4px 20px rgba(37, 99, 235, 0.38), 0 0 12px rgba(6, 182, 212, 0.25);
+}
+
+.light-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: var(--radius-full, 9999px);
+  background: transparent;
+  border: none;
+  color: var(--oda-text-secondary);
+  font-family: var(--font-heading, sans-serif);
+  font-size: 0.875rem;
+  font-weight: 650;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 200ms ease;
+  user-select: none;
+}
+
+.light-tab-btn:hover {
+  color: var(--oda-text-primary);
+}
+
+.light-tab-btn.is-active {
+  color: #ffffff;
+}
+
+/* Light Mode Overrides for Tab Indicator */
+[data-theme="light"] .light-tab-indicator,
+.theme-light .light-tab-indicator {
+  background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.28);
+}
+
+[data-theme="light"] .light-tab-btn.is-active,
+.theme-light .light-tab-btn.is-active {
+  color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .tabs-scroll-wrapper {
+    justify-content: flex-start;
+    padding: 4px 14px 12px 14px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(56, 189, 248, 0.4) transparent;
+  }
+  .tabs-scroll-wrapper::-webkit-scrollbar {
+    display: block;
+    height: 4px;
+  }
+  .tabs-scroll-wrapper::-webkit-scrollbar-button {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+  .tabs-scroll-wrapper::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 999px;
+    margin: 0 20px;
+  }
+  .tabs-scroll-wrapper::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, var(--oda-primary), #38bdf8);
+    border-radius: 999px;
+  }
+
+  .light-tab-container {
+    padding: 5px;
+    gap: 5px;
+    scroll-snap-type: x proximity;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(56, 189, 248, 0.45) transparent;
+  }
+  .light-tab-container::-webkit-scrollbar {
+    display: block;
+    height: 4px;
+  }
+  .light-tab-container::-webkit-scrollbar-button {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+  .light-tab-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 999px;
+    margin: 0 16px;
+  }
+  .light-tab-container::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, var(--oda-primary), #38bdf8);
+    border-radius: 999px;
+  }
+
+  .light-tab-btn {
+    padding: 7px 14px;
+    font-size: 0.8125rem;
+    gap: 6px;
+    scroll-snap-align: center;
+    flex-shrink: 0;
+  }
+  .light-tab-icon svg {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tabs-scroll-wrapper {
+    padding: 4px 8px 10px 8px;
+  }
+  .light-tab-container {
+    padding: 4px;
+    gap: 4px;
+  }
+  .light-tab-btn {
+    padding: 6px 12px;
+    font-size: 0.775rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .light-tab-btn {
+    padding: 5px 9px;
+    font-size: 0.735rem;
+  }
+}
+
+[data-theme="light"] .tabs-scroll-wrapper::-webkit-scrollbar-track,
+.theme-light .tabs-scroll-wrapper::-webkit-scrollbar-track,
+[data-theme="light"] .light-tab-container::-webkit-scrollbar-track,
+.theme-light .light-tab-container::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .tabs-scroll-wrapper::-webkit-scrollbar-thumb,
+.theme-light .tabs-scroll-wrapper::-webkit-scrollbar-thumb,
+[data-theme="light"] .light-tab-container::-webkit-scrollbar-thumb,
+.theme-light .light-tab-container::-webkit-scrollbar-thumb {
+  background: var(--oda-primary);
+}
+
+/* ===================================================
+   PRODUCT STATE SPATIAL TRANSITIONS
+   =================================================== */
+.product-state-transition {
+  width: 100%;
+}
+
+.product-state-transition.state-entering {
+  opacity: 0.85;
+  transform: scale(0.988);
+  transition: opacity 80ms ease, transform 80ms ease;
+}
+
+.product-state-transition.state-active {
+  animation: productStateEnter 320ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes productStateEnter {
+  0% {
+    opacity: 0.2;
+    transform: translateY(8px) scale(0.985);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ===================================================
+   INTERACTIVE TILT & MICRO-PARALLAX
+   =================================================== */
+.interactive-tilt-card {
+  will-change: transform;
+}
+
+.tilt-parallax-img {
+  transition: transform 120ms ease-out;
+  transform: translate3d(calc(var(--tilt-px, 0px) * -0.8), calc(var(--tilt-py, 0px) * -0.8), 0) scale(1.03);
+}
+
+.tilt-floating-badge {
+  transition: transform 120ms ease-out;
+  transform: translate3d(var(--tilt-px, 0px), var(--tilt-py, 0px), 20px);
+}
+
+/* ===================================================
+   MAGNETIC ARROW HOVER INTERACTION
+   =================================================== */
+.magnetic-arrow-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: gap 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.magnetic-arrow-wrap:hover {
+  gap: 12px;
+}
+
+.magnetic-arrow-wrap svg {
+  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.magnetic-arrow-wrap:hover svg {
+  transform: translateX(4px);
+}
+
+/* ===================================================
+   REDUCED MOTION OVERRIDES
+   =================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .page-transition-shell,
+  .product-state-transition.state-active,
+  .product-state-transition.state-entering,
+  .tilt-parallax-img,
+  .tilt-floating-badge {
+    animation: none !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+

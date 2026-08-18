@@ -153,6 +153,7 @@
    ========================================================================== */
 [data-theme="light"],
 .theme-light {
+  color-scheme: light;
   --oda-bg: #f8fafc;
   --oda-bg-alt: #f1f5f9;
   --oda-bg-dark: #e2e8f0;
@@ -307,8 +308,8 @@
 /* Section Headings */
 .section-header {
   text-align: center;
-  max-width: 800px;
-  margin: 0 auto 64px auto;
+  max-width: 780px;
+  margin: 0 auto clamp(42px, 6vw, 64px) auto;
 }
 
 .section-header.text-left {
@@ -323,13 +324,22 @@
   letter-spacing: -0.03em;
   color: var(--oda-text-primary);
   margin-bottom: 16px;
+  text-wrap: balance;
 }
 
 .section-subtitle {
+  max-width: 62ch;
+  margin-inline: auto;
   font-size: clamp(1rem, 1.8vw, 1.1875rem);
   line-height: 1.6;
   color: var(--oda-text-secondary);
+  text-wrap: pretty;
 }
+
+.section-header.text-left .section-subtitle { margin-left: 0; }
+
+h1, h2, h3 { text-wrap: balance; }
+p { text-wrap: pretty; }
 
 /* Gradients text */
 .text-gradient {
@@ -376,4 +386,12 @@
   .section-title {
     font-size: clamp(1.75rem, 9vw, 2rem);
   }
+}
+
+/* Universal suppression of native scrollbar ending-point arrow buttons */
+*::-webkit-scrollbar-button,
+::-webkit-scrollbar-button {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
 }

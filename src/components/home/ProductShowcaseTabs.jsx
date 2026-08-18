@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { SectionHeading } from '../common/SectionHeading';
 import { SalesDashboardMockup } from '../mockups/SalesDashboardMockup';
@@ -34,7 +36,7 @@ export const ProductShowcaseTabs = () => {
         />
 
         {/* Tab Switcher */}
-        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '32px' }}>
+        <div className="tabs-scroll-wrapper">
           <div className="tab-group">
             {tabs.map((tab) => {
               const IconComp = tab.icon;

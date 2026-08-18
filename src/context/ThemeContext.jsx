@@ -1,25 +1,49 @@
+'use client';
+
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const ThemeContext = createContext();
 
-export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState(() => {
+const getInitialTheme = () => {
+  if (typeof window !== 'undefined') {
     try {
+      const currentAttr = document.documentElement.getAttribute('data-theme');
+      if (currentAttr === 'light' || currentAttr === 'dark') return currentAttr;
       const savedTheme = localStorage.getItem('oda7-theme');
-      if (savedTheme === 'light' || savedTheme === 'dark') {
-        return savedTheme;
-      }
-      // Check system preference
-      if (typeof window !== 'undefined' && window.matchMedia) {
-        return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-      }
+      if (savedTheme === 'light' || savedTheme === 'dark') return savedTheme;
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) return 'light';
     } catch {
-      // Fallback default
+      // Ignore storage errors
     }
-    return 'dark';
-  });
+  }
+  return 'dark';
+};
+
+export const ThemeProvider = ({ children }) => {
+  const [theme, setTheme] = useState(getInitialTheme);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
+    try {
+      const currentAttr = document.documentElement.getAttribute('data-theme');
+      const savedTheme = localStorage.getItem('oda7-theme');
+      const resolved = savedTheme === 'light' || savedTheme === 'dark'
+        ? savedTheme
+        : (currentAttr === 'light' || currentAttr === 'dark'
+          ? currentAttr
+          : (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'));
+
+      if (resolved !== theme) {
+        setTheme(resolved);
+      }
+    } catch {
+      // Ignore storage errors
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
     try {
       localStorage.setItem('oda7-theme', theme);
     } catch {
@@ -31,18 +55,28 @@ export const ThemeProvider = ({ children }) => {
     if (theme === 'light') {
       root.classList.add('theme-light');
       root.classList.remove('theme-dark');
+      root.style.colorScheme = 'light';
     } else {
       root.classList.add('theme-dark');
       root.classList.remove('theme-light');
+      root.style.colorScheme = 'dark';
     }
-  }, [theme]);
+  }, [theme, mounted]);
 
   const toggleTheme = () => {
     setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme, isDark: theme === 'dark', isLight: theme === 'light' }}>
+    <ThemeContext.Provider
+      value={{
+        theme,
+        toggleTheme,
+        isDark: theme === 'dark',
+        isLight: theme === 'light',
+        mounted,
+      }}
+    >
       {children}
     </ThemeContext.Provider>
   );

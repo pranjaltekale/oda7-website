@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect, useState } from 'react';
 import { SectionHeading } from '../common/SectionHeading';
 import {
@@ -15,18 +17,18 @@ export const PeopleOperationsStorySection = () => {
   const [activeFlow, setActiveFlow] = useState(0);
   const formulas = [
     {
-      left: 'Agent Geolocation Shift Punch',
-      right: 'Verified Live Floor Roster',
+      left: 'Availability update',
+      right: 'Shared roster context',
       color: '#38bdf8',
     },
     {
-      left: 'Opportunity Deal Closed-Won',
-      right: 'Instant Commission Tier Calculation',
+      left: 'Approved deal outcome',
+      right: 'Commission rule review',
       color: '#10b981',
     },
     {
-      left: 'End-of-Month Payroll Run',
-      right: '1-Click Itemized PDF Payslip Dispatch',
+      left: 'Payroll preparation cycle',
+      right: 'Itemized compensation record',
       color: '#fbbf24',
     },
   ];
@@ -42,11 +44,11 @@ export const PeopleOperationsStorySection = () => {
       <div className="container-wide">
         
         <SectionHeading
-          eyebrow="Connected People Operations"
+          eyebrow="People operations"
           eyebrowIcon="Users"
-          title="Connect attendance, rosters, and"
-          highlightText="automated payroll."
-          description="Bridge the historical gap between sales activity and operations. Ensure accurate commissions, automated attendance verification, and transparent compensation."
+          title="Connect the people behind"
+          highlightText="the operating workflow."
+          description="Keep team structure, availability and compensation context close to the work that operations needs to review."
         />
 
         {/* Large Connected Floor Composition */}
@@ -71,19 +73,11 @@ export const PeopleOperationsStorySection = () => {
             {/* Left Column: Authentic Team Meeting Photo with Layered Telemetry */}
             <div style={{ position: 'relative' }}>
               <div
-                className="story-image-frame"
-                style={{
-                  position: 'relative',
-                  borderRadius: '24px',
-                  overflow: 'hidden',
-                  border: '1px solid rgba(255, 255, 255, 0.15)',
-                  boxShadow: '0 20px 50px rgba(0, 0, 0, 0.5)',
-                  height: '500px',
-                }}
+                className="story-image-frame story-image-card-responsive"
               >
                 <img
-                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&auto=format&fit=crop&q=80"
-                  alt="Sales and Operations Team Strategy Meeting"
+                  src="/oda7-people-operations.png"
+                  alt="People operations lead and manager reviewing a shared staffing roster"
                   loading="lazy"
                   style={{
                     width: '100%',
@@ -103,23 +97,7 @@ export const PeopleOperationsStorySection = () => {
                 />
 
                 {/* Floating Bottom Telemetry Chip inside image */}
-                <div
-                  style={{
-                    position: 'absolute',
-                    bottom: '20px',
-                    left: '20px',
-                    right: '20px',
-                    background: 'rgba(11, 15, 23, 0.94)',
-                    backdropFilter: 'blur(14px)',
-                    WebkitBackdropFilter: 'blur(14px)',
-                    borderRadius: '12px',
-                    padding: '14px 18px',
-                    border: '1px solid rgba(255, 255, 255, 0.12)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                  }}
-                >
+                <div className="story-telemetry-badge-bottom">
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                     <div style={{ width: '36px', height: '36px', borderRadius: '8px', background: 'rgba(56, 189, 248, 0.18)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#38bdf8' }}>
                       <Users size={18} />
@@ -139,8 +117,8 @@ export const PeopleOperationsStorySection = () => {
             {/* Right Column: Unified Narrative Storytelling + Formula Pills */}
             <div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px' }}>
-                <span className="badge badge-primary">People & Performance</span>
-                <span className="badge badge-amber">Automated Ops</span>
+                <span className="badge badge-primary">People & performance</span>
+                <span className="badge badge-amber">Shared context</span>
               </div>
 
               <h3
@@ -153,8 +131,8 @@ export const PeopleOperationsStorySection = () => {
                   letterSpacing: '-0.025em',
                 }}
               >
-                Eliminate spreadsheet disputes between{' '}
-                <span className="text-gradient-accent">sales and operations.</span>
+                Give sales and operations{' '}
+                <span className="text-gradient-accent">the same underlying context.</span>
               </h3>
 
               <p
@@ -165,7 +143,7 @@ export const PeopleOperationsStorySection = () => {
                   marginBottom: '26px',
                 }}
               >
-                In high-velocity organizations, managing agents, shift rotations, and commission tiers manually creates friction. ODA7 ties telephony calling directly to agent availability, records verified shift attendance, and instantly calculates tier accelerators the second a deal is marked Closed-Won.
+                Team structure, availability and deal outcomes often live in separate systems. ODA7 keeps those records connected so operations can review compensation and workforce decisions with the relevant activity close at hand.
               </p>
 
               {/* Formula Pills */}

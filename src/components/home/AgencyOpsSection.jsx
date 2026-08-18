@@ -43,12 +43,12 @@ export const AgencyOpsSection = () => {
           {/* Operations Leader Photo */}
           <div style={{ position: 'relative', borderRadius: '14px', overflow: 'hidden', border: '1px solid rgba(255, 255, 255, 0.1)' }}>
             <img
-              src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&auto=format&fit=crop&q=80"
+              src="/oda7-module-people.jpg"
               alt="Operations and HR Leader"
-              style={{ width: '100%', height: '220px', objectFit: 'cover', display: 'block' }}
+              style={{ width: '100%', height: 'clamp(180px, 42vw, 240px)', objectFit: 'cover', display: 'block' }}
             />
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent 30%, rgba(7, 9, 14, 0.85) 100%)' }} />
-            <div style={{ position: 'absolute', bottom: '12px', left: '12px', right: '12px', background: 'rgba(11, 15, 23, 0.92)', backdropFilter: 'blur(10px)', padding: '8px 12px', borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.1)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div style={{ position: 'absolute', bottom: '10px', left: '10px', right: '10px', background: 'rgba(11, 15, 23, 0.92)', backdropFilter: 'blur(10px)', padding: '7px 10px', borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.1)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '4px' }}>
               <span style={{ color: '#cbd5e1', fontSize: '0.72rem', fontWeight: '600' }}>Automated Payroll Engine</span>
               <span className="badge badge-emerald" style={{ fontSize: '0.6rem', padding: '1px 6px' }}>100% Reconciled</span>
             </div>
@@ -79,7 +79,7 @@ export const AgencyOpsSection = () => {
               </div>
               <div className="mockup-title-bar">
                 <Users size={13} color="#38bdf8" />
-                <span>oda7 // BIZZFLY Agency Operations — Payroll & Floor Engagement</span>
+                <span>ODA7 // People Operations — Compensation & Floor Engagement</span>
               </div>
               <span className="badge badge-emerald" style={{ fontSize: '0.6875rem' }}>
                 Monthly Payroll Ready

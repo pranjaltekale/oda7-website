@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import {
   Sparkles,
@@ -16,24 +18,24 @@ export const AiCopilotMockup = () => {
 
   const prompts = [
     {
-      query: 'Why did team pickup ratio dip between 2 PM - 4 PM yesterday?',
-      analyzedItems: '1,420 call records, 6 carrier routes, 24 rep activity logs',
-      finding: 'Carrier routing latency spiked in the Pacific Timezone (AT&T pool dropped 18% connection packets). Local presence rotation rebalanced the load.',
-      action: 'Automatically switch West Coast leads to backup Twilio/Bandwidth trunk at 1:55 PM.',
+      query: 'Where did the team’s calling pattern change yesterday?',
+      analyzedItems: 'available call, routing, and team activity context',
+      finding: 'The selected period shows a change in connection activity alongside a routing change. Review the underlying records before deciding on an adjustment.',
+      action: 'Open the affected period and compare routing context with team availability.',
       impactMetric: 'Calling pattern identified',
     },
     {
-      query: 'Which lead segments have the highest close rate this week?',
-      analyzedItems: '840 inbound leads, 18 deal stages, $1.2M pipeline',
-      finding: 'Mid-Market B2B companies (100-500 employees) in Healthcare & FinTech have an 84.2% close probability when contacted within 4 minutes of form submission.',
-      action: 'Auto-promote inbound Healthcare leads to Tier 1 priority in My Queue.',
+      query: 'Which lead segments should the team review this week?',
+      analyzedItems: 'available lead, stage, and activity context',
+      finding: 'One group shows a different progression pattern from the wider queue. The source records remain available for a person to inspect.',
+      action: 'Review the segment and decide whether its queue priority should change.',
       impactMetric: 'Pipeline context summarized',
     },
     {
-      query: 'Identify the top objection reps fumbled during cold calls this month.',
-      analyzedItems: '4,850 recorded call transcripts, AI speech sentiment logs',
-      finding: '"Already under existing contract" was mentioned in 34% of lost opportunities, with reps offering only a 12% discount instead of contract buyout credits.',
-      action: 'Update dynamic live objection battlecard with buyout credit script.',
+      query: 'Which conversation theme may need a coaching review?',
+      analyzedItems: 'available conversation and outcome context',
+      finding: 'A recurring implementation concern appears in several reviewed conversations and may benefit from a clearer team response.',
+      action: 'Open the related conversations and prepare a reviewed guidance note.',
       impactMetric: 'Coaching opportunity surfaced',
     },
   ];
@@ -63,7 +65,7 @@ export const AiCopilotMockup = () => {
         </div>
         <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
           <span className="badge badge-cyan" style={{ fontSize: '0.6875rem' }}>
-            Neural Core: Active
+            Illustrative AI view
           </span>
         </div>
       </div>
@@ -131,7 +133,7 @@ export const AiCopilotMockup = () => {
           <div style={{ marginBottom: '16px' }}>
             <div style={{ color: 'var(--oda-text-muted)', fontSize: '0.7rem', textTransform: 'uppercase', marginBottom: '4px', display: 'flex', alignItems: 'center', gap: '6px' }}>
               <BarChart2 size={13} color="var(--oda-primary)" />
-              <span>Root Cause & Intelligence Finding</span>
+              <span>Context summary</span>
             </div>
             <div style={{ color: 'var(--oda-text-secondary)', fontSize: '0.9rem', lineHeight: '1.6' }}>
               {activeData.finding}
@@ -143,14 +145,14 @@ export const AiCopilotMockup = () => {
             <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
               <Lightbulb size={18} color="#fbbf24" style={{ flexShrink: 0, marginTop: '2px' }} />
               <div>
-                <div style={{ fontSize: '0.7rem', color: '#fbbf24', fontWeight: '700', textTransform: 'uppercase' }}>Recommended 1-Click Action</div>
+                <div style={{ fontSize: '0.7rem', color: '#fbbf24', fontWeight: '700', textTransform: 'uppercase' }}>Suggested next step</div>
                 <div style={{ color: 'var(--oda-text-primary)', fontSize: '0.85rem', fontWeight: '600', marginTop: '2px' }}>
                   {activeData.action}
                 </div>
               </div>
             </div>
             <button style={{ padding: '8px 16px', borderRadius: '6px', background: 'var(--oda-success)', color: '#fff', fontWeight: '700', fontSize: '0.75rem', whiteSpace: 'nowrap', border: 'none', cursor: 'pointer' }}>
-              Execute Now
+              Review
             </button>
           </div>
 

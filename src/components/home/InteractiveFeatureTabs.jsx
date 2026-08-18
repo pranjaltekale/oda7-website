@@ -1,5 +1,10 @@
+'use client';
+
 import React, { useState } from 'react';
 import { SectionHeading } from '../common/SectionHeading';
+import { LightTabIndicator } from '../common/LightTabIndicator';
+import { ProductStateTransition } from '../common/ProductStateTransition';
+import { InteractiveTiltCard } from '../common/InteractiveTiltCard';
 import {
   PhoneCall,
   Users,
@@ -57,46 +62,37 @@ export const InteractiveFeatureTabs = () => {
           metric: 'Reusable coaching context',
         },
         {
-          id: 'sequences',
-          label: 'Automated Sequences',
+          id: 'inbox',
+          label: 'Omni Inbox & WhatsApp',
           icon: Inbox,
-          headline: 'Omnichannel WhatsApp, SMS & Email Cadences',
-          description: 'Trigger automated multi-touch cadences blending official WhatsApp Business messages, 2-way SMS chat, and tracked email follow-ups from the lead profile.',
-          features: ['Official WhatsApp API', '2-Way SMS local numbers', 'Open/Click tracking', 'Automated reminders'],
-          metric: '2.4x Deal Velocity',
-        },
-        {
-          id: 'quotes',
-          label: 'CPQ Quotes & Proposals',
-          icon: DollarSign,
-          headline: '1-Click Proposals with Live Digital Signatures',
-          description: 'Generate CPQ quotes from the integrated product catalog, track client opens in real-time, and trigger automatic Closed-Won progression on signature.',
-          features: ['Integrated product catalog', 'Mobile e-signatures', 'Instant CRM sync', 'Automated commission trigger'],
-          metric: '1-Click Closing',
+          headline: 'Unified 2-Way Official WhatsApp & SMS Inbox',
+          description: 'Message prospects directly from the CRM record using official Meta WhatsApp Business Cloud APIs with 94% open rates and automated sequence triggers.',
+          features: ['Official WhatsApp Cloud API', 'Automated trigger sequences', 'Shared team inboxes', '2-Way SMS conversation'],
+          metric: '94% WhatsApp Open Rate',
         },
       ],
     },
     workforce: {
-      title: 'Workforce & Floor Command',
-      description: 'Complete operational control across agents, managers, attendance, shift scheduling, and automated payroll.',
+      title: 'Workforce Management & Shift Ops',
+      description: 'Unified operational cockpit for managing rep shifts, geolocation attendance, dynamic coaching, and commission payroll.',
       tabs: [
         {
-          id: 'agents',
-          label: 'Agent Floor Roster',
-          icon: Users,
-          headline: 'Live Agent Status Telemetry & Queue Balancing',
-          description: 'Real-time oversight of agent states: On Call, Available, In Wrap-up, or On Break. Automatically re-route queues when agents step away.',
-          features: ['Real-time status indicators', 'Auto queue redistribution', 'Skill-based routing', 'Wrap-up timer limits'],
-          metric: 'Zero Idle Time',
+          id: 'attendance',
+          label: 'Attendance & Geolocation',
+          icon: Clock,
+          headline: 'Geolocation Shift Punches & Active State Tracking',
+          description: 'Ensure reps only punch in from authorized office coordinates or validated VPN IPs. Track active vs break states with sub-second accuracy.',
+          features: ['Geolocation radius lock', 'Active/Break status telemetry', 'Automatic overtime tally', 'Shift schedule builder'],
+          metric: '100% Attendance Audit',
         },
         {
-          id: 'managers',
-          label: 'Manager Floor Command',
+          id: 'coaching',
+          label: 'Live Floor Whisper',
           icon: Radio,
-          headline: 'Live Whisper Coaching & Real-time Barging',
-          description: 'Supervisors can listen into active calls silently or whisper direct coaching cues into an agent’s headset without the client hearing.',
-          features: ['1-Click whisper coaching', 'Silent listen mode', '3-Way conference barge', 'Live sentiment alerts'],
-          metric: '1-Click Live Coaching',
+          headline: 'Sub-Second Silent Listening & Headset Whisper Coaching',
+          description: 'Supervisors can monitor live calls without prospect awareness and whisper critical objection talk tracks directly into rep headsets.',
+          features: ['1-Click silent listening', 'Headset audio whisper', 'Live sentiment scoring', 'Floor broadcast banners'],
+          metric: '24ms Whisper Stream',
         },
         {
           id: 'teams',
@@ -106,15 +102,6 @@ export const InteractiveFeatureTabs = () => {
           description: 'Organize reps into territory squads, vertical pods, and regional divisions with granular role-based permissions and custom quota targets.',
           features: ['Territory mapping', 'Squad vs squad leaderboards', 'Custom quota pacing', 'Department RBAC'],
           metric: 'Granular Governance',
-        },
-        {
-          id: 'attendance',
-          label: 'Attendance & Leave',
-          icon: Calendar,
-          headline: 'Geo-Verified Shift Attendance & PTO Approval',
-          description: 'Browser and biometric time tracking integrated directly with dialer availability. Self-serve vacation requests automatically re-route lead queues.',
-          features: ['Geo-verified clock-in', 'Auto PTO queue re-routing', 'Overtime calculation', 'Attendance audit log'],
-          metric: '98.4% Shift Compliance',
         },
         {
           id: 'compensation',
@@ -179,6 +166,12 @@ export const InteractiveFeatureTabs = () => {
     setActiveSubTab(hubs[hubKey].tabs[0].id);
   };
 
+  const hubOptions = [
+    { id: 'sales', label: 'Sales Execution', icon: PhoneCall },
+    { id: 'workforce', label: 'Workforce & Floor Ops', icon: Users },
+    { id: 'intelligence', label: 'AI & Executive BI', icon: Sparkles },
+  ];
+
   return (
     <section className="section-wrapper section-alt">
       <div className="container-wide">
@@ -188,124 +181,98 @@ export const InteractiveFeatureTabs = () => {
           eyebrowIcon="Sparkles"
           title="Explore the depth of the"
           highlightText="oda7 Operating System."
-          description="Switch between major functional hubs and select any capability to see how it operates within the unified BIZZFLY workspace."
+          description="Switch between functional hubs to see how each capability contributes to the connected ODA7 workflow."
         />
 
-        {/* Master Hub Switcher (Sales / Workforce / Intelligence) */}
-        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '28px' }}>
-          <div className="tab-group" style={{ padding: '8px' }}>
-            <button
-              className={`tab-btn ${activeHub === 'sales' ? 'active' : ''}`}
-              onClick={() => handleHubChange('sales')}
-            >
-              <PhoneCall size={16} />
-              <span>Sales Execution</span>
-            </button>
-            <button
-              className={`tab-btn ${activeHub === 'workforce' ? 'active' : ''}`}
-              onClick={() => handleHubChange('workforce')}
-            >
-              <Users size={16} />
-              <span>Workforce & Floor Ops</span>
-            </button>
-            <button
-              className={`tab-btn ${activeHub === 'intelligence' ? 'active' : ''}`}
-              onClick={() => handleHubChange('intelligence')}
-            >
-              <Sparkles size={16} />
-              <span>AI & Executive BI</span>
-            </button>
-          </div>
+        {/* Master Hub Switcher with LightTabIndicator */}
+        <div className="tabs-scroll-wrapper" style={{ marginBottom: '20px' }}>
+          <LightTabIndicator
+            tabs={hubOptions}
+            activeTab={activeHub}
+            onChange={handleHubChange}
+            variant="pill"
+            className="hub-master-tabs"
+          />
         </div>
 
-        {/* Sub-tab pills slider */}
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', overflowX: 'auto', paddingBottom: '16px', marginBottom: '32px' }}>
-          {currentHub.tabs.map((tab) => {
-            const IconComp = tab.icon;
-            const isSelected = activeSubTab === tab.id;
+        {/* Sub-tab pills slider with LightTabIndicator */}
+        <div className="tabs-scroll-wrapper">
+          <LightTabIndicator
+            tabs={currentHub.tabs.map((tab) => ({ id: tab.id, label: tab.label, icon: tab.icon }))}
+            activeTab={activeSubTab}
+            onChange={setActiveSubTab}
+            variant="pill"
+            className="hub-sub-tabs"
+          />
+        </div>
 
-            return (
-              <button
-                key={tab.id}
-                onClick={() => setActiveSubTab(tab.id)}
+        {/* Dynamic Interactive Preview Card with ProductStateTransition and InteractiveTiltCard */}
+        <ProductStateTransition activeKey={`${activeHub}-${activeSubTab}`}>
+          <InteractiveTiltCard
+            maxTilt={2.8}
+            scale={1.012}
+            className="feature-showcase-panel"
+            style={{
+              maxWidth: '1080px',
+              margin: '0 auto',
+              borderRadius: '20px',
+              padding: 'clamp(20px, 4vw, 40px)',
+            }}
+          >
+            <div className="responsive-story-grid" style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.2fr) minmax(0, 1fr)', gap: 'clamp(24px, 4vw, 36px)', alignItems: 'center' }}>
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
+                  <span className="badge badge-cyan">{currentHub.title}</span>
+                  <span className="badge badge-emerald">{currentSubTab.metric}</span>
+                </div>
+
+                <h3 style={{ fontSize: 'clamp(1.4rem, 2.5vw, 1.75rem)', fontWeight: '800', color: 'var(--oda-text-primary)', marginBottom: '14px', lineHeight: '1.2' }}>
+                  {currentSubTab.headline}
+                </h3>
+
+                <p style={{ color: 'var(--oda-text-secondary)', fontSize: '0.95rem', lineHeight: '1.6', marginBottom: '24px' }}>
+                  {currentSubTab.description}
+                </p>
+
+                {/* Capability Checklist */}
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '10px' }}>
+                  {currentSubTab.features.map((feat, fIdx) => (
+                    <div key={fIdx} style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--oda-text-secondary)', fontSize: '0.85rem' }}>
+                      <CheckCircle2 size={15} color="#10b981" style={{ flexShrink: 0 }} />
+                      <span>{feat}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Visual Action Mockup Card */}
+              <div
+                className="tilt-floating-badge"
                 style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  padding: '8px 16px',
-                  borderRadius: 'var(--radius-full)',
-                  background: isSelected ? 'var(--oda-primary)' : 'var(--oda-surface)',
-                  border: isSelected ? '1px solid var(--oda-primary-light)' : '1px solid var(--oda-border)',
-                  color: isSelected ? '#ffffff' : 'var(--oda-text-secondary)',
-                  fontSize: '0.8125rem',
-                  fontWeight: '600',
-                  whiteSpace: 'nowrap',
-                  cursor: 'pointer',
-                  transition: 'all 0.15s ease',
-                  boxShadow: isSelected ? '0 0 16px rgba(37, 99, 235, 0.35)' : 'none',
+                  background: 'var(--oda-surface)',
+                  border: '1px solid var(--oda-border)',
+                  borderRadius: '14px',
+                  padding: '24px',
+                  textAlign: 'center',
+                  boxShadow: '0 4px 20px rgba(0,0,0,0.06)',
                 }}
               >
-                <IconComp size={14} />
-                <span>{tab.label}</span>
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Dynamic Interactive Preview Card */}
-        <div
-          className="feature-showcase-panel animate-fadeIn"
-          style={{
-            maxWidth: '1080px',
-            margin: '0 auto',
-            borderRadius: '20px',
-            padding: '40px',
-          }}
-          key={`${activeHub}-${activeSubTab}`}
-        >
-          <div className="responsive-story-grid" style={{ display: 'grid', gridTemplateColumns: 'minmax(300px, 1.2fr) minmax(280px, 1fr)', gap: '36px', alignItems: 'center' }}>
-            <div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
-                <span className="badge badge-cyan">{currentHub.title}</span>
-                <span className="badge badge-emerald">{currentSubTab.metric}</span>
-              </div>
-
-              <h3 style={{ fontSize: '1.75rem', fontWeight: '800', color: 'var(--oda-text-primary)', marginBottom: '14px', lineHeight: '1.2' }}>
-                {currentSubTab.headline}
-              </h3>
-
-              <p style={{ color: 'var(--oda-text-secondary)', fontSize: '0.95rem', lineHeight: '1.6', marginBottom: '24px' }}>
-                {currentSubTab.description}
-              </p>
-
-              {/* Capability Checklist */}
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
-                {currentSubTab.features.map((feat, fIdx) => (
-                  <div key={fIdx} style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--oda-text-secondary)', fontSize: '0.85rem' }}>
-                    <CheckCircle2 size={15} color="#10b981" style={{ flexShrink: 0 }} />
-                    <span>{feat}</span>
-                  </div>
-                ))}
+                <div style={{ display: 'inline-flex', padding: '12px', borderRadius: '12px', background: 'var(--oda-primary-soft)', color: 'var(--oda-primary)', marginBottom: '14px' }}>
+                  <currentSubTab.icon size={28} />
+                </div>
+                <div style={{ fontWeight: '800', color: 'var(--oda-text-primary)', fontSize: '1.2rem', marginBottom: '6px' }}>
+                  {currentSubTab.label}
+                </div>
+                <div style={{ color: 'var(--oda-text-muted)', fontSize: '0.8rem', marginBottom: '16px' }}>
+                  Connected through the ODA7 workflow
+                </div>
+                <div style={{ background: 'var(--oda-bg-alt)', padding: '12px', borderRadius: '8px', color: 'var(--oda-success)', fontSize: '0.8rem', fontFamily: 'var(--font-mono)', fontWeight: '700' }}>
+                  ✓ Native Telemetry Stream Active
+                </div>
               </div>
             </div>
-
-            {/* Visual Action Mockup Card */}
-            <div style={{ background: 'var(--oda-surface)', border: '1px solid var(--oda-border)', borderRadius: '14px', padding: '24px', textAlign: 'center', boxShadow: '0 4px 20px rgba(0,0,0,0.06)' }}>
-              <div style={{ display: 'inline-flex', padding: '12px', borderRadius: '12px', background: 'var(--oda-primary-soft)', color: 'var(--oda-primary)', marginBottom: '14px' }}>
-                <currentSubTab.icon size={28} />
-              </div>
-              <div style={{ fontWeight: '800', color: 'var(--oda-text-primary)', fontSize: '1.2rem', marginBottom: '6px' }}>
-                {currentSubTab.label}
-              </div>
-              <div style={{ color: 'var(--oda-text-muted)', fontSize: '0.8rem', marginBottom: '16px' }}>
-                Synchronized with BIZZFLY oda7 Engine
-              </div>
-              <div style={{ background: 'var(--oda-bg-alt)', padding: '12px', borderRadius: '8px', color: 'var(--oda-success)', fontSize: '0.8rem', fontFamily: 'var(--font-mono)', fontWeight: '700' }}>
-                ✓ Native Telemetry Stream Active
-              </div>
-            </div>
-          </div>
-        </div>
+          </InteractiveTiltCard>
+        </ProductStateTransition>
 
       </div>
     </section>

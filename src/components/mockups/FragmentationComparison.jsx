@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import {
   XCircle,
@@ -29,7 +31,7 @@ export const FragmentationComparison = () => {
     <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
       
       {/* Mode Switcher */}
-      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '32px' }}>
+      <div className="tabs-scroll-wrapper">
         <div className="tab-group">
           <button
             className={`tab-btn ${activeTab === 'fragmented' ? 'active' : ''}`}

@@ -1,5 +1,7 @@
+'use client';
+
 import React, { useEffect, useRef, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from '../../lib/navigation';
 import { ChevronDown, PlayCircle, ArrowRight, ArrowLeft, Home } from 'lucide-react';
 import { Button } from '../common/Button';
 import { ThemeToggle } from '../common/ThemeToggle';

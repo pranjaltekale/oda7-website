@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import {
   Users,
@@ -16,13 +18,13 @@ import {
 } from 'lucide-react';
 
 export const ManagerDashboardMockup = () => {
-  const [selectedAgent, setSelectedAgent] = useState('Alex Rivera');
+  const [selectedAgent, setSelectedAgent] = useState('Agent A');
   const [coachingMode, setCoachingMode] = useState('whisper'); // 'listen' | 'whisper' | 'barge'
   const [selectedSquad, setSelectedSquad] = useState('all');
   const [whisperFeedback, setWhisperFeedback] = useState(null);
 
   const handleSendWhisper = () => {
-    setWhisperFeedback(`Streaming 24ms audio cue to ${selectedAgent}'s headset...`);
+    setWhisperFeedback(`Sending a coaching cue to ${selectedAgent}...`);
     setTimeout(() => {
       setWhisperFeedback(`✓ Cue delivered to ${selectedAgent}!`);
       setTimeout(() => setWhisperFeedback(null), 2500);
@@ -30,12 +32,12 @@ export const ManagerDashboardMockup = () => {
   };
 
   const agents = [
-    { name: 'Alex Rivera', squad: 'inside', status: 'On Call (02:45)', state: 'on-call', lead: 'Sarah Jenkins (Logix)', score: 96, calls: 68, conv: '41%' },
-    { name: 'Marcus Chen', squad: 'enterprise', status: 'On Call (05:12)', state: 'on-call', lead: 'David Ross (Apex)', score: 88, calls: 74, conv: '38%' },
-    { name: 'Elena Vance', squad: 'inside', status: 'Available', state: 'available', lead: 'Next in Queue', score: 92, calls: 61, conv: '45%' },
-    { name: 'Samira Khan', squad: 'inbound', status: 'In Wrap-Up', state: 'wrap-up', lead: 'Auto-logging CRM', score: 85, calls: 59, conv: '34%' },
-    { name: 'Tyler Reed', squad: 'inside', status: 'Available', state: 'available', lead: 'Next in Queue', score: 79, calls: 52, conv: '30%' },
-    { name: 'Chloe Dubois', squad: 'enterprise', status: 'On Break', state: 'break', lead: 'Shift Resumes 2:30 PM', score: 91, calls: 48, conv: '42%' },
+    { name: 'Agent A', squad: 'inside', status: 'On call', state: 'on-call', lead: 'Customer record open', score: 'Priority', calls: 'Active', conv: 'Review' },
+    { name: 'Agent B', squad: 'enterprise', status: 'On call', state: 'on-call', lead: 'Customer record open', score: 'Priority', calls: 'Active', conv: 'Review' },
+    { name: 'Agent C', squad: 'inside', status: 'Available', state: 'available', lead: 'Next in queue', score: 'Ready', calls: 'Visible', conv: 'Review' },
+    { name: 'Agent D', squad: 'inbound', status: 'In wrap-up', state: 'wrap-up', lead: 'Record update', score: 'Open', calls: 'Visible', conv: 'Review' },
+    { name: 'Agent E', squad: 'inside', status: 'Available', state: 'available', lead: 'Next in queue', score: 'Ready', calls: 'Visible', conv: 'Review' },
+    { name: 'Agent F', squad: 'enterprise', status: 'On break', state: 'break', lead: 'Availability noted', score: 'Open', calls: 'Visible', conv: 'Review' },
   ];
 
   const filteredAgents = selectedSquad === 'all'
@@ -53,7 +55,7 @@ export const ManagerDashboardMockup = () => {
         </div>
         <div className="mockup-title-bar">
           <span className="pulse-dot" />
-          <span>oda7 // BIZZFLY Manager Floor Command — Inside Sales Pod Alpha</span>
+          <span>ODA7 // Manager Floor View — Illustrative Sales Pod</span>
         </div>
         <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
           <div className="audio-wave-live" style={{ filter: 'brightness(1.4)' }}>
@@ -63,7 +65,7 @@ export const ManagerDashboardMockup = () => {
             <span />
           </div>
           <span className="badge badge-emerald" style={{ fontSize: '0.6875rem' }}>
-            Floor Queue: 0s Delay • Optimal
+            Illustrative manager view
           </span>
         </div>
       </div>
@@ -76,11 +78,11 @@ export const ManagerDashboardMockup = () => {
           
           <div style={{ background: 'var(--oda-bg-alt)', border: '1px solid var(--oda-border)', borderRadius: '8px', padding: '12px' }}>
             <div style={{ color: 'var(--oda-text-muted)', fontSize: '0.7rem', textTransform: 'uppercase', marginBottom: '4px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              <span>Floor Pickup Ratio</span>
+              <span>Connection Context</span>
               <Activity size={13} color="var(--oda-success)" />
             </div>
-            <div style={{ fontSize: '1.4rem', fontWeight: '800', color: 'var(--oda-success)' }}>78.4%</div>
-            <div style={{ color: 'var(--oda-success)', fontSize: '0.7rem', marginTop: '2px' }}>+6.2% vs target benchmark</div>
+            <div style={{ fontSize: '1.4rem', fontWeight: '800', color: 'var(--oda-success)' }}>Reviewable</div>
+            <div style={{ color: 'var(--oda-success)', fontSize: '0.7rem', marginTop: '2px' }}>Compare the selected period</div>
           </div>
 
           <div style={{ background: 'var(--oda-bg-alt)', border: '1px solid var(--oda-border)', borderRadius: '8px', padding: '12px' }}>
@@ -88,8 +90,8 @@ export const ManagerDashboardMockup = () => {
               <span>Active Concurrent Calls</span>
               <PhoneCall size={13} color="var(--oda-primary)" />
             </div>
-            <div style={{ fontSize: '1.4rem', fontWeight: '800', color: 'var(--oda-primary)' }}>18 Calls</div>
-            <div style={{ color: 'var(--oda-text-secondary)', fontSize: '0.7rem', marginTop: '2px' }}>24 Reps clocked in</div>
+            <div style={{ fontSize: '1.4rem', fontWeight: '800', color: 'var(--oda-primary)' }}>Active Work</div>
+            <div style={{ color: 'var(--oda-text-secondary)', fontSize: '0.7rem', marginTop: '2px' }}>Team availability attached</div>
           </div>
 
           <div style={{ background: 'var(--oda-bg-alt)', border: '1px solid var(--oda-border)', borderRadius: '8px', padding: '12px' }}>
@@ -97,17 +99,17 @@ export const ManagerDashboardMockup = () => {
               <span>Floor Queue Load</span>
               <Users size={13} color="#fbbf24" />
             </div>
-            <div style={{ fontSize: '1.4rem', fontWeight: '800', color: '#fbbf24' }}>0 Waiting</div>
-            <div style={{ color: 'var(--oda-success)', fontSize: '0.7rem', marginTop: '2px' }}>Avg answer speed: 9.4s</div>
+            <div style={{ fontSize: '1.4rem', fontWeight: '800', color: '#fbbf24' }}>Visible</div>
+            <div style={{ color: 'var(--oda-success)', fontSize: '0.7rem', marginTop: '2px' }}>Queue ownership in context</div>
           </div>
 
           <div style={{ background: 'var(--oda-bg-alt)', border: '1px solid var(--oda-border)', borderRadius: '8px', padding: '12px' }}>
             <div style={{ color: 'var(--oda-text-muted)', fontSize: '0.7rem', textTransform: 'uppercase', marginBottom: '4px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              <span>Today Closed ARR</span>
+              <span>Performance Context</span>
               <TrendingUp size={13} color="var(--oda-success)" />
             </div>
-            <div style={{ fontSize: '1.4rem', fontWeight: '800', color: 'var(--oda-success)' }}>$94,200</div>
-            <div style={{ color: 'var(--oda-primary)', fontSize: '0.7rem', marginTop: '2px' }}>112% quota pacing</div>
+            <div style={{ fontSize: '1.4rem', fontWeight: '800', color: 'var(--oda-success)' }}>Connected</div>
+            <div style={{ color: 'var(--oda-primary)', fontSize: '0.7rem', marginTop: '2px' }}>Activity and outcome context</div>
           </div>
 
         </div>
@@ -136,7 +138,7 @@ export const ManagerDashboardMockup = () => {
                     border: selectedSquad === 'all' ? '1px solid var(--oda-border-blue)' : '1px solid var(--oda-border)',
                   }}
                 >
-                  All (24)
+                  All
                 </button>
                 <button
                   onClick={() => setSelectedSquad('inside')}
@@ -198,7 +200,7 @@ export const ManagerDashboardMockup = () => {
                     }} />
                     <div>
                       <div style={{ fontWeight: '600', color: 'var(--oda-text-primary)' }}>{agent.name}</div>
-                      <div style={{ fontSize: '0.7rem', color: 'var(--oda-text-muted)' }}>Score: {agent.score}/100</div>
+                      <div style={{ fontSize: '0.7rem', color: 'var(--oda-text-muted)' }}>Context: {agent.score}</div>
                     </div>
                   </div>
 
@@ -210,8 +212,8 @@ export const ManagerDashboardMockup = () => {
                   </div>
 
                   <div>
-                    <div style={{ color: 'var(--oda-text-primary)', fontSize: '0.75rem', fontWeight: '600' }}>{agent.calls} Dials</div>
-                    <div style={{ color: 'var(--oda-primary)', fontSize: '0.7rem' }}>{agent.conv} Conv</div>
+                    <div style={{ color: 'var(--oda-text-primary)', fontSize: '0.75rem', fontWeight: '600' }}>Activity: {agent.calls}</div>
+                    <div style={{ color: 'var(--oda-primary)', fontSize: '0.7rem' }}>Signal: {agent.conv}</div>
                   </div>
 
                   <div style={{ textAlign: 'right' }}>
@@ -242,8 +244,8 @@ export const ManagerDashboardMockup = () => {
             <div style={{ background: 'var(--oda-surface)', border: '1px solid var(--oda-border)', borderRadius: '8px', padding: '12px' }}>
               <div style={{ fontSize: '0.7rem', color: 'var(--oda-text-muted)' }}>Supervising Agent:</div>
               <div style={{ fontSize: '1rem', fontWeight: '700', color: 'var(--oda-text-primary)', marginTop: '2px' }}>{selectedAgent}</div>
-              <div style={{ fontSize: '0.75rem', color: 'var(--oda-primary)', marginTop: '2px' }}>Live Call with: Sarah Jenkins (Logix)</div>
-              <div style={{ fontSize: '0.7rem', color: 'var(--oda-success)', marginTop: '4px' }}>Audio: 24ms WebRTC • Dual Stream Active</div>
+              <div style={{ fontSize: '0.75rem', color: 'var(--oda-primary)', marginTop: '2px' }}>Current conversation: Customer record</div>
+              <div style={{ fontSize: '0.7rem', color: 'var(--oda-success)', marginTop: '4px' }}>Configured supervision context</div>
             </div>
 
             {/* Mode selector */}
@@ -305,7 +307,7 @@ export const ManagerDashboardMockup = () => {
             <div style={{ marginTop: 'auto', background: 'var(--oda-surface)', border: '1px solid var(--oda-border)', borderRadius: '8px', padding: '12px' }}>
               <div style={{ fontSize: '0.7rem', color: 'var(--oda-text-muted)', marginBottom: '6px' }}>Direct Rep Headset Whisper</div>
               <div style={{ background: 'var(--oda-bg-alt)', padding: '8px', borderRadius: '6px', fontSize: '0.75rem', color: 'var(--oda-text-secondary)', marginBottom: '8px', border: '1px solid var(--oda-border)' }}>
-                "Ask for the 2-year upfront commitment to waive setup fee."
+                "Clarify the implementation concern and agree on the next step."
               </div>
               <button
                 onClick={handleSendWhisper}

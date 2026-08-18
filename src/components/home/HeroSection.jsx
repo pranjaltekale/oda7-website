@@ -1,6 +1,11 @@
+'use client';
+
 import React, { useState, useEffect, useRef } from 'react';
 import { Button } from '../common/Button';
 import { Badge } from '../common/Badge';
+import { LightTabIndicator } from '../common/LightTabIndicator';
+import { InteractiveTiltCard } from '../common/InteractiveTiltCard';
+import { ProductStateTransition } from '../common/ProductStateTransition';
 import {
   Sparkles,
   PlayCircle,
@@ -77,40 +82,40 @@ export const HeroSection = ({ onOpenDemo }) => {
 
   const simulatedEvents = [
     {
-      title: 'Inbound Lead Prioritized',
-      desc: 'Sarah Jenkins (Logix Ent.) • Win Prob: 96% • Local 512 match',
-      badge: 'My Queue 0.8s SLA',
+      title: 'New lead assigned',
+      desc: 'Source, owner and next action are visible in one queue.',
+      badge: 'Priority queue',
       icon: PhoneCall,
       color: '#38bdf8',
       role: 'Sales SDR',
-      metric: '<15s Response',
+      metric: 'Ready to contact',
     },
     {
-      title: 'Active 0.8s WebRTC Call',
-      desc: 'Local Presence connected • Dual-channel recording active',
-      badge: 'Live Audio Stream',
+      title: 'Customer conversation active',
+      desc: 'Lead context and call controls stay in the same workspace.',
+      badge: 'Live conversation',
       icon: Volume2,
       color: '#10b981',
       role: 'Inside Sales',
-      metric: '+34.8% Pickup',
+      metric: 'Context connected',
     },
     {
-      title: 'AI Objection Battlecard',
-      desc: 'Contract objection detected → Suggested: 2-yr buyout credit',
-      badge: 'Real-Time Copilot',
+      title: 'Relevant guidance surfaced',
+      desc: 'The rep sees a useful response without leaving the call view.',
+      badge: 'In-workflow assist',
       icon: Sparkles,
       color: '#fbbf24',
       role: 'AI Engine',
-      metric: '42ms Latency',
+      metric: 'Guidance ready',
     },
     {
-      title: 'Manager Whisper Coaching',
-      desc: 'Supervisor Marcus streaming winning cue to rep headset',
-      badge: '24ms Whisper Active',
+      title: 'Manager coaching available',
+      desc: 'The supervisor can review the moment and support the rep.',
+      badge: 'Manager context',
       icon: Headphones,
       color: '#a855f7',
       role: 'Floor Command',
-      metric: 'Rescue Deal',
+      metric: 'Support available',
     },
   ];
 
@@ -160,7 +165,7 @@ export const HeroSection = ({ onOpenDemo }) => {
             {/* Eyebrow badge */}
             <div style={{ display: 'inline-flex', marginBottom: '20px' }} className="animate-fadeIn">
               <Badge variant="primary" icon="Sparkles" pulse={true}>
-                THE SALES OPERATING SYSTEM FOR MODERN TEAMS • BIZZFLY
+                ODA7 CONNECTED OPERATING WORKSPACE
               </Badge>
             </div>
 
@@ -190,7 +195,7 @@ export const HeroSection = ({ onOpenDemo }) => {
               }}
               className="animate-fadeInUp delay-200"
             >
-              ODA7 unifies sales execution, telephony calling, leads, teams, shift attendance, automated commission payroll, and executive analytics into one continuous synchronous data mesh. Replace 10+ disconnected tools and empower your entire revenue floor.
+              Bring customer conversations, team operations, compensation workflows and decision-ready insight into one role-aware system.
             </p>
 
             {/* CTA Buttons */}
@@ -211,11 +216,11 @@ export const HeroSection = ({ onOpenDemo }) => {
                 iconRight="ArrowRight"
                 className="btn-tactile"
               >
-                Start free
+                Plan your workspace
               </Button>
 
               <Button
-                onClick={onOpenDemo}
+                demo
                 variant="secondary"
                 size="lg"
                 iconLeft="PlayCircle"
@@ -239,15 +244,15 @@ export const HeroSection = ({ onOpenDemo }) => {
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                 <ShieldCheck size={16} color="#10b981" />
-                <span>SOC2 Type II & GDPR Certified</span>
+                <span>Role-aware access</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                 <Zap size={16} color="var(--oda-primary)" />
-                <span>Instant 24-Hour Migration</span>
+                <span>Connected workflows</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                 <Clock size={16} color="#fbbf24" />
-                <span>14-Day Free Access</span>
+                <span>Illustrative product preview</span>
               </div>
             </div>
           </div>
@@ -255,102 +260,58 @@ export const HeroSection = ({ onOpenDemo }) => {
           {/* RIGHT: Live Interactive Product Environment with Real Workplace Context */}
           <div style={{ position: 'relative' }} className="hero-product-layer animate-fadeInUp delay-500">
 
-            {/* View Selector Tabs */}
-            <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '6px', marginBottom: '12px' }}>
-              {heroViews.map((hv) => {
-                const IconComp = hv.icon;
-                const isSelected = activeHeroView === hv.id;
-                return (
-                  <button
-                    key={hv.id}
-                    onClick={() => setActiveHeroView(hv.id)}
-                    className="tab-pill-interactive"
-                    style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '6px',
-                      padding: '7px 13px',
-                      borderRadius: '8px',
-                      fontSize: '0.75rem',
-                      fontWeight: '600',
-                      background: isSelected ? 'var(--oda-primary)' : 'var(--oda-surface)',
-                      border: isSelected ? '1px solid var(--oda-primary-light)' : '1px solid var(--oda-border)',
-                      color: isSelected ? '#ffffff' : 'var(--oda-text-secondary)',
-                      boxShadow: isSelected ? '0 4px 12px rgba(37, 99, 235, 0.28)' : '0 1px 3px rgba(0,0,0,0.05)',
-                    }}
-                  >
-                    <IconComp size={13} />
-                    <span>{hv.label}</span>
-                  </button>
-                );
-              })}
+            {/* View Selector Tabs with Travelling Spring Pill */}
+            <div className="tabs-scroll-wrapper hero-tabs-wrapper" style={{ justifyContent: 'flex-end', marginBottom: '14px' }}>
+              <LightTabIndicator
+                tabs={heroViews}
+                activeTab={activeHeroView}
+                onChange={setActiveHeroView}
+                variant="pill"
+                className="hero-view-light-tabs"
+              />
             </div>
 
             {/* Main Interactive Product Frame with 3D Tilt Physics */}
-            <div
-              ref={cardRef}
-              onMouseMove={handleMouseMove}
-              onMouseLeave={handleMouseLeave}
-              className="card-interactive-lift image-interactive-zoom"
-              style={{
-                position: 'relative',
-                borderRadius: '24px',
-                overflow: 'hidden',
-                border: '1px solid var(--oda-border-blue)',
-                boxShadow: '0 25px 70px rgba(0, 0, 0, 0.45)',
-                height: '520px',
-                transition: 'transform 250ms cubic-bezier(0.16, 1, 0.3, 1)',
-              }}
+            <InteractiveTiltCard
+              maxTilt={3.2}
+              scale={1.012}
+              className="hero-interactive-card"
             >
-              <img
-                src={
-                  activeHeroView === 'manager'
-                    ? 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&auto=format&fit=crop&q=80'
-                    : activeHeroView === 'executive'
-                    ? 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&auto=format&fit=crop&q=80'
-                    : 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&auto=format&fit=crop&q=80'
-                }
-                alt="ODA7 Live Workspace Environment"
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                  objectPosition: 'center 15%',
-                  display: 'block',
-                  filter: 'contrast(1.05) brightness(0.94)',
-                }}
-              />
-              <div
-                style={{
-                  position: 'absolute',
-                  inset: 0,
-                  background: 'linear-gradient(180deg, transparent 35%, rgba(7, 10, 18, 0.92) 100%)',
-                  pointerEvents: 'none',
-                }}
-              />
+              <ProductStateTransition activeKey={activeHeroView} style={{ height: '100%' }}>
+                <img
+                  className="tilt-parallax-img"
+                  src={
+                    activeHeroView === 'manager'
+                      ? '/oda7-scenario-callcenter.jpg'
+                      : activeHeroView === 'executive'
+                      ? '/oda7-module-insights.jpg'
+                      : '/oda7-module-sales.jpg'
+                  }
+                  alt="ODA7 Live Workspace Environment"
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    objectPosition: 'center 15%',
+                    display: 'block',
+                    filter: 'contrast(1.05) brightness(0.94)',
+                  }}
+                />
+                <div
+                  style={{
+                    position: 'absolute',
+                    inset: 0,
+                    background: 'linear-gradient(180deg, transparent 35%, rgba(7, 10, 18, 0.92) 100%)',
+                    pointerEvents: 'none',
+                  }}
+                />
+              </ProductStateTransition>
 
               {/* Floating Top Left Simulated Product Event (Interactive Clickable Pill) */}
               <div
                 onClick={() => setSimulatedStep((prev) => (prev + 1) % 4)}
-                style={{
-                  position: 'absolute',
-                  top: '16px',
-                  left: '16px',
-                  background: 'rgba(11, 15, 23, 0.94)',
-                  backdropFilter: 'blur(12px)',
-                  WebkitBackdropFilter: 'blur(12px)',
-                  padding: '12px 16px',
-                  borderRadius: '12px',
-                  border: '1px solid rgba(255, 255, 255, 0.12)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '10px',
-                  maxWidth: '320px',
-                  boxShadow: '0 10px 25px rgba(0, 0, 0, 0.5)',
-                  cursor: 'pointer',
-                }}
+                className="hero-event-badge animate-fadeIn"
                 key={`${activeHeroView}-${simulatedStep}`}
-                className="animate-fadeIn"
                 title="Click to cycle next live telemetry event"
               >
                 <div style={{ width: '34px', height: '34px', borderRadius: '8px', background: `${currentEvent.color}25`, display: 'flex', alignItems: 'center', justifyContent: 'center', color: currentEvent.color, flexShrink: 0 }}>
@@ -363,80 +324,51 @@ export const HeroSection = ({ onOpenDemo }) => {
               </div>
 
               {/* Floating Top Right Live Audio / Metric Badge */}
-              <div
-                style={{
-                  position: 'absolute',
-                  top: '16px',
-                  right: '16px',
-                  background: 'rgba(16, 185, 129, 0.94)',
-                  color: '#ffffff',
-                  padding: '6px 12px',
-                  borderRadius: '20px',
-                  fontSize: '0.75rem',
-                  fontWeight: '800',
-                  boxShadow: '0 4px 14px rgba(16, 185, 129, 0.4)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                }}
-              >
+              <div className="hero-live-badge">
                 <div className="audio-wave-live" style={{ filter: 'brightness(1.5)' }}>
                   <span />
                   <span />
                   <span />
                   <span />
                 </div>
-                <span>+34.8% Pickup Lift</span>
+                <span>Live workflow context</span>
               </div>
 
               {/* Floating Bottom ODA7 Telemetry Panel */}
-              <div
-                style={{
-                  position: 'absolute',
-                  bottom: '16px',
-                  left: '16px',
-                  right: '16px',
-                  background: 'rgba(11, 15, 23, 0.94)',
-                  backdropFilter: 'blur(14px)',
-                  WebkitBackdropFilter: 'blur(14px)',
-                  padding: '16px 20px',
-                  borderRadius: '16px',
-                  border: '1px solid rgba(255, 255, 255, 0.12)',
-                }}
-              >
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <span className="status-dot green" />
-                    <span style={{ color: '#fff', fontWeight: '750', fontSize: '0.85rem' }}>
+              <div className="hero-telemetry-panel">
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px', gap: '6px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', minWidth: 0 }}>
+                    <span className="status-dot green" style={{ flexShrink: 0 }} />
+                    <span style={{ color: '#fff', fontWeight: '750', fontSize: '0.85rem', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                       {activeHeroView === 'manager'
-                        ? 'Supervisor Floor Cockpit Alpha'
+                        ? 'Manager coaching view'
                         : activeHeroView === 'executive'
-                        ? 'Master Executive Revenue Telemetry'
-                        : 'Live ODA7 Inside Sales Pod Alpha'}
+                        ? 'Leadership operating view'
+                        : 'Sales execution workspace'}
                     </span>
                   </div>
-                  <span className="badge badge-cyan" style={{ fontSize: '0.65rem' }}>
-                    {activeHeroView === 'manager' ? '24ms WebRTC Stream' : activeHeroView === 'executive' ? '100% Tenant Isolation' : '0.8s WebRTC Dialing'}
+                  <span className="badge badge-cyan" style={{ fontSize: '0.65rem', flexShrink: 0 }}>
+                    {activeHeroView === 'manager' ? 'Coaching context' : activeHeroView === 'executive' ? 'Cross-team visibility' : 'Conversation active'}
                   </span>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px', paddingTop: '8px', borderTop: '1px solid rgba(255, 255, 255, 0.08)' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px', paddingTop: '8px', borderTop: '1px solid rgba(255, 255, 255, 0.08)' }} className="hero-telemetry-grid">
                   <div>
-                    <div style={{ color: '#94a3b8', fontSize: '0.68rem', textTransform: 'uppercase' }}>Active Calls</div>
-                    <div style={{ color: '#38bdf8', fontWeight: '800', fontSize: '0.95rem' }}>18 Connected</div>
+                    <div style={{ color: '#94a3b8', fontSize: '0.68rem', textTransform: 'uppercase' }}>Current work</div>
+                    <div style={{ color: '#38bdf8', fontWeight: '800', fontSize: '0.95rem' }}>Conversation</div>
                   </div>
                   <div>
-                    <div style={{ color: '#94a3b8', fontSize: '0.68rem', textTransform: 'uppercase' }}>Queue Win Score</div>
-                    <div style={{ color: '#10b981', fontWeight: '800', fontSize: '0.95rem' }}>96 / 100</div>
+                    <div style={{ color: '#94a3b8', fontSize: '0.68rem', textTransform: 'uppercase' }}>Owner</div>
+                    <div style={{ color: '#10b981', fontWeight: '800', fontSize: '0.95rem' }}>Assigned</div>
                   </div>
                   <div>
-                    <div style={{ color: '#94a3b8', fontSize: '0.68rem', textTransform: 'uppercase' }}>Daily Closed ARR</div>
-                    <div style={{ color: '#fbbf24', fontWeight: '800', fontSize: '0.95rem' }}>+$14,200</div>
+                    <div style={{ color: '#94a3b8', fontSize: '0.68rem', textTransform: 'uppercase' }}>Next action</div>
+                    <div style={{ color: '#fbbf24', fontWeight: '800', fontSize: '0.95rem' }}>Follow up</div>
                   </div>
                 </div>
               </div>
 
-            </div>
+            </InteractiveTiltCard>
 
           </div>
 

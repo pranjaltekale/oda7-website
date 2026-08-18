@@ -1,9 +1,11 @@
+'use client';
+
 import React from 'react';
 import { Sun, Moon } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 
 export const ThemeToggle = ({ className = '', style = {} }) => {
-  const { theme, toggleTheme, isDark } = useTheme();
+  const { toggleTheme } = useTheme();
 
   return (
     <button
@@ -11,15 +13,12 @@ export const ThemeToggle = ({ className = '', style = {} }) => {
       onClick={toggleTheme}
       className={`theme-toggle-btn ${className}`}
       style={style}
-      aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-      title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+      aria-label="Toggle light/dark theme"
+      title="Toggle light/dark theme"
     >
       <span className="theme-toggle-icon-wrap">
-        {isDark ? (
-          <Sun size={17} className="theme-toggle-icon sun-icon" />
-        ) : (
-          <Moon size={17} className="theme-toggle-icon moon-icon" />
-        )}
+        <Sun size={17} className="theme-toggle-icon sun-icon theme-show-dark" aria-hidden="true" />
+        <Moon size={17} className="theme-toggle-icon moon-icon theme-show-light" aria-hidden="true" />
       </span>
     </button>
   );
