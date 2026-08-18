@@ -30,7 +30,7 @@ export const PerformanceStorySection = () => {
             maxWidth: '1240px',
             margin: '0 auto',
             display: 'grid',
-            gridTemplateColumns: 'minmax(320px, 1fr) minmax(320px, 1.4fr)',
+            gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1.25fr)',
             gap: 'clamp(32px, 5vw, 56px)',
             alignItems: 'center',
           }}

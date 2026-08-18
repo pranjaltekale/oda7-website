@@ -9,6 +9,7 @@ export const Modal = ({
   title,
   children,
   maxWidth = '1040px',
+  showCloseButton = true,
 }) => {
   const dialogRef = useRef(null);
   const previousFocusRef = useRef(null);
@@ -65,13 +66,15 @@ export const Modal = ({
         aria-modal="true"
         aria-label={title || 'ODA7 interactive product demo'}
       >
-        <button
-          className="modal-close-btn"
-          onClick={onClose}
-          aria-label="Close dialog"
-        >
-          <X size={18} />
-        </button>
+        {showCloseButton && (
+          <button
+            className="modal-close-btn"
+            onClick={onClose}
+            aria-label="Close dialog"
+          >
+            <X size={18} />
+          </button>
+        )}
         {children}
       </div>
     </div>

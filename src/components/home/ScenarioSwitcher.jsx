@@ -23,7 +23,14 @@ export const ScenarioSwitcher = () => {
             <span className="badge badge-cyan"><Building2 size={13} /> {scenario.label}</span>
             <h2>{scenario.headline}</h2>
             <p>{scenario.benefit}</p>
-            <div className="scenario-flow">{scenario.flow.map((step,index)=><div key={step}><span>{String(index+1).padStart(2,'0')}</span><strong>{step}</strong>{index < scenario.flow.length - 1 && <ArrowRight size={14}/>}</div>)}</div>
+            <div className="scenario-flow">
+              {scenario.flow.map((step, index) => (
+                <div key={step}>
+                  <span>{String(index + 1).padStart(2, '0')}</span>
+                  <strong>{step}</strong>
+                </div>
+              ))}
+            </div>
             <ul><li><CheckCircle2 size={16}/> Clear ownership between steps</li><li><CheckCircle2 size={16}/> Role-aware views of the same work</li><li><CheckCircle2 size={16}/> Descriptive, illustrative workflow outcomes</li></ul>
             <Button to="/solutions" variant="secondary" iconRight="ArrowRight">Explore role solutions</Button>
           </div>

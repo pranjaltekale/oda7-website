@@ -6,6 +6,7 @@ import { ArrowRight, ChevronDown, Menu, PlayCircle, X } from 'lucide-react';
 import { navLinks } from '../../data/navigation';
 import { Button } from '../common/Button';
 import { ThemeToggle } from '../common/ThemeToggle';
+import { OdaMark } from '../common/OdaLogo';
 import { MegaMenu } from './MegaMenu';
 import { MobileNav } from './MobileNav';
 
@@ -49,8 +50,17 @@ export const Navbar = ({ onOpenDemo }) => {
   }, [openMenu]);
 
   useEffect(() => {
-    document.body.style.overflow = mobileOpen ? 'hidden' : '';
-    return () => { document.body.style.overflow = ''; };
+    if (mobileOpen) {
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
+    };
   }, [mobileOpen]);
 
   useEffect(() => {
@@ -66,7 +76,9 @@ export const Navbar = ({ onOpenDemo }) => {
     <header ref={navRef} className={`site-navbar ${scrolled ? 'is-scrolled' : ''}`} onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setOpenMenu(null); }}>
       <div className="container-wide navbar-inner">
         <Link to="/" className="oda-brand" aria-label="ODA7 home">
-          <span className="oda-brand-mark">o7</span>
+          <span className="oda-brand-mark">
+            <OdaMark size={20} />
+          </span>
           <span className="oda-brand-copy"><strong>oda<span>7</span></strong><small>Business OS</small></span>
         </Link>
 

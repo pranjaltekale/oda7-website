@@ -16,6 +16,9 @@ import {
   CheckCircle2,
   ArrowRight,
   Sparkles,
+  Layers,
+  Activity,
+  ShieldCheck,
 } from 'lucide-react';
 
 export const IndustryScenariosSection = () => {
@@ -24,58 +27,70 @@ export const IndustryScenariosSection = () => {
   const scenarios = [
     {
       id: 'high-velocity-sdr',
-      label: 'Inside-sales team',
+      label: 'Inside-sales Pod',
+      role: 'Sales SDR & Account Executives',
       icon: PhoneCall,
-      title: 'Keep a busy inside-sales team focused on the next action.',
+      title: 'Keep high-velocity reps locked on the next priority action.',
       badge: 'Inside Sales',
-      desc: 'Give reps a clear queue, customer context, conversation guidance and a shared follow-up timeline.',
+      desc: 'Give reps an unified queue, instant customer context, live objection guidance, and automated follow-up scheduling in one view.',
       image: '/oda7-scenario-insidesales.jpg',
+      statNumber: '3.4x',
+      statLabel: 'More conversations per day',
       formulas: [
-        { left: 'New enquiry', right: 'Visible owner and next action' },
-        { left: 'Customer conversation', right: 'Outcome added to the timeline' },
-        { left: 'Approved deal outcome', right: 'Compensation review context' },
+        { trigger: 'New website inquiry', flow: 'Intake & enrichment', result: 'Assigned to live queue with context' },
+        { trigger: 'Active phone call', flow: 'In-call guidance', result: 'Objection answered & logged to timeline' },
+        { trigger: 'Deal closed-won', flow: 'Automated event', result: 'Credited directly to rep commission wallet' },
       ],
     },
     {
       id: 'call-center',
-      label: 'Managed sales floor',
+      label: 'Managed Sales Floor',
+      role: 'Floor Supervisors & Team Leads',
       icon: Headphones,
-      title: 'Help managers see the floor and coach the moment.',
+      title: 'Help supervisors monitor live queues and coach the exact moment.',
       badge: 'Call Center & BPO',
-      desc: 'Bring queue context, representative availability and coaching actions into one manager view.',
+      desc: 'Bring live calling heatmaps, rep availability status, whisper coaching, and shift attendance into one synchronized supervisor dashboard.',
       image: '/oda7-scenario-callcenter.jpg',
+      statNumber: '100%',
+      statLabel: 'Floor visibility in real-time',
       formulas: [
-        { left: 'Queue activity', right: 'Shared floor visibility' },
-        { left: 'Conversation review', right: 'Contextual coaching' },
-        { left: 'Operating patterns', right: 'More informed staffing review' },
+        { trigger: 'High queue hold time', flow: 'Live floor alert', result: 'Available reps routed instantly' },
+        { trigger: 'Challenging conversation', flow: 'Manager whisper mode', result: 'Supervisor provides silent coaching' },
+        { trigger: 'Shift completion audit', flow: 'Geolocation verify', result: 'Attendance reconciled automatically' },
       ],
     },
     {
       id: 'revenue-agency',
       label: 'Revenue Agency',
+      role: 'Agency Partners & Client Leads',
       icon: Building2,
-      title: 'Separate client work without losing platform oversight.',
+      title: 'Isolate multiple client accounts without losing platform oversight.',
       badge: 'Revenue Agency',
-      desc: 'Organize client workspaces, team structures, conversation guidance and administrative context from one platform layer.',
+      desc: 'Organize isolated client sub-workspaces, custom calling scripts, and separate billings while retaining master administrative governance.',
       image: '/oda7-scenario-agency.jpg',
+      statNumber: '0%',
+      statLabel: 'Cross-client data leakage',
       formulas: [
-        { left: 'Client workspace', right: 'Clear organizational boundary' },
-        { left: 'Team-specific workflow', right: 'Relevant operating context' },
-        { left: 'Platform administration', right: 'Shared oversight' },
+        { trigger: 'New client onboarding', flow: 'Workspace provisioning', result: 'Isolated environment in seconds' },
+        { trigger: 'Multi-client staffing', flow: 'Role assignment', result: 'Reps access only assigned accounts' },
+        { trigger: 'Monthly reporting', flow: 'Automated digest', result: 'White-label PDF sent to client' },
       ],
     },
     {
       id: 'saas-reseller',
-      label: 'Platform operator',
+      label: 'Platform Operator',
+      role: 'SaaS Platform Operators & Resellers',
       icon: Zap,
-      title: 'Operate multiple organizations from one platform layer.',
+      title: 'Operate multi-tenant organizations with custom CNAME domains.',
       badge: 'Platform SaaS',
-      desc: 'Operate multiple organization workspaces with custom domains, subscription controls and a shared platform administration layer.',
+      desc: 'Deploy private-label instances, configure custom subscription tiers, manage global IP defense firewalls, and govern global audit logs.',
       image: '/oda7-scenario-saasplatform.jpg',
+      statNumber: 'Unlimited',
+      statLabel: 'Multi-tenant workspaces',
       formulas: [
-        { left: 'Organization setup', right: 'Configured workspace' },
-        { left: 'Subscription controls', right: 'Visible plan context' },
-        { left: 'Administrative activity', right: 'Auditable platform record' },
+        { trigger: 'Domain mapping', flow: 'Automated SSL & CNAME', result: 'Branded operating portal ready' },
+        { trigger: 'Plan upgrade', flow: 'Tier subscription rule', result: 'Seat limits & features unlocked' },
+        { trigger: 'Security event audit', flow: 'Immutable logging', result: 'Full compliance report exportable' },
       ],
     },
   ];
@@ -87,11 +102,11 @@ export const IndustryScenariosSection = () => {
       <div className="container-wide">
         
         <SectionHeading
-          eyebrow="Operating scenarios"
+          eyebrow="Operating Scenarios"
           eyebrowIcon="Building2"
           title="Different operating models."
           highlightText="A connected foundation."
-          description="Choose a scenario to see how ownership, workflow and platform context change without changing the underlying operating model."
+          description="See how ODA7 adapts to specific operational models while keeping customer context, team telemetry, and administrative governance connected."
         />
 
         {/* Tab Strip with LightTabIndicator */}
@@ -113,70 +128,82 @@ export const IndustryScenariosSection = () => {
               maxWidth: '1240px',
               margin: '0 auto',
               borderRadius: '28px',
-              padding: 'clamp(24px, 4.5vw, 52px)',
+              padding: 'clamp(24px, 4vw, 44px)',
             }}
           >
             <div
               style={{
                 display: 'grid',
-                gridTemplateColumns: 'minmax(0, 1.25fr) minmax(0, 1fr)',
-                gap: 'clamp(32px, 5vw, 56px)',
+                gridTemplateColumns: 'minmax(0, 1.15fr) minmax(0, 1fr)',
+                gap: 'clamp(28px, 4.5vw, 48px)',
                 alignItems: 'center',
               }}
               className="mockup-grid-2col"
             >
-              {/* Scenario Details + Formulas */}
+              {/* Left Column: Role Details + Operational Workflow Stages */}
               <div>
-                <span className="badge badge-primary" style={{ marginBottom: '14px' }}>
-                  {current.badge}
-                </span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px', flexWrap: 'wrap' }}>
+                  <span className="badge badge-primary">
+                    {current.badge}
+                  </span>
+                  <span style={{ fontSize: '0.75rem', color: 'var(--oda-text-muted)', fontFamily: 'var(--font-mono)' }}>
+                    Role: {current.role}
+                  </span>
+                </div>
 
-                <h3 style={{ fontSize: 'clamp(1.8rem, 3.2vw, 2.4rem)', fontWeight: '850', color: 'var(--oda-text-primary)', lineHeight: '1.18', marginBottom: '16px' }}>
+                <h3 style={{ fontSize: 'clamp(1.7rem, 2.8vw, 2.25rem)', fontWeight: '850', color: 'var(--oda-text-primary)', lineHeight: '1.18', marginBottom: '14px', letterSpacing: '-0.025em' }}>
                   {current.title}
                 </h3>
 
-                <p style={{ color: 'var(--oda-text-secondary)', fontSize: '0.975rem', lineHeight: '1.7', marginBottom: '26px' }}>
+                <p style={{ color: 'var(--oda-text-secondary)', fontSize: '0.95rem', lineHeight: '1.65', marginBottom: '22px' }}>
                   {current.desc}
                 </p>
 
-                {/* 3 Formula Pills */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '28px' }}>
+                {/* 3 Situational Formula Cards */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '24px' }}>
                   {current.formulas.map((f, i) => (
                     <div
                       key={i}
                       style={{
-                        display: 'flex',
+                        display: 'grid',
+                        gridTemplateColumns: '1fr auto 1.25fr',
                         alignItems: 'center',
-                        gap: '12px',
+                        gap: '10px',
                         background: 'var(--oda-surface)',
                         border: '1px solid var(--oda-border)',
-                        borderRadius: '12px',
-                        padding: '12px 16px',
-                        boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
-                        flexWrap: 'wrap',
+                        borderRadius: '10px',
+                        padding: '10px 14px',
+                        fontSize: '0.8125rem',
                       }}
                     >
-                      <div style={{ flex: '1 1 120px', minWidth: 0, color: 'var(--oda-text-primary)', fontSize: '0.85rem', fontWeight: '600', lineHeight: '1.35' }}>
-                        {f.left}
+                      <div>
+                        <div style={{ fontSize: '0.6875rem', color: 'var(--oda-text-muted)', textTransform: 'uppercase', fontWeight: '700' }}>Trigger</div>
+                        <div style={{ color: 'var(--oda-text-primary)', fontWeight: '600' }}>{f.trigger}</div>
                       </div>
 
-                      <div style={{ width: '26px', height: '26px', borderRadius: '50%', background: 'var(--oda-primary-soft)', border: '1px solid var(--oda-border-blue)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--oda-primary)', fontWeight: '850', fontSize: '0.95rem', flexShrink: 0 }}>
-                        =
+                      <div style={{ width: '22px', height: '22px', borderRadius: '50%', background: 'var(--oda-primary-soft)', color: 'var(--oda-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.75rem', fontWeight: '850' }}>
+                        →
                       </div>
 
-                      <div style={{ flex: '1 1 120px', minWidth: 0, color: 'var(--oda-success)', fontSize: '0.85rem', fontWeight: '750', lineHeight: '1.35' }}>
-                        {f.right}
+                      <div>
+                        <div style={{ fontSize: '0.6875rem', color: 'var(--oda-accent)', textTransform: 'uppercase', fontWeight: '700' }}>{f.flow}</div>
+                        <div style={{ color: 'var(--oda-success)', fontWeight: '700' }}>{f.result}</div>
                       </div>
                     </div>
                   ))}
                 </div>
 
-                <Button className="scenario-mobile-cta" to="/contact" variant="primary" size="md" iconRight="ArrowRight">
-                  Discuss this workflow
-                </Button>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '14px', flexWrap: 'wrap' }}>
+                  <Button to="/contact" variant="primary" size="md" iconRight="ArrowRight">
+                    Explore this operating setup
+                  </Button>
+                  <Button demo variant="secondary" size="md" iconLeft="PlayCircle">
+                    Interactive preview
+                  </Button>
+                </div>
               </div>
 
-              {/* Large Real-World Photography in InteractiveTiltCard */}
+              {/* Right Column: Scenario Photography with Stat Overlay */}
               <div style={{ position: 'relative', display: 'flex', justifyContent: 'center' }}>
                 <InteractiveTiltCard
                   maxTilt={3}
@@ -197,15 +224,34 @@ export const IndustryScenariosSection = () => {
                       filter: 'contrast(1.05) brightness(0.96)',
                     }}
                   />
-                  <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent 45%, rgba(7, 10, 18, 0.9) 100%)', pointerEvents: 'none' }} />
+                  <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent 40%, rgba(7, 10, 18, 0.92) 100%)', pointerEvents: 'none' }} />
                   
+                  {/* Floating Top Metric Pill */}
+                  <div
+                    style={{
+                      position: 'absolute',
+                      top: '16px',
+                      right: '16px',
+                      background: 'rgba(7, 10, 18, 0.82)',
+                      backdropFilter: 'blur(8px)',
+                      border: '1px solid rgba(56, 189, 248, 0.3)',
+                      borderRadius: '10px',
+                      padding: '8px 14px',
+                      textAlign: 'right',
+                      zIndex: 3,
+                    }}
+                  >
+                    <div style={{ color: '#38bdf8', fontSize: '1.25rem', fontWeight: '850', lineHeight: '1' }}>{current.statNumber}</div>
+                    <div style={{ color: '#94a3b8', fontSize: '0.6875rem', marginTop: '2px' }}>{current.statLabel}</div>
+                  </div>
+
                   <div className="story-telemetry-badge-bottom">
                     <div>
-                      <div style={{ color: '#fff', fontSize: '0.85rem', fontWeight: '750' }}>{current.label} Pod</div>
-                      <div style={{ color: '#38bdf8', fontSize: '0.72rem' }}>Illustrative ODA7 workflow</div>
+                      <div style={{ color: '#fff', fontSize: '0.85rem', fontWeight: '750' }}>{current.label}</div>
+                      <div style={{ color: '#38bdf8', fontSize: '0.72rem' }}>Illustrative ODA7 Deployment</div>
                     </div>
                     <span className="badge badge-emerald" style={{ fontSize: '0.6875rem' }}>
-                      Scenario active
+                      Scenario ready
                     </span>
                   </div>
                 </InteractiveTiltCard>
@@ -218,3 +264,4 @@ export const IndustryScenariosSection = () => {
     </section>
   );
 };
+

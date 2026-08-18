@@ -40,3 +40,6 @@ Thumbs.db
 .next/
 
 .vercel
+
+.vercel
+.env*

@@ -9,6 +9,25 @@ export const MarketingDetailTemplate = ({ type, slug, page, onOpenDemo }) => {
   const features = page.features || (page.benefits || []).map((item) => [item, `Keep ${item.toLowerCase()} connected to the wider operating workflow.`]);
   const overviewPath = type === 'Product' ? '/product' : '/solutions';
   const storyImage = {
+    leads: '/oda7-scenario-insidesales.jpg',
+    dialer: '/oda7-scenario-callcenter.jpg',
+    calls: '/oda7-sales-conversation.png',
+    inbox: '/oda7-team-story.jpg',
+    calendar: '/oda7-module-people.jpg',
+    campaigns: '/oda7-scenario-agency.jpg',
+    products: '/oda7-module-engagement.jpg',
+    scripts: '/oda7-manager-coaching.png',
+    sequences: '/oda7-sales-conversation.png',
+    quotes: '/oda7-module-compensation.jpg',
+    sales: '/oda7-module-sales.jpg',
+    manager: '/oda7-manager-coaching.png',
+    marketing: '/oda7-scenario-agency.jpg',
+    operations: '/oda7-scenario-saasplatform.jpg',
+    hr: '/oda7-people-operations.png',
+    people: '/oda7-module-people.jpg',
+    leadership: '/oda7-leadership-analytics.jpg',
+    analytics: '/oda7-module-insights.jpg',
+  }[slug] || {
     sales: '/oda7-module-sales.jpg',
     leads: '/oda7-scenario-insidesales.jpg',
     manager: '/oda7-scenario-callcenter.jpg',
@@ -39,7 +58,7 @@ export const MarketingDetailTemplate = ({ type, slug, page, onOpenDemo }) => {
               </div>
               <div className="detail-proof-line"><span>One workspace</span><i /><span>Role-aware workflow</span><i /><span>Illustrative product data</span></div>
             </div>
-            <ProductUIFrame title={page.label} steps={steps} icon={page.icon} compact />
+            <ProductUIFrame title={page.label} slug={slug} steps={steps} icon={page.icon} compact />
           </div>
         </div>
       </section>
@@ -54,10 +73,17 @@ export const MarketingDetailTemplate = ({ type, slug, page, onOpenDemo }) => {
       <section className="section-wrapper">
         <div className="container-wide">
           <div className="detail-section-heading"><span className="section-eyebrow">How it works</span><h2>From first signal to visible outcome.</h2><p>The interface changes as the work moves forward, while ownership and context remain connected.</p></div>
-          <div className="detail-workflow">
-            {steps.map((step, index) => <div key={step}><span>{String(index + 1).padStart(2, '0')}</span><i /><strong>{step}</strong><small>{index === steps.length - 1 ? 'The outcome becomes part of the shared operating picture.' : 'The next responsible action stays visible.'}</small></div>)}
+          <div className="detail-workflow" style={{ '--step-count': steps.length, gridTemplateColumns: `repeat(${steps.length}, minmax(0, 1fr))` }}>
+            {steps.map((step, index) => (
+              <div key={step}>
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <i />
+                <strong>{step}</strong>
+                <small>{index === steps.length - 1 ? 'The outcome becomes part of the shared operating picture.' : 'The next responsible action stays visible.'}</small>
+              </div>
+            ))}
           </div>
-          <ProductUIFrame title={`${page.label} workflow`} steps={steps} icon={page.icon} />
+          <ProductUIFrame title={`${page.label} workflow`} slug={slug} steps={steps} icon={page.icon} />
         </div>
       </section>
 
@@ -65,7 +91,15 @@ export const MarketingDetailTemplate = ({ type, slug, page, onOpenDemo }) => {
         <div className="container-wide detail-feature-story">
           <div className="detail-feature-copy"><span className="section-eyebrow">Feature storytelling</span><h2>Built around the work, not around a feature checklist.</h2><p>Each capability helps the team preserve context as responsibility moves from one role or action to another.</p></div>
           <div className="detail-feature-list">
-            {features.map(([title, description], index) => <article key={title}><span>{String(index + 1).padStart(2, '0')}</span><div><h3>{title}</h3><p>{description}</p></div><ArrowRight size={17} /></article>)}
+            {features.map(([title, description], index) => (
+              <article key={title}>
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <div>
+                  <h3>{title}</h3>
+                  <p>{description}</p>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </section>

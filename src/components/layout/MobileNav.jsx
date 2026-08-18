@@ -4,7 +4,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from '../../lib/navigation';
 import { ChevronDown, PlayCircle, ArrowRight, ArrowLeft, Home } from 'lucide-react';
 import { Button } from '../common/Button';
-import { ThemeToggle } from '../common/ThemeToggle';
 
 export const MobileNav = ({ links, onClose, onOpenDemo }) => {
   const [expanded, setExpanded] = useState('Product');
@@ -22,13 +21,7 @@ export const MobileNav = ({ links, onClose, onOpenDemo }) => {
   return (
     <div className="mobile-nav-drawer" id="mobile-navigation" aria-label="Mobile navigation">
       <div className="mobile-nav-scroll">
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
-          <div className="mobile-nav-label" style={{ margin: 0 }}>Navigation</div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span style={{ fontSize: '0.75rem', color: 'var(--oda-text-muted)' }}>Theme</span>
-            <ThemeToggle />
-          </div>
-        </div>
+        <div className="mobile-nav-label">Navigation</div>
 
         <div className="mobile-nav-utility" aria-label="Navigation shortcuts">
           <button type="button" onClick={handleBack}>

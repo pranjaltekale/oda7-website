@@ -52,7 +52,7 @@ export const PricingSection = () => {
             >
               {plan.highlight && <span className="badge badge-primary" style={{ marginBottom: '16px' }}>Most connected</span>}
               <h3 style={{ color: 'var(--oda-text-primary)', fontSize: '1.35rem', marginBottom: '8px' }}>{plan.name}</h3>
-              <p style={{ color: 'var(--oda-text-secondary)', fontSize: '0.87rem', lineHeight: 1.6, minHeight: '66px', marginBottom: '22px' }}>{plan.tagline}</p>
+              <p style={{ color: 'var(--oda-text-secondary)', fontSize: '0.87rem', lineHeight: 1.55, minHeight: '44px', marginBottom: '16px' }}>{plan.tagline}</p>
               <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', marginBottom: '24px' }}>
                 <span style={{ color: 'var(--oda-text-primary)', fontSize: '1.75rem', fontWeight: 800 }}>Custom</span>
                 <span style={{ color: 'var(--oda-text-muted)', fontSize: '0.8rem' }}>based on scope</span>

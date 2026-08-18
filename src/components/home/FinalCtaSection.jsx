@@ -12,9 +12,9 @@ export const FinalCtaSection = ({ onOpenDemo }) => {
     <section
       style={{
         position: 'relative',
-        padding: '120px 0 100px 0',
+        padding: 'clamp(16px, 2.5vw, 36px) 0 clamp(48px, 6vw, 84px) 0',
         overflow: 'hidden',
-        background: 'var(--oda-bg)',
+        background: 'transparent',
       }}
     >
       {/* Background ambient lighting */}

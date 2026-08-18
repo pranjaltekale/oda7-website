@@ -56,7 +56,7 @@ export const InteractiveDemoModal = ({ isOpen, onClose }) => {
   ];
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} maxWidth="920px">
+    <Modal isOpen={isOpen} onClose={onClose} maxWidth="920px" showCloseButton={false}>
       <div className="demo-modal-inner" style={{ padding: 'clamp(20px, 3.5vw, 32px)' }}>
         
         {/* Modal Top Header: Role Selector + Exit Demo */}
@@ -98,20 +98,22 @@ export const InteractiveDemoModal = ({ isOpen, onClose }) => {
             <button
               onClick={onClose}
               className="btn-tactile"
+              aria-label="Exit Demo"
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '5px',
+                gap: '6px',
                 color: 'var(--oda-text-secondary)',
                 fontSize: '0.75rem',
                 fontWeight: '700',
                 background: 'var(--oda-surface)',
                 border: '1px solid var(--oda-border)',
-                borderRadius: '6px',
+                borderRadius: '8px',
                 padding: '6px 12px',
                 cursor: 'pointer',
               }}
             >
+              <X size={14} />
               <span>Exit Demo</span>
             </button>
           </div>

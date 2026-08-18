@@ -22,7 +22,7 @@ export const HumanProblemStorySection = () => {
             maxWidth: '1240px',
             margin: '0 auto',
             display: 'grid',
-            gridTemplateColumns: 'minmax(320px, 1fr) minmax(320px, 1.1fr)',
+            gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1.08fr)',
             gap: 'clamp(32px, 5vw, 64px)',
             alignItems: 'center',
           }}

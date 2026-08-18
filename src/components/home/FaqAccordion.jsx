@@ -13,7 +13,7 @@ export const FaqAccordion = () => {
   };
 
   return (
-    <section className="section-wrapper" id="faq">
+    <section className="section-wrapper faq-section-wrapper" id="faq" style={{ paddingBottom: 'clamp(20px, 3vw, 40px)' }}>
       <div className="container-narrow">
         
         <SectionHeading

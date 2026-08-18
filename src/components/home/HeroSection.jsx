@@ -140,7 +140,7 @@ export const HeroSection = ({ onOpenDemo }) => {
           left: '50%',
           transform: 'translateX(-50%)',
           width: '100%',
-          maxWidth: '1440px',
+          maxWidth: '1360px',
           height: '100%',
           backgroundImage: 'radial-gradient(ellipse 70% 50% at 50% 20%, rgba(37, 99, 235, 0.22), rgba(6, 182, 212, 0.07) 60%, transparent 80%)',
           pointerEvents: 'none',
@@ -154,8 +154,8 @@ export const HeroSection = ({ onOpenDemo }) => {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'minmax(320px, 1.12fr) minmax(320px, 1.08fr)',
-            gap: 'clamp(36px, 5vw, 64px)',
+            gridTemplateColumns: 'minmax(0, 1.08fr) minmax(0, 1.12fr)',
+            gap: 'clamp(32px, 4.5vw, 64px)',
             alignItems: 'center',
           }}
           className="mockup-grid-2col"

@@ -3,6 +3,7 @@
 import React from 'react';
 import { Link } from '../../lib/navigation';
 import { ShieldCheck, Lock } from 'lucide-react';
+import { OdaMark } from '../common/OdaLogo';
 
 export const Footer = ({ onOpenDemo }) => {
   const columns = [
@@ -82,11 +83,11 @@ export const Footer = ({ onOpenDemo }) => {
             {/* Logo */}
             <Link to="/" className="footer-logo-wrap" aria-label="ODA7 Home">
               <div className="footer-logo-mark">
-                <span>o7</span>
+                <OdaMark size={22} />
               </div>
               <div className="footer-logo-text">
                 <span className="footer-brand-name">oda7</span>
-                <span className="footer-brand-tag">BIZZFLY OS</span>
+                <span className="footer-brand-tag">BUSINESS OS</span>
               </div>
             </Link>
 

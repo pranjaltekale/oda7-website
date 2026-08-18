@@ -77,7 +77,7 @@ export const BeforeAfterSection = () => {
             maxWidth: '1240px',
             margin: '0 auto',
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
             gap: 'clamp(24px, 4vw, 40px)',
           }}
         >
