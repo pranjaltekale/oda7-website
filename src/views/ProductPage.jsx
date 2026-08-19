@@ -1,9 +1,11 @@
+'use client';
+
 import React from 'react';
 import { Link } from '../lib/navigation';
 import { ArrowUpRight, CalendarDays, Circle, FileText, GitBranch, Headphones, Inbox, Megaphone, Package, PhoneCall, ReceiptText, Users } from 'lucide-react';
 import { productPages } from '../data/marketingPages';
 import { PageHeader } from '../components/layout/PageHeader';
-import { ProductUIFrame } from '../components/marketing/ProductUIFrame';
+import { ProductWorkspaceVisual } from '../components/visuals/ProductWorkspaceVisual';
 import { Button } from '../components/common/Button';
 
 const iconMap = { CalendarDays, FileText, GitBranch, Headphones, Inbox, Megaphone, Package, PhoneCall, ReceiptText, Users };
@@ -12,7 +14,7 @@ export const ProductPage = ({ onOpenDemo }) => (
   <div style={{ paddingTop: '20px', paddingBottom: '100px' }}>
     <PageHeader badge="Connected product system" badgeIcon="Layers" title="Explore the ODA7" highlight="product workspace." description="Each module has a focused job. Together, they preserve context from first lead to business insight." />
     <section className="container-wide page-reveal" style={{ paddingBottom: '80px' }}>
-      <ProductUIFrame title="Connected workspace" steps={['Capture', 'Connect', 'Execute', 'Measure', 'Improve']} icon="LayoutDashboard" />
+      <ProductWorkspaceVisual />
     </section>
     <section className="section-wrapper section-dark">
       <div className="container-wide">

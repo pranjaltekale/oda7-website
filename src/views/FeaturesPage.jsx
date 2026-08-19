@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { PageHeader } from '../components/layout/PageHeader';
 import { SectionHeading } from '../components/common/SectionHeading';
+import { FeatureCapabilityShowcase } from '../components/visuals/FeatureCapabilityShowcase';
 import { featureCategories, featuresByModule } from '../data/featuresData';
 import { Button } from '../components/common/Button';
 import {
@@ -69,6 +70,9 @@ export const FeaturesPage = ({ onOpenDemo }) => {
 
       <div className="container-wide">
         
+        {/* Interactive Live Capability Demonstration Sandbox */}
+        <FeatureCapabilityShowcase />
+
         {/* Search Bar & Category Filter Strip */}
         <div style={{ maxWidth: '800px', margin: '0 auto 40px auto' }}>
           

@@ -1,8 +1,10 @@
+'use client';
+
 import React from 'react';
 import { Link } from '../../lib/navigation';
 import { ArrowRight, CheckCircle2, PlayCircle, Sparkles } from 'lucide-react';
 import { Button } from '../common/Button';
-import { ProductUIFrame } from './ProductUIFrame';
+import { getDomainVisual } from '../visuals/DomainVisualPrimitives';
 
 export const MarketingDetailTemplate = ({ type, slug, page, onOpenDemo }) => {
   const steps = page.steps || page.workflow || [];
@@ -58,7 +60,7 @@ export const MarketingDetailTemplate = ({ type, slug, page, onOpenDemo }) => {
               </div>
               <div className="detail-proof-line"><span>One workspace</span><i /><span>Role-aware workflow</span><i /><span>Illustrative product data</span></div>
             </div>
-            <ProductUIFrame title={page.label} slug={slug} steps={steps} icon={page.icon} compact />
+            {getDomainVisual(slug, type, { compact: true })}
           </div>
         </div>
       </section>
@@ -83,7 +85,7 @@ export const MarketingDetailTemplate = ({ type, slug, page, onOpenDemo }) => {
               </div>
             ))}
           </div>
-          <ProductUIFrame title={`${page.label} workflow`} slug={slug} steps={steps} icon={page.icon} />
+          {getDomainVisual(slug, type, { compact: false })}
         </div>
       </section>
 

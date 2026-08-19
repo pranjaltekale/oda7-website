@@ -4,12 +4,26 @@ import React, { useState } from 'react';
 import { ArrowRight, Building2, CheckCircle2 } from 'lucide-react';
 import { industryScenarios } from '../../data/marketingPages';
 import { SectionHeading } from '../common/SectionHeading';
-import { ProductUIFrame } from '../marketing/ProductUIFrame';
+import { getDomainVisual } from '../visuals/DomainVisualPrimitives';
 import { Button } from '../common/Button';
 
 export const ScenarioSwitcher = () => {
   const [activeId, setActiveId] = useState(industryScenarios[0].id);
   const scenario = industryScenarios.find((item) => item.id === activeId) || industryScenarios[0];
+
+  const visualMapping = {
+    outbound: 'dialer',
+    'call-centers': 'manager',
+    agencies: 'operations',
+    'real-estate': 'leads',
+    finance: 'quotes',
+    education: 'inbox',
+    healthcare: 'calendar',
+    hospitality: 'sequences',
+    b2b: 'sales',
+  };
+
+  const domainSlug = visualMapping[scenario.id] || 'leads';
 
   return (
     <section id="scenarios" className="section-wrapper section-dark">
@@ -34,7 +48,7 @@ export const ScenarioSwitcher = () => {
             <ul><li><CheckCircle2 size={16}/> Clear ownership between steps</li><li><CheckCircle2 size={16}/> Role-aware views of the same work</li><li><CheckCircle2 size={16}/> Descriptive, illustrative workflow outcomes</li></ul>
             <Button to="/solutions" variant="secondary" iconRight="ArrowRight">Explore role solutions</Button>
           </div>
-          <ProductUIFrame title={scenario.label} steps={scenario.flow} icon="LayoutDashboard" compact />
+          {getDomainVisual(domainSlug, 'Solutions', { compact: true })}
         </div>
       </div>
     </section>
