@@ -273,11 +273,11 @@ export const SalesWorkflowSection = () => {
                     </div>
                   ))}
 
-                  {/* 1-Click Interactive Action Button with Magnetic Arrow */}
+                  {/* 1-Click Interactive Action Button */}
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '10px', marginTop: '12px', paddingTop: '10px', borderTop: '1px solid var(--oda-border-subtle)' }}>
                     <button
                       onClick={() => handleTriggerAction(current.actionLabel)}
-                      className="btn-tactile magnetic-arrow-wrap"
+                      className="btn-tactile"
                       style={{
                         padding: '8px 16px',
                         borderRadius: '8px',
@@ -289,12 +289,11 @@ export const SalesWorkflowSection = () => {
                         cursor: 'pointer',
                         display: 'flex',
                         alignItems: 'center',
-                        gap: '6px',
+                        justifyContent: 'center',
                         boxShadow: '0 2px 8px rgba(37, 99, 235, 0.3)',
                       }}
                     >
                       <span>{current.actionLabel}</span>
-                      <ArrowRight size={13} className="arrow-slide" />
                     </button>
 
                     {actionFeedback && (

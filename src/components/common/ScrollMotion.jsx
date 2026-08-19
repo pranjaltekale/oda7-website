@@ -7,12 +7,13 @@ export const ScrollMotion = () => {
   const location = useLocation();
 
   useEffect(() => {
+    if (typeof window === 'undefined') return undefined;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
 
     let observer;
     const timer = window.setTimeout(() => {
       const targets = document.querySelectorAll(
-        '.section-wrapper > .container, .section-wrapper > .container-wide, .section-wrapper > .container-narrow, .page-reveal'
+        '.home-page-container > section:not(.connected-story), .home-page-container > div, .section-wrapper:not(.connected-story), .detail-hero, .page-reveal'
       );
 
       observer = new IntersectionObserver(
@@ -24,12 +25,17 @@ export const ScrollMotion = () => {
             }
           });
         },
-        { threshold: 0.12, rootMargin: '0px 0px -7% 0px' }
+        { threshold: 0.14, rootMargin: '0px 0px -30px 0px' }
       );
 
       targets.forEach((target) => {
         target.classList.add('scroll-reveal');
-        observer.observe(target);
+        // If element is already visible in viewport on initial load, show immediately
+        if (target.getBoundingClientRect().top < window.innerHeight * 0.9) {
+          target.classList.add('is-visible');
+        } else {
+          observer.observe(target);
+        }
       });
     }, 40);
 
@@ -37,7 +43,7 @@ export const ScrollMotion = () => {
       window.clearTimeout(timer);
       observer?.disconnect();
     };
-  }, [location.pathname]);
+  }, [location?.pathname]);
 
   return null;
 };

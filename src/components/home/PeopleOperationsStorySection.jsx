@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { SectionHeading } from '../common/SectionHeading';
 import { InteractiveTiltCard } from '../common/InteractiveTiltCard';
+import { AnimatedCounter } from '../common/AnimatedCounter';
 import { Button } from '../common/Button';
 import {
   Users,
@@ -102,7 +103,7 @@ export const PeopleOperationsStorySection = () => {
               <span className="badge badge-emerald" style={{ fontSize: '0.65rem' }}>100% Reconciled</span>
             </div>
             <div style={{ fontSize: '2.1rem', fontWeight: '850', color: '#10b981', lineHeight: '1.1', marginBottom: '4px' }}>
-              $42,850.00
+              <AnimatedCounter targetValue={42850} prefix="$" decimals={2} duration={1400} />
             </div>
             <div style={{ color: 'var(--oda-text-secondary)', fontSize: '0.8rem' }}>
               Verified across 412 closed deals with zero dispute delay.
@@ -127,7 +128,7 @@ export const PeopleOperationsStorySection = () => {
               <span className="badge badge-amber" style={{ fontSize: '0.65rem' }}>Live Geolocation</span>
             </div>
             <div style={{ fontSize: '2.1rem', fontWeight: '850', color: '#fbbf24', lineHeight: '1.1', marginBottom: '4px' }}>
-              98.4%
+              <AnimatedCounter targetValue={98.4} suffix="%" decimals={1} duration={1400} />
             </div>
             <div style={{ color: 'var(--oda-text-secondary)', fontSize: '0.8rem' }}>
               24 reps clocked in on time across inside-sales pods.
@@ -152,7 +153,7 @@ export const PeopleOperationsStorySection = () => {
               <span className="badge badge-cyan" style={{ fontSize: '0.65rem' }}>3 Live Battles</span>
             </div>
             <div style={{ fontSize: '2.1rem', fontWeight: '850', color: '#38bdf8', lineHeight: '1.1', marginBottom: '4px' }}>
-              $2,500 Pool
+              <AnimatedCounter targetValue={2500} prefix="$" suffix=" Pool" decimals={0} duration={1400} />
             </div>
             <div style={{ color: 'var(--oda-text-secondary)', fontSize: '0.8rem' }}>
               Weekend Revenue Sprint synced directly to closed deals.

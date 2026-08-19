@@ -85,14 +85,14 @@ export const footerLinks = {
     { label: 'Super Admin', path: '/platform#super-admin' },
   ],
   resources: [
-    { label: 'Documentation', path: '/resources#documentation' },
+    { label: 'Capabilities', path: '/features' },
     { label: 'Product guides', path: '/resources#guides' },
     { label: 'FAQ', path: '/resources#faqs' },
     { label: 'Help & Support', path: '/resources#support' },
     { label: 'Contact', path: '/contact' },
   ],
   company: [
-    { label: 'About ODA7', path: '/about' },
+    { label: 'About', path: '/about' },
     { label: 'Sign in', path: '/sign-in' },
     { label: 'Get started', path: '/get-started' },
     { label: 'Pricing', path: '/pricing' },

@@ -114,7 +114,7 @@ export const ProductModuleStorySection = () => {
       heading: 'Operate multi-tenant workspaces from a dedicated platform layer.',
       desc: 'Manage multiple organization workspaces, custom CNAME domains, subscription billing tiers, global IP firewalls, and audit logs with zero spreadsheet lag.',
       subFeatures: ['Multi-Tenant SaaS', 'Custom CNAMEs', 'Subscription Controls', 'Global IP Defense', 'Security Audit Logs', 'Role Governance'],
-      image: '/oda7-leadership-analytics.jpg',
+      image: '/oda7-module-admin.jpg',
       badge: 'Platform governance',
       statLabel: 'Operating focus',
       statValue: 'Organizations & controls',

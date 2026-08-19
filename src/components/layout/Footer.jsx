@@ -40,7 +40,7 @@ export const Footer = ({ onOpenDemo }) => {
     {
       title: 'RESOURCES',
       links: [
-        { label: 'Documentation', path: '/features' },
+        { label: 'Capabilities', path: '/features' },
         { label: 'Help Center', path: '/contact' },
         { label: 'Interactive FAQ', path: '/#faq' },
         { label: 'API & Webhooks', path: '/features' },
@@ -50,7 +50,7 @@ export const Footer = ({ onOpenDemo }) => {
     {
       title: 'COMPANY',
       links: [
-        { label: 'About ODA7', path: '/about' },
+        { label: 'About', path: '/about' },
         { label: 'Contact Sales', path: '/contact' },
         { label: 'Security & Compliance', path: '/about' },
         { label: 'Privacy Policy', path: '/about' },
@@ -312,8 +312,8 @@ export const Footer = ({ onOpenDemo }) => {
             radial-gradient(circle at 50% 0%, rgba(14, 116, 144, 0.15) 0%, transparent 45%),
             radial-gradient(circle at 85% 40%, rgba(37, 99, 235, 0.08) 0%, transparent 50%);
           border-top: 1px solid rgba(56, 189, 248, 0.15);
-          padding-top: 110px;
-          padding-bottom: 32px;
+          padding-top: 92px;
+          padding-bottom: 28px;
           color: #94a3b8;
           font-family: var(--font-body, system-ui, -apple-system, sans-serif);
         }
@@ -389,9 +389,11 @@ export const Footer = ({ onOpenDemo }) => {
         .footer-geom-glow {
           position: absolute;
           width: 500px;
+          max-width: 100%;
           height: 400px;
           right: 0;
           bottom: 0;
+          pointer-events: none;
           background: radial-gradient(ellipse at 80% 80%, rgba(37, 99, 235, 0.12), transparent 70%);
         }
 
@@ -804,11 +806,11 @@ export const Footer = ({ onOpenDemo }) => {
 
         @media (max-width: 860px) {
           .oda7-premium-footer {
-            padding-top: 100px;
+            padding-top: 80px;
           }
           .footer-main-grid {
             grid-template-columns: 1fr;
-            gap: 44px;
+            gap: 36px;
           }
           .footer-brand-area {
             max-width: 100%;
@@ -818,7 +820,7 @@ export const Footer = ({ onOpenDemo }) => {
           }
           .footer-nav-columns {
             grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 32px 20px;
+            gap: 28px 16px;
           }
           .footer-geom-facet-1,
           .footer-geom-facet-2 {
@@ -828,17 +830,18 @@ export const Footer = ({ onOpenDemo }) => {
 
         @media (max-width: 540px) {
           .oda7-premium-footer {
-            padding-top: 88px;
+            padding-top: 68px;
+            padding-bottom: 20px;
           }
           .footer-top-ribbon {
-            min-height: 48px;
+            min-height: 44px;
             padding: 0 16px;
-            font-size: 0.95rem;
-            border-radius: 0 0 24px 24px;
+            font-size: 0.9rem;
+            border-radius: 0 0 20px 20px;
           }
           .footer-nav-columns {
             grid-template-columns: 1fr;
-            gap: 28px;
+            gap: 24px;
           }
           .footer-badges-grid {
             grid-template-columns: 1fr;
@@ -847,6 +850,24 @@ export const Footer = ({ onOpenDemo }) => {
             flex-direction: column;
             align-items: flex-start;
             gap: 8px;
+          }
+        }
+
+        @media (max-width: 380px) {
+          .footer-top-ribbon {
+            font-size: 0.8rem;
+            padding: 0 12px;
+            min-height: 40px;
+          }
+          .footer-mission-text {
+            font-size: 0.82rem;
+          }
+          .footer-social-row {
+            gap: 8px;
+          }
+          .footer-social-btn {
+            width: 34px;
+            height: 34px;
           }
         }
 

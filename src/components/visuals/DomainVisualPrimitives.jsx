@@ -38,13 +38,13 @@ import {
 export const PipelineKanbanVisual = ({ compact = false }) => {
   const [activeCard, setActiveCard] = useState('card-1');
 
-  const columns = [
+  const allColumns = [
     {
       id: 'inbound',
       title: 'Inbound Captured',
       count: '142',
       cards: [
-        { id: 'card-1', name: 'CloudScale Enterprise', amount: '$140,000 ARR', fit: '96% Fit', owner: 'Priya S.', tag: 'Enterprise Tech' },
+        { id: 'card-1', name: 'CloudScale Enterprise', amount: '$140k ARR', fit: '96% Fit', owner: 'Priya S.', tag: 'Enterprise' },
       ],
     },
     {
@@ -52,7 +52,7 @@ export const PipelineKanbanVisual = ({ compact = false }) => {
       title: 'AI Qualified',
       count: '88',
       cards: [
-        { id: 'card-2', name: 'Apex Health AI', amount: '$85,000 ARR', fit: '94% Fit', owner: 'Marcus V.', tag: 'Healthcare' },
+        { id: 'card-2', name: 'Apex Health AI', amount: '$85k ARR', fit: '94% Fit', owner: 'Marcus V.', tag: 'Healthcare' },
       ],
     },
     {
@@ -60,7 +60,7 @@ export const PipelineKanbanVisual = ({ compact = false }) => {
       title: 'Assigned Tier-1',
       count: '24',
       cards: [
-        { id: 'card-3', name: 'FinEdge Global', amount: '$110,000 ARR', fit: '98% Fit', owner: 'Alex C.', tag: 'FinTech' },
+        { id: 'card-3', name: 'FinEdge Global', amount: '$110k ARR', fit: '98% Fit', owner: 'Alex C.', tag: 'FinTech' },
       ],
     },
     {
@@ -68,10 +68,12 @@ export const PipelineKanbanVisual = ({ compact = false }) => {
       title: 'Discovery Set',
       count: '18',
       cards: [
-        { id: 'card-4', name: 'Vortex Logistics', amount: '$190,000 ARR', fit: '99% Fit', owner: 'Maya P.', tag: 'Logistics' },
+        { id: 'card-4', name: 'Vortex Logistics', amount: '$190k ARR', fit: '99% Fit', owner: 'Maya P.', tag: 'Logistics' },
       ],
     },
   ];
+
+  const columns = compact ? allColumns.slice(0, 3) : allColumns;
 
   return (
     <div className={`primitive-card kanban-primitive ${compact ? 'is-compact' : ''}`}>
@@ -316,7 +318,7 @@ export const OmnichannelInboxVisual = ({ compact = false }) => {
             </div>
             <div className="pane-reply-bar">
               <input type="text" placeholder="Type verified response or select AI template..." readOnly value="Confirmed! I have locked in 25 seats..." />
-              <button className="btn btn-primary btn-sm">Send <ArrowRight size={12} /></button>
+              <button className="btn btn-primary btn-sm">Send</button>
             </div>
           </div>
         </div>

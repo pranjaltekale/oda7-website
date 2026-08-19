@@ -30,7 +30,20 @@ export const ScenarioSwitcher = () => {
       <div className="container-wide">
         <SectionHeading eyebrow="Business scenarios" eyebrowIcon="Layers" title="Different motions." highlightText="One connected operating model." description="Choose a scenario to see how ODA7 adapts the workflow without inventing performance claims." />
         <div className="scenario-tabs" role="tablist" aria-label="Business scenarios">
-          {industryScenarios.map((item) => <button key={item.id} role="tab" aria-selected={item.id === activeId} className={item.id === activeId ? 'is-active' : ''} onClick={() => setActiveId(item.id)}>{item.label}</button>)}
+          {industryScenarios.map((item) => (
+            <button
+              key={item.id}
+              role="tab"
+              aria-selected={item.id === activeId}
+              className={item.id === activeId ? 'is-active' : ''}
+              onClick={(e) => {
+                setActiveId(item.id);
+                e.currentTarget.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+              }}
+            >
+              {item.label}
+            </button>
+          ))}
         </div>
         <div className="scenario-stage" key={scenario.id}>
           <div className="scenario-copy">

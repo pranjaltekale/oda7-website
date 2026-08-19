@@ -127,8 +127,8 @@ export const HeroSection = ({ onOpenDemo }) => {
       className="hero-motion-scene"
       style={{
         position: 'relative',
-        paddingTop: 'calc(var(--nav-height) + 40px)',
-        paddingBottom: '90px',
+        paddingTop: 'calc(var(--nav-height) + clamp(20px, 3.5vw, 40px))',
+        paddingBottom: 'clamp(36px, 5vw, 64px)',
         overflow: 'hidden',
       }}
     >

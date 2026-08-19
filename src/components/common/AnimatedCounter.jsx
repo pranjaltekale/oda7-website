@@ -45,7 +45,9 @@ export const AnimatedCounter = ({
     return () => observer.disconnect();
   }, [targetValue, duration, hasAnimated]);
 
-  const formattedCount = decimals > 0 ? count.toFixed(decimals) : Math.floor(count).toLocaleString();
+  const formattedCount = decimals > 0
+    ? Number(count).toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals })
+    : Math.floor(count).toLocaleString('en-US');
 
   return (
     <span ref={ref} className="mono">

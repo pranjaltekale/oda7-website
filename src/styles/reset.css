@@ -11,10 +11,13 @@ html {
   text-size-adjust: none;
   scroll-behavior: smooth;
   color-scheme: dark;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
   min-height: 100vh;
+  min-height: 100dvh;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -22,6 +25,7 @@ body {
   color: var(--text-main, #f8fafc);
   font-family: var(--font-body, 'Inter', sans-serif);
   overflow-x: hidden;
+  width: 100%;
   position: relative;
 }
 

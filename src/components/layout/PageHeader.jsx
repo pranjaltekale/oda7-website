@@ -12,8 +12,8 @@ export const PageHeader = ({
   return (
     <section
       style={{
-        paddingTop: 'calc(var(--nav-height) + 60px)',
-        paddingBottom: '60px',
+        paddingTop: 'calc(var(--nav-height) + clamp(26px, 4vw, 44px))',
+        paddingBottom: 'clamp(18px, 3vw, 36px)',
         textAlign: 'center',
         position: 'relative',
         overflow: 'hidden',

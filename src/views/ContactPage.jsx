@@ -33,7 +33,7 @@ export const ContactPage = ({ onOpenDemo }) => {
   };
 
   return (
-    <div style={{ paddingTop: '20px', paddingBottom: '100px' }}>
+    <div>
       
       <PageHeader
         badge="Scope Your Workspace"
@@ -43,9 +43,9 @@ export const ContactPage = ({ onOpenDemo }) => {
         description="Whether you are connecting an active sales operation, coordinating people workflows, or exploring platform administration, we are ready to discuss your specific requirements."
       />
 
-      <div className="container">
+      <div className="container" style={{ paddingBottom: 'clamp(40px, 5vw, 68px)' }}>
         
-        <div className="contact-layout-grid" style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.2fr) minmax(0, 1fr)', gap: '40px', alignItems: 'start' }}>
+        <div className="contact-layout-grid" style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.2fr) minmax(0, 1fr)', gap: '40px', alignItems: 'center' }}>
           
           {/* Left: Contact / Walkthrough Form */}
           <div
@@ -184,7 +184,7 @@ export const ContactPage = ({ onOpenDemo }) => {
           </div>
 
           {/* Right: Direct contact and implementation context */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', alignSelf: 'center' }}>
             
             <div className="card-saas">
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '10px' }}>

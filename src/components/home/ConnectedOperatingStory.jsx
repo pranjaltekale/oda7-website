@@ -17,22 +17,90 @@ export const ConnectedOperatingStory = () => {
   const refs = useRef([]);
 
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => entries.forEach((entry) => {
-      if (entry.isIntersecting) setActive(Number(entry.target.dataset.index));
-    }), { threshold: 0.55, rootMargin: '-15% 0px -25% 0px' });
-    refs.current.forEach((node) => node && observer.observe(node));
-    return () => observer.disconnect();
+    const handleScroll = () => {
+      // Trigger threshold: An option opens sequentially as upper cards scroll up
+      const triggerLine = window.innerHeight * 0.44;
+      let activeIndex = 0;
+
+      refs.current.forEach((node, idx) => {
+        if (!node) return;
+        const rect = node.getBoundingClientRect();
+        if (rect.top <= triggerLine) {
+          activeIndex = idx;
+        }
+      });
+
+      setActive(activeIndex);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleStepClick = (index) => {
+    setActive(index);
+    refs.current[index]?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  };
+
   const current = story[active];
+
   return (
     <section id="how-it-works" className="connected-story section-dark">
       <div className="container-wide connected-story-grid">
         <div className="connected-story-copy">
-          <div className="connected-story-intro"><span className="section-eyebrow">One operating picture</span><h2>Watch the context travel through ODA7.</h2><p>Scroll through the workflow. The product view changes as responsibility moves across the business.</p></div>
-          {story.map((item,index)=>{const Icon=item.icon;return <article key={item.id} data-index={index} ref={(node)=>{refs.current[index]=node;}} className={active===index?'is-active':''}><span><Icon size={17}/></span><div><small>{String(index+1).padStart(2,'0')} / {item.label}</small><h3>{item.title}</h3><p>{item.text}</p></div></article>;})}
+          <div className="connected-story-intro">
+            <span className="section-eyebrow">One operating picture</span>
+            <h2>Watch the context travel through ODA7.</h2>
+            <p>Scroll through the workflow. The product view changes as responsibility moves across the business.</p>
+          </div>
+          <div className="connected-story-articles">
+            {story.map((item, index) => {
+              const Icon = item.icon;
+              const isActive = active === index;
+              return (
+                <div key={item.id} className="connected-step-wrapper">
+                  <article
+                    data-index={index}
+                    ref={(node) => { refs.current[index] = node; }}
+                    className={`connected-step-article ${isActive ? 'is-active' : ''}`}
+                    onClick={() => handleStepClick(index)}
+                    tabIndex={0}
+                    role="button"
+                    aria-pressed={isActive}
+                    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') handleStepClick(index); }}
+                  >
+                    <span>
+                      <Icon size={17} />
+                    </span>
+                    <div>
+                      <small>{String(index + 1).padStart(2, '0')} / {item.label}</small>
+                      <h3>{item.title}</h3>
+                      <p>{item.text}</p>
+                    </div>
+                  </article>
+                  {/* Mobile-only in-flow preview */}
+                  {isActive && (
+                    <div className="mobile-step-visual-drawer">
+                      <span className="badge badge-subtle">Live Context: {item.label}</span>
+                      {getDomainVisual(item.id, 'Product', { compact: true })}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
         </div>
-        <div className="connected-story-visual"><div><span className="badge badge-subtle">Now viewing: {current.label}</span>{getDomainVisual(current.id, 'Product', { compact: true })}</div></div>
+        {/* Desktop & Tablet Sticky Visual Container */}
+        <div className="connected-story-visual desktop-story-visual">
+          <div className="story-visual-sticky">
+            <div key={current.id} className="story-visual-container">
+              <span className="badge badge-subtle">Now viewing: {current.label}</span>
+              {getDomainVisual(current.id, 'Product', { compact: true })}
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

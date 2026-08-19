@@ -11,9 +11,9 @@ import { Button } from '../components/common/Button';
 const iconMap = { CalendarDays, FileText, GitBranch, Headphones, Inbox, Megaphone, Package, PhoneCall, ReceiptText, Users };
 
 export const ProductPage = ({ onOpenDemo }) => (
-  <div style={{ paddingTop: '20px', paddingBottom: '100px' }}>
+  <div>
     <PageHeader badge="Connected product system" badgeIcon="Layers" title="Explore the ODA7" highlight="product workspace." description="Each module has a focused job. Together, they preserve context from first lead to business insight." />
-    <section className="container-wide page-reveal" style={{ paddingBottom: '80px' }}>
+    <section className="container-wide page-reveal" style={{ paddingBottom: 'clamp(24px, 3.5vw, 44px)' }}>
       <ProductWorkspaceVisual />
     </section>
     <section className="section-wrapper section-dark">
@@ -27,6 +27,6 @@ export const ProductPage = ({ onOpenDemo }) => (
         </div>
       </div>
     </section>
-    <section className="detail-final-cta"><div className="container-narrow"><span className="section-eyebrow">Try the workflow</span><h2>See how the modules move together.</h2><p>Follow an illustrative lead from arrival through calling, follow-up and manager visibility.</p><div><Button demo size="lg" iconLeft="PlayCircle">See ODA7 in action</Button><Button to="/platform" variant="secondary" size="lg" iconRight="ArrowRight">Explore the platform</Button></div></div></section>
+    <section className="detail-final-cta"><div className="container-narrow"><span className="section-eyebrow">Try the workflow</span><h2>See how the modules move together.</h2><p>Follow an illustrative lead from arrival through calling, follow-up and manager visibility.</p><div><Button to="/get-started" size="lg" iconRight="ArrowRight">Get started</Button><Button to="/platform" variant="secondary" size="lg" iconRight="ArrowRight">Explore the platform</Button></div></div></section>
   </div>
 );

@@ -4,7 +4,7 @@ import { PageHeader } from '../components/layout/PageHeader';
 import { Button } from '../components/common/Button';
 
 export const SignInPage = ({ onOpenDemo }) => (
-  <div style={{ paddingTop: '20px', paddingBottom: '110px' }}>
+  <div>
     <PageHeader
       badge="ODA7 workspace access"
       badgeIcon="ShieldCheck"
@@ -12,7 +12,7 @@ export const SignInPage = ({ onOpenDemo }) => (
       highlight="ODA7 workspace."
       description="The marketing preview and the live ODA7 application are separate experiences. Continue to the secure application to sign in."
     />
-    <div className="container-narrow page-reveal" style={{ textAlign: 'center' }}>
+    <div className="container-narrow page-reveal" style={{ textAlign: 'center', paddingBottom: 'clamp(48px, 6vw, 84px)' }}>
       <div className="card-saas signin-card" style={{ maxWidth: '620px', margin: '0 auto', padding: '42px' }}>
         <LogIn size={28} color="var(--oda-primary)" style={{ margin: '0 auto 18px' }} />
         <h2 style={{ color: 'var(--oda-text-primary)', fontSize: '1.35rem', marginBottom: '10px' }}>Open the ODA7 application</h2>

@@ -6,7 +6,7 @@ import { ChevronDown, PlayCircle, ArrowRight, ArrowLeft, Home } from 'lucide-rea
 import { Button } from '../common/Button';
 
 export const MobileNav = ({ links, onClose, onOpenDemo }) => {
-  const [expanded, setExpanded] = useState('Product');
+  const [expanded, setExpanded] = useState(null);
   const firstTriggerRef = useRef(null);
   const navigate = useNavigate();
 

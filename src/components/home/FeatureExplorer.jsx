@@ -236,7 +236,10 @@ export const FeatureExplorer = () => {
             return (
               <button
                 key={item.name}
-                onClick={() => setSelectedItemIdx(idx)}
+                onClick={(e) => {
+                  setSelectedItemIdx(idx);
+                  e.currentTarget.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                }}
                 style={{
                   padding: '9px 15px',
                   borderRadius: '10px',
@@ -249,6 +252,7 @@ export const FeatureExplorer = () => {
                   transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
                   boxShadow: isActive ? '0 0 16px rgba(37, 99, 235, 0.35)' : 'none',
                   transform: isActive ? 'translateY(-1px)' : 'none',
+                  flexShrink: 0,
                 }}
               >
                 {item.name}
@@ -431,34 +435,6 @@ export const FeatureExplorer = () => {
           </div>
         </div>
       </ProductStateTransition>
-
-        {/* "Explore the Platform" Ending Banner */}
-        <div
-          className="card-saas"
-          style={{
-            maxWidth: '1240px',
-            margin: '0 auto',
-            padding: '24px 32px',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            flexWrap: 'wrap',
-            gap: '18px',
-          }}
-        >
-          <div>
-            <div style={{ fontWeight: '850', color: 'var(--oda-text-primary)', fontSize: '1.15rem' }}>
-              One workspace. Every operational layer connected.
-            </div>
-            <div style={{ color: 'var(--oda-text-secondary)', fontSize: '0.85rem', marginTop: '3px' }}>
-              Sales • People • Compensation • Engagement • Insights • AI Copilot • Administration
-            </div>
-          </div>
-
-          <Button to="/features" variant="secondary" size="md" iconRight="ArrowRight">
-            View the capability catalog
-          </Button>
-        </div>
 
       </div>
     </section>

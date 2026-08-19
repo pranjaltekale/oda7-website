@@ -58,16 +58,48 @@ export const BeforeAfterSection = () => {
 
         <div className="transformation-convergence" aria-label="Disconnected tools converge into ODA7">
           <div className="transformation-tools">
-            {disconnectedTools.map((tool, index) => (
-              <span key={tool} style={{ '--tool-x': `${8 + index * 13}%`, '--tool-y': `${24 + (index % 3) * 22}%`, '--tool-shift-x': `${(3 - index) * 11}px`, '--tool-shift-y': `${(index - 3) * 5}px`, '--tool-rotate': `${(index - 3) * 2}deg` }}>{tool}</span>
-            ))}
+            {disconnectedTools.map((tool, index) => {
+              const positions = [
+                { x: '6%', y: '18%' },   // CRM
+                { x: '12%', y: '60%' },  // Dialer
+                { x: '24%', y: '14%' },  // Sheets
+                { x: '68%', y: '14%' },  // Payroll
+                { x: '78%', y: '60%' },  // Inbox
+                { x: '86%', y: '18%' },  // Analytics
+                { x: '19%', y: '38%' },  // HR
+              ];
+              const pos = positions[index] || { x: `${5 + index * 14}%`, y: '20%' };
+              return (
+                <span
+                  key={tool}
+                  className={`tool-floating-chip tool-chip-${index}`}
+                  style={{
+                    '--tool-idx': index,
+                    '--tool-x': pos.x,
+                    '--tool-y': pos.y,
+                  }}
+                >
+                  {tool}
+                </span>
+              );
+            })}
           </div>
-          <div className="transformation-core">
-            <Sparkles size={18} />
-            <strong>ODA7</strong>
-            <small>One connected operating system</small>
+
+          <div className="transformation-center-group">
+            <div className="transformation-core">
+              <Sparkles size={20} color="var(--oda-primary)" />
+              <strong>ODA7</strong>
+              <small>One connected operating system</small>
+            </div>
+
+            <div className="transformation-result">
+              <span>Sales</span>
+              <span>AI</span>
+              <span>People</span>
+              <span>Compensation</span>
+              <span>Insights</span>
+            </div>
           </div>
-          <div className="transformation-result"><span>Sales</span><span>AI</span><span>People</span><span>Compensation</span><span>Insights</span></div>
         </div>
 
         {/* 2-Column Split Side-by-Side: Before ODA7 (Left) vs After ODA7 (Right) */}
@@ -125,27 +157,31 @@ export const BeforeAfterSection = () => {
                 background: 'var(--oda-surface)',
                 border: '1px solid var(--oda-border)',
                 borderRadius: '18px',
-                padding: '20px',
+                padding: '18px',
                 color: 'var(--oda-text-primary)',
                 display: 'grid',
-                gridTemplateColumns: '1.2fr 1fr',
-                gap: '16px',
+                gridTemplateColumns: 'minmax(0, 1.4fr) minmax(0, 0.95fr)',
+                gap: '14px',
                 alignItems: 'center',
                 boxShadow: '0 12px 30px rgba(0, 0, 0, 0.1)',
               }}
             >
               {/* Left Side: Stressed Rep/Leader Photo + Negative Metric */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
                 <img
                   className="tilt-parallax-img"
-                  src="/oda7-operational-friction.png"
-                  alt="Fragmented workflow context"
+                  src="/oda7-before-friction.jpg"
+                  alt="Fragmented workflow context and scattered spreadsheets"
                   style={{
-                    width: '72px',
-                    height: '80px',
+                    width: '92px',
+                    height: '92px',
                     objectFit: 'cover',
-                    objectPosition: 'center top',
-                    borderRadius: '12px',
+                    objectPosition: 'center 12%',
+                    borderRadius: '14px',
+                    flexShrink: 0,
+                    border: '1.5px solid rgba(239, 68, 68, 0.4)',
+                    boxShadow: '0 6px 18px rgba(0, 0, 0, 0.25)',
+                    display: 'block',
                   }}
                 />
                 <div>
@@ -212,27 +248,31 @@ export const BeforeAfterSection = () => {
                 background: 'var(--oda-surface)',
                 border: '1px solid var(--oda-border)',
                 borderRadius: '18px',
-                padding: '20px',
+                padding: '18px',
                 color: 'var(--oda-text-primary)',
                 display: 'grid',
-                gridTemplateColumns: '1.2fr 1fr',
-                gap: '16px',
+                gridTemplateColumns: 'minmax(0, 1.4fr) minmax(0, 0.95fr)',
+                gap: '14px',
                 alignItems: 'center',
                 boxShadow: '0 12px 30px rgba(0, 0, 0, 0.1)',
               }}
             >
               {/* Left Side: Victorious Celebrating Professional Photo + Positive Metric */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
                 <img
                   className="tilt-parallax-img"
-                  src="/oda7-module-engagement.jpg"
-                  alt="Team reviewing shared operating context"
+                  src="/oda7-after-connected.jpg"
+                  alt="Confident sales professional working on unified ODA7 workspace"
                   style={{
-                    width: '72px',
-                    height: '80px',
+                    width: '92px',
+                    height: '92px',
                     objectFit: 'cover',
-                    objectPosition: 'center top',
-                    borderRadius: '12px',
+                    objectPosition: 'center 12%',
+                    borderRadius: '14px',
+                    flexShrink: 0,
+                    border: '1.5px solid rgba(16, 185, 129, 0.4)',
+                    boxShadow: '0 6px 18px rgba(0, 0, 0, 0.25)',
+                    display: 'block',
                   }}
                 />
                 <div>

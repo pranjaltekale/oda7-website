@@ -71,18 +71,19 @@ export const AiCopilotMockup = () => {
       </div>
 
       {/* Main Container */}
-      <div style={{ padding: '24px', background: 'var(--oda-surface)', fontSize: '0.8125rem' }}>
+      <div className="ai-mockup-body" style={{ padding: 'clamp(14px, 3vw, 24px)', background: 'var(--oda-surface)', fontSize: '0.8125rem' }}>
         
         {/* Sample Prompt Selector */}
         <div style={{ marginBottom: '20px' }}>
           <div style={{ color: 'var(--oda-text-muted)', fontSize: '0.75rem', fontWeight: '600', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
             Select or Type Natural Language Sales Query:
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px' }}>
+          <div className="ai-prompts-grid">
             {prompts.map((p, idx) => (
               <button
                 key={idx}
                 onClick={() => handleSelectPrompt(idx)}
+                className="ai-prompt-btn"
                 style={{
                   padding: '10px 14px',
                   borderRadius: '8px',
@@ -95,6 +96,8 @@ export const AiCopilotMockup = () => {
                   lineHeight: '1.4',
                   cursor: 'pointer',
                   transition: 'all 0.2s ease',
+                  minWidth: 0,
+                  wordBreak: 'break-word',
                 }}
               >
                 "{p.query}"
@@ -104,27 +107,26 @@ export const AiCopilotMockup = () => {
         </div>
 
         {/* AI Query Input Bar */}
-        <div style={{ background: 'var(--oda-bg-alt)', border: '1px solid var(--oda-border)', borderRadius: '10px', padding: '12px 16px', display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
-          <Sparkles size={18} color="var(--oda-primary)" />
-          <div style={{ flex: '1', color: 'var(--oda-text-primary)', fontSize: '0.9rem', fontWeight: '500' }}>
+        <div className="ai-query-bar">
+          <Sparkles size={18} color="var(--oda-primary)" style={{ flexShrink: 0 }} />
+          <div style={{ flex: '1', color: 'var(--oda-text-primary)', fontSize: '0.9rem', fontWeight: '500', minWidth: 0, wordBreak: 'break-word' }}>
             {activeData.query}
           </div>
-          <button style={{ padding: '6px 14px', borderRadius: '6px', background: 'var(--oda-primary)', color: '#fff', fontWeight: '600', fontSize: '0.75rem', display: 'flex', alignItems: 'center', gap: '6px', border: 'none', cursor: 'pointer' }}>
+          <button style={{ padding: '6px 14px', borderRadius: '6px', background: 'var(--oda-primary)', color: '#fff', fontWeight: '600', fontSize: '0.75rem', display: 'flex', alignItems: 'center', justifyContent: 'center', border: 'none', cursor: 'pointer', flexShrink: 0 }}>
             <span>Synthesize</span>
-            <ArrowRight size={13} />
           </button>
         </div>
 
         {/* AI Reasoning & Action Result Box */}
-        <div style={{ background: 'var(--oda-bg-alt)', border: '1px solid var(--oda-border)', borderRadius: '12px', padding: '20px' }}>
+        <div style={{ background: 'var(--oda-bg-alt)', border: '1px solid var(--oda-border)', borderRadius: '12px', padding: 'clamp(14px, 2.5vw, 20px)' }}>
           
           {/* Telemetry banner */}
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '14px', borderBottom: '1px solid var(--oda-border-subtle)', marginBottom: '16px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--oda-primary)', fontSize: '0.75rem' }}>
-              <Cpu size={14} />
+          <div className="ai-telemetry-banner">
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--oda-primary)', fontSize: '0.75rem', flexWrap: 'wrap' }}>
+              <Cpu size={14} style={{ flexShrink: 0 }} />
               <span>Synthesized {activeData.analyzedItems}</span>
             </div>
-            <span className="badge badge-emerald" style={{ fontSize: '0.7rem' }}>
+            <span className="badge badge-emerald" style={{ fontSize: '0.7rem', flexShrink: 0 }}>
               {activeData.impactMetric}
             </span>
           </div>
@@ -141,17 +143,17 @@ export const AiCopilotMockup = () => {
           </div>
 
           {/* Prescriptive Recommended Action */}
-          <div style={{ background: 'var(--oda-surface)', border: '1px solid var(--oda-border)', borderRadius: '8px', padding: '14px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
+          <div className="ai-action-card">
+            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', minWidth: 0 }}>
               <Lightbulb size={18} color="#fbbf24" style={{ flexShrink: 0, marginTop: '2px' }} />
-              <div>
+              <div style={{ minWidth: 0 }}>
                 <div style={{ fontSize: '0.7rem', color: '#fbbf24', fontWeight: '700', textTransform: 'uppercase' }}>Suggested next step</div>
-                <div style={{ color: 'var(--oda-text-primary)', fontSize: '0.85rem', fontWeight: '600', marginTop: '2px' }}>
+                <div style={{ color: 'var(--oda-text-primary)', fontSize: '0.85rem', fontWeight: '600', marginTop: '2px', wordBreak: 'break-word' }}>
                   {activeData.action}
                 </div>
               </div>
             </div>
-            <button style={{ padding: '8px 16px', borderRadius: '6px', background: 'var(--oda-success)', color: '#fff', fontWeight: '700', fontSize: '0.75rem', whiteSpace: 'nowrap', border: 'none', cursor: 'pointer' }}>
+            <button style={{ padding: '8px 16px', borderRadius: '6px', background: 'var(--oda-success)', color: '#fff', fontWeight: '700', fontSize: '0.75rem', whiteSpace: 'nowrap', border: 'none', cursor: 'pointer', flexShrink: 0 }}>
               Review
             </button>
           </div>

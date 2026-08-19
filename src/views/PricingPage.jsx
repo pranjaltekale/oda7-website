@@ -7,7 +7,7 @@ import { PricingValueMatrix } from '../components/visuals/PricingValueMatrix';
 import { FaqAccordion } from '../components/home/FaqAccordion';
 
 export const PricingPage = () => (
-  <div style={{ paddingTop: '20px', paddingBottom: '100px' }}>
+  <div>
     <PageHeader
       badge="Workspace-based pricing"
       badgeIcon="DollarSign"
@@ -16,9 +16,9 @@ export const PricingPage = () => (
       description="Tell us which teams, modules and platform controls you need. ODA7 will confirm pricing and entitlements in a tailored proposal."
     />
     <PricingSection />
-    <section className="container-wide page-reveal" style={{ paddingBottom: '70px' }}>
+    <section className="container-wide page-reveal" style={{ paddingBottom: 'clamp(24px, 3.5vw, 44px)' }}>
       <PricingValueMatrix />
     </section>
-    <div className="container-wide"><FaqAccordion /></div>
+    <FaqAccordion />
   </div>
 );

@@ -12,7 +12,7 @@ export const FinalCtaSection = ({ onOpenDemo }) => {
     <section
       style={{
         position: 'relative',
-        padding: 'clamp(16px, 2.5vw, 36px) 0 clamp(48px, 6vw, 84px) 0',
+        padding: 'clamp(16px, 2.5vw, 32px) 0 clamp(24px, 3.8vw, 44px) 0',
         overflow: 'hidden',
         background: 'transparent',
       }}

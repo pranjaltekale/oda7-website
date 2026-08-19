@@ -17,7 +17,7 @@ import {
 
 export const AboutPage = ({ onOpenDemo }) => {
   return (
-    <div style={{ paddingTop: '20px', paddingBottom: '100px' }}>
+    <div>
       
       <PageHeader
         badge="Mission & Architecture"
@@ -27,15 +27,15 @@ export const AboutPage = ({ onOpenDemo }) => {
         description="ODA7 starts from a simple operating problem: talented teams lose context when customer work, people operations, and performance live in separate systems."
       />
 
-      <div className="container">
+      <div className="container" style={{ paddingBottom: 'clamp(40px, 5vw, 68px)' }}>
         
         {/* Core Mission Banner */}
         <div
           className="feature-showcase-panel"
           style={{
             borderRadius: '20px',
-            padding: '48px 36px',
-            marginBottom: '80px',
+            padding: 'clamp(32px, 4.5vw, 48px) clamp(20px, 3.5vw, 36px)',
+            marginBottom: 'clamp(36px, 5vw, 64px)',
           }}
         >
           <div style={{ maxWidth: '840px', margin: '0 auto', textAlign: 'center' }}>
@@ -50,7 +50,7 @@ export const AboutPage = ({ onOpenDemo }) => {
         </div>
 
         {/* 3 Core Architecture Pillars */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px', marginBottom: '80px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px', marginBottom: 'clamp(36px, 5vw, 64px)' }}>
           
           <div className="card-saas">
             <Cpu size={24} color="#38bdf8" style={{ marginBottom: '16px' }} />
@@ -90,8 +90,8 @@ export const AboutPage = ({ onOpenDemo }) => {
           className="feature-showcase-panel"
           style={{
             borderRadius: '20px',
-            padding: '48px 36px',
-            marginBottom: '80px',
+            padding: 'clamp(32px, 4.5vw, 48px) clamp(20px, 3.5vw, 36px)',
+            marginBottom: 'clamp(36px, 5vw, 64px)',
           }}
         >
           <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 40px auto' }}>

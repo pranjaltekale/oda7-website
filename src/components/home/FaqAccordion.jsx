@@ -6,7 +6,7 @@ import { homepageFaqs } from '../../data/faqData';
 import { ChevronDown, HelpCircle } from 'lucide-react';
 
 export const FaqAccordion = () => {
-  const [openIdx, setOpenIdx] = useState(0);
+  const [openIdx, setOpenIdx] = useState(null);
 
   const toggle = (idx) => {
     setOpenIdx(openIdx === idx ? null : idx);

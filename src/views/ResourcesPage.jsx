@@ -17,13 +17,13 @@ const resources = [
 ];
 
 export const ResourcesPage = ({ onOpenDemo }) => (
-  <div style={{ paddingTop: '20px', paddingBottom: '100px' }}>
+  <div>
     <PageHeader badge="Learn, explore and get support" badgeIcon="HelpCircle" title="Resources for understanding" highlight="the ODA7 workspace." description="Explore product guides, common questions, platform information and the routes available for direct support." />
-    <section className="container-wide page-reveal" style={{ paddingBottom: '60px' }}>
+    <section className="container-wide page-reveal" style={{ paddingBottom: 'clamp(24px, 3.5vw, 44px)' }}>
       <EditorialResourcesVisual />
     </section>
     <section className="section-wrapper"><div className="container-wide resources-grid">{resources.map(([id,title,description,Icon,path])=><Link id={id} to={path} key={id}><i><Icon size={20}/></i><div><h2>{title}</h2><p>{description}</p></div><ArrowRight size={17}/></Link>)}</div></section>
-    <section id="faqs" className="section-wrapper section-dark"><div className="container-wide"><div className="detail-section-heading"><span className="section-eyebrow"><CircleHelp size={14}/> FAQs</span><h2>Common questions, answered clearly.</h2><p>Review how ODA7 approaches product workflows, administration and implementation conversations.</p></div><FaqAccordion /></div></section>
-    <section className="detail-final-cta"><div className="container-narrow"><span className="section-eyebrow">Need a closer look?</span><h2>Experience the workflow inside ODA7.</h2><p>Open the interactive demo or share your team’s current operating flow.</p><div><Button demo size="lg" iconLeft="PlayCircle">See ODA7 in action</Button><Button to="/get-started" variant="secondary" size="lg" iconRight="ArrowRight">Get started</Button></div></div></section>
+    <FaqAccordion />
+    <section className="detail-final-cta"><div className="container-narrow"><span className="section-eyebrow">Need a closer look?</span><h2>Experience the workflow inside ODA7.</h2><p>Share your team’s current operating flow and get started.</p><div><Button to="/get-started" size="lg" iconRight="ArrowRight">Get started</Button></div></div></section>
   </div>
 );

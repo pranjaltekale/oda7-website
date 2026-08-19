@@ -57,7 +57,7 @@ export const FeaturesPage = ({ onOpenDemo }) => {
   });
 
   return (
-    <div style={{ paddingTop: '20px', paddingBottom: '100px' }}>
+    <div>
       
       {/* Header */}
       <PageHeader

@@ -80,14 +80,17 @@
   }
 }
 
-@keyframes shimmer {
+@keyframes mobileDrawerSlide {
   0% {
-    background-position: -200% 0;
+    opacity: 0;
+    transform: translateY(-8px) scale(0.98);
   }
   100% {
-    background-position: 200% 0;
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
+
 
 /* Utility Animation Classes */
 .animate-fadeIn {
@@ -125,6 +128,67 @@
 .delay-500 { animation-delay: 500ms; }
 .delay-600 { animation-delay: 600ms; }
 
+/* ===================================================
+   SCROLL-TRIGGERED FADE-IN-UP (SLIDE-UP) SECTION REVEAL
+   =================================================== */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 600ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 650ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  will-change: auto;
+}
+
+/* Ensure sticky elements retain native viewport positioning without transform or will-change interference */
+.connected-story,
+#how-it-works,
+.scroll-reveal.is-visible.connected-story,
+.scroll-reveal.is-visible.section-sticky-parent {
+  transform: none !important;
+  will-change: auto !important;
+  overflow: visible !important;
+  opacity: 1 !important;
+}
+
+/* Subtle staggered entrance for card groups (60–100ms) */
+.scroll-reveal.is-visible .trust-capability-card:nth-child(1),
+.scroll-reveal.is-visible .detail-context-matrix > div:nth-child(1),
+.scroll-reveal.is-visible .product-index-grid > a:nth-child(1) {
+  animation: oda-card-fade 550ms cubic-bezier(0.16, 1, 0.3, 1) 0ms both;
+}
+.scroll-reveal.is-visible .trust-capability-card:nth-child(2),
+.scroll-reveal.is-visible .detail-context-matrix > div:nth-child(2),
+.scroll-reveal.is-visible .product-index-grid > a:nth-child(2) {
+  animation: oda-card-fade 550ms cubic-bezier(0.16, 1, 0.3, 1) 70ms both;
+}
+.scroll-reveal.is-visible .trust-capability-card:nth-child(3),
+.scroll-reveal.is-visible .detail-context-matrix > div:nth-child(3),
+.scroll-reveal.is-visible .product-index-grid > a:nth-child(3) {
+  animation: oda-card-fade 550ms cubic-bezier(0.16, 1, 0.3, 1) 140ms both;
+}
+.scroll-reveal.is-visible .trust-capability-card:nth-child(4),
+.scroll-reveal.is-visible .detail-context-matrix > div:nth-child(4),
+.scroll-reveal.is-visible .product-index-grid > a:nth-child(4) {
+  animation: oda-card-fade 550ms cubic-bezier(0.16, 1, 0.3, 1) 210ms both;
+}
+
+@keyframes oda-card-fade {
+  from {
+    opacity: 0.5;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Reduced Motion Override */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -137,9 +201,12 @@
   }
 
   .scroll-reveal,
-  .scroll-reveal.is-visible {
+  .scroll-reveal.is-visible,
+  .scroll-reveal.is-visible * {
     opacity: 1 !important;
     transform: none !important;
+    animation: none !important;
+    transition: none !important;
   }
 }
 
@@ -160,10 +227,9 @@
   justify-content: center;
   width: 100%;
   max-width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  margin-bottom: 32px;
-  padding: 4px 10px 10px 10px;
+  overflow: visible;
+  margin-bottom: 28px;
+  padding: 0;
 }
 
 .light-tab-container {
@@ -172,8 +238,8 @@
   gap: 6px;
   background: var(--oda-surface);
   border: 1px solid var(--oda-border);
-  padding: 6px;
-  border-radius: var(--radius-full, 9999px);
+  padding: 6px 8px 10px 8px;
+  border-radius: 20px;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   max-width: 100%;
@@ -182,7 +248,7 @@
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   scrollbar-width: thin;
-  scrollbar-color: rgba(56, 189, 248, 0.45) transparent;
+  scrollbar-color: #38bdf8 rgba(255, 255, 255, 0.08);
 }
 
 .light-tab-container::-webkit-scrollbar {
@@ -197,7 +263,7 @@
 }
 
 .light-tab-container::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.08);
   border-radius: 999px;
   margin: 0 16px;
 }
@@ -205,6 +271,7 @@
 .light-tab-container::-webkit-scrollbar-thumb {
   background: linear-gradient(90deg, var(--oda-primary), #38bdf8);
   border-radius: 999px;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
 }
 
 .light-tab-indicator {
@@ -260,35 +327,16 @@
 @media (max-width: 768px) {
   .tabs-scroll-wrapper {
     justify-content: flex-start;
-    padding: 4px 14px 12px 14px;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(56, 189, 248, 0.4) transparent;
-  }
-  .tabs-scroll-wrapper::-webkit-scrollbar {
-    display: block;
-    height: 4px;
-  }
-  .tabs-scroll-wrapper::-webkit-scrollbar-button {
-    display: none !important;
-    width: 0 !important;
-    height: 0 !important;
-  }
-  .tabs-scroll-wrapper::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 999px;
-    margin: 0 20px;
-  }
-  .tabs-scroll-wrapper::-webkit-scrollbar-thumb {
-    background: linear-gradient(90deg, var(--oda-primary), #38bdf8);
-    border-radius: 999px;
+    padding: 0;
+    overflow: visible;
   }
 
   .light-tab-container {
-    padding: 5px;
+    padding: 5px 8px 10px 8px;
     gap: 5px;
     scroll-snap-type: x proximity;
     scrollbar-width: thin;
-    scrollbar-color: rgba(56, 189, 248, 0.45) transparent;
+    scrollbar-color: #38bdf8 rgba(255, 255, 255, 0.08);
   }
   .light-tab-container::-webkit-scrollbar {
     display: block;
@@ -300,13 +348,14 @@
     height: 0 !important;
   }
   .light-tab-container::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.06);
+    background: rgba(255, 255, 255, 0.08);
     border-radius: 999px;
     margin: 0 16px;
   }
   .light-tab-container::-webkit-scrollbar-thumb {
     background: linear-gradient(90deg, var(--oda-primary), #38bdf8);
     border-radius: 999px;
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
   }
 
   .light-tab-btn {
@@ -432,7 +481,12 @@
   .product-state-transition.state-active,
   .product-state-transition.state-entering,
   .tilt-parallax-img,
-  .tilt-floating-badge {
+  .tilt-floating-badge,
+  .connected-step-article,
+  .connected-step-article.is-active,
+  .connected-step-article.is-active *,
+  .story-visual-container,
+  .mobile-step-visual-drawer {
     animation: none !important;
     transform: none !important;
     transition: none !important;

@@ -37,15 +37,15 @@ export const HumanProblemStorySection = () => {
             >
               <img
                 src="/oda7-operational-friction.png"
-                alt="Operations professional reconciling work across a laptop, phone and paper notes"
+                alt="Indian operations professional managing customer conversations, data, and workflows across multiple screens"
                 loading="lazy"
                 style={{
                   width: '100%',
                   height: '100%',
                   objectFit: 'cover',
-                  objectPosition: 'center 25%',
+                  objectPosition: 'center center',
                   display: 'block',
-                  filter: 'brightness(0.92) contrast(1.05)',
+                  filter: 'brightness(0.95) contrast(1.04)',
                 }}
               />
 
